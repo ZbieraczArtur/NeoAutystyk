@@ -1044,6 +1044,9 @@ function computeScores(mode = currentScoringMode) {
   allValueNames.forEach(v => valueScores.set(v, { sum: 0, maxPossible: 0, questionsInvolved: 0 }));
 
   for (const ans of userAnswers) {
+    // Notatka może istnieć przed wybraniem odpowiedzi. Nie jest odpowiedzią
+    // punktowaną i nie może zatrzymywać obliczania wyników.
+    if (!ans?.answerData || !Number.isFinite(Number(ans.answerValue))) continue;
     const weight = ans.answerValue;
     if (weight === 0) continue;
     const answer = ans.answerData;
@@ -1956,6 +1959,7 @@ function computeScoresForAnswers(answers, mode) {
   allValueNames.forEach(v => valueScores.set(v, { sum: 0, maxPossible: 0 }));
 
   for (const ans of answers) {
+    if (!ans?.answerData || !Number.isFinite(Number(ans.answerValue))) continue;
     const weight = ans.answerValue;
     if (weight === 0) continue;
     const answer = ans.answerData;
