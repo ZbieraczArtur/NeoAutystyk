@@ -1,0 +1,301 @@
+Wprowadź wszystkie następujące zmiany, które zostały zastąpione przez istniejącą aplikację. Nie można usunąć ani nie zmienić funkcji funkcji, jeśli nie jest to konieczne do realizacji powierzonych zadań. Priorytetem jest optymalizacja wydajności, poprawa architektury danych oraz przebudowa algorytmu obliczeń zgodności.
+
+Zmiana 1 – uproszczenie data.json
+
+Usuń z każdego pytania pola:
+
+* parties_for
+* parties_against
+* ideologies_for
+* ideologies_against
+
+System nie będzie już z nich korzystał.
+
+
+
+
+
+
+
+Zmiana 2 – podział data.json
+
+Obecny plik data.json zawierający wszystkie pytania jest zbyt duży, przez co aplikacja podczas ładowania wyraźnie zwalnia.
+
+Podziel go na sześć osobnych plików JSON zgodnie z poniższym podziałem ID.
+
+Pierwszy (powinien też zawierać definicje wartości):
+0, 1, 2, 3, 9, 230, 260, 261, 4, 5, 6, 265, 393, 7, 8, 266, 267, 11, 12, 13, 251, 268, 269, 14, 16, 17, 18, 19, 20, 21, 32, 192, 270, 271, 272, 282, 217, 22, 273, 305, 387, 10, 23, 25, 26, 27, 28, 29, 30, 31, 274, 275, 276, 277, 297, 52, 278, 33, 34, 35, 36, 279
+
+Drugi:
+37, 38, 39, 280, 281, 193, 41, 42, 283, 284, 386, 44, 45, 46, 47, 48, 49, 50, 51, 285, 43, 53, 54, 55, 56, 57, 58, 286, 59, 287, 288, 60, 289, 290, 61, 62, 63, 64, 65, 66, 291, 67, 292, 395, 293, 68, 69, 70, 294, 71, 72, 73, 74, 75, 76, 77, 295, 296, 298, 263, 299, 300, 78, 79, 80, 81, 82, 83, 301, 84, 85, 86, 87, 88, 302, 89, 303, 90, 91, 92
+
+Trzeci:
+93, 94, 95, 96, 304, 306, 307, 394, 97, 98, 99, 100, 101, 101, 103, 104, 105, 106, 107, 108, 259, 109, 110, 308, 309, 24, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 391, 121, 122, 123, 124, 125, 126, 127, 128, 129, 310, 311, 312, 313, 314, 130, 131, 315, 390, 132, 133, 134, 392, 135, 136, 316, 317, 318, 137, 138, 139, 140, 141, 319, 142, 143, 320, 321, 322, 144, 145, 146, 323, 324, 325, 326, 327, 147, 328, 329, 330, 331, 148, 149, 150, 151, 152, 332, 333, 334, 335, 336
+
+Czwarty:
+153, 154, 155, 156, 157, 158, 159, 160, 337, 15, 161, 162, 163, 164, 165, 166, 167, 338, 339, 340, 168, 341, 169, 170, 171, 172, 173, 174, 342, 343, 175, 176, 177, 344, 345, 346, 347, 178, 179, 180, 181, 182, 348, 349, 350, 183, 184, 185, 186, 351, 352, 187, 188, 353, 189, 190, 354, 355, 191, 356, 194, 195, 196, 197, 198, 199, 388, 200, 40, 201, 202, 357, 358, 359, 296, 360, 361, 362, 203, 204, 363
+
+Piąty:
+205, 206, 207, 364, 365, 208, 209, 262, 210, 211, 212, 213, 214, 366, 367, 215, 216, 218, 219, 220, 221, 368, 222, 223, 224, 225, 226, 227, 369, 370, 397, 228, 229, 231, 232, 233, 371, 234, 372, 373
+
+szósty:
+235, 236, 237, 238, 239, 240, 241, 374, 375, 242, 376, 243, 377, 389, 378, 379, 244, 245, 246, 247, 248, 249, 250, 264, 385, 380, 252, 253, 254, 381, 255, 382, 383, 384, 256, 257, 258
+
+Jeśli pominąłem jakieś tezy, to umieść je w pierwszej zakładce.
+
+Wymagania:
+
+* zachowaj identyczną strukturę obiektów,
+* nie zmieniaj treści pytań,
+* nie zmieniaj identyfikatorów,
+* nie zmieniaj kolejności pytań wewnątrz każdego pliku,
+* aplikacja ma automatycznie ładować odpowiedni plik,
+* użytkownik nie powinien zauważyć żadnej różnicy poza poprawą wydajności.
+
+
+
+
+
+
+Zmiana 3 – wielostronicowy test
+
+Po podziale pytań każda część ma stanowić osobną stronę (zakładkę) testu.
+
+Wymagania:
+
+* każda część odpowiada jednemu plikowi JSON,
+* po ukończeniu jednej części użytkownik przechodzi do następnej,
+* użytkownik może w dowolnym momencie wrócić do poprzednich części,
+* może również pominąć dowolną część i wrócić do niej później,
+* odpowiedzi muszą być zapisywane na bieżąco,
+* przechodzenie między zakładkami nie może powodować utraty odpowiedzi,
+* wyniki końcowe mają uwzględniać odpowiedzi ze wszystkich ukończonych części.
+
+
+
+
+
+
+Zmiana 4 – optymalizacja ładowania
+
+Wprowadź wszystkie rozsądne optymalizacje zmniejszające zużycie pamięci i przyspieszające działanie aplikacji.
+
+Jeżeli można:
+
+* ładować dane dopiero po wejściu na daną zakładkę,
+* cache'ować już wczytane części,
+* unikać wielokrotnego parsowania tych samych danych,
+* ograniczyć liczbę renderów interfejsu,
+
+to zastosuj takie rozwiązania.
+
+Priorytetem jest płynne działanie testu nawet przy bardzo dużej liczbie pytań.
+
+
+
+
+
+
+Zmiana 5 – filtrowanie figur politycznych
+
+Dodaj nową opcję:
+
+"Pokaż wszystkie"
+
+Nowe zasady działania:
+
+* jest zaznaczona domyślnie,
+* wszystkie pozostałe tagi są początkowo odznaczone,
+* kliknięcie dowolnego konkretnego tagu automatycznie odznacza "Pokaż wszystkie",
+* ponowne zaznaczenie "Pokaż wszystkie" odznacza wszystkie pozostałe filtry,
+* zachowanie powinno być intuicyjne i identyczne jak w popularnych systemach filtrowania.
+
+
+
+
+
+
+Zmiana 6 – porównywarka
+
+Jeżeli liczba pytań przekracza 50:
+
+* przycisk "Rozwiń wszystko" / "Pokaż wszystko" ma zawsze znajdować się na samym końcu listy,
+* nigdy na początku.
+
+
+
+
+
+
+Zmiana 7 – weryfikacja systemu wag
+
+Sprawdź, czy:
+
+* wagi pytań,
+* wartości odpowiedzi,
+
+wpływają na:
+
+* dopasowanie do partii,
+* dopasowanie do ideologii,
+* dopasowanie do użytkowników,
+* pozycję na kompasie politycznym.
+
+Jeżeli obecny kod robi to poprawnie — nie zmieniaj go.
+
+Jeżeli którykolwiek z tych elementów nie uwzględnia wag, popraw implementację.
+
+
+
+
+
+
+Zmiana 8 – całkowicie przebuduj algorytm liczenia zgodności
+
+Nowy system ma porównywać wyłącznie odpowiedzi wspólne.
+
+Pytania pominięte przez jedną ze stron nie mogą ani zwiększać, ani zmniejszać zgodności.
+
+Brak odpowiedzi oznacza brak wpływu na wynik.
+
+Nigdy nie należy karać użytkownika za to, że jedna ze stron nie odpowiedziała na dane pytanie.
+
+
+
+
+
+
+Nowa logika punktacji
+
+Każda odpowiedź referencyjna definiuje własną macierz zgodności.
+
+Przykład:
+
+Jeżeli odpowiedź referencyjna to:
+
+"Zdecydowanie zgadzam się"
+
+to:
+
+* Zdecydowanie zgadzam się → +1.5
+* Częściowo zgadzam się → +0.5
+* Częściowo nie zgadzam się → -1.0
+* Zdecydowanie nie zgadzam się → -1.5
+* Pomiń / brak odpowiedzi → 0
+
+Jeżeli odpowiedź referencyjna to:
+
+"Częściowo zgadzam się"
+
+to:
+
+* Częściowo zgadzam się → +1.5
+* Zdecydowanie zgadzam się → +0.5
+* Częściowo nie zgadzam się → 0
+* Zdecydowanie nie zgadzam się → -1.0
+* Pomiń → 0
+
+Jeżeli odpowiedź referencyjna to:
+
+"Częściowo nie zgadzam się"
+
+to:
+
+* Częściowo nie zgadzam się → +1.5
+* Zdecydowanie nie zgadzam się → +0.5
+* Częściowo zgadzam się → 0
+* Zdecydowanie zgadzam się → -1.0
+* Pomiń → 0
+
+Jeżeli odpowiedź referencyjna to:
+
+"Zdecydowanie nie zgadzam się"
+
+to:
+
+* Zdecydowanie nie zgadzam się → +1.5
+* Częściowo nie zgadzam się → +0.5
+* Częściowo zgadzam się → -1.0
+* Zdecydowanie zgadzam się → -1.5
+* Pomiń → 0
+
+
+
+
+
+
+Kluczowe zasady
+
+Pominięte pytania:
+
+* nigdy nie dodają punktów,
+* nigdy nie odejmują punktów,
+* nie obniżają procentowej zgodności.
+
+Jeżeli użytkownik odpowiedział na 300 pytań, a partia tylko na 250, zgodność powinna być liczona wyłącznie na podstawie tych 250 wspólnych odpowiedzi.
+
+
+
+
+
+
+Przykład
+
+Użytkownik:
+
+1. Częściowo zgadzam się
+2. Zdecydowanie nie zgadzam się
+3. Pomiń
+
+Partia:
+
+1. Częściowo nie zgadzam się
+2. Zdecydowanie nie zgadzam się
+3. Częściowo zgadzam się
+
+Wynik:
+
+Pytanie 1 → 0 punktów
+
+Pytanie 2 → pełna zgodność (+1.5)
+
+Pytanie 3 → 0 punktów (brak wspólnej odpowiedzi)
+
+W efekcie zgodność wynosi 100%, ponieważ spośród wszystkich wspólnie ocenianych pytań nie wystąpiła żadna sprzeczność.
+
+Natomiast gdyby pojawiły się dodatkowo:
+
+1. 
+
+Użytkownik: Zdecydowanie zgadzam się
+Partia: Zdecydowanie nie zgadzam się
+
+lub
+
+1. 
+
+Użytkownik: Zdecydowanie nie zgadzam się
+Partia: Częściowo zgadzam się
+
+powinny zostać naliczone odpowiednie punkty ujemne, przez co końcowa zgodność spadnie.
+
+
+
+
+
+
+Zmiana 9 – zachowanie 100% zgodności
+
+System musi gwarantować następującą własność:
+
+Jeżeli wszystkie wspólne odpowiedzi użytkownika są zgodne z odpowiedziami partii (lub różnią się jedynie siłą, np. "częściowo" zamiast "zdecydowanie"), a wszystkie pozostałe różnice wynikają wyłącznie z pytań pominiętych przez jedną ze stron, końcowy wynik powinien wynosić dokładnie 100%.
+
+Pominięte pytania nie mogą obniżać zgodności.
+
+
+
+
+
+
+Na końcu sprawdź cały program pod kątem spójności. Upewnij się, że wszystkie moduły (test, wyniki, kompas polityczny, porównywarka, profile użytkowników, partie i ideologie) korzystają z tego samego algorytmu obliczeń. Nie może istnieć sytuacja, w której różne części aplikacji liczą zgodność według różnych zasad. Jeśli znajdziesz takie niespójności, ujednolić cały system do nowego modelu. Wszystkie istniejące funkcje mają nadal działać poprawnie po refaktoryzacji.
+
