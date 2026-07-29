@@ -343,6 +343,20 @@
         "migratedAt": "2026-06-24"
       }
     },
+             {
+      "type": "party",
+      "id": "party:antypartia",
+      "key": "antypartia",
+      "name": "Antypartia",
+      "description": "Formacja reprezentuje nurt antysystemowy i konserwatywno-liberalny, dążąc do zastąpienia partiokracji modelem demokracji bezpośredniej. W gospodarce opowiada się za wolnym rynkiem, szeroką prywatyzacją spółek Skarbu Państwa oraz budową podmiotowości ekonomicznej w oparciu o rodzimy kapitał. Program zakłada uproszczenie systemu fiskalnego poprzez wprowadzenie powszechnego podatku przychodowego oraz optymalizację wydatków publicznych dzięki likwidacji zbędnej biurokracji na szczeblu powiatowym i wojewódzkim. W kwestiach ustrojowych ugrupowanie dąży do głębokiej decentralizacji, wprowadzenia bezprogowego, wiążącego referendum oraz wdrożenia mechanizmów osobistej odpowiedzialności karnej i finansowej sędziów oraz urzędników. Światopoglądowo formacja opiera się na prawie naturalnym, akcentując ochronę tradycyjnego modelu rodziny oraz edukację patriotyczną jako fundamenty trwałości wspólnoty narodowej. W polityce międzynarodowej priorytetem jest asertywna obrona interesów narodowych oraz suwerenność państwa w ramach zreformowanej, opartej na wolnym handlu wspólnoty narodów.",
+      "logo": "images/Partie/antypartia.webp",
+      "exportCode": "",
+        "metadata": {
+        "source": "data.json",
+        "generatedFromLegacy": true,
+        "migratedAt": "2026-06-24"
+      }
+    },
          {
       "type": "party",
       "id": "party:wolnirepublikanie",
