@@ -1855,6 +1855,315 @@
         "Liberalne"
       ]
     },
+
+{
+  "type": "ideology",
+  "id": "ideology:anarchizm_chrześcijański",
+  "key": "anarchizm_chrześcijański",
+  "name": "Anarchizm chrześcijański",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Anarchizm_chrzescijanski.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:anarchodystrybucjonizm",
+  "key": "anarchodystrybucjonizm",
+  "name": "Anarchodystrybucjonizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/anarcho-distributism.svg",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:anarchomonarchizm",
+  "key": "anarchomonarchizm",
+  "name": "Anarchomonarchizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Anarchomonarchizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:chrześcijański_komunizm",
+  "key": "chrześcijański_komunizm",
+  "name": "Chrześcijański komunizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Chrzescijanski_komunizm.svg",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:ekologizm",
+  "key": "ekologizm",
+  "name": "Ekologizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Ekologizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:falangizm",
+  "key": "falangizm",
+  "name": "Falangizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Falangizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:faszyzm_ezoteryczny",
+  "key": "faszyzm_ezoteryczny",
+  "name": "Faszyzm ezoteryczny",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Faszyzm_ezoteryczny.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:feminizm_indywidualistyczny",
+  "key": "feminizm_indywidualistyczny",
+  "name": "Feminizm indywidualistyczny",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Feminizm_indywidualistyczny.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:internacjonalizm_liberalny",
+  "key": "internacjonalizm_liberalny",
+  "name": "Internacjonalizm liberalny",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Liberalny_internacjonalizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:liberalizm",
+  "key": "liberalizm",
+  "name": "Liberalizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Liberalizm.svg",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:liberalizm_demokratyczny",
+  "key": "liberalizm_demokratyczny",
+  "name": "Liberalizm demokratyczny",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Demoliberalizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:liberalna_autokracja",
+  "key": "liberalna_autokracja",
+  "name": "Liberalna autokracja",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Liberalna_autokracja.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:nacjonalizm_rasowy",
+  "key": "nacjonalizm_rasowy",
+  "name": "Nacjonalizm rasowy",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Nacjonalizm_rasowy.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:narodowy_radykalizm",
+  "key": "narodowy_radykalizm",
+  "name": "Narodowy radykalizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Narodowy_radykalizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:peronizm",
+  "key": "peronizm",
+  "name": "Peronizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Peronizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:raszyzm",
+  "key": "raszyzm",
+  "name": "Raszyzm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Raszyzm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:socjalizm_o_chińskiej_specyfice",
+  "key": "socjalizm_o_chińskiej_specyfice",
+  "name": "Socjalizm o chińskiej specyfice",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/socjalizm_o_chinskiej_specyfice.svg",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:socjalizm_rynkowy_langego",
+  "key": "socjalizm_rynkowy_langego",
+  "name": "Socjalizm rynkowy Langego",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Socjalizm_rynkowy_Langego.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:socjalizm_xxi_wieku",
+  "key": "socjalizm_xxi_wieku",
+  "name": "Socjalizm XXI wieku",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Socjalizm_XXI_wieku.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:weganarchizm",
+  "key": "weganarchizm",
+  "name": "Weganarchizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Weganarchizm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:zadrugizm",
+  "key": "zadrugizm",
+  "name": "Zadrugizm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Zadrugizm.jpg",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},
+{
+  "type": "ideology",
+  "id": "ideology:zielony_konserwatyzm",
+  "key": "zielony_konserwatyzm",
+  "name": "Zielony konserwatyzm",
+  "description": "XXXXXXX",
+  "logo": "images/Ideologie/Zielony_konserwatyzm.png",
+  "exportCode": "",
+  "metadata": {
+    "source": "data.json",
+    "generatedFromLegacy": true,
+    "migratedAt": "2026-06-24"
+  }
+},   
     {
       "type": "ideology",
       "id": "ideology:ekologizm_prawicowy",
