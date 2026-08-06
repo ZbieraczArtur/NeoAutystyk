@@ -2389,6 +2389,66 @@
         "XX wiek"
       ]
     },
+        {
+      "type": "figure",
+      "id": "figure:phk",
+      "key": "Paulina Hennig-Kloska",
+      "name": "Paulina Hennig-Kloska",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Kloska.jpg",
+      "exportCode": "",
+      "metadata": {
+        "source": "data.json",
+        "generatedFromLegacy": true,
+        "migratedAt": "2026-06-24"
+      },
+      "tags": [
+        "Polityk",
+        "Przedsiębiorca",
+        "Minister",
+        "Parlamentarzysta",
+        "Polska",
+        "Europa",
+        "Żyje",
+        "Kobieta",
+        "XX wiek",
+        "XXI wiek",
+        "Liberalizm",
+        "Socjalliberalizm"
+      ]
+        {
+      "type": "figure",
+      "id": "figure:rutte",
+      "key": "Mark Rutte",
+      "name": "Mark Rutte",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Rutte.webp",
+      "exportCode": "",
+      "metadata": {
+        "source": "data.json",
+        "generatedFromLegacy": true,
+        "migratedAt": "2026-06-24"
+      },
+      "tags": [
+        "Polityk",
+        "Minister",
+        "Dyplomata",
+        "Premier",
+        "Parlamentarzysta",
+        "Lider partii",
+        "Reformator",
+        "Holender",
+        "Europa",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Liberalizm",
+        "Liberalizm gospodarczy",
+        "Wybory demokratyczne",
+        "Nominacja / Kooptacja"
+      ]
+    },
     {
       "type": "figure",
       "id": "figure:adrianzandberg",
@@ -2620,8 +2680,8 @@
       ]
     },
                     {
-      "type": "user",
-      "id": "user:heszen",
+      "type": "figure",
+      "id": "figure:heszen",
       "key": "Piotr Heszen",
       "name": "Piotr Heszen",
       "description": "szuruburutralala",
