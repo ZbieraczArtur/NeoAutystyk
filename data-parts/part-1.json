@@ -957,6 +957,100 @@
             ],
             "weight": 5
         },
+    {
+      "id": 402,
+      "text": "Wolność jest cenna przede wszystkim dlatego, że prowadzi do lepszych rezultatów społecznych.",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },        
+        {
+      "id": 428,
+      "text": "Prawa jednostki powinny być uzasadniane przez ich pozytywne skutki społeczne, takie jak dobrobyt i pokój",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
         {
             "id": 230,
             "text": "Istnienie mniej i bardziej zamożnych ludzi jest czymś akceptowalnym",
@@ -1954,6 +2048,241 @@
             ],
             "weight": 4.5
         },
+            {
+      "id": 400,
+      "text": "Jednostki powinny posiadać pełną swobodę w decydowaniu o profilu i skali swojej produkcji oraz konsumpcji",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Rynek", "Samoregulacja", "Własność prywatna", "Autonomia"],
+          "values_against": ["Planowanie", "Regulacja instytucjonalna", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Rynek", "Samoregulacja", "Własność prywatna", "Autonomia"],
+          "values_against": ["Planowanie", "Regulacja instytucjonalna", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Planowanie"],
+          "values_against": ["Rynek", "Własność prywatna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Planowanie"],
+          "values_against": ["Rynek", "Własność prywatna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 401,
+      "text": "Każda działalność gospodarcza czy transakcja dokonana bez wiedzy lub zgody państwa powinna być postrzegana jako akt realizacji wolności, a nie przestępstwo",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Autonomia", "Rynek", "Ograniczenie władzy", "Samoregulacja"],
+          "values_against": ["Etatyzm", "Regulacja instytucjonalna", "Absolutyzm władzy"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Autonomia", "Rynek", "Ograniczenie władzy", "Samoregulacja"],
+          "values_against": ["Etatyzm", "Regulacja instytucjonalna", "Absolutyzm władzy"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": ["Rynek"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": ["Rynek"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.0
+    },
+    {
+      "id": 403,
+      "text": "Wolność kontraktów powinna umożliwiać dorosłym osobom zawieranie *dowolnych*, dobrowolnych umów",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Autonomia", "Antypaternalizm", "Kontraktualizm", "Samoorganizacja", "Różnorodność norm", "Samoregulacja"],
+          "values_against": ["Heteronomia", "Paternalizm", "Etatyzm", "Uniformizacja norm", "Regulacja instytucjonalna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Autonomia", "Antypaternalizm", "Kontraktualizm", "Samoorganizacja", "Różnorodność norm", "Samoregulacja"],
+          "values_against": ["Heteronomia", "Paternalizm", "Etatyzm", "Uniformizacja norm", "Regulacja instytucjonalna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Heteronomia", "Paternalizm", "Etatyzm", "Uniformizacja norm", "Regulacja instytucjonalna"],
+          "values_against": ["Autonomia", "Antypaternalizm", "Kontraktualizm", "Samoorganizacja", "Różnorodność norm", "Samoregulacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Heteronomia", "Paternalizm", "Etatyzm", "Uniformizacja norm", "Regulacja instytucjonalna"],
+          "values_against": ["Autonomia", "Antypaternalizm", "Kontraktualizm", "Samoorganizacja", "Różnorodność norm", "Samoregulacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.0
+    },
+    {
+      "id": 404,
+      "text": "Swoboda zrzeszania się obejmuje prawo do wykluczania osób trzecich z prywatnych wspólnot.",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Autonomia", "Własność prywatna", "Dobrowolność wspólnoty", "Elitaryzm", "Kontrola granic"],
+          "values_against": ["Egalitaryzm", "Minimalizacja granic"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Autonomia", "Własność prywatna", "Dobrowolność wspólnoty", "Elitaryzm", "Kontrola granic"],
+          "values_against": ["Egalitaryzm", "Minimalizacja granic"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Egalitaryzm", "Minimalizacja granic"],
+          "values_against": ["Własność prywatna", "Dobrowolność wspólnoty", "Elitaryzm", "Kontrola granic"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Egalitaryzm", "Minimalizacja granic"],
+          "values_against": ["Własność prywatna", "Dobrowolność wspólnoty", "Elitaryzm", "Kontrola granic"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 405,
+      "text": "Zależność ekonomiczna od innej osoby ogranicza wolność jednostki",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Egalitaryzm"],
+          "values_against": ["Elitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Egalitaryzm"],
+          "values_against": ["Elitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Elitaryzm", "Rynek"],
+          "values_against": ["Egalitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Elitaryzm", "Rynek"],
+          "values_against": ["Egalitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
         {
             "id": 265,
             "text": "Wolność jednostki nie powinna mieć absolutnie żadnych granic",
@@ -2954,6 +3283,100 @@
             ],
             "weight": 4
         },
+            {
+      "id": 407,
+      "text": "Dorośli ludzie powinni mieć prawo podejmować nawet nierozsądne decyzje dotyczące własnego życia",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Antypaternalizm", "Autonomia", "Samoorganizacja"],
+          "values_against": ["Paternalizm", "Heteronomia", "Uniformizacja norm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Antypaternalizm", "Autonomia", "Samoorganizacja"],
+          "values_against": ["Paternalizm", "Heteronomia", "Uniformizacja norm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Paternalizm", "Heteronomia", "Uniformizacja norm"],
+          "values_against": ["Antypaternalizm", "Autonomia", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Paternalizm", "Heteronomia", "Uniformizacja norm"],
+          "values_against": ["Antypaternalizm", "Autonomia", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.0
+    },
+            {
+      "id": 426,
+      "text": "Godność każdego człowieka jest wartością, która wymaga aktywnej ochrony państwowej",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Etatyzm"],
+          "values_against": ["Ograniczenie władzy", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Etatyzm"],
+          "values_against": ["Ograniczenie władzy", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 2.5
+    },
         {
             "id": 12,
             "text": "Władza publiczna powinna ograniczać działania jednostek, które naruszają ich własną godność, nawet jeśli są one dobrowolne",
@@ -3504,6 +3927,53 @@
             ],
             "weight": 4
         },
+            {
+      "id": 406,
+      "text": "Państwo powinno aktywnie kształtować środowisko społeczne i kulturowe, w których funkcjonują jednostki",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Etatyzm"],
+          "values_against": ["Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Etatyzm"],
+          "values_against": ["Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
         {
             "id": 268,
             "text": "Państwo lub społeczeństwo powinny umożliwiać ludziom dążenie do własnego rozumienia dobrego życia, bez promowania jednej wizji dobra",
@@ -3853,6 +4323,476 @@
             ],
             "weight": 3
         },
+            {
+      "id": 408,
+      "text": "Edukacja i perswazja są lepszym narzędziem zmiany zachowań niż nakazy i zakazy",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Antypaternalizm", "Samoorganizacja"],
+          "values_against": ["Paternalizm", "Etatyzm", "Uniformizacja norm", "Preferencja użycia siły"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Antypaternalizm", "Samoorganizacja"],
+          "values_against": ["Paternalizm", "Etatyzm", "Uniformizacja norm", "Preferencja użycia siły"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Paternalizm", "Etatyzm", "Uniformizacja norm", "Preferencja użycia siły"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Paternalizm", "Etatyzm", "Uniformizacja norm", "Preferencja użycia siły"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3
+    },
+    {
+      "id": 409,
+      "text": "Głównym celem ingerencji instytucji władzy publicznej powinno być zapobieganie szkodom, nawet jeśli dotyczy to osobistych wyborów jednostek",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": ["Paternalizm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": ["Paternalizm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 410,
+      "text": "Państwo powinno mieć prawo regulować prywatne zachowania jednostek w celu ochrony ich zdrowia",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 411,
+      "text": "Rząd powinien ograniczyć lub zakazać sprzedaży niezdrowych produktów spożywczych, aby chronić zdrowie mieszkańców",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Paternalizm", "Regulacja instytucjonalna", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 2.5
+    },
+    {
+      "id": 412,
+      "text": "Zachowanie porządku i stabilności politycznej jest wystarczającym uzasadnieniem dla ograniczenia wolności jednostki",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Stabilność", "Heteronomia", "Konserwatyzm", "Etatyzm"],
+          "values_against": ["Rewolucja", "Progresywizm", "Autonomia", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Stabilność", "Heteronomia", "Konserwatyzm", "Etatyzm"],
+          "values_against": ["Rewolucja", "Progresywizm", "Autonomia", "Samoorganizacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": ["Stabilność", "Konserwatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": ["Stabilność", "Konserwatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 413,
+      "text": "Państwo powinny czasem ograniczać wybory życiowe jednostki dla jej własnego dobra",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 414,
+      "text": "Niektóre wolności mogą być ograniczane, jeśli prowadzą do autodestrukcyjnych zachowań",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3
+    },
+    {
+      "id": 415,
+      "text": "Jeśli eksperci wiedzą, że dane zachowanie szkodzi ludziom, zgoda obywateli nie powinna być konieczna do jego ograniczenia",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia", "Hierarchiczność", "Autokracja"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia", "Hierarchiczność", "Autokracja"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4
+    },
+    {
+      "id": 416,
+      "text": "Państwo powinno mieć prawo narzucać środki bezpieczeństwa nawet osobom, które świadomie ich nie chcą",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+        {
+      "id": 419,
+      "text": "Istnieją sytuacje, w których państwo może ograniczyć wolność jednostki, nawet jeśli nie stanowi ona bezpośredniego zagrożenia dla innych",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "values_against": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Antypaternalizm", "Samoorganizacja", "Autonomia"],
+          "values_against": ["Paternalizm", "Etatyzm", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
         {
             "id": 14,
             "text": "Wolność jednostki powinna być ograniczana tylko w celu zapobieżenia naruszenia wolności innych",
@@ -4035,6 +4975,53 @@
             ],
             "weight": 4.5
         },
+            {
+      "id": 399,
+      "text": "Inicjowanie przemocy lub przymusu wobec innej osoby jest *zawsze* moralnie niedopuszczalne, niezależnie od celu, któremu miałoby służyć",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Unikanie przemocy", "Kontraktualizm", "Samoorganizacja", "Ograniczenie władzy", "Samoregulacja", "Indywidualizm"],
+          "values_against": ["Preferencja użycia siły"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Unikanie przemocy", "Kontraktualizm", "Samoorganizacja", "Ograniczenie władzy", "Samoregulacja", "Indywidualizm"],
+          "values_against": ["Preferencja użycia siły"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Preferencja użycia siły"],
+          "values_against": ["Indywidualizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Preferencja użycia siły"],
+          "values_against": ["Indywidualizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.5
+    },
         {
             "id": 16,
             "text": "Przekonania i styl życia jednostki powinny być tolerowane przez innych, o ile nie powodują bezpośredniej szkody innym",
@@ -4232,6 +5219,53 @@
             ],
             "weight": 3.5
         },
+            {
+      "id": 418,
+      "text": "Działania jednostek nie powinny być ograniczane wyłącznie z powodu ich niezgodności z dominującymi przekonaniami",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Różnorodność norm", "Wolność ekspresji", "Pluralizm kulturowy"],
+          "values_against": ["Uniformizacja norm", "Homogenizacja", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Różnorodność norm", "Wolność ekspresji", "Pluralizm kulturowy"],
+          "values_against": ["Uniformizacja norm", "Homogenizacja", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Różnorodność norm", "Wolność ekspresji", "Pluralizm kulturowy"],
+          "values_against": ["Uniformizacja norm", "Homogenizacja", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Różnorodność norm", "Wolność ekspresji", "Pluralizm kulturowy"],
+          "values_against": ["Uniformizacja norm", "Homogenizacja", "Heteronomia"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
         {
             "id": 17,
             "text": "Tolerancja jest warunkiem rozwoju społecznego i współistnienia w społeczeństwie",
@@ -4418,6 +5452,53 @@
             ],
             "weight": 2
         },
+            {
+      "id": 423,
+      "text": "Uzasadnienie norm etycznych powinno opierać się na apriorycznych warunkach możliwości argumentacji",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.0 
+    },
         {
             "id": 18,
             "text": "Istnieją pewne przyrodzone prawa przysługujące jednostce niezależnie od decyzji jakiejkolwiek władzy",
@@ -4739,6 +5820,53 @@
             ],
             "weight": 3
         },
+            {
+      "id": 421,
+      "text": "Moralność jest kwestią subiektywnego wyboru i osobistych preferencji każdej jednostki.",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Autonomia", "Indywidualizm", "Pluralizm kulturowy"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Autonomia", "Indywidualizm", "Pluralizm kulturowy"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
         {
             "id": 20,
             "text": "Tradycja religijna jest nadrzędnym źródłem norm moralnych.",
@@ -4902,6 +6030,100 @@
             ],
             "weight": 4
         },
+            {
+      "id": 427,
+      "text": "Prawa człowieka powinny być interpretowane wyłącznie przez pryzmat obowiązków wobec Boga",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Heteronomia", "Sakralizacja autorytetu", "Instytucjonalna religia", "Konserwatyzm"],
+          "values_against": ["Neutralność religijna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Heteronomia", "Sakralizacja autorytetu", "Instytucjonalna religia", "Konserwatyzm"],
+          "values_against": ["Neutralność religijna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Neutralność religijna"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Neutralność religijna"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.0
+    },
+            {
+      "id": 417,
+      "text": "Jednostka powinna bezwzględnie podporządkować się uznanemu autorytetowi religijnemu",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Heteronomia", "Sakralizacja autorytetu", "Hierarchiczność"],
+          "values_against": ["Autonomia", "Desakralizacja autorytetu", "Neutralność religijna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Heteronomia", "Sakralizacja autorytetu", "Hierarchiczność"],
+          "values_against": ["Autonomia", "Desakralizacja autorytetu", "Neutralność religijna"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Neutralność religijna"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Neutralność religijna"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4
+    },
         {
             "id": 21,
             "text": "Państwo jest jedynym źródłem wartości moralnych i duchowych w społeczeństwie",
@@ -6123,7 +7345,149 @@
                         "Nowa Nadzieja"
                     ]
                 },
-                {
+                    {
+      "id": 422,
+      "text": "Ciężka praca ma wartość sama w sobie, nawet bez widocznych efektów",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": ["Konserwatyzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": ["Konserwatyzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 2.5
+    },
+        {
+      "id": 424,
+      "text": "Cechy nabyte powinny mieć większe znaczenie dla statusu społecznego niż cechy przypisane przy urodzeniu",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Progresywizm"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Progresywizm"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Elitaryzm", "Konserwatyzm", "Retrospektywizm"],
+          "values_against": ["Progresywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Elitaryzm", "Konserwatyzm", "Retrospektywizm"],
+          "values_against": ["Progresywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 425,
+      "text": "Społeczeństwo, które nagradza twórców i innowatorów nieproporcjonalnie więcej niż innych, jest sprawiedliwsze niż takie, które dąży do wyrównania wyników",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Elitaryzm", "Indywidualizm", "Postęp technologiczny"],
+          "values_against": ["Egalitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Elitaryzm", "Indywidualizm"],
+          "values_against": ["Egalitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Egalitaryzm"],
+          "values_against": ["Elitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Egalitaryzm"],
+          "values_against": ["Elitaryzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.0
+    },
+
+        {
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -1.5,
                     "values_for": [
@@ -7228,6 +8592,53 @@
             ],
             "weight": 4
         },
+          {
+"id": 398,
+      "text": "Człowiek zawdzięcza swoją tożsamość bardziej wspólnocie niż własnym wyborom",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Kolektywizm", "Organicyzm"],
+          "values_against": ["Indywidualizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Kolektywizm", "Organicyzm"],
+          "values_against": ["Indywidualizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Indywidualizm"],
+          "values_against": ["Kolektywizm", "Organicyzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Indywidualizm"],
+          "values_against": ["Kolektywizm", "Organicyzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4
+    },
         {
             "id": 27,
             "text": "Ochrona praw jednostki może być ograniczana w imię interesu zbiorowego",
@@ -8374,6 +9785,100 @@
             ],
             "weight": 3.5
         },
+            {
+      "id": 429,
+      "text": "Społeczeństwo potrzebuje instytucji społecznych, które zachęcają do publicznej cnoty",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Paternalizm", "Hierarchiczność", "Konserwatyzm"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Paternalizm", "Hierarchiczność", "Konserwatyzm"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.0
+    },
+    {
+      "id": 430,
+      "text": "Instytucje społeczne powinny być stale dostosowywane do nowych warunków",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.0
+    },
         {
             "id": 276,
             "text": "Działanie zbiorowe ma wyższą wartość moralną niż działanie indywidualne",
@@ -9089,6 +10594,382 @@
             ],
             "weight": 3.5
         },
+            {
+      "id": 431,
+      "text": "Nawet jeśli nie istnieją historyczne precedensy, warto eksperymentować z całkowicie nowymi modelami organizacji społeczeństwa",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Konserwatyzm", "Stabilność", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 432,
+      "text": "Wiedza zdobyta przez pokolenia w kontakcie z naturą ma wartość, której nie zastąpi wiedza naukowa i ekspercka",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm"],
+          "values_against": ["Progresywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm"],
+          "values_against": ["Progresywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Progresywizm"],
+          "values_against": ["Konserwatyzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm"],
+          "values_against": ["Konserwatyzm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.0
+    },
+        {
+      "id": 433,
+      "text": "Idee oświeceniowe (np racjonalizm, indywidualizm, sekularyzm, konstytucjonalizm) w większości lub całości były szkodliwe",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Progresywizm", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.0
+    },
+    {
+      "id": 434,
+      "text": "Zmiany społeczne należy oceniać ostrożnie, nawet jeśli wydają się racjonalne",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm", "Stabilność"],
+          "values_against": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm", "Stabilność"],
+          "values_against": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm", "Transformacja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.0
+    },
+    {
+      "id": 435,
+      "text": "Wiele przemian społecznych ostatnich stuleci było błędem, który należy odwrócić",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm", "Retrospektywizm", "Transformacja"],
+          "values_against": ["Progresywizm", "Projektywizm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm", "Retrospektywizm", "Transformacja"],
+          "values_against": ["Progresywizm", "Projektywizm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Progresywizm"],
+          "values_against": ["Konserwatyzm", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm"],
+          "values_against": ["Konserwatyzm", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 436,
+      "text": "Niepewność co do skutków proponowanych zmian jest wystarczającym powodem, by ich zaniechać",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm", "Stabilność"],
+          "values_against": ["Progresywizm", "Transformacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm", "Stabilność"],
+          "values_against": ["Progresywizm", "Transformacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Progresywizm", "Transformacja"],
+          "values_against": ["Konserwatyzm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm", "Transformacja"],
+          "values_against": ["Konserwatyzm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.0
+    },
+    {
+      "id": 437,
+      "text": "W polityce należy przede wszystkim chronić istniejące struktury społeczne",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Konserwatyzm", "Stabilność"],
+          "values_against": ["Progresywizm", "Transformacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Konserwatyzm", "Stabilność"],
+          "values_against": ["Progresywizm", "Transformacja"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm", "Transformacja"],
+          "values_against": ["Konserwatyzm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": ["Progresywizm", "Transformacja"],
+          "values_against": ["Konserwatyzm", "Stabilność"],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 3.5
+    },
+    {
+      "id": 438,
+      "text": "Przejście od monarchii do demokracji stanowi cywilizacyjny krok wstecz oraz regres procesu rozwoju cywilizacji",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": ["Anty-demokracja", "Konserwatyzm", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Anty-autokracja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": ["Anty-demokracja", "Konserwatyzm", "Retrospektywizm"],
+          "values_against": ["Progresywizm", "Anty-autokracja", "Projektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Progresywizm", "Anty-autokracja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Progresywizm", "Anty-autokracja", "Projektywizm"],
+          "values_against": ["Konserwatyzm", "Retrospektywizm"],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4.5
+        },
         {
             "id": 33,
             "text": "Doświadczenie i mądrość historii są bardziej wiarygodnymi wskazówkami niż abstrakcyjne idee o poprawie świata",
@@ -9654,6 +11535,53 @@
             ],
             "weight": 3.5
         },
+            {
+      "id": 420,
+      "text": "Naruszenie praw jednostki może być uzasadnione, jeśli zapobiega znacznie większym szkodom.",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "value": 3,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "value": 2,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "value": -2,
+          "values_for": ["Ograniczenie władzy"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "value": -3,
+          "values_for": ["Ograniczenie władzy"],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        },
+        {
+          "label": "Pomiń pytanie",
+          "value": 0,
+          "values_for": [],
+          "values_against": [],
+          "parties_for": [],
+          "parties_against": []
+        }
+      ],
+      "weight": 4
+    },
         {
             "id": 279,
             "text": "Walka jest naturalnym i nieuniknionym elementem życia społecznego, jak i międzynarodowego",
