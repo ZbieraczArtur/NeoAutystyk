@@ -9,7 +9,16 @@
   let reviewFilter = null;
 
   const idOf = value => Number(value);
-  const questionById = id => config?.questions?.find(question => idOf(question.id) === idOf(id));
+  let indexedQuestions = null;
+  let questionsById = new Map();
+  const questionById = id => {
+    const questions = config?.questions || [];
+    if (questions !== indexedQuestions) {
+      indexedQuestions = questions;
+      questionsById = new Map(questions.map(question => [idOf(question.id), question]));
+    }
+    return questionsById.get(idOf(id));
+  };
   const answerRows = id => userAnswers.filter(row => idOf(row.questionId) === idOf(id) && !row.noteOnly);
   const primaryAnswer = id => answerRows(id).find(row => !row.neither) || answerRows(id)[0] || null;
   const isPositive = row => row && !row.neither && Number(row.answerValue) > 0;
@@ -342,7 +351,31 @@
     ...(politicalProfiles?.figures || []).map(profile => ({ ...profile, type: 'figure' })),
     ...importedComparisons.map(profile => ({ ...profile, type: 'friend' }))
   ];
-  const profileRows = profile => Array.isArray(profile.answers) ? profile.answers : parseAnyExport(profile.exportCode || '');
+  // Panel porównawczy był źródłem zawieszania wyników: dla każdego widocznego
+  // pytania ponownie parsował eksport każdego profilu. Profile są stałe, więc
+  // przechowujemy zarówno sparsowane odpowiedzi, jak i indeks po pytaniu.
+  const profileRowsCache = new Map();
+  const profileAnswerIndexCache = new Map();
+  const profileCacheKey = profile => String(profile?.exportCode || '') || `answers:${profile?.name || ''}`;
+  const profileRows = profile => {
+    if (Array.isArray(profile?.answers)) return profile.answers;
+    const key = profileCacheKey(profile);
+    if (!profileRowsCache.has(key)) profileRowsCache.set(key, parseAnyExport(profile?.exportCode || ''));
+    return profileRowsCache.get(key);
+  };
+  const profileHasAnswer = (profile, questionId, label) => {
+    const key = profileCacheKey(profile);
+    if (!profileAnswerIndexCache.has(key)) {
+      const index = new Map();
+      profileRows(profile).forEach(row => {
+        const id = idOf(row.questionId);
+        if (!index.has(id)) index.set(id, new Set());
+        index.get(id).add(rowLabel(row));
+      });
+      profileAnswerIndexCache.set(key, index);
+    }
+    return profileAnswerIndexCache.get(key).get(idOf(questionId))?.has(label) || false;
+  };
   const rowLabel = row => row?.neither ? NEITHER : row?.answerData?.label || 'Brak odpowiedzi';
   const profileLogo = profile => profile.logo || profile.avatar || 'images/ALogo.svg';
 
@@ -368,7 +401,7 @@
     const groups = [['Ideologie', 'ideology'], ['Partie', 'party'], ['Użytkownicy', 'user'], ['Figury', 'figure']];
     const profiles = allComparisonProfiles().filter(profile => profile.type !== 'friend');
     return groups.map(([label, type]) => {
-      const matches = profiles.filter(profile => profile.type === type && profileRows(profile).some(row => idOf(row.questionId) === idOf(question.id) && rowLabel(row) === answer.label));
+      const matches = profiles.filter(profile => profile.type === type && profileHasAnswer(profile, question.id, answer.label));
       if (!matches.length) return '';
       const logos = matches.map(profile => `<button type="button" class="comparison-profile-logo" data-profile-type="${type}" data-profile-name="${comparisonEscape(profile.name)}" title="${comparisonEscape(profile.name)}"><img src="${comparisonEscape(profileLogo(profile))}" alt="${comparisonEscape(profile.name)}"></button>`).join('');
       return `<details class="comparison-source-group"><summary>${label} (${matches.length})</summary><div>${logos}</div></details>`;
@@ -412,6 +445,11 @@
     panel.innerHTML = `<h3>Porównywarka</h3><div class="comparison-tabs"><label><input type="radio" name="comparison-tab" value="catalogue" checked> Porównaj z...</label><label><input type="radio" name="comparison-tab" value="friend"> Ze znajomym</label></div><div class="comparison-import"><input id="comparison-friend-name" maxlength="40" placeholder="Nazwa wyniku / znajomego"><textarea id="comparison-friend-code" rows="2" placeholder="Wklej kod importowy znajomego lub starego wyniku"></textarea><button id="comparison-add-friend" type="button">Dodaj wynik</button></div><div class="comparison-controls"><select id="comparison-profile"></select><select id="comparison-difference-filter"><option value="all">Wszystkie pytania</option><option value="same">Tylko zgodne</option><option value="different">Tylko różne</option></select>${window.DEV_MODE ? `<select id="comparison-value-filter"><option value="">Wszystkie wartości</option>${values.map(value => `<option>${comparisonEscape(value)}</option>`).join('')}</select>` : ''}<button type="button" data-comparison-limit="more">+50 pytań</button><button type="button" data-comparison-limit="all">Pokaż wszystko</button><button type="button" data-comparison-expand="all">Rozwiń wszystkie</button></div><div class="comparison-results"></div>`;
     resultsDiv.appendChild(panel);
     panel.addEventListener('change', renderComparison);
+    const loadComparison = document.createElement('button');
+    loadComparison.type = 'button'; loadComparison.id = 'comparison-load'; loadComparison.textContent = 'Wczytaj porównanie';
+    loadComparison.addEventListener('click', renderComparison);
+    panel.querySelector('.comparison-controls')?.prepend(loadComparison);
+    panel.querySelector('.comparison-results').innerHTML = '<p class="muted-small">Porównywarka zostanie obliczona na żądanie.</p>';
     panel.querySelector('#comparison-add-friend').addEventListener('click', () => {
       const raw = panel.querySelector('#comparison-friend-code').value.trim(); const answers = parseAnyExport(raw); if (!answers.length) { showPopup('Nie znaleziono prawidłowych odpowiedzi w kodzie.'); return; }
       const name = panel.querySelector('#comparison-friend-name').value.trim() || `Znajomy ${importedComparisons.length + 1}`;
@@ -419,7 +457,6 @@
     });
     panel.querySelectorAll('[data-comparison-limit]').forEach(button => button.addEventListener('click', () => { comparisonLimit = button.dataset.comparisonLimit === 'all' ? Infinity : comparisonLimit + 50; renderComparison(); }));
     panel.querySelector('[data-comparison-expand]').addEventListener('click', event => { const details = panel.querySelectorAll('.comparison-question'); const open = event.currentTarget.dataset.comparisonExpand === 'all'; details.forEach(item => item.open = open); event.currentTarget.dataset.comparisonExpand = open ? 'none' : 'all'; event.currentTarget.textContent = open ? 'Zwiń wszystkie' : 'Rozwiń wszystkie'; });
-    renderComparison();
   }
   function refreshComparisonOverlays(compassOverride) {
     const compass = compassOverride || window.compassInstance || window.modalCompassInstance; if (!compass?.addOverlay) return;
@@ -429,7 +466,14 @@
   window.loadOverlays = async function (...args) { const result = await baseOverlaysWithComparisons(...args); refreshComparisonOverlays(args[2]); return result; };
   loadOverlays = window.loadOverlays;
   const baseResultsWithComparison = computeAndDisplayResults;
-  window.computeAndDisplayResults = function () { baseResultsWithComparison(); ensureComparisonPanel(); renderComparison(); refreshComparisonOverlays(); };
+  window.computeAndDisplayResults = function () {
+    baseResultsWithComparison();
+    ensureComparisonPanel();
+    // Szczegółowa porównywarka jest narzędziem pomocniczym. Jej analiza może
+    // obejmować wiele profili, więc uruchamiamy ją dopiero po zmianie wyboru
+    // w panelu zamiast blokować główne wyniki po kliknięciu „Pokaż wyniki”.
+    refreshComparisonOverlays();
+  };
   computeAndDisplayResults = window.computeAndDisplayResults;
 
   const baseSetupSimulationWithFigures = window.setupSimulation || setupSimulation;
