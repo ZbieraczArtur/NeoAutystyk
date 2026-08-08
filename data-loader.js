@@ -1,4 +1,4 @@
-﻿// Stan aplikacji oraz leniwe ładowanie danych pytań.
+// Stan aplikacji oraz leniwe ładowanie danych pytań.
 let config = null;
 let configBase = null;      // oryginalne dane z data.json (wartoĹ›ci, mapowania)
 let politicalProfiles = null;
