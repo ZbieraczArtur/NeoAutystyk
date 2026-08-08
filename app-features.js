@@ -1,4 +1,4 @@
-﻿/* NeoAutystyk: landing page, profile tags, figures ranking and filtered compass overlays. */
+/* NeoAutystyk: landing page, profile tags, figures ranking and filtered compass overlays. */
 (function () {
   'use strict';
 
