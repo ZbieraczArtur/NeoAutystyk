@@ -1,4 +1,4 @@
-﻿
+
 const questionsContainer = document.getElementById('questions-container');
 const submitBtn = document.getElementById('submitBtn');
 const resultsDiv = document.getElementById('results-container');
@@ -670,8 +670,8 @@ async function loadConfig() {
     // DomyĹ›lnie Ĺ‚adujemy jÄ™zyk polski (nie Ĺ‚adujemy pliku tĹ‚umaczeĹ„, bo dane sÄ… po polsku)
     window.__activeTestQuestionIds = configBase.questions.map(question => Number(question.id));
     applyTranslationsToConfig();
-    currentMatchingMode = localStorage.getItem('matchingMode') || politicalProfiles.defaultMatchingMode || 'modern';
-    if (!['modern', 'legacy'].includes(currentMatchingMode)) currentMatchingMode = 'modern';
+    // Stare ustawienie jest ignorowane: aplikacja używa jednego mechanizmu zgodności.
+    currentMatchingMode = 'modern';
     translations = null; // dla polskiego brak zewnÄ™trznych tĹ‚umaczeĹ„
     currentLanguage = 'pl';
     updateUITexts(); // ustawi polskie teksty z domyĹ›lnych (ale moĹĽemy teĹĽ zaĹ‚adowaÄ‡ plik translations_pl.json â€“ opcjonalnie)
@@ -1200,14 +1200,8 @@ function computeScores(mode = currentScoringMode) {
     });
   }
 
-  if (currentMatchingMode === 'modern') {
-    return {
-      pairResults,
-      ideologyResults: getModernRanking('ideology'),
-      partyResults: getModernRanking('party')
-    };
-  }
-
+  // Rankingi nowoczesne są dołączane jednokrotnie przez modern-profile-engine.js.
+  // Ten rdzeń zwraca wyłącznie wyniki wartości i pustą, zgodną wstecznie strukturę.
   return { pairResults, ideologyResults, partyResults };
 }
 
