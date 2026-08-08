@@ -1,4 +1,4 @@
-﻿// Integracja zmian odpowiedzi z kompasem.
+// Integracja zmian odpowiedzi z kompasem.
 // PrzeĹ‚adowanie funkcji symulacji, aby po symulacji odĹ›wieĹĽyÄ‡ kompas
 const originalSimulateAnswers = simulateAnswers;
 simulateAnswers = async function(selectedName) {
