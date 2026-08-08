@@ -6,6 +6,21 @@
     PARTLY_DISAGREE: -0.5,
     STRONGLY_DISAGREE: -1.5
   };
+  // Profile są niezmienne w czasie działania testu. Ich kody odpowiedzi były
+  // wcześniej parsowane osobno dla każdego odświeżenia rankingu, co przy
+  // kilkuset pytaniach i ponad stu profilach blokowało interfejs.
+  const referenceCache = new Map();
+  let referenceCacheQuestionSignature = '';
+
+  function questionIndex() {
+    const questions = Array.isArray(config?.questions) ? config.questions : [];
+    const signature = questions.map(question => Number(question.id)).join(',');
+    if (signature !== referenceCacheQuestionSignature) {
+      referenceCache.clear();
+      referenceCacheQuestionSignature = signature;
+    }
+    return new Map(questions.map(question => [Number(question.id), question]));
+  }
 
   function normalizeProfileText(value) {
     return String(value || '')
@@ -187,12 +202,13 @@
   function parseReferenceExportCodeModern(rawCode) {
     const reference = new Map();
     if (!config?.questions) return reference;
+    const questionsById = questionIndex();
 
     for (const line of splitExportEntries(rawCode)) {
       const parsed = parseExportLine(line);
       if (!parsed) continue;
 
-      const question = config.questions.find(q => Number(q.id) === Number(parsed.questionId));
+      const question = questionsById.get(Number(parsed.questionId));
       if (!question) continue;
 
       const allowed = splitAllowedAnswers(parsed.answerText).map(label => {
@@ -209,7 +225,21 @@
     return reference;
   }
 
-  function answerKind(answerValue) {
+  function cachedReference(profile) {
+    const exportCode = String(profile?.exportCode || '');
+    if (!exportCode.trim()) return new Map();
+    questionIndex();
+    const key = `${referenceCacheQuestionSignature}\u0000${exportCode}`;
+    if (!referenceCache.has(key)) referenceCache.set(key, parseReferenceExportCodeModern(exportCode));
+    return referenceCache.get(key);
+  }
+
+  function answerKind(answerValue, answerData) {
+    const label = normalizeProfileText(answerData?.label);
+    if (/zdecydowanie.*zgadzam/.test(label) && !/nie zgadzam/.test(label)) return 'stronglyAgree';
+    if (/czesciowo.*zgadzam/.test(label) && !/nie zgadzam/.test(label)) return 'partlyAgree';
+    if (/czesciowo.*nie zgadzam/.test(label)) return 'partlyDisagree';
+    if (/zdecydowanie.*nie zgadzam/.test(label)) return 'stronglyDisagree';
     const value = Number(answerValue);
     if (Math.abs(value - ANSWER_VALUES.STRONGLY_AGREE) < 0.01) return 'stronglyAgree';
     if (Math.abs(value - ANSWER_VALUES.PARTLY_AGREE) < 0.01) return 'partlyAgree';
@@ -218,48 +248,60 @@
     return null;
   }
 
-  function profilePairScoreModern(userValue, referenceAnswer) {
-    const current = Number(userValue);
+  function profilePairScoreModern(userAnswer, referenceAnswer) {
+    const current = Number(userAnswer?.answerValue);
     if (!referenceAnswer || Number.isNaN(current) || current === 0) return 0;
     if (referenceAnswer.neither) return -1.0;
 
-    const userKind = answerKind(current);
-    const refKind = answerKind(referenceAnswer.value);
-    if (!userKind || !refKind) return 0;
+    const userKind = answerKind(current, userAnswer.answerData);
+    const refKind = answerKind(referenceAnswer.value, referenceAnswer.answerData);
+    if (!userKind || !refKind) {
+      // Kilka starszych pytań ma własne, dwuelementowe etykiety. Zachowujemy
+      // ich znaczenie: identyczna etykieta to pełna zgodność, przeciwne znaki
+      // to pełna niezgodność, bez udawania odpowiedzi z czterostopniowej skali.
+      if (normalizeProfileText(userAnswer?.answerData?.label) === normalizeProfileText(referenceAnswer?.answerData?.label)) return 1.5;
+      return Math.sign(current) !== Math.sign(Number(referenceAnswer.value)) ? -1.5 : 0;
+    }
 
     const scoreTable = {
       stronglyAgree: { stronglyAgree: 1.5, partlyAgree: 0.5, partlyDisagree: -1.0, stronglyDisagree: -1.5 },
-      partlyAgree: { stronglyAgree: 0.5, partlyAgree: 1.5, partlyDisagree: -1.0, stronglyDisagree: -1.5 },
-      partlyDisagree: { stronglyAgree: -1.0, partlyAgree: -1.0, partlyDisagree: 1.5, stronglyDisagree: 0.5 },
+      partlyAgree: { stronglyAgree: 1.0, partlyAgree: 1.5, partlyDisagree: -0.5, stronglyDisagree: -1.0 },
+      partlyDisagree: { stronglyAgree: -1.0, partlyAgree: -0.5, partlyDisagree: 1.5, stronglyDisagree: 1.0 },
       stronglyDisagree: { stronglyAgree: -1.5, partlyAgree: -1.0, partlyDisagree: 0.5, stronglyDisagree: 1.5 }
     };
 
     return scoreTable[refKind][userKind];
   }
 
-  function compareAnswersToReferenceProfileModern(answers, referenceProfile) {
+  function compareAnswersToReferenceProfileModern(answers, referenceProfile, suppliedAnswersByQuestion) {
     if (!referenceProfile?.exportCode || !String(referenceProfile.exportCode).trim()) {
       return { percent: 0, score: 0, maxPossible: 0, compared: 0 };
     }
 
-    const reference = parseReferenceExportCodeModern(referenceProfile.exportCode);
+    const reference = cachedReference(referenceProfile);
     if (!reference.size || !Array.isArray(config?.questions)) {
       return { percent: 0, score: 0, maxPossible: 0, compared: 0 };
     }
 
-    const answersByQuestion = new Map((answers || []).filter(row => !row.noteOnly).map(row => [Number(row.questionId), row]));
+    const answersByQuestion = suppliedAnswersByQuestion || new Map((answers || []).filter(row => !row.noteOnly).map(row => [Number(row.questionId), row]));
     let score = 0;
     let maxPossible = 0;
     let compared = 0;
 
     for (const question of config.questions) {
-      const userAnswer = answersByQuestion.get(Number(question.id));
       const allowed = reference.get(Number(question.id));
-      const userValue = userAnswer ? Number(userAnswer.answerValue) : 0;
+      const userAnswer = answersByQuestion.get(Number(question.id));
+      const userValue = Number(userAnswer?.answerValue);
+      // Pomięcie albo brak odpowiedzi po dowolnej stronie to brak danych, a nie
+      // niezgodność. Takie pytanie nie trafia również do mianownika.
+      if (!allowed?.length || !Number.isFinite(userValue) || userValue === 0) continue;
       const questionWeight = Number(question.weight || 1);
-      const best = allowed?.length ? Math.max(...allowed.map(answer => profilePairScoreModern(userValue, answer))) : 0;
-      score += best * questionWeight;
-      maxPossible += 1.5 * questionWeight;
+      const answerValueWeight = Math.abs(userValue);
+      const best = Math.max(...allowed.map(answer => profilePairScoreModern(userAnswer, answer)));
+      // Value odpowiedzi oraz Weight pytania są częścią zarówno licznika,
+      // jak i maksimum. Dzięki temu identyczny profil zawsze ma dokładnie 100%.
+      score += best * questionWeight * answerValueWeight;
+      maxPossible += 1.5 * questionWeight * answerValueWeight;
       compared++;
     }
 
@@ -268,8 +310,9 @@
   }
 
   function getModernRanking(type) {
+    const answersByQuestion = new Map((userAnswers || []).filter(row => !row.noteOnly).map(row => [Number(row.questionId), row]));
     return getProfileCollection(type).map(profile => {
-      const match = compareAnswersToReferenceProfileModern(userAnswers, profile);
+      const match = compareAnswersToReferenceProfileModern(userAnswers, profile, answersByQuestion);
       return {
         key: profile.key || profile.id || profile.name,
         name: profile.name,
@@ -286,7 +329,7 @@
   }
 
   function firstAnswersFromReference(profile) {
-    const reference = parseReferenceExportCodeModern(profile?.exportCode || '');
+    const reference = cachedReference(profile);
     if (!reference.size || !config?.questions) return [];
 
     return config.questions.map(question => {
@@ -364,7 +407,7 @@
   };
 
   const originalSimulateAnswers = window.simulateAnswers || simulateAnswers;
-  simulateAnswers = function (selectedName) {
+  simulateAnswers = async function (selectedName) {
     if (isModernMatching()) {
       const type = getProfile(selectedName, 'party') ? 'party' :
         getProfile(selectedName, 'ideology') ? 'ideology' :
@@ -373,10 +416,15 @@
       if (type) {
         const profile = getProfile(selectedName, type);
         simulatedEntity = { type, name: profile.name };
-        userAnswers = type === 'user'
-          ? parseExportCodeModern(profile.exportCode).filter(row => !row.noteOnly && row.answerData)
-          : entityAnswersForCompass(profile);
+        if (!answersBeforeSimulation) answersBeforeSimulation = structuredClone(userAnswers);
+        // Symulacja operuje na całym wariancie testu, a nie na aktualnej karcie.
+        await withCompleteTestConfig(() => {
+          userAnswers = type === 'user'
+            ? parseExportCodeModern(profile.exportCode).filter(row => !row.noteOnly && row.answerData)
+            : entityAnswersForCompass(profile);
+        });
         updateDOMSelections();
+        await activateQuestionData(getSelectedQuestionIds());
         computeAndDisplayResults();
         return;
       }
@@ -496,10 +544,10 @@
   window.setupMatchingModeSelector = setupMatchingModeSelector;
 
   generateExportCode = function () {
-    if (!config?.questions) return '';
     const dateStr = typeof getCurrentDateTime === 'function' ? getCurrentDateTime() : new Date().toISOString();
     const lines = [`Data wykonania testu: ${dateStr}`, ''];
-    for (const question of config.questions) {
+    const questions = getSelectedQuestionIds().map(id => questionById.get(Number(id))).filter(Boolean);
+    for (const question of questions) {
       const answer = userAnswers.find(row => Number(row.questionId) === Number(question.id) && !row.noteOnly);
       const note = answer?.note || '';
       const label = answer?.answerData?.label || (answer ? 'Pomiń pytanie' : 'Brak odpowiedzi');
@@ -510,9 +558,11 @@
   };
   window.generateExportCode = generateExportCode;
 
-  importAnswersFromExportCode = function (rawCode) {
+  importAnswersFromExportCode = async function (rawCode) {
     if (!config) return false;
-    const parsed = parseExportCodeModern(rawCode);
+    // Parser potrzebuje pełnego zbioru pytań, ponieważ importowany kod może
+    // zawierać odpowiedzi z każdej części testu.
+    const parsed = await withCompleteTestConfig(() => parseExportCodeModern(rawCode));
     const answerRows = parsed.filter(row => !row.noteOnly && row.answerData);
     const noteRows = parsed.filter(row => row.note);
 
@@ -521,8 +571,10 @@
       return false;
     }
 
-    userAnswers = answerRows;
+    userAnswers = parsed;
+    answersBeforeSimulation = null;
     updateDOMSelections();
+    await activateQuestionData(getSelectedQuestionIds());
     if (resultsDiv.style.display !== 'none') computeAndDisplayResults();
     else showPopup((translations?.ui?.importSuccess || `Zaimportowano ${answerRows.length} odpowiedzi.`) + ' ' + (translations?.ui?.clickShowResults || 'Kliknij "Pokaż wyniki", aby zobaczyć zaktualizowany profil.'));
     return true;
