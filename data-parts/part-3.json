@@ -743,7 +743,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 3.5
         },
         {
             "id": 306,
@@ -881,7 +881,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 3.5
         },
         {
             "id": 307,
@@ -1043,7 +1043,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 4.5
         },
         {
             "id": 394,
@@ -1196,7 +1196,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 2.0
         },
         {
             "id": 97,
