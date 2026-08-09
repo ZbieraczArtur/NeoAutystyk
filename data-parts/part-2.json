@@ -9297,7 +9297,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 4.5
         },
         {
             "id": 296,
@@ -9459,7 +9459,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 4
         },
         {
             "id": 298,
@@ -9603,7 +9603,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 4
         },
         {
             "id": 263,
@@ -9932,7 +9932,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 3
         },
         {
             "id": 300,
@@ -10092,7 +10092,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 3.5
         },
         {
             "id": 78,
@@ -11178,7 +11178,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 4
         },
         {
             "id": 84,
@@ -12160,7 +12160,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 3.5
         },
         {
             "id": 89,
@@ -12488,7 +12488,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 3.5
         },
         {
             "id": 90,
