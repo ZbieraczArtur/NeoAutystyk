@@ -3668,7 +3668,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 4.5
         },
         {
             "id": 309,
@@ -3814,7 +3814,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 5
         },
         {
             "id": 24,
@@ -4308,7 +4308,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 4.0
         },
         {
             "id": 113,
@@ -4439,7 +4439,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 3
         },
         {
             "id": 114,
@@ -4608,7 +4608,7 @@
                     ]
                 }
             ],
-            "weight": 3
+            "weight": 2
         },
         {
             "id": 115,
@@ -4787,7 +4787,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 4.0
         },
         {
             "id": 116,
