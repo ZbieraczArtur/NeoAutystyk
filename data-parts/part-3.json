@@ -2312,7 +2312,10 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3.5
+            "weight": 3.5,
+            "require_yes": [
+                101
+            ]
         },
         {
             "id": 105,
@@ -2676,7 +2679,10 @@
                     ]
                 }
             ],
-            "weight": 3
+            "weight": 3,
+            "require_yes": [
+                101
+            ]
         },
         {
             "id": 107,
@@ -2995,11 +3001,14 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 4.5,
+            "require_yes": [
+                101
+            ]
         },
         {
             "id": 259,
-            "text": "Spółdzielnie i kolektywne formy własności powinny być preferowaną formą organizacji produkcji",
+            "text": "Spółdzielnie lub inne kolektywne formy własności powinny być preferowaną formą organizacji produkcji",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
@@ -3153,7 +3162,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 3.5
         },
         {
             "id": 109,
