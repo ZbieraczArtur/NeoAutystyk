@@ -779,7 +779,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 4.0
         },
         {
             "id": 193,
@@ -4365,7 +4365,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+            "weight": 3.5
         },
         {
             "id": 286,
@@ -5798,7 +5798,7 @@
         },
         {
             "id": 63,
-            "text": "Władza wykonawcza powinna być ograniczana przez formalne mechanizmy instytucjonalne",
+            "text": "Władza wykonawcza powinna być ograniczana przez formalne mechanizmy instytucjonalne (np. konstytucja)",
             "description": "XXXXXX",
             "comment": "Pomiń jeśli nie uznajesz autorytetu państwowego",
             "answers": [
@@ -7141,7 +7141,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.5
+            "weight": 2.0
         },
         {
             "id": 68,
@@ -7660,7 +7660,7 @@
         },
         {
             "id": 294,
-            "text": "Każda społeczność powinna mieć prawo do samodzielnego ustalania zasad, według których chce żyć",
+            "text": "Każda dobrowolna społeczność powinna mieć prawo do samodzielnego ustalania nawet skrajnie odmiennych zasad moralnych, według których chce żyć",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
@@ -7829,7 +7829,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.25
+            "weight": 3.5
         },
         {
             "id": 71,
