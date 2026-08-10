@@ -1,9 +1,9 @@
 // Integracja zmian odpowiedzi z kompasem.
-// PrzeĹ‚adowanie funkcji symulacji, aby po symulacji odĹ›wieĹĽyÄ‡ kompas
+// Przeładowanie funkcji symulacji, aby po symulacji odświeżyć kompas
 const originalSimulateAnswers = simulateAnswers;
 simulateAnswers = async function(selectedName) {
   await originalSimulateAnswers(selectedName);
-  // Po symulacji odpowiedzi, przelicz wartoĹ›ci dla kompasu
+  // Po symulacji odpowiedzi, przelicz wartości dla kompasu
   const { pairResults } = computeScores(currentScoringMode);
   compassUserValues = buildUserValuesMap(pairResults);
   updateCompassDisplay();
@@ -33,7 +33,7 @@ restoreUserAnswers = function() {
   }
 };
 
-// Dodatkowo, po imporcie odpowiedzi, teĹĽ odĹ›wieĹĽamy kompas
+// Dodatkowo, po imporcie odpowiedzi, też odświeżamy kompas
 const originalImportAnswers = importAnswersFromExportCode;
 importAnswersFromExportCode = async function(rawCode) {
   const success = await originalImportAnswers(rawCode);
