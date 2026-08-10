@@ -3025,6 +3025,223 @@
         "Wybory demokratyczne"
       ]
     },
+        {
+      "type": "figure",
+      "id": "figure:andrzejlepper",
+      "key": "AndrzejLepper",
+      "name": "Andrzej Lepper",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Lepper.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Działacz związkowy",
+        "Minister",
+        "Parlamentarzysta",
+        "Założyciel partii/ruchu",
+        "Lider partii",
+        "Samorządowiec",
+        "Polak",
+        "Martwy",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Agraryzm",
+        "Nacjonalizm",
+        "Socjaldemokracja",
+        "Konserwatyzm",
+        "Europa",
+        "Wybory demokratyczne"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "figure:dominiktarczynski",
+      "key": "DominikTarczynski",
+      "name": "Dominik Tarczyński",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Tarczynski.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Prawnik",
+        "Publicysta",
+        "Parlamentarzysta",
+        "Polak",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Konserwatyzm",
+        "Nacjonalizm",
+        "Republikanizm",
+        "Europa",
+        "Wybory demokratyczne"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "figure:markrutte",
+      "key": "MarkRutte",
+      "name": "Mark Rutte",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Rutte.webp",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Minister",
+        "Dyplomata",
+        "Premier",
+        "Parlamentarzysta",
+        "Lider partii",
+        "Reformator",
+        "Holender",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Liberalizm",
+        "Liberalizm gospodarczy",
+        "Europa",
+        "Wybory demokratyczne",
+        "Nominacja / Kooptacja"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "figure:liborvondracek",
+      "key": "LiborVondracek",
+      "name": "Libor Vondráček",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Vondráček.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Prawnik",
+        "Lider partii",
+        "Czech",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Liberalizm",
+        "Liberalizm gospodarczy",
+        "Libertarianizm",
+        "Republikanizm",
+        "Konserwatyzm",
+        "Europa",
+        "Wybory demokratyczne"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "figure:andrzejduda",
+      "key": "AndrzejDuda",
+      "name": "Andrzej Duda",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Duda.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Prawnik",
+        "Akademik",
+        "Minister",
+        "Samorządowiec",
+        "Prezydent",
+        "Parlamentarzysta",
+        "Polak",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Konserwatyzm",
+        "Chrześcijańska demokracja",
+        "Republikanizm",
+        "Europa",
+        "Wybory demokratyczne"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "figure:lechkaczynski",
+      "key": "LechKaczynski",
+      "name": "Lech Kaczyński",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Lech_Kaczynski.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Prawnik",
+        "Akademik",
+        "Minister",
+        "Działacz związkowy",
+        "Prezydent",
+        "Samorządowiec",
+        "Parlamentarzysta",
+        "Założyciel partii/ruchu",
+        "Lider partii",
+        "Dysydent",
+        "Polak",
+        "Martwy",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Konserwatyzm",
+        "Chrześcijańska demokracja",
+        "Nacjonalizm",
+        "Republikanizm",
+        "Europa",
+        "Wybory demokratyczne"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "figure:javiermilei",
+      "key": "JavierMilei",
+      "name": "Javier Milei",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Milei.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Ekonomista",
+        "Polityk",
+        "Publicysta",
+        "Akademik",
+        "Prezydent",
+        "Parlamentarzysta",
+        "Założyciel partii/ruchu",
+        "Lider partii",
+        "Myśliciel społeczny",
+        "Reformator",
+        "Argentyńczyk",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Liberalizm",
+        "Liberalizm gospodarczy",
+        "Libertarianizm",
+        "Republikanizm",
+        "Anarchizm",
+        "Konserwatyzm",
+        "Ameryka Południowa",
+        "Wybory demokratyczne"
+      ]
+    },
     {
       "type": "figure",
       "id": "figure:olofpalme",
