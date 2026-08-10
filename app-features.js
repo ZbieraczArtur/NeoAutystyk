@@ -4,24 +4,24 @@
 
   const TAG_CATALOG = {
     figures: {
-      'ZawĂłd / dziedzina': [
+      'Zawód / dziedzina': [
         'Filozof', 'Ekonomista', 'Polityk', 'Rewolucjonista',
-        'Wojskowy', 'Prawnik', 'PrzedsiÄ™biorca', 'Duchowny',
+        'Wojskowy', 'Prawnik', 'Przedsiębiorca', 'Duchowny',
         'Socjolog', 'Publicysta', 'Pisarz', 'Ekolog'
       ],
-      'Rola / urzÄ…d': [
+      'Rola / urząd': [
         'Autokrata', 'Prezydent', 'Premier', 'Monarcha',
-        'PapieĹĽ', 'Dyktator', 'Parlamentarzysta',
-        'MyĹ›liciel spoĹ‚eczny', 'Kanclerz', 'WiÄ™zieĹ„ polityczny',
-        'Reformator', 'ZaĹ‚oĹĽyciel partii/ruchu', 'Lider partii'
+        'Papież', 'Dyktator', 'Parlamentarzysta',
+        'Myśliciel społeczny', 'Kanclerz', 'Więzień polityczny',
+        'Reformator', 'Założyciel partii/ruchu', 'Lider partii'
       ],
-      'NarodowoĹ›Ä‡': [
+      'Narodowość': [
         'Amerykanin', 'Brytyjczyk', 'Niemiec', 'Polak',
-        'Francuz', 'Rosjanin', 'ArgentyĹ„czyk', 'WĹ‚och', 'ChiĹ„czyk'
+        'Francuz', 'Rosjanin', 'Argentyńczyk', 'Włoch', 'Chińczyk'
       ],
-      Status: ['Ĺ»yje', 'Martwy'],
+      Status: ['Żyje', 'Martwy'],
       'Płeć': ['Kobieta', 'Mężczyzna'],
-      'Okres ĹĽycia': ['XVII wiek', 'XVIII wiek', 'XIX wiek', 'XX wiek', 'XXI wiek'],
+      'Okres życia': ['XVII wiek', 'XVIII wiek', 'XIX wiek', 'XX wiek', 'XXI wiek'],
       Ideologia: [
         'Liberalizm', 'Libertarianizm', 'Konserwatyzm', 'Socjalizm',
         'Komunizm', 'Faszyzm', 'Nacjonalizm', 'Monarchizm',
@@ -32,7 +32,7 @@
     ideologies: {
       Kierunek: [
         'Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne',
-        'Konserwatywne', 'Socjalistyczne', 'LibertariaĹ„skie',
+        'Konserwatywne', 'Socjalistyczne', 'Libertariańskie',
         'Anarchistyczne', 'Monarchistyczne'
       ]
     }
@@ -107,7 +107,7 @@
     if (!target) return;
     target.innerHTML = '';
     const items = figureRanking();
-    const section = createRankingSection('đź‘¤ Figury polityczne', items, 'figure');
+    const section = createRankingSection('👤 Figury polityczne', items, 'figure');
     section.querySelectorAll('.ranking-item').forEach((row, index) => {
       const profile = items[index].profile;
       const image = document.createElement('img');
@@ -229,19 +229,19 @@
     if (location.hash !== '#results') document.body.classList.add('landing-active');
     document.getElementById('start-full-test')?.addEventListener('click', () => { document.body.classList.remove('landing-active'); window.scrollTo({ top: 0, behavior: 'smooth' }); });
     const floating = document.getElementById('floating-theme-toggle');
-    floating?.addEventListener('click', () => { document.getElementById('theme-toggle')?.click(); setTimeout(() => { floating.textContent = document.body.classList.contains('dark') ? 'â€ď¸Ź' : 'đźŚ™'; }, 0); });
+    floating?.addEventListener('click', () => { document.getElementById('theme-toggle')?.click(); setTimeout(() => { floating.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙'; }, 0); });
   }
   initLandingAndTheme();
 
-  // Kompas dziaĹ‚a na osobnej stronie; wynik jest przenoszony jako kod eksportu,
-  // wiÄ™c powrĂłt przeglÄ…darki nie resetuje odpowiedzi.
+  // Kompas działa na osobnej stronie; wynik jest przenoszony jako kod eksportu,
+  // więc powrót przeglądarki nie resetuje odpowiedzi.
   document.addEventListener('click', event => {
     const openCompass = event.target.closest('#open-compass-modal');
     if (!openCompass) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     if (resultsDiv.style.display === 'none' || !userAnswers.length) {
-      showPopup('Najpierw pokaĹĽ wyniki testu, aby otworzyÄ‡ kompas.');
+      showPopup('Najpierw pokaż wyniki testu, aby otworzyć kompas.');
       return;
     }
     const code = generateExportCode();
