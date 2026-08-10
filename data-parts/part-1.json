@@ -11888,6 +11888,127 @@
             ],
             "weight": 3.5
         },
+                {
+            "id": 439,
+            "text": "Scentralizowane państwo powinno zostać zastąpione przez lokalne lub ponadlokalne struktury niepaństwowe, bez nadrzędnego ośrodka władzy państwowej",
+            "description": "XXXXXX",
+            "comment": "Teza oznacza, że obecny model, w którym istnieje jeden centralny ośrodek państwowy posiadający nadrzędną władzę nad całym terytorium, powinien zostać zastąpiony systemem opartym na wielu niezależnych strukturach działających na poziomie lokalnym i ponadlokalnym. Struktury te nie byłyby częściami jednego państwa ani podlegałyby wspólnemu organowi państwowemu posiadającemu zwierzchnictwo nad całością. Mogłyby samodzielnie organizować sprawy dotyczące swoich członków i obszarów oraz współpracować ze sobą w zakresie wspólnych przedsięwzięć. Teza nie określa jednak, jak dokładnie powinny być zorganizowane takie struktury, na jakich zasadach powinny podejmować decyzje, ani w jaki sposób powinny rozwiązywać spory i koordynować działania między sobą. Nie przesądza również, czy ich członkostwo powinno mieć charakter dobrowolny, terytorialny czy inny.",
+            "answers": [
+                {
+                    "label": "Zdecydowanie zgadzam się",
+                    "value": 1.5,
+                    "values_for": [
+                        "Samoorganizacja",
+                        "Ograniczenie władzy",
+                        "Desakralizacja autorytetu",
+                        "Różnorodność norm",
+                        "Samoregulacja",
+                        "Projektywizm",
+                        "Decentralizacja"
+                    ],
+                    "values_against": [
+                        "Obowiązkowość wspólnoty",
+                        "Etatyzm",
+                        "Centralizacja",
+                        "Absolutyzm władzy",
+                        "Sakralizacja autorytetu",
+                        "Uniformizacja norm"
+                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                },
+                {
+                    "label": "Częściowo zgadzam się",
+                    "value": 1,
+                    "values_for": [
+                        "Samoorganizacja",
+                        "Ograniczenie władzy",
+                        "Desakralizacja autorytetu",
+                        "Różnorodność norm",
+                        "Samoregulacja",
+                        "Projektywizm",
+                        "Decentralizacja"
+                    ],
+                    "values_against": [
+                        "Obowiązkowość wspólnoty",
+                        "Etatyzm",
+                        "Centralizacja",
+                        "Absolutyzm władzy",
+                        "Sakralizacja autorytetu",
+                        "Uniformizacja norm"
+                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                },
+                {
+                    "label": "Częściowo nie zgadzam się",
+                    "value": -1,
+                    "values_for": [
+                        "Obowiązkowość wspólnoty",
+                        "Etatyzm",
+                        "Centralizacja",
+                        "Absolutyzm władzy",
+                        "Sakralizacja autorytetu",
+                        "Uniformizacja norm"
+],
+                    "values_against": [
+                        "Dobrowolność wspólnoty",
+                        "Samoorganizacja",
+                        "Ograniczenie władzy",
+                        "Desakralizacja autorytetu",
+                        "Różnorodność norm",
+                        "Samoregulacja",
+                        "Projektywizm",
+                        "Decentralizacja"
+                    ],
+                    "ideologies_for": [ ],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                },
+                {
+                    "label": "Zdecydowanie nie zgadzam się",
+                    "value": -1.5,
+                    "values_for": [
+                        "Obowiązkowość wspólnoty",
+                        "Etatyzm",
+                        "Centralizacja",
+                        "Absolutyzm władzy",
+                        "Sakralizacja autorytetu",
+                        "Uniformizacja norm"
+],
+                    "values_against": [
+                        "Dobrowolność wspólnoty",
+                        "Samoorganizacja",
+                        "Ograniczenie władzy",
+                        "Desakralizacja autorytetu",
+                        "Różnorodność norm",
+                        "Samoregulacja",
+                        "Projektywizm",
+                        "Decentralizacja"
+                    ],
+                    "ideologies_for": [ ],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                },
+                {
+                    "label": "Pomiń pytanie",
+                    "value": 0,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                }
+            ],
+            "weight": 5
+        },
         {
             "id": 396,
             "text": "*W czasie kryzysu emigracja z kraju nie powinna być ograniczana przez państwo",
