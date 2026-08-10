@@ -3323,6 +3323,35 @@
         "XX wiek"
       ]
     },
+        {
+      "type": "figure",
+      "id": "figure:edmundburke",
+      "key": "EdmundBurke",
+      "name": "Edmund Burke",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Burke.jpg",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Filozof",
+        "Polityk",
+        "Publicysta",
+        "Pisarz",
+        "Parlamentarzysta",
+        "Myśliciel społeczny",
+        "Brytyjczyk",
+        "Martwy",
+        "Mężczyzna",
+        "XVIII wiek",
+        "Konserwatyzm",
+        "Tradycjonalizm",
+        "Liberalizm gospodarczy",
+        "Monarchizm",
+        "Europa",
+        "Wybory demokratyczne"
+      ]
+    },
     {
       "type": "figure",
       "id": "figure:mateuszmorawiecki",
