@@ -7,17 +7,21 @@
       'Zawód / dziedzina': [
         'Filozof', 'Ekonomista', 'Polityk', 'Rewolucjonista',
         'Wojskowy', 'Prawnik', 'Przedsiębiorca', 'Duchowny',
-        'Socjolog', 'Publicysta', 'Pisarz', 'Ekolog'
+        'Socjolog', 'Publicysta', 'Pisarz', 'Ekolog',
+        'Akademik', 'Planista', 'Politolog', 'Historyk', 'Działacz związkowy'
       ],
       'Rola / urząd': [
         'Autokrata', 'Prezydent', 'Premier', 'Monarcha',
         'Papież', 'Dyktator', 'Parlamentarzysta',
         'Myśliciel społeczny', 'Kanclerz', 'Więzień polityczny',
-        'Reformator', 'Założyciel partii/ruchu', 'Lider partii'
+        'Reformator', 'Założyciel partii/ruchu', 'Lider partii',
+        'Wiceprezydent / Zastępca szefa państwa', 'Dyplomata',
+        'Arystokrata', 'Dysydent', 'Samorządowiec', 'Minister'
       ],
       'Narodowość': [
         'Amerykanin', 'Brytyjczyk', 'Niemiec', 'Polak',
-        'Francuz', 'Rosjanin', 'Argentyńczyk', 'Włoch', 'Chińczyk'
+        'Francuz', 'Rosjanin', 'Argentyńczyk', 'Włoch', 'Chińczyk',
+        'Holender', 'Czech'
       ],
       Status: ['Żyje', 'Martwy'],
       'Płeć': ['Kobieta', 'Mężczyzna'],
@@ -25,7 +29,20 @@
       Ideologia: [
         'Liberalizm', 'Libertarianizm', 'Konserwatyzm', 'Socjalizm',
         'Komunizm', 'Faszyzm', 'Nacjonalizm', 'Monarchizm',
-        'Anarchizm', 'Republikanizm'
+        'Anarchizm', 'Republikanizm',
+        'Socjalliberalizm', 'Ordoliberalizm', 'Liberalizm gospodarczy',
+        'Chrześcijańska demokracja', 'Tradycjonalizm', 'Agraryzm',
+        'Socjaldemokracja', 'Ekologizm', 'Korporacjonizm',
+        'Fundamentalizm religijny', 'Technokracja', 'Autorytaryzm'
+      ],
+      'Kontynent działalności': [
+        'Afryka', 'Ameryka Północna', 'Ameryka Południowa',
+        'Azja', 'Europa', 'Australia'
+      ],
+      'Sposób dojścia do władzy / legitymizacja': [
+        'Wybory demokratyczne', 'Zamach stanu / Coup',
+        'Dziedziczenie', 'Rewolucja', 'Nominacja / Kooptacja',
+        'Okupacja / Interwencja zewnętrzna'
       ]
     },
     parties: { Status: ['Parlamentarne', 'Pozaparlamentarne'] },
@@ -34,6 +51,7 @@
         'Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne',
         'Konserwatywne', 'Socjalistyczne', 'Libertariańskie',
         'Anarchistyczne', 'Monarchistyczne'
+
       ]
     }
   };
