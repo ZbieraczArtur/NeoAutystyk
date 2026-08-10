@@ -14,29 +14,29 @@ const DEFAULT_UI_TEXTS = {
   pl: {
     importLabel: 'Import odpowiedzi',
     importPlaceholder: 'Wklej tutaj kod wyeksportowany z testu...',
-    importBtn: 'Importuj i odtworz',
-    importInfo: 'Wklej kod wygenerowany po poprzednim ukonczeniu testu. Wszystkie odpowiedzi zostana przywrocone, a wyniki przeliczone.',
+    importBtn: 'Importuj i odtwórz',
+    importInfo: 'Wklej kod wygenerowany po poprzednim ukończeniu testu. Wszystkie odpowiedzi zostaną przywrócone, a wyniki przeliczone.',
     simulateLabel: 'Symuluj odpowiedzi:',
     simulateBtn: 'Symuluj',
-    restoreBtn: 'Przywroc moje odpowiedzi',
-    simulateInfo: 'Symulacja tymczasowo zastapi Twoje odpowiedzi.',
-    submitBtn: 'Pokaz wyniki',
+    restoreBtn: 'Przywróć moje odpowiedzi',
+    simulateInfo: 'Symulacja tymczasowo zastąpi Twoje odpowiedzi.',
+    submitBtn: 'Pokaż wyniki',
     modeLabel: 'Tryb liczenia:',
-    modeFullLabel: 'Tryb pelnego profilowania',
+    modeFullLabel: 'Tryb pełnego profilowania',
     modeAffirmativeLabel: 'Tryb afirmacyjny',
     resultsTitle: 'Twoje wyniki',
-    valuesHeader: 'Pary wartosci',
+    valuesHeader: 'Pary wartości',
     rankingIdeologies: 'Ranking ideologii',
     rankingParties: 'Ranking partii',
-    rankingUsers: 'Ranking uzytkownikow',
-    rankingInfo: 'Im wyzszy procent, tym bardziej Twoj profil jest zgodny z dana pozycja.',
+    rankingUsers: 'Ranking użytkowników',
+    rankingInfo: 'Im wyższy procent, tym bardziej Twój profil jest zgodny z daną pozycją.',
     closePopup: 'Zamknij',
-    expandBtn: 'Rozwin teze',
-    collapseBtn: 'Zwin teze',
-    skipIfBadge: 'Pomin jesli',
+    expandBtn: 'Rozwiń tezę',
+    collapseBtn: 'Zwiń tezę',
+    skipIfBadge: 'Pomiń jeśli',
     noDescription: 'Brak dodatkowego opisu.',
     // ---- NOWE POLA DLA NOTATEK ----
-    noteLabel: 'âśŹď¸Ź Uzasadnienie odpowiedzi (opcjonalne):',
+    noteLabel: '✏️ Uzasadnienie odpowiedzi (opcjonalne):',
     notePlaceholder: 'Wpisz swoje uzasadnienie...'
   }
 };
@@ -51,8 +51,8 @@ function normalizeProfileText(value) {
   return String(value || '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/Ĺ‚/g, 'l')
-    .replace(/Ĺ/g, 'L')
+    .replace(/ł/g, 'l')
+    .replace(/Ł/g, 'L')
     .trim()
     .toLowerCase()
     .replace(/\s+/g, ' ');
@@ -186,7 +186,7 @@ function buildMigratedProfilesFromConfig() {
         if (againstList.includes(entityName)) best = !best || Math.abs(value) > Math.abs(best) ? -value : best;
       }
       const selected = best === null ? getSkipAnswer(question) : (question.answers.find(a => Math.abs(Number(a.value) - best) < 0.01) || getSkipAnswer(question));
-      lines.push(`${index + 1}. ${question.text} [id:${question.id}]: (${selected?.label || 'PomiĹ„ pytanie'});`);
+      lines.push(`${index + 1}. ${question.text} [id:${question.id}]: (${selected?.label || 'Pomiń pytanie'});`);
     });
     return `${lines.join('\n')}\n`;
   };
@@ -203,8 +203,8 @@ window.getProfileCollection = getProfileCollection;
 window.getProfileByName = getProfileByName;
 window.compareAnswersToReferenceProfile = compareAnswersToReferenceProfile;
 window.parseReferenceExportCode = parseReferenceExportCode;
-// ======================= FUNKCJA OBLICZAJÄ„CA ODZNAKI (DO ROZBUDOWY) =======================
-// Na razie zwraca pustÄ… tablicÄ™ â€“ moĹĽesz dodaÄ‡ wĹ‚asne warunki w oparciu o wyniki par wartoĹ›ci.
+// ======================= FUNKCJA OBLICZAJĄCA ODZNAKI (DO ROZBUDOWY) =======================
+// Na razie zwraca pustą tablicę – możesz dodać własne warunki w oparciu o wyniki par wartości.
 function computeBadges() {
   const registry = window.BadgesRegistry;
   if (!registry?.items) return [];
@@ -263,7 +263,7 @@ const partyLogoMap = new Map([
   ['Polska 2050 Rzeczypospolitej Polskiej', 'Polska_2050_Rzeczypospolitej_Polskiej.png'],
   ['Polska Partia Socjalistyczna', 'Polska_Partia_Socjalistyczna.png'],
   ['Polskie Stronnictwo Ludowe', 'Polskie_Stronnictwo_Ludowe.jpg'],
-  ['Prawo i SprawiedliwoĹ›Ä‡', 'Prawo_i_Sprawiedliwosc.svg'],
+  ['Prawo i Sprawiedliwość', 'Prawo_i_Sprawiedliwosc.svg'],
   ['Partia Razem', 'Partia_Razem.png'],
   ['Ruch Narodowy', 'Ruch_Narodowy.svg']
 ]);
@@ -282,7 +282,7 @@ function getPartyLogoUrl(partyName) {
 const IDEOLOGY_LOGO_BASE_PATH = 'images/Ideologie/';
 const ideologyLogoMap = new Map([
   ['Absolutyzm klasyczny', 'Absolutyzm_klasyczny.png'],
-  ['Absolutyzm oĹ›wiecony', 'Absolutyzm_oswiecony.png'],
+  ['Absolutyzm oświecony', 'Absolutyzm_oswiecony.png'],
   ['Agoryzm', 'Agoryzm.png'],
   ['Agraryzm', 'Agraryzm.png'],
   ['Anarchofeminizm', 'Anarchofeminizm.png'],
@@ -292,7 +292,7 @@ const ideologyLogoMap = new Map([
   ['Anarchokomunizm', 'Anarchokomunizm.svg'],
   ['Anarchoprymitywizm', 'Anarchoprymitywizm.png'],
   ['Anarchosyndykalizm', 'Anarchosyndykalizm.png'],
-  ['ChrzeĹ›cijaĹ„ska demokracja', 'Chrzescijanska_demokracja.png'],
+  ['Chrześcijańska demokracja', 'Chrzescijanska_demokracja.png'],
   ['De Leonizm', 'De_Leonizm.png'],
   ['Demokratyczny konfederalizm', 'Demokratyczny_konfederalizm.png'],
   ['Dystrybucjonizm', 'Dystrybucjonizm.png'],
@@ -308,7 +308,7 @@ const ideologyLogoMap = new Map([
   ['Feminizm socjalistyczny', 'Feminizm_socjalistyczny.png'],
   ['Fundamentalizm religijny', 'Fundamentalizm_religijny.png'],
   ['Georgizm', 'Georgizm.svg'],
-  ['GĹ‚Ä™boka ekologia', 'Gleboka_ekologia.svg'],
+  ['Głęboka ekologia', 'Gleboka_ekologia.svg'],
   ['Zielony liberalizm', 'Zielony_liberalizm.png'],
   ['Hoppeanism', 'Hoppeanism.png'],
   ['Komunizm rad', 'Komunizm_rad.png'],
@@ -324,7 +324,7 @@ const ideologyLogoMap = new Map([
   ['Liberalizm perfekcjonistyczny', 'Liberalizm_perfekcjonistyczny.png'],
   ['Liberalny konserwatyzm', 'Liberalny_konserwatyzm.png'],
   ['Libertarianizm konsekwencjalistyczny', 'Libertarianizm_konsekwencjalistyczny.png'],
-  ['LibertariaĹ„ski municypalizm', 'Libertarianski_municypalizm.png'],
+  ['Libertariański municypalizm', 'Libertarianski_municypalizm.png'],
   ['Liechtensteinizm', 'Liechtensteinizm.png'],
   ['Luksemburgizm', 'Luksemburgizm.png'],
   ['Marksizm klasyczny', 'Marksizm_klasyczny.png'],
@@ -349,13 +349,13 @@ const ideologyLogoMap = new Map([
   ['Paleolibertarianizm', 'Paleolibertarianizm.png'],
   ['Randyzm', 'Randyzm.png'],
   ['Socjaldemokracja', 'Socjaldemokracja.png'],
-  ['Socjalizm chrzeĹ›cijaĹ„ski', 'Socjalizm_chrzescijanski.png'],
+  ['Socjalizm chrześcijański', 'Socjalizm_chrzescijanski.png'],
   ['Socjalizm demokratyczny', 'Socjalizm_demokratyczny.png'],
-  ['Socjalizm fabiaĹ„ski', 'Socjalizm_fabianski.png'],
+  ['Socjalizm fabiański', 'Socjalizm_fabianski.png'],
   ['Socjalizm liberalny', 'Socjalizm_liberalny.png'],
   ['Socjalizm rynkowy', 'Socjalizm_rynkowy.png'],
   ['Socjalliberalizm', 'Socjalliberalizm.png'],
-  ['SoĹ›nierzyzm', 'Sosnierzyzm.png'],
+  ['Sośnierzyzm', 'Sosnierzyzm.png'],
   ['Stalinizm', 'Stalinizm.svg'],
   ['Strasseryzm', 'Strasseryzm.png'],
   ['Tradycjonalizm integralny', 'Tradycjonalizm_integralny.png'],
@@ -377,44 +377,44 @@ function getIdeologyLogoUrl(ideologyName) {
 }
 // ========================================================================
 
-// Mapowanie par wartoĹ›ci na kategorie (na podstawie lewej wartoĹ›ci)
+// Mapowanie par wartości na kategorie (na podstawie lewej wartości)
 const categoryMapping = {
-  "Autonomia": 1, "Antypaternalizm": 1, "Indywidualizm": 1, "Kontraktualizm": 1, "DobrowolnoĹ›Ä‡ wspĂłlnoty": 1,
-  "Egalitaryzm": 1, "WolnoĹ›Ä‡ ekspresji": 1,
-  "Samoorganizacja": 2, "Decentralizacja": 2, "Ograniczenie wĹ‚adzy": 2, "Sakralizacja autorytetu": 2,
-  "RĂłĹĽnorodnoĹ›Ä‡ norm": 2, "Demokracja": 2, "Autokracja": 2,
-  "WĹ‚asnoĹ›Ä‡ kolektywna": 3, "Planowanie": 3, "Regulacja instytucjonalna": 3, "Ograniczanie wymiany": 3,
+  "Autonomia": 1, "Antypaternalizm": 1, "Indywidualizm": 1, "Kontraktualizm": 1, "Dobrowolność wspólnoty": 1,
+  "Egalitaryzm": 1, "Wolność ekspresji": 1,
+  "Samoorganizacja": 2, "Decentralizacja": 2, "Ograniczenie władzy": 2, "Sakralizacja autorytetu": 2,
+  "Różnorodność norm": 2, "Demokracja": 2, "Autokracja": 2,
+  "Własność kolektywna": 3, "Planowanie": 3, "Regulacja instytucjonalna": 3, "Ograniczanie wymiany": 3,
   "Minimalizacja granic": 4, "Uniwersalizm humanistyczny": 4, "Interwencjonizm zagraniczny": 4,
-  "Preferencja uĹĽycia siĹ‚y": 5, "Rewolucja": 5, "Transformacja": 5, "Projektywizm": 5, "Progresywizm": 5, "Pluralizm kulturowy": 5,
-  "NeutralnoĹ›Ä‡ religijna": 5, "WĹ‚Ä…czanie": 5, "Egalitaryzm biologiczny": 5,
-  "Antropocentryzm": 6, "PostÄ™p technologiczny": 6
+  "Preferencja użycia siły": 5, "Rewolucja": 5, "Transformacja": 5, "Projektywizm": 5, "Progresywizm": 5, "Pluralizm kulturowy": 5,
+  "Neutralność religijna": 5, "Włączanie": 5, "Egalitaryzm biologiczny": 5,
+  "Antropocentryzm": 6, "Postęp technologiczny": 6
 };
 
 const categoryNames = {
-  1: "âš–ď¸Ź SpoĹ‚eczeĹ„stwo i jednostka",
-  2: "đźŹ›ď¸Ź WĹ‚adza i ustrĂłj",
-  3: "đź’° Ekonomia",
-  4: "đźŚŤ Globalizacja i granice",
-  5: "đźŚ± Kultura i zmiana spoĹ‚eczna",
-  6: "đźŚż Ĺšrodowisko i technologia"
+  1: "⚖️ Społeczeństwo i jednostka",
+  2: "🏛️ Władza i ustrój",
+  3: "💰 Ekonomia",
+  4: "🌍 Globalizacja i granice",
+  5: "🌱 Kultura i zmiana społeczna",
+  6: "🌿 Środowisko i technologia"
 };
 
 const valueColors = {
   "Autonomia": "#FECB1D", "Heteronomia": "#613B28", "Kolektywizm": "#613B28", "Indywidualizm": "#FECB1D",
-  "Egalitaryzm": "#FECB1D", "HierarchicznoĹ›Ä‡": "#613B28", "Samoorganizacja": "#2F3944", "Etatyzm": "#73B0BE",
-  "Decentralizacja": "#2F3944", "Centralizacja": "#73B0BE", "Ograniczenie wĹ‚adzy": "#2F3944", "Absolutyzm wĹ‚adzy": "#73B0BE",
+  "Egalitaryzm": "#FECB1D", "Hierarchiczność": "#613B28", "Samoorganizacja": "#2F3944", "Etatyzm": "#73B0BE",
+  "Decentralizacja": "#2F3944", "Centralizacja": "#73B0BE", "Ograniczenie władzy": "#2F3944", "Absolutyzm władzy": "#73B0BE",
   "Demokracja": "#2F3944", "Anty-demokracja": "#73B0BE", "Autokracja": "#2F3944", "Anty-autokracja": "#73B0BE",
-  "WĹ‚asnoĹ›Ä‡ kolektywna": "#E44341", "WĹ‚asnoĹ›Ä‡ prywatna": "#448A3A", "Planowanie": "#E44341", "Rynek": "#448A3A",
+  "Własność kolektywna": "#E44341", "Własność prywatna": "#448A3A", "Planowanie": "#E44341", "Rynek": "#448A3A",
   "Regulacja instytucjonalna": "#E44341", "Samoregulacja": "#448A3A", "Ograniczanie wymiany": "#E44341", "Swobodna wymiana": "#448A3A",
   "Minimalizacja granic": "#4C59CB", "Kontrola granic": "#FFA219", "Uniwersalizm humanistyczny": "#4C59CB", "Partykularyzm narodowy": "#FFA219",
-  "Interwencjonizm zagraniczny": "#4C59CB", "Izolacjonizm": "#FFA219", "Preferencja uĹĽycia siĹ‚y": "#DD59C7", "Unikanie przemocy": "#86D040",
-  "Rewolucja": "#DD59C7", "Gradualizm": "#86D040", "Transformacja": "#DD59C7", "StabilnoĹ›Ä‡": "#86D040", "Projektywizm": "#DD59C7", "Retrospektywizm": "#86D040", "Progresywizm": "#DD59C7", "Konserwatyzm": "#86D040",
-  "Pluralizm kulturowy": "#DD59C7", "Homogenizacja": "#86D040", "NeutralnoĹ›Ä‡ religijna": "#DD59C7", "Instytucjonalna religia": "#86D040",
-  "WĹ‚Ä…czanie": "#DD59C7", "Wykluczenie": "#86D040", "Egalitaryzm biologiczny": "#DD59C7", "Suprematyzm biologiczny": "#86D040",
-  "WolnoĹ›Ä‡ ekspresji": "#FECB1D", "Cenzura": "#613B28", "Antropocentryzm": "#E57160", "Ekocentryzm": "#14832A",
-  "PostÄ™p technologiczny": "#E57160", "Prymitywizm": "#14832A", "Desakralizacja autorytetu": "#73B0BE", "Sakralizacja autorytetu": "#2F3944",
-  "RĂłĹĽnorodnoĹ›Ä‡ norm": "#2F3944", "Uniformizacja norm": "#73B0BE", "Kontraktualizm": "#FECB1D", "Organicyzm": "#613B28",
-  "DobrowolnoĹ›Ä‡ wspĂłlnoty": "#FECB1D", "ObowiÄ…zkowoĹ›Ä‡ wspĂłlnoty": "#613B28", "Paternalizm": "#613B28", "Antypaternalizm": "#FECB1D"
+  "Interwencjonizm zagraniczny": "#4C59CB", "Izolacjonizm": "#FFA219", "Preferencja użycia siły": "#DD59C7", "Unikanie przemocy": "#86D040",
+  "Rewolucja": "#DD59C7", "Gradualizm": "#86D040", "Transformacja": "#DD59C7", "Stabilność": "#86D040", "Projektywizm": "#DD59C7", "Retrospektywizm": "#86D040", "Progresywizm": "#DD59C7", "Konserwatyzm": "#86D040",
+  "Pluralizm kulturowy": "#DD59C7", "Homogenizacja": "#86D040", "Neutralność religijna": "#DD59C7", "Instytucjonalna religia": "#86D040",
+  "Włączanie": "#DD59C7", "Wykluczenie": "#86D040", "Egalitaryzm biologiczny": "#DD59C7", "Suprematyzm biologiczny": "#86D040",
+  "Wolność ekspresji": "#FECB1D", "Cenzura": "#613B28", "Antropocentryzm": "#E57160", "Ekocentryzm": "#14832A",
+  "Postęp technologiczny": "#E57160", "Prymitywizm": "#14832A", "Desakralizacja autorytetu": "#73B0BE", "Sakralizacja autorytetu": "#2F3944",
+  "Różnorodność norm": "#2F3944", "Uniformizacja norm": "#73B0BE", "Kontraktualizm": "#FECB1D", "Organicyzm": "#613B28",
+  "Dobrowolność wspólnoty": "#FECB1D", "Obowiązkowość wspólnoty": "#613B28", "Paternalizm": "#613B28", "Antypaternalizm": "#FECB1D"
 };
 
 function showPopup(message) {
@@ -472,21 +472,21 @@ function getContrastColor(hex) {
   return brightness > 0.5 ? '#000000' : '#ffffff';
 }
 
-// ======================= OBSĹUGA JÄZYKA =======================
+// ======================= OBSŁUGA JĘZYKA =======================
 async function loadTranslations(lang) {
   if (lang === 'pl') {
-    // Dla polskiego nie Ĺ‚adujemy zewnÄ™trznego pliku â€“ uĹĽywamy danych z configBase
+    // Dla polskiego nie ładujemy zewnętrznego pliku – używamy danych z configBase
     translations = null;
     return;
   }
   try {
     const response = await fetch(`translations_${lang}.json`);
-    if (!response.ok) throw new Error(`Nie udaĹ‚o siÄ™ wczytaÄ‡ tĹ‚umaczeĹ„ dla ${lang}`);
+    if (!response.ok) throw new Error(`Nie udało się wczytać tłumaczeń dla ${lang}`);
     translations = await response.json();
   } catch (err) {
     console.error(err);
     translations = null;
-    showPopup(`BĹ‚Ä…d Ĺ‚adowania tĹ‚umaczeĹ„ dla jÄ™zyka ${lang}. PozostajÄ™ przy polskim.`);
+    showPopup(`Błąd ładowania tłumaczeń dla języka ${lang}. Pozostaję przy polskim.`);
     return false;
   }
   return true;
@@ -577,7 +577,7 @@ function applyTranslationsToConfig() {
 
 function updateUITexts() {
   const ui = translations?.ui || DEFAULT_UI_TEXTS.pl;
-  // Aktualizacja tekstĂłw w elementach (jeĹ›li istniejÄ…)
+  // Aktualizacja tekstów w elementach (jeśli istnieją)
   if (ui.disclaimerTitle) {
     const disclaimer = document.getElementById('disclaimer');
     if (disclaimer) {
@@ -631,14 +631,14 @@ async function setLanguage(lang) {
   currentLanguage = lang;
   applyTranslationsToConfig();
   updateUITexts();
-  // Ponowne renderowanie pytaĹ„ (jeĹ›li istniejÄ…)
+  // Ponowne renderowanie pytań (jeśli istnieją)
   if (questionsContainer.children.length > 0) {
     renderQuestions();
     attachQuestionEvents();
-    // PrzywrĂłÄ‡ zaznaczenia odpowiedzi
+    // Przywróć zaznaczenia odpowiedzi
     updateDOMSelections();
   }
-  // JeĹ›li wyniki sÄ… widoczne â€“ przelicz i wyĹ›wietl od nowa
+  // Jeśli wyniki są widoczne – przelicz i wyświetl od nowa
   if (resultsDiv.style.display !== 'none') {
     computeAndDisplayResults();
   }
@@ -653,33 +653,33 @@ async function loadConfig() {
       const profilesResponse = await fetch('political_profiles.json');
       if (profilesResponse.ok) politicalProfiles = await profilesResponse.json();
     } catch (profilesErr) {
-      console.warn('Nie udaĹ‚o siÄ™ wczytaÄ‡ political_profiles.json, uĹĽywam migracji runtime.', profilesErr);
+      console.warn('Nie udało się wczytać political_profiles.json, używam migracji runtime.', profilesErr);
     }
     if (!politicalProfiles) politicalProfiles = buildMigratedProfilesFromConfig();
 
-    // data.json zawiera pytania i pary wartoĹ›ci, natomiast katalog profili zostaĹ‚
-    // przeniesiony do political_profiles.json. Starsza czÄ™Ĺ›Ä‡ silnika punktacji
-    // nadal korzysta z config.parties / config.ideologies, dlatego skĹ‚adamy jeden
-    // spĂłjny model danych przed uruchomieniem interfejsu oraz symulacji.
+    // data.json zawiera pytania i pary wartości, natomiast katalog profili został
+    // przeniesiony do political_profiles.json. Starsza część silnika punktacji
+    // nadal korzysta z config.parties / config.ideologies, dlatego składamy jeden
+    // spójny model danych przed uruchomieniem interfejsu oraz symulacji.
     configBase = {
       ...configBase,
       users: Array.isArray(politicalProfiles?.users) ? politicalProfiles.users : (configBase.users || []),
       parties: Array.isArray(politicalProfiles?.parties) ? politicalProfiles.parties : (configBase.parties || []),
       ideologies: Array.isArray(politicalProfiles?.ideologies) ? politicalProfiles.ideologies : (configBase.ideologies || [])
     };
-    // DomyĹ›lnie Ĺ‚adujemy jÄ™zyk polski (nie Ĺ‚adujemy pliku tĹ‚umaczeĹ„, bo dane sÄ… po polsku)
+    // Domyślnie ładujemy język polski (nie ładujemy pliku tłumaczeń, bo dane są po polsku)
     window.__activeTestQuestionIds = configBase.questions.map(question => Number(question.id));
     applyTranslationsToConfig();
     // Stare ustawienie jest ignorowane: aplikacja używa jednego mechanizmu zgodności.
     currentMatchingMode = 'modern';
-    translations = null; // dla polskiego brak zewnÄ™trznych tĹ‚umaczeĹ„
+    translations = null; // dla polskiego brak zewnętrznych tłumaczeń
     currentLanguage = 'pl';
-    updateUITexts(); // ustawi polskie teksty z domyĹ›lnych (ale moĹĽemy teĹĽ zaĹ‚adowaÄ‡ plik translations_pl.json â€“ opcjonalnie)
-    // Nie renderujemy pytaĹ„, zanim uĹĽytkownik nie wybierze wersji testu.
+    updateUITexts(); // ustawi polskie teksty z domyślnych (ale możemy też załadować plik translations_pl.json – opcjonalnie)
+    // Nie renderujemy pytań, zanim użytkownik nie wybierze wersji testu.
     window.dispatchEvent(new CustomEvent('neoAutystykConfigReady'));
   } catch (err) {
     console.error(err);
-    questionsContainer.innerHTML = '<p style="color:red;">BĹ‚Ä…d Ĺ‚adowania konfiguracji. SprawdĹş czy plik data.json istnieje i jest poprawny.</p>';
+    questionsContainer.innerHTML = '<p style="color:red;">Błąd ładowania konfiguracji. Sprawdź czy plik data.json istnieje i jest poprawny.</p>';
   }
 }
 
@@ -713,19 +713,19 @@ function initThemeToggle() {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
     root.classList.add('dark');
-    toggleBtn.textContent = 'â€ď¸Ź';
+    toggleBtn.textContent = '☀️';
   } else {
     root.classList.remove('dark');
-    toggleBtn.textContent = 'đźŚ™';
+    toggleBtn.textContent = '🌙';
   }
   toggleBtn.addEventListener('click', () => {
     if (root.classList.contains('dark')) {
       root.classList.remove('dark');
-      toggleBtn.textContent = 'đźŚ™';
+      toggleBtn.textContent = '🌙';
       localStorage.setItem('theme', 'light');
     } else {
       root.classList.add('dark');
-      toggleBtn.textContent = 'â€ď¸Ź';
+      toggleBtn.textContent = '☀️';
       localStorage.setItem('theme', 'dark');
     }
   });
@@ -743,7 +743,7 @@ function renderQuestions() {
     card.appendChild(questionText);
     const btnRow = document.createElement('div');
     const expandBtn = document.createElement('button');
-    expandBtn.innerText = translations?.ui?.expandBtn || 'đź“– RozwiĹ„ tezÄ™';
+    expandBtn.innerText = translations?.ui?.expandBtn || '📖 Rozwiń tezę';
     expandBtn.className = 'expand-btn';
     const descriptionDiv = document.createElement('div');
     descriptionDiv.className = 'description';
@@ -751,12 +751,12 @@ function renderQuestions() {
     expandBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       descriptionDiv.classList.toggle('visible');
-      expandBtn.innerText = descriptionDiv.classList.contains('visible') ? (translations?.ui?.collapseBtn || 'đź“ ZwiĹ„ tezÄ™') : (translations?.ui?.expandBtn || 'đź“– RozwiĹ„ tezÄ™');
+      expandBtn.innerText = descriptionDiv.classList.contains('visible') ? (translations?.ui?.collapseBtn || '📘 Zwiń tezę') : (translations?.ui?.expandBtn || '📖 Rozwiń tezę');
     });
     btnRow.appendChild(expandBtn);
     if (q.comment) {
       const commentBtn = document.createElement('span');
-      commentBtn.innerText = translations?.ui?.skipIfBadge || 'âš ď¸Ź PomiĹ„ jeĹ›li';
+      commentBtn.innerText = translations?.ui?.skipIfBadge || '⚠️ Pomiń jeśli';
       commentBtn.className = 'comment-badge';
       commentBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -775,11 +775,11 @@ function renderQuestions() {
       ansEl.dataset.answerIndex = ansIdx;
       ansEl.dataset.value = ans.value;
       const label = ans.label;
-      if (label.includes('Zdecydowanie zgadzam siÄ™') || label.includes('Strongly agree')) ansEl.classList.add('answer-strong-agree');
-      else if (label.includes('CzÄ™Ĺ›ciowo zgadzam siÄ™') || label.includes('Somewhat agree')) ansEl.classList.add('answer-mild-agree');
-      else if (label.includes('CzÄ™Ĺ›ciowo nie zgadzam siÄ™') || label.includes('Somewhat disagree')) ansEl.classList.add('answer-mild-disagree');
-      else if (label.includes('Zdecydowanie nie zgadzam siÄ™') || label.includes('Strongly disagree')) ansEl.classList.add('answer-strong-disagree');
-      else if (label.includes('PomiĹ„') || label.includes('Skip')) ansEl.classList.add('answer-skip');
+      if (label.includes('Zdecydowanie zgadzam się') || label.includes('Strongly agree')) ansEl.classList.add('answer-strong-agree');
+      else if (label.includes('Częściowo zgadzam się') || label.includes('Somewhat agree')) ansEl.classList.add('answer-mild-agree');
+      else if (label.includes('Częściowo nie zgadzam się') || label.includes('Somewhat disagree')) ansEl.classList.add('answer-mild-disagree');
+      else if (label.includes('Zdecydowanie nie zgadzam się') || label.includes('Strongly disagree')) ansEl.classList.add('answer-strong-disagree');
+      else if (label.includes('Pomiń') || label.includes('Skip')) ansEl.classList.add('answer-skip');
       
       // ===== ZMODYFIKOWANY KLIK (zachowanie notatki) =====
       ansEl.addEventListener('click', () => {
@@ -787,14 +787,14 @@ function renderQuestions() {
         siblings.forEach(sib => sib.classList.remove('selected'));
         ansEl.classList.add('selected');
         const existing = userAnswers.findIndex(a => a.questionId === q.id);
-        // Pobierz notatkÄ™ z istniejÄ…cego wpisu, jeĹ›li jest
+        // Pobierz notatkę z istniejącego wpisu, jeśli jest
         const existingNote = (existing !== -1 && userAnswers[existing].note) ? userAnswers[existing].note : '';
         const answerObj = {
           questionId: q.id,
           answerIndex: ansIdx,
           answerValue: ans.value,
           answerData: ans,
-          note: existingNote   // <-- zachowujemy notatkÄ™
+          note: existingNote   // <-- zachowujemy notatkę
         };
         if (existing !== -1) userAnswers[existing] = answerObj;
         else userAnswers.push(answerObj);
@@ -811,7 +811,7 @@ function renderQuestions() {
     noteDiv.className = 'note-input-container';
 
     const noteLabel = document.createElement('label');
-    noteLabel.textContent = translations?.ui?.noteLabel || 'âśŹď¸Ź Uzasadnienie odpowiedzi (opcjonalne):';
+    noteLabel.textContent = translations?.ui?.noteLabel || '✏️ Uzasadnienie odpowiedzi (opcjonalne):';
     noteLabel.className = 'note-label';
 
     const noteTextarea = document.createElement('textarea');
@@ -819,20 +819,20 @@ function renderQuestions() {
     noteTextarea.rows = 2;
     noteTextarea.placeholder = translations?.ui?.notePlaceholder || 'Wpisz swoje uzasadnienie...';
 
-    // JeĹ›li w userAnswers istnieje juĹĽ notatka dla tego pytania â€“ wypeĹ‚nij textarea
+    // Jeśli w userAnswers istnieje już notatka dla tego pytania – wypełnij textarea
     const existingNote = userAnswers.find(a => a.questionId === q.id);
     if (existingNote && existingNote.note) {
       noteTextarea.value = existingNote.note;
     }
 
-    // NasĹ‚uch na zmianÄ™ tekstu â€“ aktualizujemy userAnswers
+    // Nasłuch na zmianę tekstu – aktualizujemy userAnswers
     noteTextarea.addEventListener('input', (e) => {
       const val = e.target.value.trim();
       const existing = userAnswers.find(a => a.questionId === q.id);
       if (existing) {
         existing.note = val;
       } else {
-        // JeĹ›li nie ma jeszcze wpisu dla tego pytania, tworzymy go z samÄ… notatkÄ…
+        // Jeśli nie ma jeszcze wpisu dla tego pytania, tworzymy go z samą notatką
         userAnswers.push({ questionId: q.id, note: val });
       }
     });
@@ -858,7 +858,7 @@ function updateDOMSelections() {
     const targetOption = card.querySelector(`.answer-option[data-answer-index='${ans.answerIndex}']`);
     if (targetOption) targetOption.classList.add('selected');
 
-    // ----- nowy kod: ustaw notatkÄ™ w textarea -----
+    // ----- nowy kod: ustaw notatkę w textarea -----
     const textarea = card.querySelector('.note-textarea');
     if (textarea && ans.note !== undefined) {
       textarea.value = ans.note;
@@ -872,9 +872,9 @@ function getSelectedQuestionIds() {
     .map(Number);
 }
 
-// Import i symulacja dotyczÄ… caĹ‚ego wybranego wariantu testu, nie tylko
-// aktualnie wyĹ›wietlanej strony. Na czas operacji tworzymy peĹ‚nÄ… konfiguracjÄ™,
-// a po jej zakoĹ„czeniu przywracamy konfiguracjÄ™ bieĹĽÄ…cej zakĹ‚adki.
+// Import i symulacja dotyczą całego wybranego wariantu testu, nie tylko
+// aktualnie wyświetlanej strony. Na czas operacji tworzymy pełną konfigurację,
+// a po jej zakończeniu przywracamy konfigurację bieżącej zakładki.
 async function withCompleteTestConfig(operation) {
   const ids = getSelectedQuestionIds();
   await ensureQuestionData(ids);
@@ -904,14 +904,19 @@ function generateExportCode() {
   if (!config) return '';
   const dateStr = getCurrentDateTime();
   let output = `Data wykonania testu: ${dateStr}\n\n`;
-  for (let i = 0; i < config.questions.length; i++) {
-    const q = config.questions[i];
+  // Eksport nie może zależeć od aktualnie wyrenderowanej zakładki. Korzystamy
+  // z globalnego wyboru pytań i z pamięci wszystkich wcześniej załadowanych części.
+  const questions = getSelectedQuestionIds()
+    .map(id => questionById.get(Number(id)))
+    .filter(Boolean);
+  for (let i = 0; i < questions.length; i++) {
+    const q = questions[i];
     const userAns = userAnswers.find(a => a.questionId === q.id);
     let answerText = 'Brak odpowiedzi';
     if (userAns && userAns.answerData) {
       answerText = userAns.answerData.label;
     } else if (userAns && userAns.answerValue === 0) {
-      answerText = 'PomiĹ„';
+      answerText = 'Pomiń';
     }
     output += `[id:${q.id}]: (${answerText});\n`;
   }
@@ -922,15 +927,15 @@ function createExportSection() {
   const exportDiv = document.createElement('div');
   exportDiv.id = 'export-answers-section';
   exportDiv.className = 'export-answers-section';
-  const exportTitle = translations?.ui?.exportTitle || 'đź“‹ Eksport Twoich odpowiedzi';
-  const exportDesc = translations?.ui?.exportDesc || 'Skopiuj poniĹĽszy kod, aby zapisaÄ‡ lub przenieĹ›Ä‡ swoje odpowiedzi do innego urzÄ…dzenia.';
-  const copyBtnText = translations?.ui?.copyExportBtn || 'đź“‹ Kopiuj kod eksportu';
+  const exportTitle = translations?.ui?.exportTitle || '📋 Eksport Twoich odpowiedzi';
+  const exportDesc = translations?.ui?.exportDesc || 'Skopiuj poniższy kod, aby zapisać lub przenieść swoje odpowiedzi do innego urządzenia.';
+  const copyBtnText = translations?.ui?.copyExportBtn || '📋 Kopiuj kod eksportu';
   exportDiv.innerHTML = `
     <h3>${exportTitle}</h3>
     <p>${exportDesc}</p>
     <textarea id="exportCodeArea" class="export-code" rows="5" readonly></textarea>
     <button id="copyExportBtn" class="copy-export-btn">${copyBtnText}</button>
-    <button id="downloadExportBtn" class="copy-export-btn" type="button">đź’ľ Pobierz plik .txt</button>
+    <button id="downloadExportBtn" class="copy-export-btn" type="button">💾 Pobierz plik .txt</button>
   `;
   const textarea = exportDiv.querySelector('#exportCodeArea');
   textarea.value = generateExportCode();
@@ -938,9 +943,9 @@ function createExportSection() {
   copyBtn.addEventListener('click', () => {
     textarea.select();
     navigator.clipboard.writeText(textarea.value).then(() => {
-      copyBtn.textContent = 'âś… ' + (translations?.ui?.copied || 'Skopiowano!');
+      copyBtn.textContent = '✅ ' + (translations?.ui?.copied || 'Skopiowano!');
       setTimeout(() => { copyBtn.textContent = copyBtnText; }, 2000);
-    }).catch(() => showPopup(translations?.ui?.copyError || 'Nie udaĹ‚o siÄ™ skopiowaÄ‡. Zaznacz kod rÄ™cznie.'));
+    }).catch(() => showPopup(translations?.ui?.copyError || 'Nie udało się skopiować. Zaznacz kod ręcznie.'));
   });
   exportDiv.querySelector('#downloadExportBtn').addEventListener('click', () => {
     const now = new Date();
@@ -970,14 +975,14 @@ async function importAnswersFromExportCode(rawCode) {
     const newAnswers = [];
     let matchedCount = 0;
     for (const line of rawCode.split(/\r?\n/)) {
-    // Nowy format: [id:123]: (odpowiedĹş);
+    // Nowy format: [id:123]: (odpowiedź);
     let match = line.match(/^\[id:(\d+)\]:\s*\((.*?)\);?$/);
     let questionId, answerText;
     if (match) {
       questionId = parseInt(match[1], 10);
       answerText = match[2].trim();
     } else {
-      // Stary format: 1. treĹ›Ä‡ [id:123]: (odpowiedĹş);
+      // Stary format: 1. treść [id:123]: (odpowiedź);
       match = line.match(/^\d+\.\s*(.+?)\s*\[id:(\d+)\]:\s*\((.*?)\);?$/);
       if (!match) continue;
       questionId = parseInt(match[2], 10);
@@ -990,16 +995,16 @@ async function importAnswersFromExportCode(rawCode) {
     let matchedIndex = -1;
     for (let idx = 0; idx < question.answers.length; idx++) {
       const ans = question.answers[idx];
-      if (ans.label === answerText) {
+      if (normalizeProfileText(ans.label) === normalizeProfileText(answerText)) {
         matchedAnswer = ans;
         matchedIndex = idx;
         break;
       }
     }
-    if (!matchedAnswer && (answerText === 'PomiĹ„' || answerText === 'Skip')) {
+    if (!matchedAnswer && (normalizeProfileText(answerText) === 'pomin' || normalizeProfileText(answerText) === 'skip')) {
       for (let idx = 0; idx < question.answers.length; idx++) {
         const ans = question.answers[idx];
-        if (ans.value === 0 && (ans.label.includes('PomiĹ„') || ans.label.includes('Skip'))) {
+        if (ans.value === 0 && (normalizeProfileText(ans.label).includes('pomin') || normalizeProfileText(ans.label).includes('skip'))) {
           matchedAnswer = ans;
           matchedIndex = idx;
           break;
@@ -1019,7 +1024,7 @@ async function importAnswersFromExportCode(rawCode) {
     return { newAnswers, matchedCount };
   });
   if (matchedCount === 0) {
-    showPopup(translations?.ui?.importNoAnswers || 'Nie znaleziono ĹĽadnych prawidĹ‚owych odpowiedzi w kodzie. Upewnij siÄ™, ĹĽe wklejasz poprawny kod eksportu.');
+    showPopup(translations?.ui?.importNoAnswers || 'Nie znaleziono żadnych prawidłowych odpowiedzi w kodzie. Upewnij się, że wklejasz poprawny kod eksportu.');
     return false;
   }
   userAnswers = newAnswers;
@@ -1029,7 +1034,7 @@ async function importAnswersFromExportCode(rawCode) {
   if (resultsDiv.style.display !== 'none') {
     computeAndDisplayResults();
   } else {
-    showPopup(`${translations?.ui?.importSuccess || `Zaimportowano ${matchedCount} odpowiedzi.`} ${translations?.ui?.clickShowResults || 'Kliknij "PokaĹĽ wyniki", aby zobaczyÄ‡ zaktualizowany profil.'}`);
+    showPopup(`${translations?.ui?.importSuccess || `Zaimportowano ${matchedCount} odpowiedzi.`} ${translations?.ui?.clickShowResults || 'Kliknij "Pokaż wyniki", aby zobaczyć zaktualizowany profil.'}`);
   }
   return true;
 }
@@ -1041,7 +1046,7 @@ function setupImportExport() {
     importBtn.addEventListener('click', async () => {
       const code = importTextarea.value.trim();
       if (!code) {
-        showPopup(translations?.ui?.pasteCode || 'Wklej kod eksportu w pole powyĹĽej.');
+        showPopup(translations?.ui?.pasteCode || 'Wklej kod eksportu w pole powyżej.');
         return;
       }
       const success = await importAnswersFromExportCode(code);
@@ -1059,10 +1064,10 @@ function setupImportExport() {
       const code = await file.text();
       if (!code.trim()) throw new Error('Plik jest pusty.');
       const success = await importAnswersFromExportCode(code);
-      showPopup(success ? `Zaimportowano odpowiedzi z pliku â€ž${file.name}â€ť.` : `Nie udaĹ‚o siÄ™ odczytaÄ‡ odpowiedzi z pliku â€ž${file.name}â€ť. Upewnij siÄ™, ĹĽe jest to plik eksportu NeoAutystyk.`);
+      showPopup(success ? `Zaimportowano odpowiedzi z pliku „${file.name}”.` : `Nie udało się odczytać odpowiedzi z pliku „${file.name}”. Upewnij się, że jest to plik eksportu NeoAutystyk.`);
       if (success) questionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (error) {
-      showPopup(`Nie udaĹ‚o siÄ™ odczytaÄ‡ pliku: ${error.message || 'nieznany bĹ‚Ä…d'}`);
+      showPopup(`Nie udało się odczytać pliku: ${error.message || 'nieznany błąd'}`);
     } finally { importFile.value = ''; }
   });
 }
@@ -1085,8 +1090,8 @@ function computeScores(mode = currentScoringMode) {
   allValueNames.forEach(v => valueScores.set(v, { sum: 0, maxPossible: 0, questionsInvolved: 0 }));
 
   for (const ans of userAnswers) {
-    // Notatka moĹĽe istnieÄ‡ przed wybraniem odpowiedzi. Nie jest odpowiedziÄ…
-    // punktowanÄ… i nie moĹĽe zatrzymywaÄ‡ obliczania wynikĂłw.
+    // Notatka może istnieć przed wybraniem odpowiedzi. Nie jest odpowiedzią
+    // punktowaną i nie może zatrzymywać obliczania wyników.
     if (!ans?.answerData || !Number.isFinite(Number(ans.answerValue))) continue;
     const weight = ans.answerValue;
     if (weight === 0) continue;
@@ -1207,17 +1212,17 @@ function computeScores(mode = currentScoringMode) {
 
 // ========== ODZNAKI: DEFINICJE I ICH OPISY ==========
 const badgesDescriptions = {
-  "Monarchizm": "Poparcie dla dziedzicznej wĹ‚adzy, czÄ™sto legitymizowanej boskim prawem lub tradycjÄ…. KĹ‚adzie nacisk na stabilnoĹ›Ä‡, ciÄ…gĹ‚oĹ›Ä‡ i hierarchiÄ™.",
-  "Anarchizm": "Odrzucenie paĹ„stwa i wszelkiej przymusowej wĹ‚adzy na rzecz dobrowolnych, zdecentralizowanych wspĂłlnot i bezpoĹ›redniej demokracji.",
-  "Technokracja": "Przekonanie, ĹĽe rzÄ…dziÄ‡ powinni eksperci i specjaliĹ›ci, a decyzje polityczne powinny byÄ‡ oparte na danych naukowych i efektywnoĹ›ci.",
-  "Oligarchia": "Akceptacja koncentracji wĹ‚adzy i bogactwa w rÄ™kach nielicznych, czÄ™sto usprawiedliwiana naturalnymi nierĂłwnoĹ›ciami lub efektywnoĹ›ciÄ….",
-  "PaĹ„stwo minimalne": "Postulat ograniczenia roli paĹ„stwa wyĹ‚Ä…cznie do funkcji ochronnych (sÄ…dy, policja, wojsko), bez ingerencji w gospodarkÄ™ i ĹĽycie prywatne.",
-  "PaĹ„stwo opiekuĹ„cze": "Model, w ktĂłrym paĹ„stwo zapewnia obywatelom bezpieczeĹ„stwo socjalne, dostÄ™p do edukacji, ochrony zdrowia i redystrybucjÄ™ dochodĂłw.",
-  "Secesjonizm": "Prawo regionĂłw lub grup etnicznych do pokojowego odĹ‚Ä…czenia siÄ™ od istniejÄ…cego paĹ„stwa i utworzenia wĹ‚asnej administracji.",
-  "Agraryzm": "Uznanie rolnictwa i wsi za fundament spoĹ‚eczeĹ„stwa, promowanie rodzinnych gospodarstw oraz tradycyjnego stylu ĹĽycia."
+  "Monarchizm": "Poparcie dla dziedzicznej władzy, często legitymizowanej boskim prawem lub tradycją. Kładzie nacisk na stabilność, ciągłość i hierarchię.",
+  "Anarchizm": "Odrzucenie państwa i wszelkiej przymusowej władzy na rzecz dobrowolnych, zdecentralizowanych wspólnot i bezpośredniej demokracji.",
+  "Technokracja": "Przekonanie, że rządzić powinni eksperci i specjaliści, a decyzje polityczne powinny być oparte na danych naukowych i efektywności.",
+  "Oligarchia": "Akceptacja koncentracji władzy i bogactwa w rękach nielicznych, często usprawiedliwiana naturalnymi nierównościami lub efektywnością.",
+  "Państwo minimalne": "Postulat ograniczenia roli państwa wyłącznie do funkcji ochronnych (sądy, policja, wojsko), bez ingerencji w gospodarkę i życie prywatne.",
+  "Państwo opiekuńcze": "Model, w którym państwo zapewnia obywatelom bezpieczeństwo socjalne, dostęp do edukacji, ochrony zdrowia i redystrybucję dochodów.",
+  "Secesjonizm": "Prawo regionów lub grup etnicznych do pokojowego odłączenia się od istniejącego państwa i utworzenia własnej administracji.",
+  "Agraryzm": "Uznanie rolnictwa i wsi za fundament społeczeństwa, promowanie rodzinnych gospodarstw oraz tradycyjnego stylu życia."
 };
 
-// ĹšcieĹĽka do obrazkĂłw odznak (uĹĽytkownik moĹĽe umieĹ›ciÄ‡ pliki w tym katalogu)
+// Ścieżka do obrazków odznak (użytkownik może umieścić pliki w tym katalogu)
 const BADGES_IMG_BASE_PATH = window.BadgesRegistry?.imageBase || 'images/Odznaki/';
 
 function createBadgesSection(badges) {
@@ -1270,10 +1275,10 @@ function createRankingSection(title, items, type) {
   header.textContent = title;
   section.appendChild(header);
 
-  // pulsujÄ…ca ikona tylko dla rankingu uĹĽytkownikĂłw
-  if (title === (translations?.ui?.rankingUsers || 'Ranking uĹĽytkownikĂłw')) {
+  // pulsująca ikona tylko dla rankingu użytkowników
+  if (title === (translations?.ui?.rankingUsers || 'Ranking użytkowników')) {
     const pulseIcon = document.createElement('span');
-    pulseIcon.textContent = 'âť—';
+    pulseIcon.textContent = '❗';
     pulseIcon.className = 'pulse-icon';
     pulseIcon.style.marginLeft = '8px';
     pulseIcon.style.cursor = 'pointer';
@@ -1281,7 +1286,7 @@ function createRankingSection(title, items, type) {
     pulseIcon.style.display = 'inline-block';
     pulseIcon.addEventListener('click', (e) => {
       e.stopPropagation();
-      showPopup('JeĹ›li chcesz zostaÄ‡ dodanym do publicznego rankingu to wyĹ›lij pod maila autystykx@gmail.com obowiÄ…zkowo swĂłj nick i avatar i ewentualnie krĂłtki opis, reklamÄ™, linki do sociali czy cokolwiek zapragniesz.');
+      showPopup('Jeśli chcesz zostać dodanym do publicznego rankingu to wyślij pod maila autystykx@gmail.com obowiązkowo swój nick i avatar i ewentualnie krótki opis, reklamę, linki do sociali czy cokolwiek zapragniesz.');
     });
     header.appendChild(pulseIcon);
   }
@@ -1289,7 +1294,7 @@ function createRankingSection(title, items, type) {
   if (title.includes('Ideologii') || title.includes('Ideologies')) {
     const info = document.createElement('div');
     info.style.marginBottom = '1rem';
-    info.textContent = translations?.ui?.rankingInfo || 'Im wyĹĽszy procent, tym bardziej TwĂłj profil jest zgodny z danÄ… ideologiÄ….';
+    info.textContent = translations?.ui?.rankingInfo || 'Im wyższy procent, tym bardziej Twój profil jest zgodny z daną ideologią.';
     section.appendChild(info);
   }
   const listContainer = document.createElement('div');
@@ -1364,7 +1369,7 @@ function createRankingSection(title, items, type) {
     percentSpan.textContent = `${Math.round(item.percent)}%`;
     itemDiv.appendChild(percentSpan);
 
-    // Zmodyfikowana obsĹ‚uga klikniÄ™cia
+    // Zmodyfikowana obsługa kliknięcia
     if (type === 'party') {
       itemDiv.addEventListener('click', () => showPartyPopup(item.name, item.description || ''));
     } else if (type === 'ideology') {
@@ -1375,7 +1380,7 @@ function createRankingSection(title, items, type) {
         if (existingLogo) existingLogo.remove();
 
         if (item.isDataUser) {
-          // UĹĽytkownik z data.json â€“ peĹ‚ny popup z avatarem i opisem
+          // Użytkownik z data.json – pełny popup z avatarem i opisem
           if (item.avatar) {
             const img = document.createElement('img');
             img.src = `images/IUsers/${item.avatar}`;
@@ -1385,7 +1390,7 @@ function createRankingSection(title, items, type) {
             const popupContent = popup.querySelector('.popup-content');
             popupContent.insertBefore(img, popupText);
           }
-          // ObsĹ‚uga linkĂłw w opisie
+          // Obsługa linków w opisie
           const description = item.description || 'Brak opisu.';
           const urlRegex = /(https?:\/\/[^\s]+)/g;
           if (urlRegex.test(description)) {
@@ -1412,7 +1417,7 @@ function createRankingSection(title, items, type) {
           }
           popup.classList.remove('hidden');
         } else {
-          // UĹĽytkownik zaimportowany rÄ™cznie â€“ stary tekst
+          // Użytkownik zaimportowany ręcznie – stary tekst
           showPopup(`${item.name}\n\nZgodnosc obliczona na podstawie wspolnych odpowiedzi.`);
         }
       });
@@ -1433,10 +1438,10 @@ function generateShareCode(pairResults) {
   try { base64 = btoa(unescape(encodeURIComponent(resultsString))); } catch(e) { console.error(e); base64 = ''; }
   const container = document.createElement('div');
   container.className = 'share-section';
-  const shareTitle = translations?.ui?.shareTitle || 'đź”— SprawdĹş poĹ‚oĹĽenie na kompasie';
-  const shareDesc = translations?.ui?.shareDesc || 'Skopiuj poniĹĽszy kod i wklej go na stronie z kompasem, by poznaÄ‡ swoje poĹ‚oĹĽenie:';
-  const copyBtnText = translations?.ui?.copyShareBtn || 'đź“‹ Kopiuj kod';
-  const compassLinkText = translations?.ui?.compassLink || 'đź§­ NeoAutystyk Kompas';
+  const shareTitle = translations?.ui?.shareTitle || '🔗 Sprawdź położenie na kompasie';
+  const shareDesc = translations?.ui?.shareDesc || 'Skopiuj poniższy kod i wklej go na stronie z kompasem, by poznać swoje położenie:';
+  const copyBtnText = translations?.ui?.copyShareBtn || '📋 Kopiuj kod';
+  const compassLinkText = translations?.ui?.compassLink || '🧭 NeoAutystyk Kompas';
   container.innerHTML = `<h3>${shareTitle}</h3>
     <p>${shareDesc}</p>
     <textarea readonly class="share-code" rows="3">${base64}</textarea>
@@ -1449,9 +1454,9 @@ function generateShareCode(pairResults) {
   copyBtn.addEventListener('click', () => {
     textarea.select();
     navigator.clipboard.writeText(textarea.value).then(() => {
-      copyBtn.textContent = 'âś… ' + (translations?.ui?.copied || 'Skopiowano!');
+      copyBtn.textContent = '✅ ' + (translations?.ui?.copied || 'Skopiowano!');
       setTimeout(() => { copyBtn.textContent = copyBtnText; }, 2000);
-    }).catch(() => alert('Nie udaĹ‚o siÄ™ skopiowaÄ‡. MoĹĽesz zaznaczyÄ‡ kod rÄ™cznie.'));
+    }).catch(() => alert('Nie udało się skopiować. Możesz zaznaczyć kod ręcznie.'));
   });
   return container;
 }
@@ -1459,7 +1464,7 @@ function generateShareCode(pairResults) {
 function computeAndDisplayResults() {
   const { pairResults, ideologyResults, partyResults } = computeScores(currentScoringMode);
 
-  // Grupowanie par wartoĹ›ci
+  // Grupowanie par wartości
   const groups = new Map();
   for (const pair of pairResults) {
     const catId = categoryMapping[pair.leftKey || pair.left];
@@ -1469,7 +1474,7 @@ function computeAndDisplayResults() {
   }
   const sortedGroups = Array.from(groups.entries()).sort((a, b) => a[0] - b[0]);
 
-  const valuesHeader = translations?.ui?.valuesHeader || 'âš–ď¸Ź Pary wartoĹ›ci';
+  const valuesHeader = translations?.ui?.valuesHeader || '⚖️ Pary wartości';
   valuesResults.innerHTML = `<h3>${valuesHeader}</h3>`;
   const gridContainer = document.createElement('div');
   gridContainer.className = 'values-categories-grid';
@@ -1520,12 +1525,12 @@ function computeAndDisplayResults() {
   const existingBadgesSection = resultsDiv.querySelector('.badges-section');
   if (existingBadgesSection) existingBadgesSection.remove();
   const badgesSection = createBadgesSection(badges);
-  // Wstawiamy przed kontenerem rankingĂłw
+  // Wstawiamy przed kontenerem rankingów
   const ideologiesPartiesContainer = document.querySelector('.ideologies-parties-container');
   if (ideologiesPartiesContainer) {
     ideologiesPartiesContainer.parentNode.insertBefore(badgesSection, ideologiesPartiesContainer);
   } else {
-    // jeĹĽeli kontener nie istnieje (np. przy pierwszym uruchomieniu), wstawiamy po wartoĹ›ci
+    // jeżeli kontener nie istnieje (np. przy pierwszym uruchomieniu), wstawiamy po wartości
     valuesResults.parentNode.insertBefore(badgesSection, valuesResults.nextSibling);
   }
   // ------------------------------------------------
@@ -1540,10 +1545,10 @@ function computeAndDisplayResults() {
     let entityTypeLabel = '';
     if (simulatedEntity.type === 'party') {
       logoUrl = getPartyLogoUrl(simulatedEntity.name);
-      entityTypeLabel = translations?.ui?.simulatingParty || 'partiÄ™';
+      entityTypeLabel = translations?.ui?.simulatingParty || 'partię';
     } else if (simulatedEntity.type === 'ideology') {
       logoUrl = getIdeologyLogoUrl(simulatedEntity.name);
-      entityTypeLabel = translations?.ui?.simulatingIdeology || 'ideologiÄ™';
+      entityTypeLabel = translations?.ui?.simulatingIdeology || 'ideologię';
     }
     let logoHtml = '';
     if (logoUrl) {
@@ -1552,8 +1557,8 @@ function computeAndDisplayResults() {
     banner.innerHTML = `
       ${logoHtml}
       <div class="simulation-banner-text">
-        đźŽ­ ${translations?.ui?.simulating || 'Symulujesz'} ${entityTypeLabel}: <strong>${simulatedEntity.name}</strong><br>
-        <small>${translations?.ui?.simulationNote || 'Wyniki poniĹĽej sÄ… tymczasowe. Kliknij â€žPrzywrĂłÄ‡ moje odpowiedziâ€ť, aby wrĂłciÄ‡ do wĹ‚asnych.'}</small>
+        🎭 ${translations?.ui?.simulating || 'Symulujesz'} ${entityTypeLabel}: <strong>${simulatedEntity.name}</strong><br>
+        <small>${translations?.ui?.simulationNote || 'Wyniki poniżej są tymczasowe. Kliknij „Przywróć moje odpowiedzi”, aby wrócić do własnych.'}</small>
       </div>
     `;
     if (ideologiesPartiesContainer) {
@@ -1563,21 +1568,21 @@ function computeAndDisplayResults() {
     }
   }
 
-  const ideologiesTitle = translations?.ui?.rankingIdeologies || 'đź“Š Ranking ideologii';
-  const partiesTitle = translations?.ui?.rankingParties || 'đź—łď¸Ź Ranking partii';
+  const ideologiesTitle = translations?.ui?.rankingIdeologies || '📊 Ranking ideologii';
+  const partiesTitle = translations?.ui?.rankingParties || '🗳️ Ranking partii';
   ideologiesResults.appendChild(createRankingSection(ideologiesTitle, ideologyResults, 'ideology'));
   partiesResults.appendChild(createRankingSection(partiesTitle, partyResults, 'party'));
   if (usersResults && typeof window.getUserRankingItems === 'function') {
-    const usersTitle = translations?.ui?.rankingUsers || 'đź» Ranking uĹĽytkownikĂłw';
+    const usersTitle = translations?.ui?.rankingUsers || '🐻 Ranking użytkowników';
     usersResults.appendChild(createRankingSection(usersTitle, window.getUserRankingItems(), 'user'));
   }
 
   // ==================== ZMODYFIKOWANY FRAGMENT ====================
-  // USUNIÄTO sekcjÄ™ "SprawdĹş poĹ‚oĹĽenie na kompasie" (kod base64) â€“ zgodnie z ĹĽyczeniem
+  // USUNIĘTO sekcję "Sprawdź położenie na kompasie" (kod base64) – zgodnie z życzeniem
   resultsDiv.style.display = 'block';
   refreshExportSection();
 
-  // DODANIE informacji przy rankingu uĹĽytkownikĂłw
+  // DODANIE informacji przy rankingu użytkowników
   const usersResultsDiv = document.getElementById('users-results');
   if (usersResultsDiv && !usersResultsDiv.querySelector('.ranking-info-note')) {
     const infoDiv = document.createElement('div');
@@ -1586,7 +1591,7 @@ function computeAndDisplayResults() {
     infoDiv.style.fontSize = '0.85rem';
     infoDiv.style.fontStyle = 'italic';
     infoDiv.style.color = 'var(--footer-color)';
-    infoDiv.innerHTML = 'đź’ˇ JeĹ›li chcesz zostaÄ‡ dodany do rankingu uĹĽytkownikĂłw, wyĹ›lij swĂłj kod eksportu (znajdziesz go poniĹĽej) na adres: <a href="mailto:autystykx@gmail.com">autystykx@gmail.com</a>';
+    infoDiv.innerHTML = '💡 Jeśli chcesz zostać dodany do rankingu użytkowników, wyślij swój kod eksportu (znajdziesz go poniżej) na adres: <a href="mailto:autystykx@gmail.com">autystykx@gmail.com</a>';
     usersResultsDiv.appendChild(infoDiv);
   }
   // ================================================================
@@ -1616,7 +1621,7 @@ function syncUserAnswersFromDOM() {
         answerData: answerData
       });
     } else {
-      const skipAnswer = questionConfig.answers.find(a => a.value === 0 && (a.label.includes('PomiĹ„') || a.label.includes('Skip')));
+      const skipAnswer = questionConfig.answers.find(a => a.value === 0 && (a.label.includes('Pomiń') || a.label.includes('Skip')));
       if (skipAnswer) {
         const ansIdx = questionConfig.answers.indexOf(skipAnswer);
         newAnswers.push({
@@ -1639,7 +1644,7 @@ function restoreUserAnswers() {
   simulatedEntity = null;
   updateDOMSelections();
   computeAndDisplayResults();
-  showPopup(translations?.ui?.restored || 'PrzywrĂłcono Twoje odpowiedzi i odĹ›wieĹĽono wyniki.');
+  showPopup(translations?.ui?.restored || 'Przywrócono Twoje odpowiedzi i odświeżono wyniki.');
 }
 
 async function simulateAnswers(selectedName) {
@@ -1660,7 +1665,7 @@ function simulateAnswersForConfig(selectedName, fullConfig) {
   } else if (isIdeology) {
     simulatedEntity = { type: 'ideology', name: selectedName };
   } else {
-    // symulacja uĹĽytkownika
+    // symulacja użytkownika
     const isUser = config.users && config.users.some(u => u.name === selectedName);
     if (isUser) {
       const user = config.users.find(u => u.name === selectedName);
@@ -1707,7 +1712,7 @@ function simulateAnswersForConfig(selectedName, fullConfig) {
       }
     }
     if (!bestAnswer) {
-      bestAnswer = question.answers.find(a => a.value === 0 && (a.label.includes('PomiĹ„') || a.label.includes('Skip')));
+      bestAnswer = question.answers.find(a => a.value === 0 && (a.label.includes('Pomiń') || a.label.includes('Skip')));
       if (!bestAnswer) bestAnswer = question.answers[0];
     }
     const answerIndex = question.answers.findIndex(a => a === bestAnswer);
@@ -1731,7 +1736,7 @@ function setupSimulation() {
   simulationSelect.innerHTML = '';
   if (config.parties.length) {
     const partiesGroup = document.createElement('optgroup');
-    partiesGroup.label = translations?.ui?.partiesGroup || 'đź‡µđź‡± Partie polityczne';
+    partiesGroup.label = translations?.ui?.partiesGroup || '🇵🇱 Partie polityczne';
     config.parties.forEach(party => {
       const option = document.createElement('option');
       option.value = party.name;
@@ -1742,7 +1747,7 @@ function setupSimulation() {
   }
   if (config.ideologies.length) {
     const ideologiesGroup = document.createElement('optgroup');
-    ideologiesGroup.label = translations?.ui?.ideologiesGroup || 'đź’ˇ Ideologie';
+    ideologiesGroup.label = translations?.ui?.ideologiesGroup || '💡 Ideologie';
     config.ideologies.forEach(ideo => {
       const option = document.createElement('option');
       option.value = ideo.name;
@@ -1752,16 +1757,16 @@ function setupSimulation() {
     simulationSelect.appendChild(ideologiesGroup);
   }
 
-  // DODANIE UĹ»YTKOWNIKĂ“W DO SYMULACJI
+  // DODANIE UŻYTKOWNIKÓW DO SYMULACJI
   const usersGroup = document.createElement('optgroup');
-  usersGroup.label = translations?.ui?.usersGroup || 'đź» UĹĽytkownicy';
-  // Pobierz listÄ™ uĹĽytkownikĂłw z config.users lub domyĹ›lnÄ…
+  usersGroup.label = translations?.ui?.usersGroup || '🐻 Użytkownicy';
+  // Pobierz listę użytkowników z config.users lub domyślną
   let userList = [];
   if (config.users && Array.isArray(config.users)) {
     userList = config.users;
   } else {
-    // DomyĹ›lny uĹĽytkownik, jeĹ›li brak w config
-    userList = [{ name: 'CusterKnuckle', description: 'Opis uĹĽytkownika â€“ moĹĽesz go zmieniÄ‡ pĂłĹşniej.' }];
+    // Domyślny użytkownik, jeśli brak w config
+    userList = [{ name: 'CusterKnuckle', description: 'Opis użytkownika – możesz go zmienić później.' }];
   }
   userList.forEach(user => {
     const option = document.createElement('option');
@@ -1776,7 +1781,7 @@ function setupSimulation() {
   simulateBtn.addEventListener('click', async () => {
     const selected = simulationSelect.value;
     if (selected) await simulateAnswers(selected);
-    else alert(translations?.ui?.selectEntity || 'Wybierz partiÄ™ lub ideologiÄ™.');
+    else alert(translations?.ui?.selectEntity || 'Wybierz partię lub ideologię.');
   });
   restoreBtn.addEventListener('click', restoreUserAnswers);
 }
@@ -1804,7 +1809,7 @@ function setupModeSelector() {
     });
   });
   helpBtn.addEventListener('click', () => {
-    const helpText = translations?.ui?.modeHelpText || 'đź§  Tryb peĹ‚nego profilowania\nUwzglÄ™dnia zarĂłwno poglÄ…dy popierane, jak i odrzucane.\n\nâś… Tryb afirmacyjny\nUwzglÄ™dnia wyĹ‚Ä…cznie poglÄ…dy aktywnie popierane.';
+    const helpText = translations?.ui?.modeHelpText || '🧠 Tryb pełnego profilowania\nUwzględnia zarówno poglądy popierane, jak i odrzucane.\n\n✅ Tryb afirmacyjny\nUwzględnia wyłącznie poglądy aktywnie popierane.';
     showPopup(helpText);
   });
 }
@@ -1815,15 +1820,15 @@ let currentCreativeConfig = {
   activePairs: [],
   labels: { top: "Heteronomia", bottom: "Autonomia", left: "Socjalizm", right: "Kapitalizm" }
 };
-let compassUserValues = null; // mapa wartoĹ›ci dla uĹĽytkownika
+let compassUserValues = null; // mapa wartości dla użytkownika
 
-// Funkcja do budowania mapy wartoĹ›ci dla uĹĽytkownika na podstawie pairResults
+// Funkcja do budowania mapy wartości dla użytkownika na podstawie pairResults
 function buildUserValuesMap(pairResults) {
   const valuesMap = {};
-  // UĹĽywamy tych samych identyfikatorĂłw par co w compass-core
+  // Używamy tych samych identyfikatorów par co w compass-core
   const allCompassPairs = [...corePairs, ...extraPairs];
   for (const pair of allCompassPairs) {
-    // ZnajdĹş w pairResults parÄ™ pasujÄ…cÄ… (left/right)
+    // Znajdź w pairResults parę pasującą (left/right)
     const found = pairResults.find(p =>
       (p.leftKey || p.left) === pair.negativeLabel && (p.rightKey || p.right) === pair.positiveLabel
     );
@@ -1833,7 +1838,7 @@ function buildUserValuesMap(pairResults) {
         positive: found.rightPercent
       };
     } else {
-      // Szukaj odwrotnej kolejnoĹ›ci
+      // Szukaj odwrotnej kolejności
       const foundReverse = pairResults.find(p =>
         (p.leftKey || p.left) === pair.positiveLabel && (p.rightKey || p.right) === pair.negativeLabel
       );
@@ -1850,7 +1855,7 @@ function buildUserValuesMap(pairResults) {
   return valuesMap;
 }
 
-// Funkcja aktualizujÄ…ca kompas w kontenerze gĹ‚Ăłwnym i w modalu
+// Funkcja aktualizująca kompas w kontenerze głównym i w modalu
 function updateCompassDisplay() {
   const valuesMap = compassUserValues;
   if (!valuesMap) return;
@@ -1865,11 +1870,11 @@ function updateCompassDisplay() {
     window.modalCompassInstance.updateActivePairs(coords.activePairsCount);
     window.modalCompassInstance.updateModeLabel(currentCompassMode);
   }
-  // ZapamiÄ™taj wspĂłĹ‚rzÄ™dne do ewentualnego uĹĽycia przy nakĹ‚adkach
+  // Zapamiętaj współrzędne do ewentualnego użycia przy nakładkach
   window.currentUserCoords = { x: coords.x, y: coords.y };
 }
 
-// Ĺadowanie nakĹ‚adek (partie, ideologie, uĹĽytkownicy)
+// Ładowanie nakładek (partie, ideologie, użytkownicy)
 async function loadOverlays(showParties, showIdeologies, compassInstance) {
   const showUsers = document.getElementById('toggle-users')?.checked || false;
   if (!compassInstance || !compassInstance.clearOverlays) return;
@@ -1898,7 +1903,7 @@ async function loadOverlays(showParties, showIdeologies, compassInstance) {
       const coords = await getEntityCoordinates(user.name, 'user');
       if (coords) {
         const avatarUrl = user.avatar ? `images/IUsers/${user.avatar}` : null;
-        const logoUrl = avatarUrl || 'images/default-user.png'; // moĹĽesz zastÄ…piÄ‡ domyĹ›lnÄ… ikonÄ…
+        const logoUrl = avatarUrl || 'images/default-user.png'; // możesz zastąpić domyślną ikoną
         compassInstance.addOverlay(logoUrl, coords.x, coords.y, 'user', user.name, user.description || '');
       }
     }
@@ -1931,7 +1936,7 @@ function setupMatchingModeSelector() {
   window.currentMatchingMode = currentMatchingMode;
 }
 
-// Obliczanie wspĂłĹ‚rzÄ™dnych dla partii/ideologii/uĹĽytkownika
+// Obliczanie współrzędnych dla partii/ideologii/użytkownika
 async function getEntityCoordinates(name, type) {
   if (type === 'user') {
     const user = getProfileByName(name, 'user') || config.users.find(u => u.name === name);
@@ -1972,7 +1977,7 @@ async function getEntityCoordinates(name, type) {
         }
       }
       if (!bestAnswer) {
-        bestAnswer = question.answers.find(a => a.value === 0 && (a.label.includes('PomiĹ„') || a.label.includes('Skip')));
+        bestAnswer = question.answers.find(a => a.value === 0 && (a.label.includes('Pomiń') || a.label.includes('Skip')));
         if (!bestAnswer) bestAnswer = question.answers[0];
       }
       simulatedAnswers.push({
@@ -1990,7 +1995,7 @@ async function getEntityCoordinates(name, type) {
   }
 }
 
-// Pomocnicza funkcja do obliczania wynikĂłw dla podanych odpowiedzi i trybu
+// Pomocnicza funkcja do obliczania wyników dla podanych odpowiedzi i trybu
 function computeScoresForAnswers(answers, mode) {
   const ideologyScores = new Map();
   const partyScores = new Map();
@@ -2029,8 +2034,8 @@ function computeScoresForAnswers(answers, mode) {
         }
       }
     }
-    // analogicznie dla partii i wartoĹ›ci â€“ uproszczone, bo potrzebujemy tylko pairResults
-    // Do pairResults potrzebujemy tylko wartoĹ›ci valueScores
+    // analogicznie dla partii i wartości – uproszczone, bo potrzebujemy tylko pairResults
+    // Do pairResults potrzebujemy tylko wartości valueScores
     if (mode === 'full') {
       for (const val of (answer.values_for || [])) {
         const rec = valueScores.get(val);
@@ -2080,7 +2085,7 @@ function computeScoresForAnswers(answers, mode) {
   return { pairResults };
 }
 
-// Inicjalizacja kompasu po pokazaniu wynikĂłw
+// Inicjalizacja kompasu po pokazaniu wyników
 function initCompassAfterResults() {
   const container = document.getElementById('compass-container');
   if (!container) return;
@@ -2090,13 +2095,13 @@ function initCompassAfterResults() {
     onModeChange: (mode) => {
       currentCompassMode = mode;
       if (mode === 'creative') {
-        // Wczytaj zapisanÄ… konfiguracjÄ™ kreatywnÄ…
+        // Wczytaj zapisaną konfigurację kreatywną
         if (window.compassInstance.getCreativeConfig) {
           currentCreativeConfig = window.compassInstance.getCreativeConfig();
         }
       }
       updateCompassDisplay();
-      // OdĹ›wieĹĽ nakĹ‚adki
+      // Odśwież nakładki
       const showParties = document.getElementById('toggle-parties')?.checked || false;
       const showIdeologies = document.getElementById('toggle-ideologies')?.checked || false;
       loadOverlays(showParties, showIdeologies, window.compassInstance);
@@ -2109,14 +2114,14 @@ function initCompassAfterResults() {
       loadOverlays(showParties, showIdeologies, window.compassInstance);
     }
   });
-  // Ustaw wartoĹ›ci uĹĽytkownika
+  // Ustaw wartości użytkownika
   if (compassUserValues) {
     const coords = computeCoordinatesFromValues(compassUserValues, currentCompassMode, currentCreativeConfig);
     window.compassInstance.updateMarker(coords.x, coords.y);
     window.compassInstance.updateActivePairs(coords.activePairsCount);
     window.compassInstance.updateModeLabel(currentCompassMode);
   }
-  // ObsĹ‚uga przeĹ‚Ä…cznikĂłw nakĹ‚adek
+  // Obsługa przełączników nakładek
   const toggleParties = document.getElementById('toggle-parties');
   const toggleIdeologies = document.getElementById('toggle-ideologies');
   if (toggleParties) {
@@ -2129,11 +2134,11 @@ function initCompassAfterResults() {
       loadOverlays(toggleParties.checked, toggleIdeologies.checked, window.compassInstance);
     });
   }
-  // Inicjalne zaĹ‚adowanie nakĹ‚adek
+  // Inicjalne załadowanie nakładek
   loadOverlays(false, false, window.compassInstance);
 }
 
-// Modyfikacja funkcji computeAndDisplayResults â€“ dodanie budowania wartoĹ›ci kompasu i inicjalizacji
+// Modyfikacja funkcji computeAndDisplayResults – dodanie budowania wartości kompasu i inicjalizacji
 const originalComputeAndDisplay = computeAndDisplayResults;
 computeAndDisplayResults = function() {
   originalComputeAndDisplay();
@@ -2149,7 +2154,7 @@ computeAndDisplayResults = function() {
   }
 };
 
-// ObsĹ‚uga peĹ‚noekranowego modala kompasu
+// Obsługa pełnoekranowego modala kompasu
 function initCompassModal() {
   const modal = document.getElementById('compass-modal');
   const openBtn = document.getElementById('open-compass-modal');
@@ -2173,7 +2178,7 @@ function initCompassModal() {
             const showParties = document.getElementById('modal-toggle-parties')?.checked || false;
             const showIdeologies = document.getElementById('modal-toggle-ideologies')?.checked || false;
             loadOverlays(showParties, showIdeologies, window.modalCompassInstance);
-            // Synchronizacja z gĹ‚Ăłwnym kompasem
+            // Synchronizacja z głównym kompasem
             if (window.compassInstance && window.compassInstance.setMode) window.compassInstance.setMode(mode);
           },
           onCreativeConfigChange: (config) => {
@@ -2185,14 +2190,14 @@ function initCompassModal() {
             if (window.compassInstance && window.compassInstance.setCreativeConfig) window.compassInstance.setCreativeConfig(config);
           }
         });
-        // PrzekaĹĽ wartoĹ›ci uĹĽytkownika
+        // Przekaż wartości użytkownika
         if (compassUserValues) {
           const coords = computeCoordinatesFromValues(compassUserValues, currentCompassMode, currentCreativeConfig);
           window.modalCompassInstance.updateMarker(coords.x, coords.y);
           window.modalCompassInstance.updateActivePairs(coords.activePairsCount);
           window.modalCompassInstance.updateModeLabel(currentCompassMode);
         }
-        // ObsĹ‚uga przeĹ‚Ä…cznikĂłw nakĹ‚adek w modalu
+        // Obsługa przełączników nakładek w modalu
         const modalToggleParties = document.getElementById('modal-toggle-parties');
         const modalToggleIdeologies = document.getElementById('modal-toggle-ideologies');
         if (modalToggleParties && modalToggleIdeologies) {
@@ -2203,13 +2208,13 @@ function initCompassModal() {
           modalToggleIdeologies.addEventListener('change', updateModalOverlays);
           updateModalOverlays();
         }
-        // Konfiguracja kreatywna â€“ przekaĹĽemy przez interfejs CompassUI
+        // Konfiguracja kreatywna – przekażemy przez interfejs CompassUI
         if (window.modalCompassInstance.setCreativeConfigPanel) {
           window.modalCompassInstance.setCreativeConfigPanel(document.getElementById('creative-config-area'), document.getElementById('modal-creative-pairs-list'), document.getElementById('modal-label-top'), document.getElementById('modal-label-bottom'), document.getElementById('modal-label-left'), document.getElementById('modal-label-right'), document.getElementById('modal-apply-labels'), document.getElementById('modal-apply-creative'));
         }
       }
     } else {
-      // odĹ›wieĹĽenie
+      // odświeżenie
       const coords = computeCoordinatesFromValues(compassUserValues, currentCompassMode, currentCreativeConfig);
       window.modalCompassInstance.updateMarker(coords.x, coords.y);
       window.modalCompassInstance.updateActivePairs(coords.activePairsCount);
@@ -2227,11 +2232,11 @@ function initCompassModal() {
   });
 }
 
-// Po zaĹ‚adowaniu configu, dodajemy dodatkowe inicjalizacje
+// Po załadowaniu configu, dodajemy dodatkowe inicjalizacje
 const originalLoadConfig = loadConfig;
 loadConfig = async function() {
   await originalLoadConfig();
-  // Po zaĹ‚adowaniu configu, ustawiamy nasĹ‚uchiwanie na zmianÄ™ trybu kompasu
+  // Po załadowaniu configu, ustawiamy nasłuchiwanie na zmianę trybu kompasu
   const compassModeSelect = document.getElementById('compass-mode-select');
   if (compassModeSelect) {
     compassModeSelect.addEventListener('change', (e) => {
@@ -2252,10 +2257,10 @@ loadConfig = async function() {
     const modeDesc = document.getElementById('compass-mode-desc');
     if (modeDesc) {
       const descriptions = {
-        weighted: 'Wagowy â€“ uwzglÄ™dnia domyĹ›lne wagi poszczegĂłlnych par.',
-        equal: 'Jednakowe wagi â€“ kaĹĽda para ma wagÄ™ 1.',
-        institutional: 'Instytucjonalny â€“ tylko pary zwiÄ…zane z instytucjami paĹ„stwowymi.',
-        creative: 'Kreatywny â€“ rÄ™czny wybĂłr par i wag.'
+        weighted: 'Wagowy – uwzględnia domyślne wagi poszczególnych par.',
+        equal: 'Jednakowe wagi – każda para ma wagę 1.',
+        institutional: 'Instytucjonalny – tylko pary związane z instytucjami państwowymi.',
+        creative: 'Kreatywny – ręczny wybór par i wag.'
       };
       compassModeSelect.addEventListener('change', () => {
         modeDesc.textContent = descriptions[compassModeSelect.value] || '';
