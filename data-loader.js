@@ -1,15 +1,15 @@
 // Stan aplikacji oraz leniwe ładowanie danych pytań.
 let config = null;
-let configBase = null;      // oryginalne dane z data.json (wartoĹ›ci, mapowania)
+let configBase = null;      // oryginalne dane z data.json (wartości, mapowania)
 let politicalProfiles = null;
-let translations = null;    // aktualne tĹ‚umaczenia (teksty)
+let translations = null;    // aktualne tłumaczenia (teksty)
 let currentLanguage = 'pl';
 let userAnswers = [];
 let currentScoringMode = 'full';   // 'full' lub 'affirmative'
 let currentMatchingMode = 'modern'; // 'modern' lub 'legacy'
 let simulatedEntity = null;         // { type: 'party'|'ideology', name: string }
 let answersBeforeSimulation = null;
-// Dane pytaĹ„ sÄ… Ĺ‚adowane na ĹĽÄ…danie i pozostajÄ… w pamiÄ™ci tylko raz.
+// Dane pytań są ładowane na żądanie i pozostają w pamięci tylko raz.
 let dataManifest = null;
 const questionById = new Map();
 const dataPartCache = new Map();
@@ -22,7 +22,7 @@ function registerDataPart(part) {
 async function initializeDataParts() {
   if (dataManifest) return dataManifest;
   const response = await fetch('data-parts/manifest.json');
-  if (!response.ok) throw new Error('Nie udaĹ‚o siÄ™ wczytaÄ‡ manifestu czÄ™Ĺ›ci testu');
+  if (!response.ok) throw new Error('Nie udało się wczytać manifestu części testu');
   dataManifest = await response.json();
   return dataManifest;
 }
@@ -32,9 +32,9 @@ async function loadDataPart(partId) {
   const request = (async () => {
     const manifest = await initializeDataParts();
     const entry = manifest.parts.find(part => Number(part.id) === Number(partId));
-    if (!entry) throw new Error(`Nie znaleziono czÄ™Ĺ›ci testu ${partId}`);
+    if (!entry) throw new Error(`Nie znaleziono części testu ${partId}`);
     const response = await fetch(entry.file);
-    if (!response.ok) throw new Error(`Nie udaĹ‚o siÄ™ wczytaÄ‡ ${entry.file}`);
+    if (!response.ok) throw new Error(`Nie udało się wczytać ${entry.file}`);
     const part = registerDataPart(await response.json());
     dataPartCache.set(partId, part);
     return part;
