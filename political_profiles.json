@@ -2397,13 +2397,20 @@
         "Polityk",
         "Parlamentarzysta",
         "Przedsiębiorca",
-        "Założyciel partii",
         "Założyciel partii/ruchu",
         "Polak",
         "Żyje",
         "Mężczyzna",
         "Konserwatyzm",
-        "XXI wiek"
+        "XXI wiek",
+        "Ekonomista",
+        "Lider partii",
+        "Publicysta",
+        "Europa",
+        "Liberalizm gospodarczy",
+        "Monarchizm",
+        "Wybory demokratyczne",
+        "XX wiek"
       ]
     },
     {
@@ -2427,7 +2434,11 @@
         "Martwy",
         "Mężczyzna",
         "Amerykanin",
-        "XX wiek"
+        "XX wiek",
+        "Myśliciel społeczny",
+        "Publicysta",
+        "Ameryka Północna",
+        "XXI wiek"
       ]
     },
     {
@@ -2449,7 +2460,15 @@
         "Polak",
         "Żyje",
         "Mężczyzna",
-        "XXI wiek"
+        "XXI wiek",
+        "Publicysta",
+        "Akademik",
+        "Lider partii",
+        "Europa",
+        "Socjaldemokracja",
+        "Republikanizm",
+        "XX wiek",
+        "Wybory demokratyczne"
       ]
     },
     {
@@ -2470,7 +2489,14 @@
         "Martwy",
         "Mężczyzna",
         "Amerykanin",
-        "Konserwatyzm"
+        "Konserwatyzm",
+        "Lider partii",
+        "Ameryka Północna",
+        "XX wiek",
+        "XXI wiek",
+        "Nacjonalizm",
+        "Liberalizm gospodarczy",
+        "Republikanizm"
       ]
     },
     {
@@ -2491,7 +2517,17 @@
         "Polak",
         "Żyje",
         "XXI wiek",
-        "Mężczyzna"
+        "Mężczyzna",
+        "Samorządowiec",
+        "Lider partii",
+        "Założyciel partii/ruchu",
+        "Publicysta",
+        "Europa",
+        "XX wiek",
+        "Socjaldemokracja",
+        "Socjalliberalizm",
+        "Republikanizm",
+        "Wybory demokratyczne"
       ]
     },
     {
@@ -2540,7 +2576,12 @@
         "Mężczyzna",
         "XX wiek",
         "XXI wiek",
-        "Konserwatyzm"
+        "Konserwatyzm",
+        "Publicysta",
+        "Polityk",
+        "Chrześcijańska demokracja",
+        "Republikanizm",
+        "Europa"
       ]
     },
     {
@@ -2557,12 +2598,18 @@
       "tags": [
         "Duchowny",
         "Papież",
-        "Martwy",
+        "Żyje",
         "Argentyńczyk",
         "Mężczyzna",
         "XX wiek",
         "XXI wiek",
-        "Konserwatyzm"
+        "Konserwatyzm",
+        "Polityk",
+        "Europa",
+        "Ameryka Południowa",
+        "Chrześcijańska demokracja",
+        "Republikanizm",
+        "Socjaldemokracja"
       ]
     },
         {
@@ -2581,14 +2628,19 @@
         "Przedsiębiorca",
         "Minister",
         "Parlamentarzysta",
-        "Polska",
+        "Polak",
         "Europa",
         "Żyje",
         "Kobieta",
         "XX wiek",
         "XXI wiek",
         "Liberalizm",
-        "Socjalliberalizm"
+        "Socjalliberalizm",
+        "Publicysta",
+        "Liberalizm gospodarczy",
+        "Republikanizm",
+        "Wybory demokratyczne",
+        "Nominacja / Kooptacja"
       ]
     },
     {
@@ -2611,7 +2663,13 @@
         "XX wiek",
         "XXI wiek",
         "Mężczyzna",
-        "Amerykanin"
+        "Amerykanin",
+        "Publicysta",
+        "Ameryka Północna",
+        "Konserwatyzm",
+        "Republikanizm",
+        "Autorytaryzm",
+        "Wybory demokratyczne"
       ]
     },
     {
@@ -2633,7 +2691,14 @@
         "XXI wiek",
         "Mężczyzna",
         "Brytyjczyk",
-        "Konserwatyzm"
+        "Konserwatyzm",
+        "Myśliciel społeczny",
+        "Pisarz",
+        "Akademik",
+        "Europa",
+        "Liberalizm gospodarczy",
+        "Tradycjonalizm",
+        "Monarchizm"
       ]
     },
     {
@@ -2655,7 +2720,14 @@
         "Martwy",
         "Mężczyzna",
         "Brytyjczyk",
-        "Liberalizm"
+        "Liberalizm",
+        "Akademik",
+        "Publicysta",
+        "Dyplomata",
+        "Europa",
+        "Socjalliberalizm",
+        "Republikanizm",
+        "XIX wiek"
       ]
     },
     {
@@ -2683,7 +2755,14 @@
         "Lider partii",
         "Polak",
         "Żyje",
-        "Mężczyzna"
+        "Mężczyzna",
+        "Publicysta",
+        "Autorytaryzm",
+        "Tradycjonalizm",
+        "Fundamentalizm religijny",
+        "Liberalizm gospodarczy",
+        "Europa",
+        "Wybory demokratyczne"
       ]
     },
                     {
@@ -2698,7 +2777,23 @@
         "source": "data.json",
         "generatedFromLegacy": true,
         "migratedAt": "2026-06-24"
-      }
+      },
+      "tags": [
+        "Polityk",
+        "Publicysta",
+        "Polak",
+        "Europa",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Konserwatyzm",
+        "Tradycjonalizm",
+        "Nacjonalizm",
+        "Autorytaryzm",
+        "Fundamentalizm religijny",
+        "Monarchizm"
+      ]
     },
     {
       "type": "figure",
@@ -2720,7 +2815,12 @@
         "Kobieta",
         "XX wiek",
         "Liberalizm",
-        "Libertarianizm"
+        "Libertarianizm",
+        "Myśliciel społeczny",
+        "Publicysta",
+        "Ameryka Północna",
+        "Liberalizm gospodarczy",
+        "Republikanizm"
       ]
     },
     {
@@ -2740,7 +2840,12 @@
         "Mężczyzna",
         "Amerykanin",
         "XX wiek",
-        "Libertarianizm"
+        "Libertarianizm",
+        "Myśliciel społeczny",
+        "Akademik",
+        "Ameryka Północna",
+        "Liberalizm gospodarczy",
+        "XXI wiek"
       ]
     },
         {
@@ -2755,7 +2860,20 @@
         "source": "data.json"
       },
       "tags": [
-        "Prezydent"
+        "Prezydent",
+        "Polityk",
+        "Parlamentarzysta",
+        "Publicysta",
+        "Polak",
+        "Europa",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Socjaldemokracja",
+        "Socjalliberalizm",
+        "Republikanizm",
+        "Wybory demokratyczne"
       ]
     },
             {
@@ -2780,7 +2898,10 @@
         "XXI wiek",
         "Konserwatyzm",
         "Nacjonalizm",
-        "Europa"
+        "Europa",
+        "Historyk",
+        "Republikanizm",
+        "Wybory demokratyczne"
       ]
     },
     {
@@ -2806,7 +2927,11 @@
         "XX wiek",
         "XXI wiek",
         "Konserwatyzm",
-        "Monarchizm"
+        "Monarchizm",
+        "Liberalizm gospodarczy",
+        "Liberalizm",
+        "Europa",
+        "Wybory demokratyczne"
       ]
     },
     {
@@ -2829,7 +2954,13 @@
         "XX wiek",
         "XXI wiek",
         "Liberalizm",
-        "Monarchizm"
+        "Monarchizm",
+        "Arystokrata",
+        "Polityk",
+        "Europa",
+        "Konserwatyzm",
+        "Liberalizm gospodarczy",
+        "Dziedziczenie"
       ]
     },
     {
@@ -2850,7 +2981,15 @@
         "Polak",
         "XXI wiek",
         "Mężczyzna",
-        "Liberalizm"
+        "Liberalizm",
+        "Przedsiębiorca",
+        "Publicysta",
+        "Europa",
+        "XX wiek",
+        "Liberalizm gospodarczy",
+        "Konserwatyzm",
+        "Republikanizm",
+        "Wybory demokratyczne"
       ]
     },
         {
@@ -2871,7 +3010,19 @@
         "Polak",
         "XXI wiek",
         "Mężczyzna",
-        "Liberalizm"
+        "Liberalizm",
+        "Ekonomista",
+        "Minister",
+        "Akademik",
+        "Reformator",
+        "Lider partii",
+        "Publicysta",
+        "Europa",
+        "XX wiek",
+        "Liberalizm gospodarczy",
+        "Republikanizm",
+        "Nominacja / Kooptacja",
+        "Wybory demokratyczne"
       ]
     },
     {
@@ -2891,7 +3042,14 @@
         "Inne",
         "Martwy",
         "Mężczyzna",
-        "XX wiek"
+        "XX wiek",
+        "Lider partii",
+        "Reformator",
+        "Publicysta",
+        "Europa",
+        "Socjaldemokracja",
+        "Republikanizm",
+        "Wybory demokratyczne"
       ]
     },
             {
@@ -2908,13 +3066,16 @@
       "tags": [
         "Polityk",
         "Parlamentarzysta",
-        " Polak", 
-        "Europa", 
+        "Polak",
+        "Europa",
         "Żyje",
         "Kobieta",
         "Socjaldemokracja",
         "XX wiek",
-        "XX wiek"
+        "Publicysta",
+        "XXI wiek",
+        "Republikanizm",
+        "Wybory demokratyczne"
       ]
     },
         {
@@ -2941,6 +3102,7 @@
         "Nacjonalizm",
         "Mężczyzna",
         "XIX wiek",
+        "Autorytaryzm",
         "XX wiek"
       ]
     },
@@ -2962,7 +3124,19 @@
         "Mężczyzna",
         "XXI wiek",
         "XX wiek",
-        "Konserwatyzm"
+        "Konserwatyzm",
+        "Minister",
+        "Przedsiębiorca",
+        "Założyciel partii/ruchu",
+        "Lider partii",
+        "Parlamentarzysta",
+        "Publicysta",
+        "Europa",
+        "Nacjonalizm",
+        "Chrześcijańska demokracja",
+        "Republikanizm",
+        "Nominacja / Kooptacja",
+        "Wybory demokratyczne"
       ]
     }
   ]
