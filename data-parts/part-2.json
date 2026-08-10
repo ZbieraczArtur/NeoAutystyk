@@ -3376,9 +3376,13 @@
                     "parties_against": []
                 }
             ],
-            "weight": 5
+            "weight": 5,
+            "require_yes": [
+                439
+            ]
         },
         {
+
             "id": 53,
             "text": "Podstawową i najistotniejszą funkcją państwa powinna być ochrona indywidualnych praw jednostki",
             "description": "Teza ta zakłada, że państwo jest instrumentem powołanym wyłącznie w celu służenia potrzebom i interesom konkretnych osób. Jego najważniejszym zadaniem jest pełnienie roli neutralnego arbitra, który czuwa nad przestrzeganiem reguł współżycia społecznego i zapobiega wzajemnemu naruszaniu wolności przez obywateli. Zgodnie z tym ujęciem nadrzędnym celem struktur politycznych jest zabezpieczenie fundamentalnych praw, takich jak życie, własność oraz swoboda podejmowania decyzji, gdyż bez ich ochrony uporządkowana egzystencja byłaby niemożliwa. Państwo nie jest celem samym w sobie, a jego władza powinna być ograniczona do sfery niezbędnej dla zapewnienia bezpieczeństwa i egzekwowania umów. W tej wizji interes zbiorowy, stabilność czy tradycja nie stanowią wystarczającego uzasadnienia dla ingerencji w suwerenność jednostki, dopóki jej działanie nie szkodzi innym.",
