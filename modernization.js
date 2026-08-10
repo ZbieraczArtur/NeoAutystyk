@@ -264,7 +264,8 @@
     reconcileDynamicAnswers();
     if (window.DEV_MODE) return config.questions.map(question => `${question.id}:(${answerText(question)});`).join(' ');
     const date = getCurrentDateTime();
-    return `Data wykonania testu: ${date}\n\n${config.questions.map(question => `${question.id}. ${question.text} [id:${question.id}]: (${answerText(question)});`).join('\n')}\n`;
+    const questions = [...config.questions].sort((left, right) => idOf(left.id) - idOf(right.id));
+    return `Data wykonania testu: ${date}\n\n${questions.map(question => `${question.id}:(${answerText(question)});`).join('\n')}\n`;
   }
 
   function parseAnyExport(raw) {
@@ -314,7 +315,9 @@
   computeAndDisplayResults = window.computeAndDisplayResults;
   window.renderQuestions = renderModernQuestions; renderQuestions = renderModernQuestions;
   window.generateExportCode = generateModernExport; generateExportCode = generateModernExport;
-  window.importAnswersFromExportCode = importModernExport; importAnswersFromExportCode = importModernExport;
+  // Import pozostaje obsługiwany przez modern-profile-engine.js. Ten mechanizm
+  // tymczasowo ładuje komplet pytań z wszystkich części testu, zanim odtworzy
+  // odpowiedzi; lokalny importer działał jedynie na aktualnie aktywnej części.
 
   // Compact, grouped tag filters: existing checkbox logic is retained, only presentation changes.
   function compactFilters() {
