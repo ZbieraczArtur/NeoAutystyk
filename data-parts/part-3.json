@@ -14818,7 +14818,1167 @@
                     "parties_against": []
                 }
             ],
-            "weight": 4.5
+    "weight": 4.5
+  },
+  {
+    "id": 440,
+    "text": "Większość środków produkcji powinna pozostawać własnością prywatnych osób lub przedsiębiorstw",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 441,
+    "text": "Produkcja dóbr i usług powinna być w znacznej mierze organizowana przez prywatne przedsiębiorstwa konkurujące ze sobą na rynku",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 442,
+    "text": "Ceny większości dóbr i usług powinny być ustalane przede wszystkim przez relację podaży i popytu",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 443,
+    "text": "Jednostki powinny mieć prawo zakładać przedsiębiorstwa i samodzielnie decydować o prowadzonej przez nie działalności",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 444,
+    "text": "Konkurencja między podmiotami gospodarczymi jest pożądanym mechanizmem organizacji gospodarki",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 445,
+    "text": "Prywatny kapitał powinien odgrywać główną rolę w finansowaniu inwestycji gospodarczych",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 446,
+    "text": "Przedsiębiorstwa powinny móc swobodnie reagować na zmiany popytu poprzez zmianę rodzaju, ilości lub ceny oferowanych produktów",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 447,
+    "text": "Decyzje dotyczące tego, jakie dobra należy produkować, powinny być w dużej mierze podejmowane przez producentów w odpowiedzi na decyzje konsumentów",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 448,
+    "text": "Własność przedsiębiorstwa powinna co do zasady wiązać się z prawem właściciela do podejmowania decyzji dotyczących jego działalności",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 449,
+    "text": "O tym, które przedsiębiorstwa rozwijają się, a które tracą klientów, powinny w znacznym stopniu decydować wybory konsumentów",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 450,
+    "text": "Rynek powinien być podstawowym mechanizmem koordynowania decyzji gospodarczych między niezależnymi podmiotami",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 451,
+    "text": "Większość środków produkcji nie powinna być własnością prywatnych osób ani prywatnych przedsiębiorstw",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 452,
+    "text": "Podmioty gospodarczy powinny powinny w znacznej części mieć formę własności publicznej, spółdzielczej lub wspólnotowej",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 453,
+    "text": "Decyzje dotyczące wykorzystania podstawowych środków produkcji powinny być podejmowane zbiorowo, a nie wyłącznie przez ich prywatnych właścicieli",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 454,
+    "text": "Pracownicy powinni mieć zbiorowy udział w podejmowaniu decyzji dotyczących funkcjonowania przedsiębiorstw, w których pracują",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 455,
+    "text": "Gospodarka powinna umożliwiać zbiorowe ustalanie priorytetów produkcyjnych dla całego społeczeństwa",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 456,
+    "text": "Dostęp do podstawowych dóbr i usług nie powinien zależeć wyłącznie od zdolności jednostki do zapłacenia ceny rynkowej",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 457,
+    "text": "Decyzje dotyczące inwestycji gospodarczych powinny uwzględniać zbiorowo określane cele społeczne, nawet jeśli nie odpowiadają one aktualnym sygnałom rynku",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 458,
+    "text": "Planowanie gospodarcze powinno odgrywać istotną rolę w określaniu poziomu i struktury produkcji",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
+  },
+  {
+    "id": 459,
+    "text": "Zasoby gospodarcze powinny być wykorzystywane zgodnie z kolektywnie określanymi priorytetami, nawet jeśli wymaga to ograniczenia części prywatnych decyzji gospodarczych",
+    "description": "",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      },
+      {
+        "label": "Pomiń pytanie",
+        "value": 0,
+        "values_for": [],
+        "values_against": [],
+        "ideologies_for": [],
+        "ideologies_against": [],
+        "parties_for": [],
+        "parties_against": []
+      }
+    ],
+    "weight": 1
         }
     ]
 }
