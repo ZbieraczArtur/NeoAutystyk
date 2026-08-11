@@ -14827,7 +14827,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14837,7 +14837,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14847,7 +14847,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14857,7 +14857,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14885,7 +14885,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14895,7 +14895,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14905,7 +14905,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14915,7 +14915,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14943,7 +14943,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14953,7 +14953,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14963,7 +14963,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -14973,7 +14973,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15001,7 +15001,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15011,7 +15011,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15021,7 +15021,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15031,7 +15031,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15059,7 +15059,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15069,7 +15069,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15079,7 +15079,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15089,7 +15089,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15117,7 +15117,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15127,7 +15127,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15137,7 +15137,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15147,7 +15147,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15175,7 +15175,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15185,7 +15185,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15195,7 +15195,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15205,7 +15205,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15233,7 +15233,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15243,7 +15243,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15253,7 +15253,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15263,7 +15263,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15291,7 +15291,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15301,7 +15301,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15311,7 +15311,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15321,7 +15321,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15349,7 +15349,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15359,7 +15359,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15369,7 +15369,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15379,7 +15379,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15407,7 +15407,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15417,7 +15417,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15427,7 +15427,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15437,7 +15437,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15465,7 +15465,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15475,7 +15475,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15485,7 +15485,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15495,7 +15495,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15523,7 +15523,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15533,7 +15533,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15543,7 +15543,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15553,7 +15553,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15581,7 +15581,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15591,7 +15591,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15601,7 +15601,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15611,7 +15611,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15639,7 +15639,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15649,7 +15649,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15659,7 +15659,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15669,7 +15669,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15697,7 +15697,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15707,7 +15707,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15717,7 +15717,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15727,7 +15727,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15755,7 +15755,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15765,7 +15765,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15775,7 +15775,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15785,7 +15785,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15813,7 +15813,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15823,7 +15823,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15833,7 +15833,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15843,7 +15843,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15871,7 +15871,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15881,7 +15881,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15891,7 +15891,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15901,7 +15901,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15929,7 +15929,7 @@
     "answers": [
       {
         "label": "Zdecydowanie zgadzam się",
-        "value": 0,
+        "value": 1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15939,7 +15939,7 @@
       },
       {
         "label": "Częściowo zgadzam się",
-        "value": 0,
+        "value": 1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15949,7 +15949,7 @@
       },
       {
         "label": "Częściowo nie zgadzam się",
-        "value": 0,
+        "value": -1,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
@@ -15959,7 +15959,7 @@
       },
       {
         "label": "Zdecydowanie nie zgadzam się",
-        "value": 0,
+        "value": -1.5,
         "values_for": [],
         "values_against": [],
         "ideologies_for": [],
