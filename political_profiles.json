@@ -41,6 +41,23 @@
         "Parlamentarne"
       ]
     },
+        {
+      "type": "party",
+      "id": "party:rozwojplus",
+      "key": "Rozwój Plus",
+      "name": "Rozwój Plus",
+      "description": "TBA",
+      "logo": "images/Partie/Rozwoj_Plus_new_logo.png",
+      "exportCode": "",
+      "metadata": {
+        "source": "data.json",
+        "generatedFromLegacy": true,
+        "migratedAt": "2026-06-24"
+      },
+      "tags": [
+        "Parlamentarne"
+      ]
+    },
     {
       "type": "party",
       "id": "party:ko",
