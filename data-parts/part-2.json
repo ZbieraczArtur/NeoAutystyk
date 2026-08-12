@@ -2663,16 +2663,6 @@
                     "parties_against": []
                 },
                 {
-                    "label": "Tyrania lub totalizm nie są złe",
-                    "value": 1.5,
-                    "values_for": [],
-                    "values_against": [],
-                    "ideologies_for": [],
-                    "ideologies_against": [],
-                    "parties_for": [],
-                    "parties_against": []
-                }
-                {
                     "label": "Pomiń pytanie",
                     "value": 0,
                     "values_for": [],
