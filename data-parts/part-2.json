@@ -2502,179 +2502,201 @@
             ],
             "weight": 4.5
         },
+{
+    "id": 49,
+    "text": "Państwo jest instytucją, która *nieuchronnie* prowadzi do nadużyć i tyranii",
+    "description": "XXXXXX",
+    "comment": "Placeholder",
+    "answers": [
         {
-            "id": 49,
-            "text": "Państwo jest instytucją, która *nieuchronnie* prowadzi do nadużyć i tyranii",
-            "description": "XXXXXX",
-            "comment": "Placeholder",
-            "answers": [
-                {
-                    "label": "Zdecydowanie zgadzam się",
-                    "value": 1.5,
-                    "values_for": [
-                        "Samoorganizacja",
-                        "Autonomia",
-                        "Sakralizacja autorytetu",
-                        "Ograniczenie władzy"
-                    ],
-                    "values_against": [
-                        "Etatyzm",
-                        "Desakralizacja autorytetu"
-                    ],
-                    "ideologies_for": [
-                        "Głęboka ekologia"
-                    ],
-                    "ideologies_against": [
-                        "Socjalliberalizm",
-                        "Socjaldemokracja",
-                        "Liberalizm klasyczny",
-                        "Nacjonalizm konserwatywny",
-                        "Faszyzm",
-                        "Nacjonalizm liberalny",
-                        "Ordoliberalizm"
-                    ],
-                    "parties_for": [],
-                    "parties_against": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Partia Zieloni",
-                        "Polska Partia Socjalistyczna",
-                        "Nowa Nadzieja",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ]
-                },
-                {
-                    "label": "Częściowo zgadzam się",
-                    "value": 1,
-                    "values_for": [
-                        "Samoorganizacja",
-                        "Autonomia",
-                        "Sakralizacja autorytetu",
-                        "Ograniczenie władzy"
-                    ],
-                    "values_against": [
-                        "Etatyzm",
-                        "Desakralizacja autorytetu"
-                    ],
-                    "ideologies_for": [
-                        "Głęboka ekologia"
-                    ],
-                    "ideologies_against": [
-                        "Socjalliberalizm",
-                        "Socjaldemokracja",
-                        "Nacjonalizm konserwatywny",
-                        "Faszyzm",
-                        "Nacjonalizm liberalny",
-                        "Ordoliberalizm"
-                    ],
-                    "parties_for": [],
-                    "parties_against": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Partia Zieloni",
-                        "Polska Partia Socjalistyczna",
-                        "Nowa Nadzieja",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ]
-                },
-                {
-                    "label": "Częściowo nie zgadzam się",
-                    "value": -1,
-                    "values_for": [
-                        "Etatyzm",
-                        "Desakralizacja autorytetu"
-                    ],
-                    "values_against": [
-                        "Samoorganizacja",
-                        "Autonomia",
-                        "Sakralizacja autorytetu",
-                        "Ograniczenie władzy"
-                    ],
-                    "ideologies_for": [
-                        "Socjalliberalizm",
-                        "Socjaldemokracja",
-                        "Nacjonalizm konserwatywny",
-                        "Faszyzm",
-                        "Nacjonalizm liberalny",
-                        "Ordoliberalizm"
-                    ],
-                    "ideologies_against": [],
-                    "parties_for": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Partia Zieloni",
-                        "Polska Partia Socjalistyczna",
-                        "Nowa Nadzieja",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ],
-                    "parties_against": []
-                },
-                {
-                    "label": "Zdecydowanie nie zgadzam się",
-                    "value": -1.5,
-                    "values_for": [
-                        "Etatyzm",
-                        "Desakralizacja autorytetu"
-                    ],
-                    "values_against": [
-                        "Samoorganizacja",
-                        "Autonomia",
-                        "Sakralizacja autorytetu",
-                        "Ograniczenie władzy"
-                    ],
-                    "ideologies_for": [
-                        "Socjalliberalizm",
-                        "Socjaldemokracja",
-                        "Liberalizm klasyczny",
-                        "Nacjonalizm konserwatywny",
-                        "Faszyzm",
-                        "Nacjonalizm liberalny",
-                        "Ordoliberalizm"
-                    ],
-                    "ideologies_against": [],
-                    "parties_for": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Partia Zieloni",
-                        "Polska Partia Socjalistyczna",
-                        "Nowa Nadzieja",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ],
-                    "parties_against": []
-                },
-                {
-                    "label": "Pomiń pytanie",
-                    "value": 0,
-                    "values_for": [],
-                    "values_against": [],
-                    "ideologies_for": [],
-                    "ideologies_against": [],
-                    "parties_for": [],
-                    "parties_against": []
-                }
+            "label": "Zdecydowanie zgadzam się",
+            "value": 1.5,
+            "values_for": [
+                "Samoorganizacja",
+                "Autonomia",
+                "Sakralizacja autorytetu",
+                "Ograniczenie władzy"
             ],
-            "weight": 4.5
+            "values_against": [
+                "Etatyzm",
+                "Desakralizacja autorytetu"
+            ],
+            "ideologies_for": [
+                "Głęboka ekologia"
+            ],
+            "ideologies_against": [
+                "Socjalliberalizm",
+                "Socjaldemokracja",
+                "Liberalizm klasyczny",
+                "Nacjonalizm konserwatywny",
+                "Faszyzm",
+                "Nacjonalizm liberalny",
+                "Ordoliberalizm"
+            ],
+            "parties_for": [],
+            "parties_against": [
+                "Prawo i Sprawiedliwość",
+                "Koalicja Obywatelska",
+                "Polskie Stronnictwo Ludowe",
+                "Nowa Lewica",
+                "Konfederacja Korony Polskiej",
+                "Ruch Narodowy",
+                "Partia Razem",
+                "Partia Zieloni",
+                "Polska Partia Socjalistyczna",
+                "Nowa Nadzieja",
+                "Polska 2050 Rzeczypospolitej Polskiej"
+            ]
         },
+        {
+            "label": "Częściowo zgadzam się",
+            "value": 1,
+            "values_for": [
+                "Samoorganizacja",
+                "Autonomia",
+                "Sakralizacja autorytetu",
+                "Ograniczenie władzy"
+            ],
+            "values_against": [
+                "Etatyzm",
+                "Desakralizacja autorytetu"
+            ],
+            "ideologies_for": [
+                "Głęboka ekologia"
+            ],
+            "ideologies_against": [
+                "Socjalliberalizm",
+                "Socjaldemokracja",
+                "Nacjonalizm konserwatywny",
+                "Faszyzm",
+                "Nacjonalizm liberalny",
+                "Ordoliberalizm"
+            ],
+            "parties_for": [],
+            "parties_against": [
+                "Prawo i Sprawiedliwość",
+                "Koalicja Obywatelska",
+                "Polskie Stronnictwo Ludowe",
+                "Nowa Lewica",
+                "Konfederacja Korony Polskiej",
+                "Ruch Narodowy",
+                "Partia Razem",
+                "Partia Zieloni",
+                "Polska Partia Socjalistyczna",
+                "Nowa Nadzieja",
+                "Polska 2050 Rzeczypospolitej Polskiej"
+            ]
+        },
+        {
+            "label": "Częściowo nie zgadzam się",
+            "value": -1,
+            "values_for": [
+                "Etatyzm",
+                "Desakralizacja autorytetu"
+            ],
+            "values_against": [
+                "Samoorganizacja",
+                "Autonomia",
+                "Sakralizacja autorytetu",
+                "Ograniczenie władzy"
+            ],
+            "ideologies_for": [
+                "Socjalliberalizm",
+                "Socjaldemokracja",
+                "Nacjonalizm konserwatywny",
+                "Faszyzm",
+                "Nacjonalizm liberalny",
+                "Ordoliberalizm"
+            ],
+            "ideologies_against": [],
+            "parties_for": [
+                "Prawo i Sprawiedliwość",
+                "Koalicja Obywatelska",
+                "Polskie Stronnictwo Ludowe",
+                "Nowa Lewica",
+                "Konfederacja Korony Polskiej",
+                "Ruch Narodowy",
+                "Partia Razem",
+                "Partia Zieloni",
+                "Polska Partia Socjalistyczna",
+                "Nowa Nadzieja",
+                "Polska 2050 Rzeczypospolitej Polskiej"
+            ],
+            "parties_against": []
+        },
+        {
+            "label": "Zdecydowanie nie zgadzam się",
+            "value": -1.5,
+            "values_for": [
+                "Etatyzm",
+                "Desakralizacja autorytetu"
+            ],
+            "values_against": [
+                "Samoorganizacja",
+                "Autonomia",
+                "Sakralizacja autorytetu",
+                "Ograniczenie władzy"
+            ],
+            "ideologies_for": [
+                "Socjalliberalizm",
+                "Socjaldemokracja",
+                "Liberalizm klasyczny",
+                "Nacjonalizm konserwatywny",
+                "Faszyzm",
+                "Nacjonalizm liberalny",
+                "Ordoliberalizm"
+            ],
+            "ideologies_against": [],
+            "parties_for": [
+                "Prawo i Sprawiedliwość",
+                "Koalicja Obywatelska",
+                "Polskie Stronnictwo Ludowe",
+                "Nowa Lewica",
+                "Konfederacja Korony Polskiej",
+                "Ruch Narodowy",
+                "Partia Razem",
+                "Partia Zieloni",
+                "Polska Partia Socjalistyczna",
+                "Nowa Nadzieja",
+                "Polska 2050 Rzeczypospolitej Polskiej"
+            ],
+            "parties_against": []
+        },
+        {
+            "label": "Tyrania lub totalizm nie są złe",
+            "value": -1.5,
+            "values_for": [
+                "Etatyzm",
+                "Sakralizacja autorytetu",
+                "Heteronomia",
+                "Autokracja",
+                "Antydemokracja",
+                "Absolutyzm władzy"
+            ],
+            "values_against": [
+                "Samoorganizacja",
+                "Autonomia",
+                "Desakralizacja autorytetu",
+                "Ograniczenie władzy"
+            ],
+            "ideologies_for": [],
+            "ideologies_against": [],
+            "parties_for": [],
+            "parties_against": []
+        },
+        {
+            "label": "Pomiń pytanie",
+            "value": 0,
+            "values_for": [],
+            "values_against": [],
+            "ideologies_for": [],
+            "ideologies_against": [],
+            "parties_for": [],
+            "parties_against": []
+        }
+    ],
+    "weight": 4.5
+},
         {
             "id": 50,
             "text": "Wolność jednostki jest niemożliwa do pogodzenia z jakąkolwiek formą władzy politycznej",
