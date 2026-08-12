@@ -1555,7 +1555,6 @@
                         "Antypaternalizm"
                     ],
                     "values_against": [
-                        "Kolektywizm",
                         "Heteronomia",
                         "Paternalizm"
                     ],
@@ -12093,6 +12092,87 @@
                 }
             ],
             "weight": 3.5
+        },
+        {
+            "id": 460,
+            "text": "Indywidualna wolność jednostki stanowi istotną wartość",
+            "description": "XXXXXX",
+            "comment": "Placeholder",
+            "answers": [
+                {
+                    "label": "Zdecydowanie zgadzam się",
+                    "value": 1.5,
+                    "values_for": [
+                        "Autonomia",
+                        "Indywidualizm",
+                        "Ograniczenie władzy",
+                        "Dobrowolność wspólnoty",
+                        "Antypaternalizm"
+                    ],
+                    "values_against": [
+                        "Heteronomia",
+                        "Paternalizm"
+                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                  
+                },
+                {
+                    "label": "Częściowo zgadzam się",
+                    "value": 1,
+                    "values_for": [
+                        "Autonomia",
+                        "Indywidualizm",
+                        "Ograniczenie władzy",
+                        "Dobrowolność wspólnoty",
+                        "Antypaternalizm"
+                    ],
+                    "values_against": [
+                        "Heteronomia",
+                        "Paternalizm"
+                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                },
+                {
+                    "label": "Częściowo nie zgadzam się",
+                    "value": -1,
+                    "values_for": ["Heteronomia"],
+                    "values_against": [
+                        "Autonomia",
+                        "Indywidualizm"],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                   
+                },
+                {
+                    "label": "Zdecydowanie nie zgadzam się",
+                    "value": -1.5,
+                    "values_for": ["Heteronomia"],
+                    "values_against": [
+                        "Autonomia",
+                        "Indywidualizm"],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                    
+                },
+                {
+                    "label": "Pomiń pytanie",
+                    "value": 0,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                }
+            ],
+            "weight": 2.0
         }
     ]
 }
