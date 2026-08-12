@@ -1049,8 +1049,11 @@
           "parties_against": []
         }
       ],
-      "weight": 3.5
-    },
+      "weight": 3.5,
+            "require_yes": [
+                460
+            ]
+        },
         {
             "id": 230,
             "text": "Istnienie mniej i bardziej zamożnych ludzi jest czymś akceptowalnym",
