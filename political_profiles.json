@@ -2268,7 +2268,7 @@
     }
   ],
   "tagCategories": {
-  "figures": {
+  "s": {
     "Zawód / dziedzina": [
       "Filozof",
       "Ekonomista",
@@ -2516,6 +2516,41 @@
         "Republikanizm"
       ]
     },
+    {
+      "type": "figure",
+      "id": "figure:jozefpilsudski",
+      "key": "JozefPilsudski",
+      "name": "Józef Piłsudski",
+      "description": "TBA",
+      "logo": "images/Figury/Estymat_Pilsudski.webp",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Wojskowy",
+        "Rewolucjonista",
+        "Publicysta",
+        "Premier",
+        "Autokrata",
+        "Dyktator",
+        "Minister",
+        "Założyciel partii/ruchu",
+        "Lider partii",
+        "Dysydent",
+        "Polak",
+        "Martwy",
+        "Mężczyzna",
+        "XIX wiek",
+        "XX wiek",
+        "Autorytaryzm",
+        "Nacjonalizm",
+        "Republikanizm",
+        "Europa",
+        "Zamach stanu / Coup",
+        "Nominacja / Kooptacja"
+      ]
+    },    
     {
       "type": "figure",
       "id": "figure:robertbiedron",
