@@ -6280,6 +6280,183 @@
                 }
             ],
             "weight": 2.25
+        },
+{
+        "id": 463,
+        "text": "Państwo powinno określać obowiązkowy zakres treści nauczanych w szkołach",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3
+    },
+{
+        "id"466: "Państwo powinno całkowicie zakazać wjazdu na swoje terytorium osobom nieposiadającym jego obywatelstwa",
+        "text": "",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 4
+    },
+{
+        "id": 468,
+        "text": "Najwyższe urzędy państwowe powinny cieszyć się szczególnym szacunkiem ze względu na rangę pełnionej funkcji.",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3
         }
     ]
 }
