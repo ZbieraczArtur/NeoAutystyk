@@ -13348,9 +13348,13 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 3,
+            "require_yes": [
+                101
+            ]
         },
         {
+
             "id": 331,
             "text": "Rolnictwo powinno zajmować uprzywilejowaną pozycję w polityce gospodarczej państwa względem przemysłu i usług",
             "description": "XXXXXX",
