@@ -12361,9 +12361,9 @@
             ],
             "weight": 2.25
         },
-                {
+        {
             "id": 363,
-            "text": "Podstawą organizacji społeczeństwa powinna być wspólnota narodowa",
+            "text": "Granice państwa powinny pokrywać się z granicami narodowości",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
@@ -12372,8 +12372,12 @@
                     "value": 1.5,
                     "values_for": [
                         "Partykularyzm narodowy",
+                        "Etatyzm",
+                        "Kontrola granic",
                         "Homogenizacja",
-                        "Organicyzm"
+                        "Organicyzm",
+                        "Uniformizacja norm",
+                        "Obowiązkowość wspólnoty"
                     ],
                     "values_against": [],
                     "ideologies_for": [],
@@ -12401,8 +12405,12 @@
                     "value": 1,
                     "values_for": [
                         "Partykularyzm narodowy",
+                        "Etatyzm",
+                        "Kontrola granic",
                         "Homogenizacja",
-                        "Organicyzm"
+                        "Organicyzm",
+                        "Uniformizacja norm",
+                        "Obowiązkowość wspólnoty"
                     ],
                     "values_against": [],
                     "ideologies_for": [],
