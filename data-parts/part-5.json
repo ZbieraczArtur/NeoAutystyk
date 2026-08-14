@@ -6280,6 +6280,69 @@
                 }
             ],
             "weight": 2.25
+        },
+        {
+            "id": 468,
+            "text": "Najwyższe urzędy państwowe powinny cieszyć się szczególnym szacunkiem ze względu na rangę pełnionej funkcji",
+            "description": "XXXXXX",
+            "comment": "Placeholder",
+            "answers": [
+                {
+                    "label": "Zdecydowanie zgadzam się",
+                    "value": 1.5,
+                    "values_for": [
+                    ],
+                    "values_against": [
+                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                  
+                },
+                {
+                    "label": "Częściowo zgadzam się",
+                    "value": 1,
+                    "values_for": [
+                    ],
+                    "values_against": [
+                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                },
+                {
+                    "label": "Częściowo nie zgadzam się",
+                    "value": -1,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                   
+                },
+                {
+                    "label": "Zdecydowanie nie zgadzam się",
+                    "value": -1.5,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                 
+                },
+                {
+                    "label": "Pomiń pytanie",
+                    "value": 0,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                }
+            ],
+            "weight": 2.0
         }
     ]
 }
