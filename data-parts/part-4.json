@@ -12363,7 +12363,7 @@
         },
         {
             "id": 363,
-            "text": "Granice państwa powinny pokrywać się z granicami narodowości",
+            "text": "Podstawą organizacji społeczeństwa powinna być wspólnota narodowa",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
@@ -12371,13 +12371,9 @@
                     "label": "Zdecydowanie zgadzam się",
                     "value": 1.5,
                     "values_for": [
-                        "Partykularyzm narodowy",
-                        "Etatyzm",
-                        "Kontrola granic",
+                        "Partykularyzm narodowy",  
                         "Homogenizacja",
-                        "Organicyzm",
-                        "Uniformizacja norm",
-                        "Obowiązkowość wspólnoty"
+                        "Organicyzm"
                     ],
                     "values_against": [],
                     "ideologies_for": [],
@@ -12404,13 +12400,9 @@
                     "label": "Częściowo zgadzam się",
                     "value": 1,
                     "values_for": [
-                        "Partykularyzm narodowy",
-                        "Etatyzm",
-                        "Kontrola granic",
+                        "Partykularyzm narodowy",  
                         "Homogenizacja",
-                        "Organicyzm",
-                        "Uniformizacja norm",
-                        "Obowiązkowość wspólnoty"
+                        "Organicyzm"
                     ],
                     "values_against": [],
                     "ideologies_for": [],
