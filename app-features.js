@@ -13,7 +13,7 @@
       'Rola / urząd': [
         'Autokrata', 'Prezydent', 'Premier', 'Monarcha',
         'Papież', 'Dyktator', 'Parlamentarzysta',
-        'Myśliciel społeczny', 'Kanclerz', 'Więzień polityczny',
+        'Myśliciel społeczny', 'Kanclerz',
         'Reformator', 'Założyciel partii/ruchu', 'Lider partii',
         'Wiceprezydent / Zastępca szefa państwa', 'Dyplomata',
         'Arystokrata', 'Dysydent', 'Samorządowiec', 'Minister'
