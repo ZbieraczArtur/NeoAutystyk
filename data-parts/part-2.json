@@ -13158,6 +13158,301 @@
                 }
             ],
             "weight": 2.0
+        },
+{
+        "id": 471,
+        "text": "Na czele społeczeństwa powinien stać monarcha",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 4
+    },
+{
+        "id": 472,
+        "text": "Władza wykonawcza powinna mieć większy wpływ na kierunek polityki państwa niż parlament",
+        "description": "Teza oznacza, że przy podejmowaniu decyzji dotyczących ogólnego kierunku polityki państwa większą rolę powinny odgrywać organy władzy wykonawczej niż parlament. Nie oznacza to całkowitego pozbawienia parlamentu jego kompetencji ani wyeliminowania jego udziału w procesie politycznym. Chodzi o ustalenie, który z tych dwóch rodzajów organów powinien mieć większą możliwość kształtowania zasadniczych kierunków działania państwa. Teza nie określa konkretnego ustroju państwa ani nie przesądza, jakie dokładnie kompetencje powinny zostać przekazane władzy wykonawczej.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3.5
+    },
+{
+        "id": 473,
+        "text": "Władza wykonawcza powinna móc podejmować istotne decyzje bez każdorazowego uzyskiwania zgody parlamentu",
+        "description": "Teza oznacza, że władza wykonawcza powinna mieć możliwość samodzielnego podejmowania określonych istotnych decyzji politycznych lub administracyjnych bez konieczności uzyskiwania wcześniejszej zgody parlamentu w każdym takim przypadku. Oznacza to większą autonomię władzy wykonawczej w bieżącym podejmowaniu decyzji. Teza nie oznacza jednak, że parlament powinien zostać całkowicie pozbawiony wpływu na działania egzekutywy. Nie przesądza również, jakie decyzje powinny wymagać zgody parlamentu, a jakie powinny pozostawać w zakresie samodzielnych kompetencji władzy wykonawczej.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3.5
+    },
+{
+        "id": 474,
+        "text": "Najważniejsze decyzje władzy wykonawczej powinny podlegać kontroli innych organów państwa",
+        "description": "Teza oznacza, że nawet w przypadku przyznania władzy wykonawczej szerokich kompetencji jej najważniejsze decyzje powinny podlegać możliwości sprawdzenia, zakwestionowania lub ograniczenia przez inne organy państwa. Kontrola może dotyczyć między innymi zgodności decyzji z prawem, konstytucją lub zakresem przyznanych kompetencji. Teza nie określa, który organ powinien sprawować taką kontrolę ani jak szerokie powinny być jego uprawnienia. Jej przedmiotem jest sama zasada, że władza wykonawcza nie powinna pozostawać całkowicie poza możliwością kontroli ze strony innych organów państwa.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 4.0
+    },
+    {
+        "id": 475,
+        "text": "Żaden organ państwa nie powinien mieć możliwości powstrzymania władzy wykonawczej przed realizacją jej decyzji",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+                }
+            ],
+            "weight": 5.0
         }
     ]
 }
