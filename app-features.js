@@ -18,10 +18,13 @@
         'Wiceprezydent / Zastępca szefa państwa', 'Dyplomata',
         'Arystokrata', 'Dysydent', 'Samorządowiec', 'Minister'
       ],
-      'Narodowość': [
-        'Amerykanin', 'Brytyjczyk', 'Niemiec', 'Polak',
-        'Francuz', 'Rosjanin', 'Argentyńczyk', 'Włoch', 'Chińczyk',
-        'Holender', 'Czech'
+        'Narodowość': [
+        'Amerykańska', 'Polska', 'Brytyjska', 'Niemiecka',
+        'Francuska', 'Rosyjska', 'Włoska', 'Austriacka',
+        'Ukraińska', 'Indyjska', 'Hiszpańska',
+        'Kanadyjska', 'Chińska', 'Holenderska', 'Argentyńska',
+        'Czeska', 'Izraelska', 'Australijska', 'Japońska',
+        'Chilijska'
       ],
       Status: ['Żyje', 'Martwy'],
       'Płeć': ['Kobieta', 'Mężczyzna'],
