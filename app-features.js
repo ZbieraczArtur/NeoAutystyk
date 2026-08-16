@@ -24,7 +24,7 @@
         'Ukraińska', 'Indyjska', 'Hiszpańska',
         'Kanadyjska', 'Chińska', 'Holenderska', 'Argentyńska',
         'Czeska', 'Izraelska', 'Australijska', 'Japońska',
-        'Chilijska'
+        'Chilijska', "Inna"
       ],
       Status: ['Żyje', 'Martwy'],
       'Płeć': ['Kobieta', 'Mężczyzna'],
