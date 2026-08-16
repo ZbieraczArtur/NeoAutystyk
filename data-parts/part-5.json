@@ -6402,7 +6402,183 @@
                 }
             ],
             "weight": 4
+        },
+        {
+        "id": 483,
+        "text": "Państwo powinno karać za dobrowolne stosunki seksualne między osobami tej samej płci",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 4.0
+    },
+{
+        "id": 484,
+        "text": "Państwo powinno zapewniać powszechny dostęp do finansowanej ze środków publicznych edukacji",
+        "description": "Teza oznacza, że państwo powinno zapewnić wszystkim mieszkańcom możliwość korzystania z edukacji, której finansowanie odbywa się ze środków publicznych. „Powszechny dostęp” oznacza, że możliwość korzystania z takiej edukacji nie powinna być uzależniona od indywidualnej zdolności do poniesienia pełnego kosztu nauki. Teza nie przesądza jednak, kto powinien prowadzić szkoły ani w jaki sposób powinny być one organizowane. Nie oznacza również, że wszystkie placówki muszą być własnością państwa. Dotyczy przede wszystkim publicznego finansowania i zapewnienia mieszkańcom dostępu do edukacji.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3.5
+    },
+    {
+        "id": 485,
+        "text": "Państwo powinno bezpośrednio prowadzić większość szkół finansowanych ze środków publicznych",
+        "description": "Teza oznacza, że większość szkół, których działalność jest finansowana ze środków publicznych, powinna być bezpośrednio organizowana i prowadzona przez państwo lub jego jednostki. Państwo odpowiadałoby w takim modelu między innymi za funkcjonowanie placówek, ich organizację oraz podstawowe zasady ich działalności. Teza nie oznacza konieczności całkowitego wyeliminowania szkół prowadzonych przez inne podmioty.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+                }
+            ],
+            "weight": 3.5
         }
     ]
 }
-
