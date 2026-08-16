@@ -16046,6 +16046,360 @@
                 }
             ],
             "weight": 2.0
+        },
+{
+        "id": 476,
+        "text": "Państwo powinno bezpośrednio organizować i finansować większość podstawowych usług zdrowotnych",
+        "description": "Teza oznacza, że państwo powinno odgrywać bezpośrednią rolę w organizowaniu i finansowaniu większości podstawowych usług związanych z ochroną zdrowia. Oznacza to, że państwo nie ograniczałoby się wyłącznie do przekazywania środków podmiotom działającym niezależnie od niego, lecz samo uczestniczyłoby w określaniu sposobu funkcjonowania podstawowych świadczeń zdrowotnych i zapewnianiu ich finansowania. Teza nie oznacza konieczności całkowitego wyeliminowania prywatnych placówek lub usług. Dotyczy przede wszystkim tego, kto powinien ponosić główną odpowiedzialność za organizację podstawowej opieki zdrowotnej.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3.0
+    },
+{
+        "id": 477,
+        "text": "Państwo powinno ograniczać import w celu ochrony krajowych producentów przed zagraniczną konkurencją",
+        "description": "Teza oznacza, że państwo powinno stosować instrumenty ograniczające napływ określonych dóbr z zagranicy, jeżeli ich import konkuruje z produkcją krajową. Mogą do tego służyć między innymi cła, limity ilościowe, wymagania dotyczące importowanych produktów lub inne ograniczenia handlowe. Celem takich działań byłoby zmniejszenie presji konkurencyjnej wywieranej przez zagranicznych producentów na przedsiębiorstwa działające w kraju. Teza nie określa rodzaju produktów, zakresu ograniczeń ani konkretnych instrumentów. Nie przesądza również, czy ograniczenia powinny obejmować cały handel zagraniczny, czy tylko wybrane towary.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3.0
+    },
+{
+        "id": 478,
+        "text": "Państwo powinno zapewniać mieszkańcom dostęp do finansowanej ze środków publicznych opieki zdrowotnej",
+        "description": "Teza oznacza, że państwo powinno przeznaczać środki publiczne na zapewnienie mieszkańcom dostępu do opieki zdrowotnej. Obejmuje to finansowanie świadczeń związanych z zapobieganiem chorobom, ich rozpoznawaniem, leczeniem oraz innymi podstawowymi potrzebami zdrowotnymi. Teza nie przesądza, czy usługi powinny być wykonywane przez placówki należące do państwa, czy przez podmioty prywatne otrzymujące środki publiczne. Nie określa również zakresu finansowanych świadczeń, sposobu organizacji systemu ani tego, czy dostęp do nich powinien być jednakowy dla wszystkich mieszkańców.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 4.0
+    },
+{
+        "id": 479,
+        "text": "Państwo powinno zapewniać mieszkańcom podstawowe świadczenia emerytalne finansowane ze środków publicznych",
+        "description": "Teza oznacza, że państwo powinno zapewniać mieszkańcom określony poziom świadczeń po osiągnięciu wieku emerytalnego lub spełnieniu innych warunków uprawniających do emerytury, a środki na ich wypłatę powinny pochodzić z finansów publicznych. Teza nie określa wysokości świadczeń, sposobu ich obliczania ani źródła, z którego dokładnie powinny pochodzić środki. Nie wyklucza również funkcjonowania prywatnych oszczędności lub dodatkowych form zabezpieczenia emerytalnego. Dotyczy wyłącznie tego, czy państwo powinno zapewniać podstawowe świadczenie emerytalne finansowane publicznie.",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 3.5
+    },
+{
+        "id": 480,
+        "text": "Państwo powinno zapewniać osobom, które nie są w stanie samodzielnie zaspokoić podstawowych potrzeb mieszkaniowych, pomoc finansowaną ze środków publicznych",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            }
+        ],
+        "weight": 2.5
+    },
+    {
+        "id": 481,
+        "text": "Świadczenia społeczne finansowane przez państwo powinny być przede wszystkim kierowane do osób, które nie są w stanie samodzielnie zaspokoić określonych podstawowych potrzeb.",
+        "description": "",
+        "comment": "",
+        "answers": [
+            {
+                "label": "Zdecydowanie zgadzam się",
+                "value": 1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo zgadzam się",
+                "value": 1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Częściowo nie zgadzam się",
+                "value": -1,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Zdecydowanie nie zgadzam się",
+                "value": -1.5,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+            },
+            {
+                "label": "Pomiń pytanie",
+                "value": 0,
+                "values_for": [],
+                "values_against": [],
+                "ideologies_for": [],
+                "ideologies_against": [],
+                "parties_for": [],
+                "parties_against": []
+                }
+            ],
+            "weight": 3
         }
     ]
 }
