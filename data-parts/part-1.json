@@ -3,7 +3,7 @@
         {
             "left": "Autonomia",
             "right": "Heteronomia",
-            "leftDef": "Zdolność do rozstrzygania o własnym losie, która wynika z niezależności od wpływów zewnętrznych.",
+            "leftDef": "Zdolność do rozstrzygffania o własnym losie, która wynika z niezależności od wpływów zewnętrznych.",
             "rightDef": "Podleganie normom, zasadom lub prawom, których nie ustanowiło się samemu (np. prawo, religia, autorytet)."
         },
         {
@@ -12016,7 +12016,7 @@
         },
         {
             "id": 396,
-            "text": "*W czasie kryzysu emigracja z kraju nie powinna być ograniczana przez państwo",
+            "text": "*W czasie kryzysu (np. wojny) emigracja z kraju nie powinna być ograniczana przez państwo",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
