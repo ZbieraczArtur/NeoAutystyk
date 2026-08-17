@@ -3484,7 +3484,7 @@
         "Nominacja / Kooptacja"
       ]
     },
-    {
+        {
       "type": "figure",
       "id": "figure:murrayrothbard",
       "key": "MurrayRothbard",
@@ -3512,7 +3512,7 @@
         "Ameryka Północna"
       ]
     },
-    {
+        {
       "type": "figure",
       "id": "figure:mateuszmorawiecki",
       "key": "MateuszMorawiecki",
