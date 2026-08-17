@@ -194,7 +194,12 @@
 
   function markSelections() {
     document.querySelectorAll('.answer-option').forEach(element => element.classList.remove('selected'));
-    userAnswers.filter(row => !row.neither && !row.noteOnly).forEach(row => document.querySelector(`.question-card[data-id="${row.questionId}"] .answer-option[data-answer-index="${row.answerIndex}"]`)?.classList.add('selected'));
+    userAnswers.filter(row => !row.noteOnly).forEach(row => {
+      const selector = row.neither
+        ? `.question-card[data-id="${row.questionId}"] .answer-neither`
+        : `.question-card[data-id="${row.questionId}"] .answer-option[data-answer-index="${row.answerIndex}"]`;
+      document.querySelector(selector)?.classList.add('selected');
+    });
   }
 
   function setAnswer(question, index, answer) {
@@ -229,7 +234,7 @@
     visibleQuestions.forEach((question, position) => {
       const active = isQuestionVisible(question);
       const card = document.createElement('article'); card.className = `question-card${!active ? ' developer-inactive-question' : ''}`; card.dataset.id = question.id;
-      const title = document.createElement('div'); title.className = 'question-text'; title.textContent = `${position + 1}. ${question.text}`; card.appendChild(title);
+      const title = document.createElement('div'); title.className = 'question-text'; title.textContent = `${window.DEV_MODE ? question.id : position + 1}. ${question.text}`; card.appendChild(title);
       const tools = document.createElement('div'); tools.className = 'question-tools-row';
       const expand = document.createElement('button'); expand.type = 'button'; expand.className = 'expand-btn'; expand.textContent = translations?.ui?.expandBtn || 'Rozwiń tezę';
       const description = document.createElement('div'); description.className = 'description'; description.textContent = question.description || translations?.ui?.noDescription || 'Brak dodatkowego opisu.';
