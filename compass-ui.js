@@ -106,8 +106,8 @@ class CompassUI {
     overlay.style.position = 'absolute';
     overlay.style.left = `${leftPercent}%`;
     overlay.style.top = `${topPercent}%`;
-    overlay.style.width = '24px';
-    overlay.style.height = '24px';
+    overlay.style.width = 'var(--overlay-size, 24px)';
+    overlay.style.height = 'var(--overlay-size, 24px)';
     overlay.style.objectFit = type === 'figure' || type === 'user' ? 'cover' : 'contain';
     overlay.style.transform = 'translate(-50%, -50%)';
     overlay.style.transition = 'opacity 0.2s';
