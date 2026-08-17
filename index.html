@@ -9,6 +9,7 @@
   <link rel="icon" type="image/svg+xml" href="images/ALogo.svg">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="compass.css">
+  <link rel="stylesheet" href="ux-refresh.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
@@ -37,6 +38,15 @@
           </button>
         </div>
       </section>
+      <details class="question-catalog" id="question-catalog">
+        <summary><span>Przeglądaj wszystkie pytania</span><small>pełna lista według części testu</small></summary>
+        <div class="question-catalog-toolbar">
+          <label class="catalog-description-toggle"><input id="catalog-show-descriptions" type="checkbox"> Pokaż dodatkowe opisy</label>
+          <button id="catalog-copy-btn" type="button" class="catalog-copy-btn">Kopiuj listę</button>
+        </div>
+        <p id="question-catalog-status" class="question-catalog-status" aria-live="polite">Lista zostanie wczytana po otwarciu.</p>
+        <div id="question-catalog-content" class="question-catalog-content" aria-label="Lista wszystkich pytań"></div>
+      </details>
     </div>
   </section>
   <div class="container">
@@ -145,7 +155,10 @@
           <label><input type="checkbox" id="toggle-users"> 🐻 Użytkownicy</label>
           <label><input type="checkbox" id="toggle-figures"> 👤 Figury polityczne</label>
         </div>
-        <div id="compass-tag-filters" class="tag-filters" aria-label="Filtry nakładek"></div>
+        <div class="overlay-size-controls" role="group" aria-label="Wielkość nakładek na kompasie">
+          <span>Wielkość nakładek</span><button type="button" class="overlay-size-button" data-overlay-size-step="-4" aria-label="Zmniejsz nakładki">−</button>
+          <input id="overlay-size-range" type="range" min="16" max="52" value="24" step="2" aria-label="Wielkość nakładek"><button type="button" class="overlay-size-button" data-overlay-size-step="4" aria-label="Zwiększ nakładki">+</button><output id="overlay-size-value" for="overlay-size-range">24 px</output>
+        </div>        <div id="compass-tag-filters" class="tag-filters" aria-label="Filtry nakładek"></div>
         <button id="open-compass-modal" class="open-modal-btn">🧭 Otwórz interaktywny kompas</button>
       </div>
     </div>
@@ -189,7 +202,10 @@
             <label><input type="checkbox" id="modal-toggle-users"> 🐻 Użytkownicy</label>
             <label><input type="checkbox" id="modal-toggle-figures"> 👤 Figury polityczne</label>
           </div>
-          <div id="modal-compass-tag-filters" class="tag-filters" aria-label="Filtry nakładek"></div>
+          <div class="overlay-size-controls" role="group" aria-label="Wielkość nakładek na kompasie">
+            <span>Wielkość nakładek</span><button type="button" class="overlay-size-button" data-overlay-size-step="-4" aria-label="Zmniejsz nakładki">−</button>
+            <input id="modal-overlay-size-range" type="range" min="16" max="52" value="24" step="2" aria-label="Wielkość nakładek"><button type="button" class="overlay-size-button" data-overlay-size-step="4" aria-label="Zwiększ nakładki">+</button><output id="modal-overlay-size-value" for="modal-overlay-size-range">24 px</output>
+          </div>          <div id="modal-compass-tag-filters" class="tag-filters" aria-label="Filtry nakładek"></div>
           <div id="creative-config-area" class="creative-config-area" style="display: none;">
             <h4>⚙️ Konfiguracja trybu kreatywnego</h4>
             <div class="creative-label-edit">
@@ -217,6 +233,7 @@
   <script src="app-features.js"></script>
   <script src="modernization.js"></script>
   <script src="compass-integration.js"></script>
+  <script src="ux-refresh.js"></script>
   <script src="test-modes.js"></script>
 </body>
 </html>
