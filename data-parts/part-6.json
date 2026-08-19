@@ -3818,7 +3818,7 @@
         },
         {
             "id": 253,
-            "text": "Każdy, lub prawie każdy obywatel powinien mieć prawny obowiązek obrony państwa w przypadku konfliktu zbrojnego",
+            "text": "Każdy, lub prawie każdy mężczyzna powinien mieć prawny obowiązek obrony państwa w przypadku konfliktu zbrojnego",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
@@ -4011,6 +4011,202 @@
                 }
             ],
             "weight": 4.5
+        },
+                {
+            "id": 486,
+            "text": "Kobiety również powinny mieć prawny obowiązek obrony państwa w przypadku konfliktu zbrojnego",
+            "description": "XXXXXX",
+            "comment": "Placeholder",
+            "answers": [
+                {
+                    "label": "Zdecydowanie zgadzam się",
+                    "value": 1.5,
+                    "values_for": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Kolektywizm",
+                        "Preferencja użycia siły",
+                        "Sakralizacja autorytetu",
+                        "Obowiązkowość wspólnoty",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "values_against": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Indywidualizm",
+                        "Unikanie przemocy",
+                        "Desakralizacja autorytetu",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "ideologies_for": [
+                        "Socjalliberalizm",
+                        "Socjaldemokracja",
+                        "Liberalizm klasyczny",
+                        "Marksizm klasyczny",
+                        "Faszyzm",
+                        "Nacjonalizm konserwatywny",
+                        "Nacjonalizm liberalny",
+                        "Ordoliberalizm"
+                    ],
+                    "ideologies_against": [
+                        "Głęboka ekologia"
+                    ],
+                    "parties_for": [
+                        "Prawo i Sprawiedliwość",
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja",
+                        "Polska Partia Socjalistyczna"
+                    ],
+                    "parties_against": []
+                },
+                {
+                    "label": "Częściowo zgadzam się",
+                    "value": 1,
+                    "values_for": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Kolektywizm",
+                        "Preferencja użycia siły",
+                        "Sakralizacja autorytetu",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "values_against": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Indywidualizm",
+                        "Unikanie przemocy",
+                        "Desakralizacja autorytetu",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "ideologies_for": [
+                        "Socjalliberalizm",
+                        "Socjaldemokracja",
+                        "Liberalizm klasyczny",
+                        "Marksizm klasyczny",
+                        "Ordoliberalizm"
+                    ],
+                    "ideologies_against": [
+                        "Głęboka ekologia"
+                    ],
+                    "parties_for": [
+                        "Prawo i Sprawiedliwość",
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja",
+                        "Polska Partia Socjalistyczna"
+                    ],
+                    "parties_against": [
+                        "Partia Razem"
+                    ]
+                },
+                {
+                    "label": "Częściowo nie zgadzam się",
+                    "value": -1,
+                    "values_for": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Indywidualizm",
+                        "Unikanie przemocy",
+                        "Desakralizacja autorytetu",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "values_against": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Kolektywizm",
+                        "Preferencja użycia siły",
+                        "Sakralizacja autorytetu",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "ideologies_for": [
+                        "Socjalliberalizm",
+                        "Głęboka ekologia"
+                    ],
+                    "ideologies_against": [
+                        "Marksizm klasyczny",
+                        "Faszyzm",
+                        "Nacjonalizm konserwatywny",
+                        "Nacjonalizm liberalny",
+                        "Ordoliberalizm"
+                    ],
+                    "parties_for": [
+                        "Partia Razem"
+                    ],
+                    "parties_against": [
+                        "Prawo i Sprawiedliwość",
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja",
+                        "Polska Partia Socjalistyczna"
+                    ]
+                },
+                {
+                    "label": "Zdecydowanie nie zgadzam się",
+                    "value": -1.5,
+                    "values_for": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Indywidualizm",
+                        "Unikanie przemocy",
+                        "Desakralizacja autorytetu",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "values_against": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Kolektywizm",
+                        "Preferencja użycia siły",
+                        "Sakralizacja autorytetu",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "ideologies_for": [
+                        "Głęboka ekologia"
+                    ],
+                    "ideologies_against": [
+                        "Marksizm klasyczny",
+                        "Faszyzm",
+                        "Nacjonalizm konserwatywny",
+                        "Nacjonalizm liberalny",
+                        "Ordoliberalizm"
+                    ],
+                    "parties_for": [],
+                    "parties_against": [
+                        "Prawo i Sprawiedliwość",
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja",
+                        "Polska Partia Socjalistyczna"
+                    ]
+                },
+                {
+                    "label": "Pomiń pytanie",
+                    "value": 0,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                }
+            ],
+            "weight": 3
         },
         {
             "id": 254,
