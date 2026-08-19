@@ -4206,11 +4206,14 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3
+            "weight": 3,
+            "require_yes": [
+                253
+            ]
         },
         {
             "id": 254,
-            "text": "Obowiązkowa służba wojskowa w czasie pokoju powinna dotyczyć wszystkich obywateli",
+            "text": "Obowiązkowa służba wojskowa w czasie pokoju powinna dotyczyć wszystkich mężczyzn",
             "description": "XXXXXX",
             "comment": "Placeholder",
             "answers": [
@@ -4380,6 +4383,182 @@
                 }
             ],
             "weight": 2.25
+        },
+        {
+            "id": 487,
+            "text": "Obowiązkowa służba wojskowa w czasie pokoju powinna dotyczyć również kobiety",
+            "description": "XXXXXX",
+            "comment": "Placeholder",
+            "answers": [
+                {
+                    "label": "Zdecydowanie zgadzam się",
+                    "value": 1.5,
+                    "values_for": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Centralizacja",
+                        "Preferencja użycia siły",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "values_against": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Unikanie przemocy",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "ideologies_for": [
+                        "Faszyzm",
+                        "Nacjonalizm konserwatywny",
+                        "Nacjonalizm liberalny"
+                    ],
+                    "ideologies_against": [
+                        "Socjalliberalizm",
+                        "Liberalizm klasyczny",
+                        "Głęboka ekologia"
+                    ],
+                    "parties_for": [
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja"
+                    ],
+                    "parties_against": [
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Partia Razem",
+                        "Partia Zieloni"
+                    ]
+                },
+                {
+                    "label": "Częściowo zgadzam się",
+                    "value": 1,
+                    "values_for": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Centralizacja",
+                        "Preferencja użycia siły",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "values_against": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Unikanie przemocy",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "ideologies_for": [
+                        "Marksizm klasyczny",
+                        "Nacjonalizm konserwatywny",
+                        "Nacjonalizm liberalny"
+                    ],
+                    "ideologies_against": [
+                        "Głęboka ekologia"
+                    ],
+                    "parties_for": [
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja"
+                    ],
+                    "parties_against": [
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Partia Razem",
+                        "Partia Zieloni"
+                    ]
+                },
+                {
+                    "label": "Częściowo nie zgadzam się",
+                    "value": -1,
+                    "values_for": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Unikanie przemocy",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "values_against": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Centralizacja",
+                        "Preferencja użycia siły",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "ideologies_for": [
+                        "Socjalliberalizm",
+                        "Liberalizm klasyczny",
+                        "Marksizm klasyczny"
+                    ],
+                    "ideologies_against": [
+                        "Faszyzm"
+                    ],
+                    "parties_for": [
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Partia Razem",
+                        "Partia Zieloni"
+                    ],
+                    "parties_against": [
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja"
+                    ]
+                },
+                {
+                    "label": "Zdecydowanie nie zgadzam się",
+                    "value": -1.5,
+                    "values_for": [
+                        "Autonomia",
+                        "Samoorganizacja",
+                        "Unikanie przemocy",
+                        "Dobrowolność wspólnoty",
+                        "Ograniczenie władzy"
+                    ],
+                    "values_against": [
+                        "Etatyzm",
+                        "Heteronomia",
+                        "Centralizacja",
+                        "Preferencja użycia siły",
+                        "Obowiązkowość wspólnoty"
+                    ],
+                    "ideologies_for": [
+                        "Socjalliberalizm",
+                        "Liberalizm klasyczny",
+                        "Głęboka ekologia"
+                    ],
+                    "ideologies_against": [
+                        "Faszyzm"
+                    ],
+                    "parties_for": [
+                        "Koalicja Obywatelska",
+                        "Polskie Stronnictwo Ludowe",
+                        "Nowa Lewica",
+                        "Partia Razem",
+                        "Partia Zieloni"
+                    ],
+                    "parties_against": [
+                        "Konfederacja Korony Polskiej",
+                        "Ruch Narodowy",
+                        "Nowa Nadzieja"
+                    ]
+                },
+                {
+                    "label": "Pomiń pytanie",
+                    "value": 0,
+                    "values_for": [],
+                    "values_against": [],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []
+                }
+            ],
+            "weight": 2.25,
+            "require_yes": [
+                254
+            ]
         },
         {
             "id": 381,
