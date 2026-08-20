@@ -1325,7 +1325,7 @@
                 }
             ],
             "weight": 3.5,
-            "require_no": [
+            "require_yes": [
                 130, 389
             ]
         },
