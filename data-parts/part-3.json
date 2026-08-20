@@ -15606,9 +15606,12 @@
         "parties_against": []
       }
     ],
-    "weight": 1
-  },
-  {
+    "weight": 1,
+            "require_no": [
+                440
+            ]
+        },
+        {
     "id": 453,
     "text": "Decyzje dotyczące wykorzystania podstawowych środków produkcji powinny być podejmowane zbiorowo, a nie wyłącznie przez ich prywatnych właścicieli",
     "description": "",
