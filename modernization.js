@@ -157,37 +157,57 @@
   }
 
   function developerPanel(question) {
-    const originalQuestionId = question.id;
     const details = document.createElement('details'); details.className = 'developer-data';
     const summary = document.createElement('summary'); summary.textContent = 'Dane źródłowe'; details.appendChild(summary);
-    const questionId = document.createElement('div');
-    questionId.className = 'developer-question-id';
-    questionId.textContent = `Oryginalne ID pytania: ${originalQuestionId}`;
-    details.appendChild(questionId);
-    question.answers.forEach(answer => {
-      const block = document.createElement('div'); block.className = 'developer-answer-data';
-      const maps = [
-        ['Wartości', [...(answer.values_for || []), ...(answer.values_against || []).map(value => `− ${value}`)]],
-        ['Ideologie', [...(answer.ideologies_for || []), ...(answer.ideologies_against || []).map(value => `− ${value}`)]],
-        ['Partie', [...(answer.parties_for || []), ...(answer.parties_against || []).map(value => `− ${value}`)]]
-      ];
-      const profileMaps = profileAnswerNames(question.id, answer.label);
-      block.innerHTML = `<strong>${answer.label}</strong> <small>(${answer.value})</small>`;
-      maps.forEach(([title, values]) => { const line = document.createElement('p'); line.textContent = `${title}: ${values.length ? values.join(', ') : '—'}`; block.appendChild(line); });
-      [['Użytkownicy', profileMaps.users], ['Figury', profileMaps.figures]].forEach(([title, values]) => { const line = document.createElement('p'); line.textContent = `${title}: ${values.length ? values.join(', ') : '—'}`; block.appendChild(line); });
-      const people = document.createElement('div'); people.className = 'developer-profile-avatars';
-      [['users', profileMaps.users], ['figures', profileMaps.figures]].forEach(([collection, names]) => {
-        names.forEach(name => {
-          const profile = (politicalProfiles?.[collection] || []).find(item => item.name === name);
-          if (!profile) return;
-          const avatar = document.createElement('img');
-          avatar.className = 'developer-profile-avatar'; avatar.src = profile.logo || 'images/ALogo.svg';
-          avatar.alt = name; avatar.title = name;
-          people.appendChild(avatar);
+    const questionId = document.createElement('div'); questionId.className = 'developer-question-id';
+    questionId.textContent = `Oryginalne ID pytania: ${question.id}`; details.appendChild(questionId);
+    const content = document.createElement('div'); content.className = 'developer-data-content'; details.appendChild(content);
+    // Kosztowne mapowania profili i elementy DOM są tworzone dopiero po rozwinięciu tej sekcji.
+    details.addEventListener('toggle', async () => {
+      if (!details.open || details.dataset.loaded || details.dataset.loading) return;
+      details.dataset.loading = 'true'; content.textContent = 'Wczytywanie danych…';
+      try {
+        const conditions = conditionIds(question);
+        const activatedIds = (dataManifest?.conditionalQuestions || [])
+          .filter(item => [...(item.require_yes || []), ...(item.require_no || [])].map(idOf).includes(idOf(question.id)))
+          .map(item => idOf(item.id));
+        await window.NeoDataParts?.ensureQuestions([...conditions, ...activatedIds]);
+        const addRelation = (label, ids) => {
+          if (!ids.length) return;
+          const line = document.createElement('p'); line.className = 'developer-activation-data';
+          line.textContent = `${label}: ${ids.map(id => {
+            const linked = window.NeoDataParts?.getQuestion(id);
+            return linked ? `[${linked.id}] ${linked.text}` : `[${id}]`;
+          }).join(' | ')}`;
+          content.appendChild(line);
+        };
+        addRelation('Aktywowane przez', conditions);
+        addRelation('Aktywuje', activatedIds);
+        question.answers.forEach(answer => {
+          const block = document.createElement('div'); block.className = 'developer-answer-data';
+          const maps = [
+            ['Wartości', [...(answer.values_for || []), ...(answer.values_against || []).map(value => `− ${value}`)]],
+            ['Ideologie', [...(answer.ideologies_for || []), ...(answer.ideologies_against || []).map(value => `− ${value}`)]],
+            ['Partie', [...(answer.parties_for || []), ...(answer.parties_against || []).map(value => `− ${value}`)]]
+          ];
+          const profileMaps = profileAnswerNames(question.id, answer.label);
+          block.innerHTML = `<strong>${answer.label}</strong> <small>(${answer.value})</small>`;
+          maps.forEach(([title, values]) => { const line = document.createElement('p'); line.textContent = `${title}: ${values.length ? values.join(', ') : '—'}`; block.appendChild(line); });
+          [['Użytkownicy', profileMaps.users], ['Figury', profileMaps.figures]].forEach(([title, values]) => { const line = document.createElement('p'); line.textContent = `${title}: ${values.length ? values.join(', ') : '—'}`; block.appendChild(line); });
+          const people = document.createElement('div'); people.className = 'developer-profile-avatars';
+          [['users', profileMaps.users], ['figures', profileMaps.figures]].forEach(([collection, names]) => names.forEach(name => {
+            const profile = (politicalProfiles?.[collection] || []).find(item => item.name === name);
+            if (!profile) return;
+            const avatar = document.createElement('img'); avatar.className = 'developer-profile-avatar';
+            avatar.src = profile.logo || 'images/ALogo.svg'; avatar.alt = name; avatar.title = name; people.appendChild(avatar);
+          }));
+          if (people.children.length) block.appendChild(people);
+          content.appendChild(block);
         });
-      });
-      if (people.children.length) block.appendChild(people);
-      details.appendChild(block);
+        details.dataset.loaded = 'true';
+      } catch (error) {
+        console.error(error); content.textContent = 'Nie udało się wczytać danych deweloperskich.';
+      } finally { delete details.dataset.loading; }
     });
     return details;
   }
@@ -213,14 +233,18 @@
       userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
       userAnswers.push({ questionId: question.id, answerIndex: index, answerValue: answer.value, answerData: answer, note });
     }
-    reconcileDynamicAnswers(); renderQuestions();
+    window.NeoDataParts?.refreshDynamicQuestions?.().then(() => {
+      reconcileDynamicAnswers(); renderQuestions();
+    }).catch(error => { console.error(error); reconcileDynamicAnswers(); renderQuestions(); });
   }
 
   function setNeither(question) {
     const note = primaryAnswer(question.id)?.note || '';
     userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
     userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, note });
-    reconcileDynamicAnswers(); renderQuestions();
+    window.NeoDataParts?.refreshDynamicQuestions?.().then(() => {
+      reconcileDynamicAnswers(); renderQuestions();
+    }).catch(error => { console.error(error); reconcileDynamicAnswers(); renderQuestions(); });
   }
 
   function renderModernQuestions() {
@@ -233,7 +257,8 @@
       : activeQuestions.filter(question => !reviewFilter || answerState(question) === reviewFilter);
     visibleQuestions.forEach((question, position) => {
       const active = isQuestionVisible(question);
-      const card = document.createElement('article'); card.className = `question-card${!active ? ' developer-inactive-question' : ''}`; card.dataset.id = question.id;
+      const conditional = conditionIds(question).length > 0;
+      const card = document.createElement('article'); card.className = `question-card${!active ? ' developer-inactive-question' : ''}${active && conditional ? ' activated-question' : ''}`; card.dataset.id = question.id;
       const title = document.createElement('div'); title.className = 'question-text'; title.textContent = `${window.DEV_MODE ? question.id : position + 1}. ${question.text}`; card.appendChild(title);
       const tools = document.createElement('div'); tools.className = 'question-tools-row';
       const expand = document.createElement('button'); expand.type = 'button'; expand.className = 'expand-btn'; expand.textContent = translations?.ui?.expandBtn || 'Rozwiń tezę';
