@@ -3508,7 +3508,10 @@
                     "parties_against": []
                 }
             ],
-            "weight": 3.5
+            "weight": 3.5,
+            "require_yes": [
+                426
+            ]
         },
         {
             "id": 13,
