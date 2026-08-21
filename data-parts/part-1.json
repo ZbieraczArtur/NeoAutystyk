@@ -251,33 +251,10 @@
                         "Kolektywizm",
                         "Organicyzm"
                     ],
-                    "ideologies_for": [
-                        "Liberalizm klasyczny"
-                    ],
-                    "ideologies_against": [
-                        "Socjalliberalizm",
-                        "Socjaldemokracja",
-                        "Marksizm klasyczny",
-                        "Nacjonalizm konserwatywny",
-                        "Faszyzm",
-                        "Głęboka ekologia",
-                        "Nacjonalizm liberalny",
-                        "Ordoliberalizm"
-                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
                     "parties_for": [],
-                    "parties_against": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Nowa Nadzieja",
-                        "Polska Partia Socjalistyczna",
-                        "Partia Zieloni",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ]
+                    "parties_against": []
                 },
                 {
                     "label": "Częściowo zgadzam się",
@@ -290,34 +267,10 @@
                         "Kolektywizm",
                         "Organicyzm"
                     ],
-                    "ideologies_for": [
-                        "Liberalizm klasyczny"
-                    ],
-                    "ideologies_against": [
-                        "Socjalliberalizm",
-                        "Socjaldemokracja",
-                        "Marksizm klasyczny",
-                        "Nacjonalizm konserwatywny",
-                        "Faszyzm",
-                        "Głęboka ekologia",
-                        "Nacjonalizm liberalny",
-                        "Ordoliberalizm"
-                    ],
+                    "ideologies_for": [],
+                    "ideologies_against": [],
                     "parties_for": [],
-                    "parties_against": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Nowa Nadzieja",
-                        "Polska Partia Socjalistyczna",
-                        "Partia Zieloni",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ]
-                },
+                    "parties_against": []                },
                 {
                     "label": "Częściowo nie zgadzam się",
                     "value": -2,
@@ -330,24 +283,9 @@
                         "Kontraktualizm"
                     ],
                     "ideologies_for": [],
-                    "ideologies_against": [
-                        "Liberalizm klasyczny"
-                    ],
-                    "parties_for": [
-                        "Prawo i Sprawiedliwość",
-                        "Koalicja Obywatelska",
-                        "Polskie Stronnictwo Ludowe",
-                        "Nowa Lewica",
-                        "Konfederacja Korony Polskiej",
-                        "Ruch Narodowy",
-                        "Partia Razem",
-                        "Nowa Nadzieja",
-                        "Polska Partia Socjalistyczna",
-                        "Partia Zieloni",
-                        "Polska 2050 Rzeczypospolitej Polskiej"
-                    ],
-                    "parties_against": []
-                },
+                    "ideologies_against": [],
+                    "parties_for": [],
+                    "parties_against": []                },
                 {
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -3,
