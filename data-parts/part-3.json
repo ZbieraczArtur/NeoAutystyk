@@ -1204,8 +1204,6 @@
                     "values_for": [
                         "Egalitaryzm",
                         "Własność kolektywna",
-                        "Etatyzm",
-                        "Rynek"
                     ],
                     "values_against": [],
                     "ideologies_for": [],
@@ -1234,9 +1232,7 @@
                     "value": 1,
                     "values_for": [
                         "Egalitaryzm",
-                        "Własność kolektywna",
-                        "Etatyzm",
-                        "Rynek"
+                        "Własność kolektywna"
                     ],
                     "values_against": [],
                     "ideologies_for": [],
@@ -1336,9 +1332,7 @@
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Rynek",
-                        "Hierarchiczność",
-                        "Indywidualizm"
+                        "Hierarchiczność"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1373,9 +1367,7 @@
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Rynek",
-                        "Hierarchiczność",
-                        "Indywidualizm"
+                        "Hierarchiczność"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1402,17 +1394,8 @@
                 {
                     "label": "Częściowo nie zgadzam się",
                     "value": -1,
-                    "values_for": [
-                        "Własność prywatna",
-                        "Rynek",
-                        "Hierarchiczność",
-                        "Indywidualizm"
-                    ],
-                    "values_against": [
-                        "Egalitaryzm",
-                        "Własność kolektywna",
-                        "Kolektywizm"
-                    ],
+                    "values_for": [],
+                    "values_against": [],
                     "ideologies_for": [
                         "Liberalizm klasyczny"
                     ],
@@ -1432,17 +1415,8 @@
                 {
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -1.5,
-                    "values_for": [
-                        "Własność prywatna",
-                        "Rynek",
-                        "Hierarchiczność",
-                        "Indywidualizm"
-                    ],
-                    "values_against": [
-                        "Egalitaryzm",
-                        "Własność kolektywna",
-                        "Kolektywizm"
-                    ],
+                    "values_for": [],
+                    "values_against": [],
                     "ideologies_for": [
                         "Liberalizm klasyczny"
                     ],
@@ -1488,9 +1462,8 @@
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Rynek",
-                        "Indywidualizm",
-                        "Antropocentryzm"
+                        "Antropocentryzm",
+                        "Hierarchiczność"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1523,9 +1496,8 @@
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Rynek",
-                        "Indywidualizm",
-                        "Antropocentryzm"
+                        "Antropocentryzm",
+                        "Hierarchiczność"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1550,17 +1522,8 @@
                 {
                     "label": "Częściowo nie zgadzam się",
                     "value": -1,
-                    "values_for": [
-                        "Własność prywatna",
-                        "Rynek",
-                        "Indywidualizm",
-                        "Antropocentryzm"
-                    ],
-                    "values_against": [
-                        "Własność kolektywna",
-                        "Egalitaryzm",
-                        "Ekocentryzm"
-                    ],
+                    "values_for": [],
+                    "values_against": [],
                     "ideologies_for": [
                         "Socjalliberalizm",
                         "Liberalizm klasyczny",
@@ -1588,17 +1551,8 @@
                 {
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -1.5,
-                    "values_for": [
-                        "Własność prywatna",
-                        "Rynek",
-                        "Indywidualizm",
-                        "Antropocentryzm"
-                    ],
-                    "values_against": [
-                        "Własność kolektywna",
-                        "Egalitaryzm",
-                        "Ekocentryzm"
-                    ],
+                    "values_for": [],
+                    "values_against": [],
                     "ideologies_for": [
                         "Liberalizm klasyczny",
                         "Ordoliberalizm"
@@ -1645,10 +1599,10 @@
                     "value": 1.5,
                     "values_for": [
                         "Własność kolektywna",
+                        "Regulacja instytucjonalna",
                         "Planowanie",
                         "Etatyzm",
-                        "Kolektywizm",
-                        "Egalitaryzm"
+                        "Kolektywizm"
                     ],
                     "values_against": [
                         "Własność prywatna",
@@ -1686,10 +1640,10 @@
                     "value": 1,
                     "values_for": [
                         "Własność kolektywna",
+                        "Regulacja instytucjonalna",
                         "Planowanie",
                         "Etatyzm",
-                        "Kolektywizm",
-                        "Egalitaryzm"
+                        "Kolektywizm"
                     ],
                     "values_against": [
                         "Własność prywatna",
@@ -1721,16 +1675,12 @@
                     "label": "Częściowo nie zgadzam się",
                     "value": -1,
                     "values_for": [
-                        "Własność prywatna",
-                        "Rynek",
-                        "Samoregulacja"
+                        "Samoregulacja",
+                        "Samoorganizacja"
                     ],
                     "values_against": [
-                        "Własność kolektywna",
-                        "Planowanie",
                         "Etatyzm",
-                        "Kolektywizm",
-                        "Egalitaryzm"
+                        "Regulacja instytucjonalna"
                     ],
                     "ideologies_for": [
                         "Liberalizm klasyczny",
@@ -1761,16 +1711,12 @@
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -1.5,
                     "values_for": [
-                        "Własność prywatna",
-                        "Rynek",
-                        "Samoregulacja"
+                        "Samoregulacja",
+                        "Samoorganizacja"
                     ],
                     "values_against": [
-                        "Własność kolektywna",
-                        "Planowanie",
                         "Etatyzm",
-                        "Kolektywizm",
-                        "Egalitaryzm"
+                        "Regulacja instytucjonalna"
                     ],
                     "ideologies_for": [
                         "Liberalizm klasyczny",
@@ -1821,14 +1767,12 @@
                     "values_for": [
                         "Kolektywizm",
                         "Egalitaryzm",
-                        "Demokracja",
                         "Własność kolektywna"
                     ],
                     "values_against": [
                         "Indywidualizm",
                         "Hierarchiczność",
-                        "Własność prywatna",
-                        "Rynek"
+                        "Własność prywatna"
                     ],
                     "ideologies_for": [
                         "Marksizm klasyczny",
@@ -1860,14 +1804,12 @@
                     "values_for": [
                         "Kolektywizm",
                         "Egalitaryzm",
-                        "Demokracja",
                         "Własność kolektywna"
                     ],
                     "values_against": [
                         "Indywidualizm",
                         "Hierarchiczność",
-                        "Własność prywatna",
-                        "Rynek"
+                        "Własność prywatna"
                     ],
                     "ideologies_for": [
                         "Głęboka ekologia",
@@ -1899,13 +1841,11 @@
                     "values_for": [
                         "Indywidualizm",
                         "Hierarchiczność",
-                        "Własność prywatna",
-                        "Rynek"
+                        "Własność prywatna"
                     ],
                     "values_against": [
                         "Kolektywizm",
                         "Egalitaryzm",
-                        "Demokracja",
                         "Własność kolektywna"
                     ],
                     "ideologies_for": [
@@ -1938,13 +1878,11 @@
                     "values_for": [
                         "Indywidualizm",
                         "Hierarchiczność",
-                        "Własność prywatna",
-                        "Rynek"
+                        "Własność prywatna"
                     ],
                     "values_against": [
                         "Kolektywizm",
                         "Egalitaryzm",
-                        "Demokracja",
                         "Własność kolektywna"
                     ],
                     "ideologies_for": [
