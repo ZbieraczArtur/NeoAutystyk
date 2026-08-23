@@ -1060,7 +1060,6 @@
                     "values_for": [
                         "Decentralizacja",
                         "Anty-Autokracja",
-                        "Partykularyzm narodowy",
                         "Ograniczenie władzy"
                     ],
                     "values_against": [
@@ -1100,7 +1099,6 @@
                     "values_for": [
                         "Decentralizacja",
                         "Anty-Autokracja",
-                        "Partykularyzm narodowy",
                         "Ograniczenie władzy"
                     ],
                     "values_against": [
@@ -1139,15 +1137,10 @@
                     "label": "Częściowo nie zgadzam się",
                     "value": -1,
                     "values_for": [
-                        "Centralizacja",
-                        "Etatyzm",
-                        "Absolutyzm władzy"
+                        "Centralizacja"
                     ],
                     "values_against": [
-                        "Decentralizacja",
-                        "Anty-Autokracja",
-                        "Partykularyzm narodowy",
-                        "Ograniczenie władzy"
+                        "Decentralizacja"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1165,15 +1158,10 @@
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -1.5,
                     "values_for": [
-                        "Centralizacja",
-                        "Etatyzm",
-                        "Absolutyzm władzy"
+                        "Centralizacja"
                     ],
                     "values_against": [
-                        "Decentralizacja",
-                        "Anty-Autokracja",
-                        "Partykularyzm narodowy",
-                        "Ograniczenie władzy"
+                        "Decentralizacja"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1199,7 +1187,10 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.0
+            "weight": 2.0,
+            "require_yes": [
+                130, 389
+            ]
         },
         {
             "id": 97,
