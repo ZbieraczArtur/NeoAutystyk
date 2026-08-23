@@ -13,9 +13,11 @@
                         "Własność prywatna",
                         "Indywidualizm",
                         "Autonomia",
+                        "Kontraktualizm"
                     ],
                     "values_against": [
-                        "Własność kolektywna"
+                        "Własność kolektywna",
+                        "Kolektywizm"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -49,9 +51,11 @@
                         "Własność prywatna",
                         "Indywidualizm",
                         "Autonomia",
+                        "Kontraktualizm"
                     ],
                     "values_against": [
-                        "Własność kolektywna"
+                        "Własność kolektywna",
+                        "Kolektywizm"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -82,10 +86,13 @@
                     "label": "Częściowo nie zgadzam się",
                     "value": -1,
                     "values_for": [
-                        "Własność kolektywna"
+                        "Własność kolektywna",
+                        "Kolektywizm"
                     ],
                     "values_against": [
-                        "Własność prywatna"
+                        "Własność prywatna",
+                        "Indywidualizm",
+                        "Autonomia"
                     ],
                     "ideologies_for": [
                         "Faszyzm",
@@ -115,11 +122,13 @@
                     "label": "Zdecydowanie nie zgadzam się",
                     "value": -1.5,
                     "values_for": [
-                    "values_for": [
-                        "Własność kolektywna"
+                        "Własność kolektywna",
+                        "Kolektywizm"
                     ],
                     "values_against": [
-                        "Własność prywatna"
+                        "Własność prywatna",
+                        "Indywidualizm",
+                        "Autonomia"
                     ],
                     "ideologies_for": [
                         "Faszyzm",
@@ -338,11 +347,12 @@
                     "value": 1.5,
                     "values_for": [
                         "Własność kolektywna",
+                        "Autonomia",
                         "Egalitaryzm"
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Hierarchiczność"
+                        "Rynek"
                     ],
                     "ideologies_for": [
                         "Faszyzm",
@@ -372,11 +382,12 @@
                     "value": 1,
                     "values_for": [
                         "Własność kolektywna",
+                        "Autonomia",
                         "Egalitaryzm"
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Hierarchiczność"
+                        "Rynek"
                     ],
                     "ideologies_for": [
                         "Faszyzm",
@@ -409,10 +420,11 @@
                     "value": -1,
                     "values_for": [
                         "Własność prywatna",
-                        "Hierarchiczność"
+                        "Rynek"
                     ],
                     "values_against": [
                         "Własność kolektywna",
+                        "Autonomia",
                         "Egalitaryzm"
                     ],
                     "ideologies_for": [
@@ -442,10 +454,11 @@
                     "value": -1.5,
                     "values_for": [
                         "Własność prywatna",
-                        "Hierarchiczność"
+                        "Rynek"
                     ],
                     "values_against": [
                         "Własność kolektywna",
+                        "Autonomia",
                         "Egalitaryzm"
                     ],
                     "ideologies_for": [
@@ -495,15 +508,12 @@
                     "value": 1.5,
                     "values_for": [
                         "Własność prywatna",
-                        "Anty-paternalizm",
                         "Indywidualizm",
-                        "Hierarchiczność",
-                        "Autonomia"
+                        "Autonomia",
+                        "Kontraktualizm"
                     ],
                     "values_against": [
-                        "Własność kolektywna",
-                        "Egalitaryzm",
-                        "Interwencjonizm gospodarczy"
+                        "Własność kolektywna"
                     ],
                     "ideologies_for": [],
                     "ideologies_against": [
@@ -537,15 +547,11 @@
                     "value": 1,
                     "values_for": [
                         "Własność prywatna",
-                        "Anty-paternalizm",
                         "Indywidualizm",
-                        "Hierarchiczność",
                         "Autonomia"
                     ],
                     "values_against": [
-                        "Własność kolektywna",
-                        "Egalitaryzm",
-                        "Interwencjonizm gospodarczy"
+                        "Własność kolektywna"
                     ],
                     "ideologies_for": [],
                     "ideologies_against": [
@@ -582,7 +588,8 @@
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Indywidualizm"
+                        "Indywidualizm",
+                        "Autonomia"
                     ],
                     "ideologies_for": [
                         "Liberalizm klasyczny"
@@ -620,7 +627,8 @@
                     ],
                     "values_against": [
                         "Własność prywatna",
-                        "Indywidualizm"
+                        "Indywidualizm",
+                        "Autonomia"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -757,7 +765,6 @@
                         "Autonomia",
                         "Własność prywatna",
                         "Ograniczenie władzy",
-                        "Anty-autokracja",
                         "Indywidualizm"
                     ],
                     "ideologies_for": [
@@ -789,7 +796,6 @@
                         "Autonomia",
                         "Własność prywatna",
                         "Ograniczenie władzy",
-                        "Anty-autokracja",
                         "Indywidualizm"
                     ],
                     "ideologies_for": [
@@ -811,7 +817,6 @@
                         "Autonomia",
                         "Własność prywatna",
                         "Ograniczenie władzy",
-                        "Anty-autokracja",
                         "Indywidualizm"
                     ],
                     "values_against": [
@@ -842,7 +847,6 @@
                         "Autonomia",
                         "Własność prywatna",
                         "Ograniczenie władzy",
-                        "Anty-autokracja",
                         "Indywidualizm"
                     ],
                     "values_against": [
@@ -900,7 +904,8 @@
                     "values_against": [
                         "Własność prywatna",
                         "Indywidualizm",
-                        "Kontrola granic"
+                        "Kontrola granic",
+                        "Heteronomia"
                     ],
                     "ideologies_for": [
                         "Marksizm klasyczny",
@@ -940,7 +945,8 @@
                     "values_against": [
                         "Własność prywatna",
                         "Indywidualizm",
-                        "Kontrola granic"
+                        "Kontrola granic",
+                        "Heteronomia"
                     ],
                     "ideologies_for": [
                         "Głęboka ekologia"
@@ -973,10 +979,14 @@
                     "values_for": [
                         "Własność prywatna",
                         "Indywidualizm",
+                        "Kontrola granic",
+                        "Heteronomia"
                     ],
                     "values_against": [
                         "Własność kolektywna",
                         "Kolektywizm",
+                        "Autonomia",
+                        "Minimalizacja granic"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1000,10 +1010,14 @@
                     "values_for": [
                         "Własność prywatna",
                         "Indywidualizm",
+                        "Kontrola granic",
+                        "Heteronomia"
                     ],
                     "values_against": [
                         "Własność kolektywna",
                         "Kolektywizm",
+                        "Autonomia",
+                        "Minimalizacja granic"
                     ],
                     "ideologies_for": [
                         "Socjalliberalizm",
@@ -1185,10 +1199,7 @@
                     "parties_against": []
                 }
             ],
-            "weight": 2.0,
-            "require_yes": [
-                130, 389
-            ]
+            "weight": 2.0
         },
         {
             "id": 97,
