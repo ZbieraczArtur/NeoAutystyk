@@ -83,10 +83,21 @@
       status.textContent = 'Wczytywanie kompletnej listy pytań…';
       try {
         const manifest = await window.NeoDataParts.initialize();
-        parts = await Promise.all(manifest.parts.map(async entry => {
+        const loadedParts = await Promise.all(manifest.parts.map(async entry => {
           const data = await window.NeoDataParts.loadPart(entry.id);
-          const byId = new Map((data.questions || []).map(question => [Number(question.id), question]));
-          return { id: entry.id, questions: entry.questionIds.map(Number).map(id => byId.get(id) || { id, text: "[Brak treści pytania w pliku źródłowym]", missing: true }) };
+          return { id: entry.id, questions: data.questions || [] };
+        }));
+        // Manifest określa kolejność wyświetlania, ale nie jest źródłem danych
+        // pytania. Indeks obejmuje wszystkie pliki, więc błędne przypisanie
+        // pytania do części nie powoduje fałszywego komunikatu o braku treści.
+        const allQuestionsById = new Map();
+        loadedParts.forEach(part => part.questions.forEach(question => {
+          const id = Number(question.id);
+          if (!allQuestionsById.has(id)) allQuestionsById.set(id, question);
+        }));
+        parts = manifest.parts.map(entry => ({
+          id: entry.id,
+          questions: entry.questionIds.map(Number).map(id => allQuestionsById.get(id) || { id, text: "[Brak treści pytania w pliku źródłowym]", missing: true })
         }));
         render();
       } catch (error) {
