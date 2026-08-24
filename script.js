@@ -1099,42 +1099,6 @@ function computeScores(mode = currentScoringMode) {
     const questionWeight = Number(questionById.get(Number(ans.questionId))?.weight || 1);
     const absWeight = Math.abs(weight) * questionWeight;
 
-    if (currentMatchingMode === 'legacy' && mode === 'full') {
-      for (const ideo of (answer.ideologies_for || [])) {
-        const rec = ideologyScores.get(ideo);
-        if (rec) { rec.sum += absWeight; rec.maxPossible += 1.5 * questionWeight; if (weight > 0) rec.agreements++; else rec.disagreements++; }
-      }
-      for (const ideo of (answer.ideologies_against || [])) {
-        const rec = ideologyScores.get(ideo);
-        if (rec) { rec.sum -= absWeight; rec.maxPossible += 1.5 * questionWeight; if (weight < 0) rec.agreements++; else rec.disagreements++; }
-      }
-    } else if (currentMatchingMode === 'legacy') {
-      if (weight > 0) {
-        for (const ideo of (answer.ideologies_for || [])) {
-          const rec = ideologyScores.get(ideo);
-          if (rec) { rec.sum += absWeight; rec.maxPossible += 1.5 * questionWeight; rec.agreements++; }
-        }
-      }
-    }
-
-    if (currentMatchingMode === 'legacy' && mode === 'full') {
-      for (const party of (answer.parties_for || [])) {
-        const rec = partyScores.get(party);
-        if (rec) { rec.sum += absWeight; rec.maxPossible += 1.5 * questionWeight; if (weight > 0) rec.agreements++; else rec.disagreements++; }
-      }
-      for (const party of (answer.parties_against || [])) {
-        const rec = partyScores.get(party);
-        if (rec) { rec.sum -= absWeight; rec.maxPossible += 1.5 * questionWeight; if (weight < 0) rec.agreements++; else rec.disagreements++; }
-      }
-    } else if (currentMatchingMode === 'legacy') {
-      if (weight > 0) {
-        for (const party of (answer.parties_for || [])) {
-          const rec = partyScores.get(party);
-          if (rec) { rec.sum += absWeight; rec.maxPossible += 1.5 * questionWeight; rec.agreements++; }
-        }
-      }
-    }
-
     if (mode === 'full') {
       for (const val of (answer.values_for || [])) {
         const rec = valueScores.get(val);
@@ -1997,12 +1961,7 @@ async function getEntityCoordinates(name, type) {
 
 // Pomocnicza funkcja do obliczania wyników dla podanych odpowiedzi i trybu
 function computeScoresForAnswers(answers, mode) {
-  const ideologyScores = new Map();
-  const partyScores = new Map();
   const valueScores = new Map();
-
-  config.ideologies.forEach(ideo => ideologyScores.set(ideo.key || ideo.name, { sum: 0, maxPossible: 0 }));
-  config.parties.forEach(party => partyScores.set(party.key || party.name, { sum: 0, maxPossible: 0 }));
 
   const allValueNames = new Set();
   config.pairsOfValues.forEach(pair => { allValueNames.add(pair.leftKey || pair.left); allValueNames.add(pair.rightKey || pair.right); });
@@ -2017,25 +1976,6 @@ function computeScoresForAnswers(answers, mode) {
     const questionWeight = Number(questionById.get(Number(ans.questionId))?.weight || 1);
     const absWeight = Math.abs(weight) * questionWeight;
 
-    if (mode === 'full') {
-      for (const ideo of (answer.ideologies_for || [])) {
-        const rec = ideologyScores.get(ideo);
-        if (rec) { rec.sum += absWeight; rec.maxPossible += 1.5 * questionWeight; }
-      }
-      for (const ideo of (answer.ideologies_against || [])) {
-        const rec = ideologyScores.get(ideo);
-        if (rec) { rec.sum -= absWeight; rec.maxPossible += 1.5 * questionWeight; }
-      }
-    } else {
-      if (weight > 0) {
-        for (const ideo of (answer.ideologies_for || [])) {
-          const rec = ideologyScores.get(ideo);
-          if (rec) { rec.sum += absWeight; rec.maxPossible += 1.5 * questionWeight; }
-        }
-      }
-    }
-    // analogicznie dla partii i wartości – uproszczone, bo potrzebujemy tylko pairResults
-    // Do pairResults potrzebujemy tylko wartości valueScores
     if (mode === 'full') {
       for (const val of (answer.values_for || [])) {
         const rec = valueScores.get(val);
