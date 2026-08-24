@@ -24,16 +24,22 @@
   const isPositive = row => row && !row.neither && Number(row.answerValue) > 0;
   const isNegative = row => row && !row.neither && Number(row.answerValue) < 0;
 
+  function conditionFor(questionId) {
+    return window.NeoDataParts?.getCondition?.(questionId) || null;
+  }
+
   function isQuestionVisible(question) {
-    const yes = Array.isArray(question.require_yes) ? question.require_yes : [];
-    const no = Array.isArray(question.require_no) ? question.require_no : [];
+    const condition = conditionFor(question.id);
+    const yes = Array.isArray(condition?.require_yes) ? condition.require_yes : [];
+    const no = Array.isArray(condition?.require_no) ? condition.require_no : [];
     return yes.every(id => answerRows(id).some(isPositive)) && no.every(id => answerRows(id).some(isNegative));
   }
 
   function conditionIds(question) {
+    const condition = conditionFor(question.id);
     return [
-      ...(Array.isArray(question.require_yes) ? question.require_yes : []),
-      ...(Array.isArray(question.require_no) ? question.require_no : [])
+      ...(Array.isArray(condition?.require_yes) ? condition.require_yes : []),
+      ...(Array.isArray(condition?.require_no) ? condition.require_no : [])
     ].map(idOf);
   }
 
@@ -186,9 +192,7 @@
         question.answers.forEach(answer => {
           const block = document.createElement('div'); block.className = 'developer-answer-data';
           const maps = [
-            ['Wartości', [...(answer.values_for || []), ...(answer.values_against || []).map(value => `− ${value}`)]],
-            ['Ideologie', [...(answer.ideologies_for || []), ...(answer.ideologies_against || []).map(value => `− ${value}`)]],
-            ['Partie', [...(answer.parties_for || []), ...(answer.parties_against || []).map(value => `− ${value}`)]]
+            ['Wartości', [...(answer.values_for || []), ...(answer.values_against || []).map(value => `− ${value}`)]]
           ];
           const profileMaps = profileAnswerNames(question.id, answer.label);
           block.innerHTML = `<strong>${answer.label}</strong> <small>(${answer.value})</small>`;
@@ -292,24 +296,42 @@
 
   function generateModernExport() {
     reconcileDynamicAnswers();
-    if (window.DEV_MODE) return config.questions.map(question => `${question.id}:(${answerText(question)});`).join(' ');
+    const questionLines = question => {
+      const lines = [`${question.id}:(${answerText(question)});`];
+      const note = primaryAnswer(question.id)?.note;
+      if (typeof note === 'string' && note.trim()) lines.push(`${question.id}#opis:${encodeURIComponent(note.trim())}`);
+      return lines;
+    };
+    // Oba tryby zachowują dokładnie ten sam format odpowiedzi i uzasadnień.
+    // Tryb deweloperski różni się wyłącznie brakiem nagłówka daty.
+    if (window.DEV_MODE) return config.questions.flatMap(questionLines).join('\n');
     const date = getCurrentDateTime();
     const questions = [...config.questions].sort((left, right) => idOf(left.id) - idOf(right.id));
-    return `Data wykonania testu: ${date}\n\n${questions.map(question => `${question.id}:(${answerText(question)});`).join('\n')}\n`;
+    return `Data wykonania testu: ${date}\n\n${questions.flatMap(questionLines).join('\n')}\n`;
   }
 
   function parseAnyExport(raw) {
     const rows = []; const text = String(raw || '');
+    const notes = new Map();
+    const noteExpression = /(?:^|[;\n])\s*(\d+)#(?:opis|note)\s*:\s*([^\r\n;]*)/gi;
+    let noteMatch;
+    while ((noteMatch = noteExpression.exec(text))) {
+      try { notes.set(Number(noteMatch[1]), decodeURIComponent(noteMatch[2])); }
+      catch (_) { notes.set(Number(noteMatch[1]), noteMatch[2]); }
+    }
     const expression = /(?:\[id:|(?:^|[;\n])\s*)(\d+)\]?\s*:\s*\(([^)]*)\)/g; let match;
     while ((match = expression.exec(text))) {
       const question = questionById(match[1]); if (!question) continue;
       const labels = match[2].split(',').map(value => value.trim()).filter(Boolean);
       labels.forEach(label => {
         if (/^brak odpowiedzi$/i.test(label)) return;
-        if (/^neither$/i.test(label)) { rows.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true }); return; }
+        if (/^neither$/i.test(label)) { rows.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, note: notes.get(Number(question.id)) || '' }); return; }
         const index = question.answers.findIndex(answer => answer.label === label || String(answer.label).toLowerCase() === label.toLowerCase());
-        if (index >= 0) rows.push({ questionId: question.id, answerIndex: index, answerValue: question.answers[index].value, answerData: question.answers[index] });
+        if (index >= 0) rows.push({ questionId: question.id, answerIndex: index, answerValue: question.answers[index].value, answerData: question.answers[index], note: notes.get(Number(question.id)) || '' });
       });
+    }
+    for (const [questionId, note] of notes) {
+      if (!rows.some(row => idOf(row.questionId) === questionId)) rows.push({ questionId, answerIndex: -1, answerValue: 0, answerData: null, note, noteOnly: true });
     }
     return rows;
   }
