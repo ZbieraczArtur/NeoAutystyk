@@ -1493,7 +1493,7 @@
           "values_for": [
             "Indywidualizm",
             "Hierarchiczność",
-            "Własność prywatna",
+            "Własność prywatna"
           ],
           "values_against": [
             "Kolektywizm",
@@ -1508,7 +1508,7 @@
           "values_for": [
             "Indywidualizm",
             "Hierarchiczność",
-            "Własność prywatna",
+            "Własność prywatna"
           ],
           "values_against": [
             "Kolektywizm",
@@ -4785,7 +4785,7 @@
     {
       "id": 143,
       "text": "Zasiłki społeczne powinny być traktowane jako tymczasowe wsparcie, a nie długoterminowe rozwiązanie",
-      "description": "Koncepcja ta definiuje pomoc państwową jako krótkotrwały pomost mający ułatwić jednostce powrót do pełnej samodzielności po przejściowych trudnościach. Publiczne wsparcie finansowe nie powinno przeradzać się w stałe źródło dochodu, gdyż grozi to utrwaleniem postaw roszczeniowych i bierności zawodowej. Zamiast dożywotnich transferów, kładzie się nacisk na inwestycje w umiejętności obywatela, które pozwolą mu ponownie konkurować na rynku pracy. Pomoc kończy się lub ulega znacznemu ograniczeniu, gdy tylko minie bezpośrednia przyczyna kryzysu lub upłynie określony czas przeznaczony na adaptację. System dąży do tego, by nikt nie pozostawał klientem opieki społecznej dłużej niż to absolutnie niezbędne dla jego biologicznego przetrwania i aktywizacji. Głównym zadaniem państwa jest tu 'pomaganie w pomaganiu samemu sobie', przy jednoczesnym unikaniu budowania trwałej zależności obywatela od systemu.",
+      "description": "Koncepcja ta definiuje pomoc państwową jako krótkotrwały pomost mający ułatwić jednostce powrót do pełnej samodzielności po przejściowych trudnościach. Publiczne wsparcie finansowe nie powinno przeradzać się w stałe źródło dochodu, gdyż grozi to utrwaleniem postaw roszczeniowych i bierności zawodowej. Zamiast dożywotnich transferów, kładzie się nacisk na inwestycje w umiejętności obywatela, które pozwolą mu ponownie konkurować na rynku pracy. Pomoc kończy się lub ulega znacznemu ograniczeniu, gdy tylko minie bezpośrednia przyczyna kryzysu lub upłynie określony czas przeznaczony na adaptację. System dąży do tego, by nikt nie pozostawał klientem opieki społecznej dłużej niż to absolutnie niezbędne dla jego biologicznego przetrwania i aktywizacji. Głównym zadaniem państwa jest tu "pomaganie w pomaganiu samemu sobie", przy jednoczesnym unikaniu budowania trwałej zależności obywatela od systemu.",
       "comment": "Placeholder",
       "answers": [
         {
