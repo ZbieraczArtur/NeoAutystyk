@@ -403,7 +403,7 @@
     {
       "id": 307,
       "text": "Prywatna własność posesji i nieruchomości powinna zostać zlikwidowana na rzecz wspólnej własności ludu",
-      "description": "XXXXXX",
+      "description": "Teza ta postuluje zniesienie prawa osób fizycznych i prawnych do wyłącznego posiadania gruntów, domów, mieszkań oraz budynków użytkowych. W takim ustroju wszelkie nieruchomości przechodzą na własność zbiorową, zarządzaną przez społeczeństwo lub reprezentujące je instytucje publiczne. Dotychczasowi właściciele tracą status dysponentów tych dóbr, a rynek najmu i sprzedaży nieruchomości zostaje zlikwidowany. Zamiast tego obywatele otrzymują prawo do użytkowania lokali mieszkalnych i przestrzeni na zasadzie przydziału, według kryteriów określonych przez wspólnotę. System ten opiera się na założeniu, że przestrzeń życiowa jest dobrem podstawowym i nie może być przedmiotem obrotu handlowego ani akumulacji prywatnego bogactwa.",
       "comment": "Placeholder",
       "answers": [
         {
@@ -412,14 +412,12 @@
           "values_for": [
             "Własność kolektywna",
             "Kolektywizm",
-            "Autonomia",
-            "Minimalizacja granic"
+            "Egalitaryzm"
           ],
           "values_against": [
             "Własność prywatna",
             "Indywidualizm",
-            "Kontrola granic",
-            "Heteronomia"
+            "Hierarchiczność"
           ]
         },
         {
@@ -428,14 +426,12 @@
           "values_for": [
             "Własność kolektywna",
             "Kolektywizm",
-            "Autonomia",
-            "Minimalizacja granic"
+            "Egalitaryzm"
           ],
           "values_against": [
             "Własność prywatna",
             "Indywidualizm",
-            "Kontrola granic",
-            "Heteronomia"
+            "Hierarchiczność"
           ]
         },
         {
@@ -444,14 +440,11 @@
           "values_for": [
             "Własność prywatna",
             "Indywidualizm",
-            "Kontrola granic",
-            "Heteronomia"
+            "Hierarchiczność"
           ],
           "values_against": [
             "Własność kolektywna",
-            "Kolektywizm",
-            "Autonomia",
-            "Minimalizacja granic"
+            "Kolektywizm"
           ]
         },
         {
@@ -460,14 +453,11 @@
           "values_for": [
             "Własność prywatna",
             "Indywidualizm",
-            "Kontrola granic",
-            "Heteronomia"
+            "Hierarchiczność"
           ],
           "values_against": [
             "Własność kolektywna",
-            "Kolektywizm",
-            "Autonomia",
-            "Minimalizacja granic"
+            "Kolektywizm"
           ]
         },
         {
@@ -853,6 +843,8 @@
           ],
           "values_against": [
             "Samoregulacja",
+            "Samoorganizacja",
+            "Rynek",
             "Decentralizacja"
           ]
         },
@@ -867,6 +859,8 @@
           ],
           "values_against": [
             "Samoregulacja",
+            "Samoorganizacja",
+            "Rynek",
             "Decentralizacja"
           ]
         },
@@ -875,6 +869,7 @@
           "value": -1,
           "values_for": [
             "Samoregulacja",
+            "Samoorganizacja",
             "Decentralizacja"
           ],
           "values_against": [
@@ -889,6 +884,7 @@
           "value": -1.5,
           "values_for": [
             "Samoregulacja",
+            "Samoorganizacja",
             "Decentralizacja"
           ],
           "values_against": [
@@ -940,9 +936,7 @@
         {
           "label": "Częściowo nie zgadzam się",
           "value": -1,
-          "values_for": [
-            "Marksizm klasyczny"
-          ],
+          "values_for": [],
           "values_against": []
         },
         {
@@ -970,7 +964,6 @@
           "label": "Zdecydowanie zgadzam się",
           "value": 1.5,
           "values_for": [
-            "Egalitaryzm",
             "Etatyzm",
             "Centralizacja",
             "Własność kolektywna",
@@ -985,7 +978,6 @@
           "label": "Częściowo zgadzam się",
           "value": 1,
           "values_for": [
-            "Egalitaryzm",
             "Etatyzm",
             "Centralizacja",
             "Własność kolektywna",
@@ -1004,11 +996,8 @@
             "Samoregulacja"
           ],
           "values_against": [
-            "Egalitaryzm",
             "Etatyzm",
-            "Centralizacja",
-            "Własność kolektywna",
-            "Planowanie"
+            "Centralizacja"
           ]
         },
         {
@@ -1019,11 +1008,8 @@
             "Samoregulacja"
           ],
           "values_against": [
-            "Egalitaryzm",
             "Etatyzm",
-            "Centralizacja",
-            "Własność kolektywna",
-            "Planowanie"
+            "Centralizacja"
           ]
         },
         {
@@ -1046,14 +1032,11 @@
           "value": 1.5,
           "values_for": [
             "Własność prywatna",
-            "Autonomia",
             "Rynek",
-            "Indywidualizm",
-            "Kontraktualizm"
+            "Indywidualizm"
           ],
           "values_against": [
             "Kolektywizm",
-            "Egalitaryzm",
             "Własność kolektywna",
             "Planowanie"
           ]
@@ -1063,14 +1046,11 @@
           "value": 1,
           "values_for": [
             "Własność prywatna",
-            "Autonomia",
             "Rynek",
-            "Indywidualizm",
-            "Kontraktualizm"
+            "Indywidualizm"
           ],
           "values_against": [
             "Kolektywizm",
-            "Egalitaryzm",
             "Własność kolektywna",
             "Planowanie"
           ]
@@ -1086,7 +1066,6 @@
           ],
           "values_against": [
             "Własność prywatna",
-            "Autonomia",
             "Rynek",
             "Indywidualizm"
           ]
@@ -1102,7 +1081,6 @@
           ],
           "values_against": [
             "Własność prywatna",
-            "Autonomia",
             "Rynek",
             "Indywidualizm"
           ]
@@ -1127,13 +1105,11 @@
           "value": 1.5,
           "values_for": [
             "Egalitaryzm",
-            "Decentralizacja",
-            "Rynek"
+            "Decentralizacja"
           ],
           "values_against": [
-            "Faszyzm",
-            "Głęboka ekologia",
-            "Nacjonalizm liberalny"
+            "Centralizacja",
+            "Hierarchiczność"
           ]
         },
         {
@@ -1141,10 +1117,11 @@
           "value": 1,
           "values_for": [
             "Egalitaryzm",
-            "Decentralizacja",
-            "Rynek"
+            "Decentralizacja"
           ],
-          "values_against": []
+          "values_against": [
+            "Centralizacja",
+            "Hierarchiczność"
         },
         {
           "label": "Częściowo nie zgadzam się",
@@ -1182,17 +1159,15 @@
             "Decentralizacja",
             "Demokracja",
             "Anty-autokracja",
+            "Kolektywizm",
             "Własność kolektywna",
             "Samoregulacja"
           ],
           "values_against": [
-            "Kolektywizm",
-            "Heteronomia",
-            "Decentralizacja",
             "Centralizacja",
-            "Autokracja",
-            "Własność kolektywna",
-            "Planowanie"
+            "Etatyzm",
+            "Własność prywatna",
+            "Autokracja"
           ]
         },
         {
@@ -1204,17 +1179,15 @@
             "Decentralizacja",
             "Demokracja",
             "Anty-autokracja",
+            "Kolektywizm",
             "Własność kolektywna",
             "Samoregulacja"
           ],
           "values_against": [
-            "Kolektywizm",
-            "Heteronomia",
-            "Decentralizacja",
             "Centralizacja",
-            "Autokracja",
-            "Własność kolektywna",
-            "Planowanie"
+            "Etatyzm",
+            "Własność prywatna",
+            "Autokracja"
           ]
         },
         {
@@ -1222,20 +1195,18 @@
           "value": -1,
           "values_for": [
             "Kolektywizm",
-            "Heteronomia",
-            "Decentralizacja",
+            "Etatyzm",
             "Centralizacja",
             "Autokracja",
             "Własność kolektywna",
             "Planowanie"
           ],
           "values_against": [
-            "Egalitaryzm",
             "Samoorganizacja",
             "Decentralizacja",
             "Demokracja",
             "Anty-autokracja",
-            "Własność kolektywna",
+            "Własność prywatna",
             "Samoregulacja"
           ]
         },
@@ -1244,20 +1215,18 @@
           "value": -1.5,
           "values_for": [
             "Kolektywizm",
-            "Heteronomia",
-            "Decentralizacja",
+            "Etatyzm",
             "Centralizacja",
             "Autokracja",
             "Własność kolektywna",
             "Planowanie"
           ],
           "values_against": [
-            "Egalitaryzm",
             "Samoorganizacja",
             "Decentralizacja",
             "Demokracja",
             "Anty-autokracja",
-            "Własność kolektywna",
+            "Własność prywatna",
             "Samoregulacja"
           ]
         },
@@ -1281,7 +1250,8 @@
           "value": 1.5,
           "values_for": [
             "Własność kolektywna",
-            "Egalitaryzm"
+            "Egalitaryzm",
+            "Kolektywizm"
           ],
           "values_against": [
             "Własność prywatna",
@@ -1293,7 +1263,8 @@
           "value": 1,
           "values_for": [
             "Własność kolektywna",
-            "Egalitaryzm"
+            "Egalitaryzm",
+            "Kolektywizm"
           ],
           "values_against": [
             "Własność prywatna",
@@ -1303,25 +1274,21 @@
         {
           "label": "Częściowo nie zgadzam się",
           "value": -1,
-          "values_for": [
-            "Własność prywatna",
-            "Hierarchiczność"
-          ],
+          "values_for": [],
           "values_against": [
             "Własność kolektywna",
-            "Egalitaryzm"
+            "Egalitaryzm",
+            "Kolektywizm"
           ]
         },
         {
           "label": "Zdecydowanie nie zgadzam się",
           "value": -1.5,
-          "values_for": [
-            "Własność prywatna",
-            "Hierarchiczność"
-          ],
+          "values_for": [],
           "values_against": [
             "Własność kolektywna",
-            "Egalitaryzm"
+            "Egalitaryzm",
+            "Kolektywizm"
           ]
         },
         {
@@ -1336,7 +1303,7 @@
     {
       "id": 109,
       "text": "Bogactwo wytworzone w procesie produkcji powinno należeć do wspólnoty, a nie do indywidualnych właścicieli środków produkcji",
-      "description": "XXXXXX",
+      "description": "Teza ta opiera się na przekonaniu, że proces wytwarzania dóbr ma charakter z natury społeczny i opiera się na zbiorowym wysiłku wielu ludzi. Zgodnie z tym ujęciem, bogactwo powstające dzięki pracy całej grupy nie powinno być przejmowane przez nieliczne jednostki wyłącznie z tytułu posiadania przez nie fabryk, ziemi czy maszyn. Podejście to zakłada, że owoce wspólnego trudu powinny służyć ogółowi, co pozwala na sprawiedliwy podział zasobów i bezpośrednie zaspokajanie potrzeb całej społeczności. W tej wizji tradycyjna własność prywatna ustępuje miejsca zasadzie wspólnego zarządzania wyprodukowanym kapitałem. Służyć ma to budowaniu silniejszych więzi, zapobiegać podziałom ekonomicznym i gwarantować, że każdy członek społeczności ma realny udział w wypracowanym wspólnie dobrobycie.",
       "answers": [
         {
           "label": "Zdecydowanie zgadzam się",
@@ -1406,7 +1373,7 @@
     {
       "id": 110,
       "text": "Zasoby powinny być rozdzielane według zasady: od każdego według jego zdolności, każdemu według jego potrzeb",
-      "description": "XXXXXX",
+      "description": "Zasada ta opiera się na modelu, w którym wkład pracy jednostki oraz jej dostęp do dóbr nie są powiązane rynkowym ekwiwalentem. Każdy członek społeczności uczestniczy w wytwarzaniu dóbr w stopniu odpowiadającym jego osobistym możliwościom, zdrowiu i umiejętnościom, bez uwarunkowania poziomu konsumpcji od wydajności pracy. Rozdysponowanie gotowych produktów i usług opiera się bezpośrednio na indywidualnych potrzebach życiowych ludzi, niezależnie od ich bezpośredniego wkładu produkcyjnego. Koncepcja ta zakłada, że rozwój techniczny i organizacyjny pozwala na osiągnięcie obfitości zasobów, co eliminuje potrzebę stosowania tradycyjnych mierników wartości pracy i limitowania dostępu do produktów na podstawie zarobków.",
       "comment": "Placeholder",
       "answers": [
         {
@@ -1421,7 +1388,8 @@
           "values_against": [
             "Hierarchiczność",
             "Rynek",
-            "Własność prywatna"
+            "Własność prywatna",
+            "Indywidualizm"
           ]
         },
         {
@@ -1436,7 +1404,8 @@
           "values_against": [
             "Hierarchiczność",
             "Rynek",
-            "Własność prywatna"
+            "Własność prywatna",
+            "Indywidualizm"
           ]
         },
         {
@@ -1445,7 +1414,8 @@
           "values_for": [
             "Hierarchiczność",
             "Rynek",
-            "Własność prywatna"
+            "Własność prywatna",
+            "Indywidualizm"
           ],
           "values_against": [
             "Kolektywizm",
@@ -1460,7 +1430,8 @@
           "values_for": [
             "Hierarchiczność",
             "Rynek",
-            "Własność prywatna"
+            "Własność prywatna",
+            "Indywidualizm"
           ],
           "values_against": [
             "Kolektywizm",
@@ -1481,7 +1452,7 @@
     {
       "id": 308,
       "text": "Ziemia oraz wszystkie narzędzia pracy powinny stać się wspólną własnością, dostępną dla każdego bez wyjątku",
-      "description": "XXXXXX",
+      "description": "Podejście to zakłada całkowitą eliminację prywatnego posiadania kluczowych czynników produkcji, takich jak grunty rolnicze, zasoby naturalne oraz fabryki i maszyny. W tym modelu wspomniane zasoby zostają przekształcone we własność ogólnospołeczną, co oznacza, że żadna jednostka ani grupa nie może rościć sobie do nich wyłącznego tytułu prawnego. Wszyscy członkowie społeczności zyskują równy i bezpośredni dostęp do korzystania z tych narzędzi oraz ziemi w celu prowadzenia działalności wytwórczej. Decyzje dotyczące ich wykorzystania, modernizacji oraz podziału wytworzonych dóbr są podejmowane wspólnie przez ogół, na podstawie planowania opartego na realnych potrzebach. Taki system ma na celu uniemożliwienie czerpania zysków z samego faktu posiadania kapitału.",
       "comment": "Placeholder",
       "answers": [
         {
@@ -1497,8 +1468,7 @@
           "values_against": [
             "Indywidualizm",
             "Hierarchiczność",
-            "Własność prywatna",
-            "Heteronomia"
+            "Własność prywatna"
           ]
         },
         {
@@ -1514,8 +1484,7 @@
           "values_against": [
             "Indywidualizm",
             "Hierarchiczność",
-            "Własność prywatna",
-            "Heteronomia"
+            "Własność prywatna"
           ]
         },
         {
@@ -1525,13 +1494,11 @@
             "Indywidualizm",
             "Hierarchiczność",
             "Własność prywatna",
-            "Heteronomia"
           ],
           "values_against": [
             "Kolektywizm",
             "Egalitaryzm",
             "Własność kolektywna",
-            "Minimalizacja granic",
             "Autonomia"
           ]
         },
@@ -1542,13 +1509,11 @@
             "Indywidualizm",
             "Hierarchiczność",
             "Własność prywatna",
-            "Heteronomia"
           ],
           "values_against": [
             "Kolektywizm",
             "Egalitaryzm",
             "Własność kolektywna",
-            "Minimalizacja granic",
             "Autonomia"
           ]
         },
@@ -1571,26 +1536,20 @@
           "label": "Zdecydowanie zgadzam się",
           "value": 1.5,
           "values_for": [
-            "Kolektywizm",
-            "Własność kolektywna",
             "Planowanie"
           ],
           "values_against": [
-            "Rynek",
-            "Swobodna wymiana"
+            "Rynek"          
           ]
         },
         {
           "label": "Częściowo zgadzam się",
           "value": 1,
           "values_for": [
-            "Kolektywizm",
-            "Własność kolektywna",
             "Planowanie"
           ],
           "values_against": [
-            "Rynek",
-            "Swobodna wymiana"
+            "Rynek" 
           ]
         },
         {
@@ -1601,8 +1560,6 @@
             "Swobodna wymiana"
           ],
           "values_against": [
-            "Kolektywizm",
-            "Własność kolektywna",
             "Planowanie"
           ]
         },
@@ -1614,8 +1571,6 @@
             "Swobodna wymiana"
           ],
           "values_against": [
-            "Kolektywizm",
-            "Własność kolektywna",
             "Planowanie"
           ]
         },
