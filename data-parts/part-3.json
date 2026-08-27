@@ -2168,61 +2168,33 @@
     },
     {
       "id": 118,
-      "text": "Państwo powinno systematycznie znosić przepisy regulujące warunki prowadzenia działalności gospodarczej, niezależnie od ich historycznego uzasadnienia",
+      "text": "ZMIANA PYTANIA",
       "description": "XXXXXX",
       "comment": "Placeholder",
       "answers": [
         {
           "label": "Zdecydowanie zgadzam się",
           "value": 1.5,
-          "values_for": [
-            "Samoregulacja",
-            "Rynek",
-            "Autonomia"
-          ],
-          "values_against": [
-            "Regulacja instytucjonalna",
-            "Etatyzm"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Częściowo zgadzam się",
           "value": 1,
-          "values_for": [
-            "Samoregulacja",
-            "Rynek",
-            "Autonomia"
-          ],
-          "values_against": [
-            "Regulacja instytucjonalna",
-            "Etatyzm"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Częściowo nie zgadzam się",
           "value": -1,
-          "values_for": [
-            "Regulacja instytucjonalna",
-            "Etatyzm"
-          ],
-          "values_against": [
-            "Samoregulacja",
-            "Rynek",
-            "Autonomia"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Zdecydowanie nie zgadzam się",
           "value": -1.5,
-          "values_for": [
-            "Regulacja instytucjonalna",
-            "Etatyzm"
-          ],
-          "values_against": [
-            "Samoregulacja",
-            "Rynek",
-            "Autonomia"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Pomiń pytanie",
@@ -3934,83 +3906,39 @@
     },
     {
       "id": 135,
-      "text": "Nie należy ograniczać swobodnego przepływu ludzi, kapitału i towarów przez granice",
+      "text": "ZMIANA PYTANIA",
       "description": "XXXXXX",
       "comment": "Placeholder",
       "answers": [
         {
           "label": "Zdecydowanie zgadzam się",
           "value": 1.5,
-          "values_for": [
-            "Swobodna wymiana",
-            "Minimalizacja granic",
-            "Uniwersalizm humanistyczny",
-            "Kontraktualizm",
-            "Dobrowolność wspólnoty"
-          ],
-          "values_against": [
-            "Kontrola granic",
-            "Ograniczanie wymiany",
-            "Partykularyzm narodowy",
-            "Obowiązkowość wspólnoty"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Częściowo zgadzam się",
           "value": 1,
-          "values_for": [
-            "Swobodna wymiana",
-            "Minimalizacja granic",
-            "Uniwersalizm humanistyczny",
-            "Kontraktualizm",
-            "Dobrowolność wspólnoty"
-          ],
-          "values_against": [
-            "Kontrola granic",
-            "Ograniczanie wymiany",
-            "Partykularyzm narodowy"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Częściowo nie zgadzam się",
           "value": -1,
-          "values_for": [
-            "Kontrola granic",
-            "Ograniczanie wymiany",
-            "Partykularyzm narodowy",
-            "Obowiązkowość wspólnoty"
-          ],
-          "values_against": [
-            "Swobodna wymiana",
-            "Minimalizacja granic",
-            "Uniwersalizm humanistyczny",
-            "Kontraktualizm",
-            "Dobrowolność wspólnoty"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Zdecydowanie nie zgadzam się",
           "value": -1.5,
-          "values_for": [
-            "Kontrola granic",
-            "Ograniczanie wymiany",
-            "Partykularyzm narodowy",
-            "Obowiązkowość wspólnoty"
-          ],
-          "values_against": [
-            "Swobodna wymiana",
-            "Minimalizacja granic",
-            "Uniwersalizm humanistyczny",
-            "Kontraktualizm",
-            "Dobrowolność wspólnoty"
-          ]
+          "values_for": [],
+          "values_against": []
         },
         {
           "label": "Pomiń pytanie",
           "value": 0,
           "values_for": [],
-          "values_against": []
-        }
+          "values_against": []        }
       ],
       "weight": 4.5
     },
