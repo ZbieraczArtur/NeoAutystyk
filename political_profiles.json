@@ -3605,6 +3605,37 @@
         "Chrześcijańska demokracja",
         "Republikanizm",
         "Nominacja / Kooptacja",
+        "Wybory demokratyczne"      
+      ]
+    },
+        {
+      "type": "figure",
+      "id": "figure:ericzemmour",
+      "key": "EricZemmour",
+      "name": "Éric Justin Léon Zemmour",
+      "description": "(ur. 31 sierpnia 1958) Francuski polityk, pisarz i dziennikarz polityczny. Pochodzi z rodziny algierskich Żydów berberyjskich, która w 1952 roku wyemigrowała do Francji. Dorastał w Drancy i Paryżu, ukończył Sciences Po, a następnie bezskutecznie zdawał do ENA. Pracował w „Le Quotidien de Paris” oraz w „Le Figaro”. Rozgłos zyskał jako polemista i komentator w programach telewizyjnych i radiowych, takich jak „On n'est pas couché”, „Ça se dispute” oraz w stacji CNews. Pod koniec 2021 roku ogłosił start w wyborach prezydenckich i założył prawicową partię Reconquête, w której objął funkcję przewodniczącego. W wyborach tych zajął czwarte miejsce w pierwszej turze z wynikiem 7,07% głosów, a w wyborach parlamentarnych nie uzyskał mandatu.\n\nZemmour reprezentuje poglądy tradycjonalistyczne, konserwatywne i suwerennościowe, stawiając obronę francuskiej tożsamości na pierwszym miejscu. Głosi teorię „Wielkiego Zastąpienia” i uważa masową imigrację oraz islam za śmiertelne zagrożenie dla cywilizacji, twierdząc, że szariat konkuruje z prawem republiki. Domaga się rygorystycznej asymilacji obcokrajowców, w tym przywrócenia obowiązku nadawania dzieciom tradycyjnych francuskich imion. Krytykuje feminizm, ruchy LGBT i zmiany obyczajowe, łącząc je z demoralizacją społeczeństwa. W gospodarce łączy liberalizm (obniżenie podatków dla firm, wiek emerytalny 64 lata) z protekcjonizmem i „preferencją narodową”, czyli rezerwowaniem świadczeń socjalnych dla Francuzów. Postuluje też wyjście ze zintegrowanego dowództwa NATO oraz prymat prawa krajowego nad unijnym.\n\nTę postać wyróżnia konfrontacyjny i prowokacyjny styl wypowiedzi, zorientowany na wywoływanie kontrowersji medialnych. Jest autorem bestsellerów „Le Suicide français” i „Destin français”, w których opisuje rzekomy upadek państwa narodowego. Jego działalność wykazuje ewolucję w stronę radykalnego ruchu tożsamościowego, promującego koncepcję „remigracji”, czyli przymusowego odsyłania niezasymilowanych obcokrajowców. Krytycy i historycy oskarżają go o manipulacje i rewizjonizm historyczny, szczególnie w kwestii obrony reżimu Vichy. Jego wypowiedzi skutkowały procesami i trzykrotnym skazaniem za podżeganie do nienawiści rasowej lub dyskryminacji religijnej. Wpływ Zemmoura na debatę publiczną polega na przesunięciu francuskiego pejzażu politycznego na prawo oraz realizacji strategii „zjednoczenia prawicy”.",
+      "logo": "images/Figury/Estymat_Zemmour.jpg",
+      "exportCode": "Lorem ipsum",
+      "metadata": {
+        "source": "data.json"
+      },
+      "tags": [
+        "Polityk",
+        "Publicysta",
+        "Pisarz",
+        "Założyciel partii/ruchu",
+        "Lider partii",
+        "Francuska",
+        "Żyje",
+        "Mężczyzna",
+        "XX wiek",
+        "XXI wiek",
+        "Nacjonalizm",
+        "Konserwatyzm",
+        "Tradycjonalizm",
+        "Liberalizm gospodarczy",
+        "Republikanizm",
+        "Europa",
         "Wybory demokratyczne"
       ]
     }
