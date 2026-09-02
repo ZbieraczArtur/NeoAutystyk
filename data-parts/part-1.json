@@ -7376,6 +7376,106 @@
         }
       ],
       "weight": 2
+    },
+        {
+      "id": 489,
+      "text": "Znaczenie jednostki dla społeczeństwa wynika przede wszystkim z jej przynależności do wspólnoty, której jest członkiem",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Kolektywizm", "Organicyzm"],
+          "values_against": ["Indywidualizm", "Kontraktualizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Kolektywizm", "Organicyzm"],
+          "values_against": ["Indywidualizm", "Kontraktualizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Indywidualizm", "Kontraktualizm"],
+          "values_against": ["Kolektywizm", "Organicyzm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Indywidualizm", "Kontraktualizm"],
+          "values_against": ["Kolektywizm", "Organicyzm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 490,
+      "text": "Istniejący porządek polityczny powinien zostać zastąpiony zasadniczo odmiennym sposobem organizacji państwa lub społeczeństwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Rewolucja", "Anty-demokracja", "Anty-etatyzm", "Zmiana ustrojowa"],
+          "values_against": ["Reformizm", "Kontynuacja instytucjonalna"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Rewolucja", "Anty-demokracja", "Anty-etatyzm", "Zmiana ustrojowa"],
+          "values_against": ["Reformizm", "Kontynuacja instytucjonalna"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Reformizm", "Kontynuacja instytucjonalna"],
+          "values_against": ["Rewolucja", "Anty-demokracja"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Reformizm", "Kontynuacja instytucjonalna"],
+          "values_against": ["Rewolucja", "Anty-demokracja"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 491,
+      "text": "System cen jako podstawowy mechanizm określania wartości i dystrybucji dóbr powinien zostać zniesiony",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Gospodarka centralnie planowana", "Równość ekonomiczna", "Anty-kapitalizm", "Etatyzm"],
+          "values_against": ["Wolny rynek", "Kapitalizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Gospodarka centralnie planowana", "Równość ekonomiczna", "Anty-kapitalizm", "Etatyzm"],
+          "values_against": ["Wolny rynek", "Kapitalizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Wolny rynek", "Kapitalizm"],
+          "values_against": ["Gospodarka centralnie planowana", "Anty-kapitalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Wolny rynek", "Kapitalizm"],
+          "values_against": ["Gospodarka centralnie planowana", "Anty-kapitalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
     }
   ]
 }
+
