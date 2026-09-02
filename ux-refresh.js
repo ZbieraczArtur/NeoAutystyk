@@ -55,14 +55,18 @@
     const content = document.getElementById('question-catalog-content');
     const status = document.getElementById('question-catalog-status');
     const descriptionToggle = document.getElementById('catalog-show-descriptions');
+    const sortSelect = document.getElementById('catalog-sort');
     const copyButton = document.getElementById('catalog-copy-btn');
+    const diagnostics = document.getElementById('question-catalog-diagnostics');
     if (!details || !content || !window.NeoDataParts) return;
     let parts = null;
 
     function render() {
       if (!parts) return;
+      const sort = sortSelect?.value || 'default';
+      const shownParts = sort === 'default' ? parts : [{ id: 'Wszystkie tezy', questions: parts.flatMap(part => part.questions).sort((a, b) => sort === 'id-asc' ? Number(a.id) - Number(b.id) : Number(b.id) - Number(a.id)) }];
       const fragment = document.createDocumentFragment();
-      parts.forEach(part => {
+      shownParts.forEach(part => {
         const section = document.createElement('section');
         section.className = 'catalog-part';
         const heading = document.createElement('h3');
@@ -76,6 +80,27 @@
       });
       content.replaceChildren(fragment);
       status.textContent = `Łącznie: ${parts.reduce((sum, part) => sum + part.questions.length, 0)} pytań, w tym pytania warunkowe i ukryte.`;
+      renderDiagnostics();
+    }
+
+    function renderDiagnostics() {
+      if (!diagnostics || !parts) return;
+      const manifestIds = [...new Set(parts.flatMap(part => part.questions.map(question => Number(question.id))).filter(Number.isFinite))].sort((a, b) => a - b);
+      const sourceQuestions = new Map((window.__catalogueSourceQuestions || []).map(question => [Number(question.id), question]));
+      const missing = [];
+      for (let id = manifestIds[0]; id <= manifestIds.at(-1); id++) if (!manifestIds.includes(id)) missing.push(id);
+      diagnostics.hidden = missing.length === 0;
+      diagnostics.replaceChildren();
+      if (!missing.length) return;
+      const title = document.createElement('h3'); title.textContent = '⚠ Brakujące tezy'; diagnostics.appendChild(title);
+      missing.forEach(id => {
+        const item = document.createElement('p'); const source = sourceQuestions.get(id);
+        const before = manifestIds.filter(value => value < id).at(-1); const after = manifestIds.find(value => value > id);
+        item.textContent = source
+          ? `ID ${id}: teza istnieje w bazie (${source.text || 'bez treści'}), ale nie została dodana do manifest.json. Kolejność: ID ${before} → ID ${after}.`
+          : `ID ${id}: teza nie istnieje w bazie. Kolejność: ID ${before} → ID ${after}.`;
+        diagnostics.appendChild(item);
+      });
     }
 
     async function load() {
@@ -95,6 +120,7 @@
           const id = Number(question.id);
           if (!allQuestionsById.has(id)) allQuestionsById.set(id, question);
         }));
+        window.__catalogueSourceQuestions = [...allQuestionsById.values()];
         parts = manifest.parts.map(entry => ({
           id: entry.id,
           questions: entry.questionIds.map(Number).map(id => allQuestionsById.get(id) || { id, text: "[Brak treści pytania w pliku źródłowym]", missing: true })
@@ -108,6 +134,7 @@
 
     details.addEventListener('toggle', () => { if (details.open) load(); });
     descriptionToggle?.addEventListener('change', render);
+    sortSelect?.addEventListener('change', render);
     copyButton?.addEventListener('click', async () => {
       await load();
       if (!parts) return;
