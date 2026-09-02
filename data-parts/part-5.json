@@ -3063,6 +3063,204 @@
         }
       ],
       "weight": 3.5
+    },
+ {
+      "id": 557,
+      "text": "Państwo powinno mieć pierwszeństwo przed rodzicami w określaniu sposobu wychowania dzieci",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Etatyzm", "Kolektywizm", "Unifikacja"],
+          "values_against": ["Prawa rodzicielskie", "Autonomia rodziny"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Etatyzm", "Kolektywizm", "Unifikacja"],
+          "values_against": ["Prawa rodzicielskie", "Autonomia rodziny"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Prawa rodzicielskie", "Autonomia rodziny"],
+          "values_against": ["Etatyzm", "Kolektywizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Prawa rodzicielskie", "Autonomia rodziny"],
+          "values_against": ["Etatyzm", "Kolektywizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 397,
+      "text": "Państwo nie powinno dążyć do asymilacji grup uznawanych za odrębne rasowo lub etnicznie, lecz powinno utrzymywać między nimi trwały podział",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Segregacja rasowa", "Nacjonalizm", "Tradycjonalizm"],
+          "values_against": ["Integracja", "Równość", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Segregacja rasowa", "Nacjonalizm", "Tradycjonalizm"],
+          "values_against": ["Integracja", "Równość", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Integracja", "Równość", "Wielokulturowość"],
+          "values_against": ["Segregacja rasowa", "Nacjonalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Integracja", "Równość", "Wielokulturowość"],
+          "values_against": ["Segregacja rasowa", "Nacjonalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 422,
+      "text": "Państwo powinno mieć możliwość przymusowego usuwania z jego terytorium osób należących do określonych grup narodowych lub etnicznych",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Nacjonalizm", "Czystki etniczne", "Autokracja"],
+          "values_against": ["Prawa człowieka", "Równość", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Nacjonalizm", "Czystki etniczne", "Autokracja"],
+          "values_against": ["Prawa człowieka", "Równość", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Prawa człowieka", "Równość", "Wielokulturowość"],
+          "values_against": ["Nacjonalizm", "Czystki etniczne"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Prawa człowieka", "Równość", "Wielokulturowość"],
+          "values_against": ["Nacjonalizm", "Czystki etniczne"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 424,
+      "text": "Państwo powinno mieć możliwość przymusowego usuwania migrantów, którzy nie posiadają jego obywatelstwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Restrykcyjna polityka migracyjna", "Suwerenność", "Nacjonalizm"],
+          "values_against": ["Prawa migrantów", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Restrykcyjna polityka migracyjna", "Suwerenność", "Nacjonalizm"],
+          "values_against": ["Prawa migrantów", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Prawa migrantów", "Wielokulturowość"],
+          "values_against": ["Restrykcyjna polityka migracyjna", "Suwerenność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Prawa migrantów", "Wielokulturowość"],
+          "values_against": ["Restrykcyjna polityka migracyjna", "Suwerenność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 425,
+      "text": "Państwo powinno mieć możliwość przymusowego wysiedlania całych grup narodowych lub etnicznych ze swojego terytorium",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Czystki etniczne", "Nacjonalizm", "Autokracja"],
+          "values_against": ["Prawa człowieka", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Czystki etniczne", "Nacjonalizm", "Autokracja"],
+          "values_against": ["Prawa człowieka", "Wielokulturowość"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Prawa człowieka", "Wielokulturowość"],
+          "values_against": ["Czystki etniczne", "Nacjonalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Prawa człowieka", "Wielokulturowość"],
+          "values_against": ["Czystki etniczne", "Nacjonalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 554,
+      "text": "Państwo powinno ograniczać spożycie alkoholu ze względu na ochronę tradycyjnych norm obyczajowych i życia rodzinnego",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Tradycjonalizm", "Ochrona rodziny", "Konserwatyzm"],
+          "values_against": ["Liberalizm kulturowy"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Tradycjonalizm", "Ochrona rodziny", "Konserwatyzm"],
+          "values_against": ["Liberalizm kulturowy"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Liberalizm kulturowy"],
+          "values_against": ["Tradycjonalizm", "Ochrona rodziny"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Liberalizm kulturowy"],
+          "values_against": ["Tradycjonalizm", "Ochrona rodziny"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
     }
   ]
 }
