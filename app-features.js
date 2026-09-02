@@ -72,7 +72,11 @@
       ...(politicalProfiles?.figures || [])
     ];
   }
-  function profileTags(profile) { return Array.isArray(profile?.tags) ? profile.tags : []; }
+  const crossCategoryTags = new Set(['Parlamentarne', 'Pozaparlamentarne', 'Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne', 'Konserwatywne', 'Socjalistyczne', 'Libertariańskie', 'Anarchistyczne', 'Monarchistyczne']);
+  function profileTags(profile) {
+    const tags = Array.isArray(profile?.tags) ? profile.tags : [];
+    return (profile?.type === 'figure' || profile?.type === 'user') ? tags.filter(tag => !crossCategoryTags.has(tag)) : tags;
+  }
   function matchesSelectedTags(profile) { return showAllTags || [...selectedTags].every(tag => profileTags(profile).includes(tag)); }
   function findProfile(name) { return allProfiles().find(p => p.name === name || p.key === name || p.id === name); }
   function profileLogo(profile) { return profile?.logo || 'images/ALogo.svg'; }
@@ -98,12 +102,7 @@
         row.insertBefore(image, row.firstChild);
         row.addEventListener('click', event => {
           event.stopImmediatePropagation();
-          popup.querySelector('.popup-logo-img')?.remove();
-          const avatar = image.cloneNode(); avatar.className = 'popup-logo-img';
-          avatar.style.cssText = 'display:block;max-width:120px;max-height:120px;margin:0 auto 16px;object-fit:cover;border-radius:50%;';
-          popup.querySelector('.popup-content').insertBefore(avatar, popupText);
-          popupText.textContent = `${profile.name}\n\n${profile.description || 'Brak opisu.'}`;
-          popup.classList.remove('hidden');
+          window.showModernProfilePopup?.(profile);
         }, true);
       }
     });
@@ -136,12 +135,7 @@
       row.insertBefore(image, row.firstChild);
       row.addEventListener('click', event => {
         event.stopImmediatePropagation();
-        const oldImage = popup.querySelector('.popup-logo-img'); if (oldImage) oldImage.remove();
-        const portrait = image.cloneNode(); portrait.className = 'popup-logo-img';
-        portrait.style.cssText = 'display:block;max-width:120px;max-height:120px;margin:0 auto 16px;object-fit:cover;border-radius:50%;';
-        popup.querySelector('.popup-content').insertBefore(portrait, popupText);
-        popupText.textContent = `${profile.name}\n\n${profile.description || 'Brak opisu.'}`;
-        popup.classList.remove('hidden');
+        window.showModernProfilePopup?.(profile);
       }, true);
     });
     target.appendChild(section);
@@ -168,6 +162,7 @@
       if (!enabled[type]) continue;
       for (const profile of profiles) {
         if (!matchesSelectedTags(profile)) continue;
+        if (type === 'figure' && !figureMatchesYear(profile, compassInstance === window.modalCompassInstance ? document.getElementById('modal-figure-year-filter')?.value : document.getElementById('figure-year-filter')?.value)) continue;
         let coords;
         if (type === 'figure') {
           const parsed = parseExportCode(profile.exportCode || '').filter(answer => !answer.noteOnly && answer.answerData);
@@ -178,6 +173,21 @@
         if (coords) compassInstance.addOverlay(profileLogo(profile), coords.x, coords.y, type, profile.name, profile.description || '');
       }
     }
+  }
+
+  function figureLifeRange(profile) {
+    const field = (...keys) => keys.map(key => profile?.[key] ?? profile?.metadata?.[key]).find(value => value !== undefined && value !== null && String(value).trim());
+    const fromFields = [field('birthDate', 'born', 'birth', 'dateOfBirth'), field('deathDate', 'died', 'death', 'dateOfDeath')];
+    const text = String(profile?.description || ''); const match = text.match(/[([](?:ur\.\s*)?(\d{4})(?:\s*[–-]\s*(\d{4}))?/i);
+    const year = value => { const found = String(value || '').match(/\d{4}/); return found ? Number(found[0]) : null; };
+    return { birth: year(fromFields[0]) || Number(match?.[1]) || null, death: year(fromFields[1]) || Number(match?.[2]) || null };
+  }
+  function figureMatchesYear(profile, raw) {
+    const value = String(raw || '').trim(); if (!value) return true;
+    const match = value.match(/^(\d{1,4})(?:\s*-\s*(\d{1,4}))?$/); if (!match) return true;
+    const start = Number(match[1]), end = Number(match[2] || match[1]); const life = figureLifeRange(profile);
+    if (!life.birth) return false;
+    return life.birth <= end && (life.death || Infinity) >= start;
   }
   loadOverlays = filteredOverlays;
   window.loadOverlays = filteredOverlays;
@@ -200,6 +210,7 @@
         toggle.dataset.overlayRefreshBound = 'true';
         toggle.addEventListener('change', refreshVisibleProfiles);
       });
+    ['figure-year-filter', 'modal-figure-year-filter'].forEach(id => document.getElementById(id)?.addEventListener('input', refreshVisibleProfiles));
   }
 
   function renderTagFilters(container) {
