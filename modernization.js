@@ -7,6 +7,8 @@
   const NEITHER = 'Neither';
   let bearClickTimer = null;
   let reviewFilter = null;
+  const autoNeitherDisabled = new Set();
+  const neitherClickState = new Map();
 
   const idOf = value => Number(value);
   let indexedQuestions = null;
@@ -30,17 +32,15 @@
 
   function isQuestionVisible(question) {
     const condition = conditionFor(question.id);
-    const yes = Array.isArray(condition?.require_yes) ? condition.require_yes : [];
-    const no = Array.isArray(condition?.require_no) ? condition.require_no : [];
-    return yes.every(id => answerRows(id).some(isPositive)) && no.every(id => answerRows(id).some(isNegative));
+    if (!condition) return true;
+    // Jedyny evaluator requires znajduje się w data-loader.js. Dzięki temu
+    // renderer, ładowanie i odświeżanie używają identycznej semantyki AND/OR.
+    return window.NeoDataParts?.conditionIsMet?.(condition) ?? false;
   }
 
   function conditionIds(question) {
     const condition = conditionFor(question.id);
-    return [
-      ...(Array.isArray(condition?.require_yes) ? condition.require_yes : []),
-      ...(Array.isArray(condition?.require_no) ? condition.require_no : [])
-    ].map(idOf);
+    return (window.NeoDataParts?.conditionQuestionIds?.(condition) || []).map(idOf);
   }
 
   // Warunkowe pytania nie są już sortowane według ich ID. Najpierw zachowujemy
@@ -118,10 +118,13 @@
     userAnswers = userAnswers.filter(row => !(row.isAutoNeither && visible.has(idOf(row.questionId))));
     for (const question of config.questions) {
       if (visible.has(idOf(question.id))) continue;
-      // Pytanie, które ponownie staje się ukryte, nie może zachować dawnej
-      // odpowiedzi użytkownika: zastępujemy ją automatycznym Neither.
-      userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
-      userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, isAutoNeither: true });
+      // Poza DEV ukryte pytanie jest wyłącznie logicznym Neither. W DEV
+      // zostawiamy ręcznie zaznaczone odpowiedzi, aby można było badać dane.
+      if (!window.DEV_MODE) userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
+      const hasNeither = answerRows(question.id).some(row => row.neither);
+      if (!hasNeither && !autoNeitherDisabled.has(idOf(question.id))) {
+        userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, isAutoNeither: true });
+      }
     }
   }
 
@@ -230,7 +233,7 @@
     const rows = answerRows(question.id);
     if (window.DEV_MODE) {
       const existing = rows.find(row => row.answerIndex === index && !row.neither);
-      userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id) || (!row.neither && row.answerIndex !== index));
+      userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id) || row.neither || row.answerIndex !== index);
       if (!existing) userAnswers.push({ questionId: question.id, answerIndex: index, answerValue: answer.value, answerData: answer });
     } else {
       const note = primaryAnswer(question.id)?.note || '';
@@ -244,8 +247,14 @@
 
   function setNeither(question) {
     const note = primaryAnswer(question.id)?.note || '';
-    userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
-    userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, note });
+    autoNeitherDisabled.delete(idOf(question.id));
+    if (window.DEV_MODE) {
+      // W DEV Neither nie kasuje innych, równocześnie zaznaczonych odpowiedzi.
+      if (!answerRows(question.id).some(row => row.neither)) userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, note });
+    } else {
+      userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
+      userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, note });
+    }
     window.NeoDataParts?.refreshDynamicQuestions?.().then(() => {
       reconcileDynamicAnswers(); renderQuestions();
     }).catch(error => { console.error(error); reconcileDynamicAnswers(); renderQuestions(); });
@@ -277,7 +286,23 @@
         if (answerRows(question.id).some(row => row.answerIndex === index && !row.neither)) option.classList.add('selected');
         option.addEventListener('click', () => setAnswer(question, index, answer)); answers.appendChild(option);
       });
-      if (window.DEV_MODE) { const neither = document.createElement('button'); neither.type = 'button'; neither.className = 'answer-option answer-neither'; neither.textContent = NEITHER; if (answerRows(question.id).some(row => row.neither && !row.isAutoNeither)) neither.classList.add('selected'); neither.addEventListener('click', () => setNeither(question)); answers.appendChild(neither); }
+      if (window.DEV_MODE) {
+        const neither = document.createElement('button'); neither.type = 'button'; neither.className = 'answer-option answer-neither'; neither.textContent = NEITHER;
+        const neitherActive = answerRows(question.id).some(row => row.neither);
+        neither.classList.toggle('selected', neitherActive);
+        neither.classList.toggle('neither-disabled', autoNeitherDisabled.has(idOf(question.id)));
+        neither.title = 'Trzy szybkie kliknięcia wyłączają automatyczne Neither dla tego pytania.';
+        neither.addEventListener('click', () => {
+          const now = Date.now(); const state = neitherClickState.get(idOf(question.id)) || { count: 0, at: 0 };
+          state.count = now - state.at < 700 ? state.count + 1 : 1; state.at = now; neitherClickState.set(idOf(question.id), state);
+          if (state.count >= 3) {
+            autoNeitherDisabled.add(idOf(question.id)); neitherClickState.delete(idOf(question.id));
+            userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id) || !row.neither);
+            renderQuestions(); return;
+          }
+          setNeither(question);
+        }); answers.appendChild(neither);
+      }
       card.appendChild(answers);
       const note = document.createElement('div'); note.className = 'answer-note-wrap'; note.innerHTML = `<label for="answer-note-${question.id}">Uzasadnienie odpowiedzi</label><textarea id="answer-note-${question.id}" class="answer-note" rows="3" maxlength="3000"></textarea>`;
       const input = note.querySelector('textarea'); input.value = primaryAnswer(question.id)?.note || ''; input.addEventListener('input', () => { const row = primaryAnswer(question.id); if (row) row.note = input.value; }); card.appendChild(note);
@@ -290,8 +315,12 @@
   function answerText(question) {
     const rows = answerRows(question.id);
     if (!rows.length) return 'Brak odpowiedzi';
-    if (rows.some(row => row.neither)) return NEITHER;
-    return rows.map(row => row.answerData?.label).filter(Boolean).join(', ') || 'Brak odpowiedzi';
+    // DEV może celowo zawierać Neither i zwykłą odpowiedź równocześnie.
+    const labels = [
+      ...(rows.some(row => row.neither) ? [NEITHER] : []),
+      ...rows.filter(row => !row.neither).map(row => row.answerData?.label).filter(Boolean)
+    ];
+    return labels.join(', ') || 'Brak odpowiedzi';
   }
 
   function generateModernExport() {
@@ -346,10 +375,73 @@
   function appendTagsToPopup(profile) {
     const content = popup.querySelector('.popup-content');
     content.querySelector('.popup-profile-tags')?.remove();
-    const tags = Array.isArray(profile?.tags) ? profile.tags : []; if (!tags.length) return;
+    const tags = visibleProfileTags(profile); if (!tags.length) return;
     const list = document.createElement('div'); list.className = 'popup-profile-tags'; list.innerHTML = '<strong>Tagi</strong>';
     tags.forEach(tag => { const chip = document.createElement('span'); chip.className = 'profile-tag'; chip.textContent = tag; list.appendChild(chip); }); content.insertBefore(list, content.querySelector('#closePopup'));
   }
+
+  const TAGS_BY_TYPE = {
+    party: new Set(['Parlamentarne', 'Pozaparlamentarne']),
+    ideology: new Set(['Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne', 'Konserwatywne', 'Socjalistyczne', 'Libertariańskie', 'Anarchistyczne', 'Monarchistyczne'])
+  };
+  function visibleProfileTags(profile) {
+    const tags = Array.isArray(profile?.tags) ? profile.tags : [];
+    const type = profile?.type;
+    // Nie pokazujemy tagu przeznaczonego wyłącznie dla innej kategorii.
+    if (type === 'figure' || type === 'user') return tags.filter(tag => !TAGS_BY_TYPE.party.has(tag) && !TAGS_BY_TYPE.ideology.has(tag));
+    return tags;
+  }
+  function profileDate(profile, keys) {
+    for (const key of keys) {
+      const value = profile?.[key] ?? profile?.metadata?.[key];
+      if (value !== undefined && value !== null && String(value).trim()) return String(value).trim();
+    }
+    return '';
+  }
+  function inferredLifeDates(profile) {
+    const birth = profileDate(profile, ['birthDate', 'born', 'birth', 'dateOfBirth']);
+    const death = profileDate(profile, ['deathDate', 'died', 'death', 'dateOfDeath']);
+    if (birth || death) return { birth, death };
+    const match = String(profile?.description || '').match(/[([](?:ur\.\s*)?(\d{4})(?:\s*[–-]\s*(\d{4}))?/i);
+    return { birth: match?.[1] || '', death: match?.[2] || '' };
+  }
+  function infoboxRows(profile) {
+    const configured = profile?.infobox || profile?.metadata?.infobox;
+    if (Array.isArray(configured)) return configured.filter(row => row && row.value !== undefined && String(row.value).trim());
+    const rows = [];
+    if (profile?.type === 'figure') {
+      const life = inferredLifeDates(profile);
+      if (life.birth || life.death) {
+        if (life.birth) rows.push({ label: 'Data urodzenia', value: life.birth });
+        rows.push({ label: 'Data śmierci', value: life.death || '—' });
+      }
+    }
+    const typeLabel = { party: 'Partia polityczna', ideology: 'Ideologia', user: 'Użytkownik', figure: 'Figura polityczna' }[profile?.type];
+    if (typeLabel) rows.unshift({ label: 'Typ', value: typeLabel });
+    return rows;
+  }
+  function showModernProfilePopup(profile) {
+    if (!profile) return;
+    const content = popup.querySelector('.popup-content');
+    content.querySelectorAll('.popup-logo-img, .profile-popup-layout, .popup-profile-tags').forEach(node => node.remove());
+    popupText.hidden = true;
+    const layout = document.createElement('section'); layout.className = 'profile-popup-layout';
+    const main = document.createElement('div'); main.className = 'profile-popup-main';
+    const title = document.createElement('h2'); title.textContent = profile.name; main.appendChild(title);
+    String(profile.description || 'Brak opisu.').split(/\n\s*\n/).filter(Boolean).forEach(text => { const p = document.createElement('p'); p.textContent = text; main.appendChild(p); });
+    const aside = document.createElement('aside'); aside.className = 'profile-popup-infobox';
+    if (profile.logo) { const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = 'popup-logo-img'; aside.appendChild(image); }
+    const rows = infoboxRows(profile);
+    if (rows.length) { const list = document.createElement('dl'); rows.forEach(row => { const dt = document.createElement('dt'); dt.textContent = row.label; const dd = document.createElement('dd'); dd.textContent = row.value; list.append(dt, dd); }); aside.appendChild(list); }
+    const tags = visibleProfileTags(profile);
+    if (tags.length) { const tagBox = document.createElement('div'); tagBox.className = 'popup-profile-tags'; const label = document.createElement('strong'); label.textContent = 'Tagi'; tagBox.appendChild(label); tags.forEach(tag => { const chip = document.createElement('span'); chip.className = 'profile-tag'; chip.textContent = tag; tagBox.appendChild(chip); }); aside.appendChild(tagBox); }
+    layout.append(main, aside); content.insertBefore(layout, popupText); popup.classList.remove('hidden');
+  }
+  window.showModernProfilePopup = showModernProfilePopup;
+  // Zachowujemy publiczne API starszych handlerów, ale każdy profil korzysta
+  // teraz z tego samego, modułowego szablonu popupu.
+  showPartyPopup = (name, description) => showModernProfilePopup(getProfileByName(name, 'party') || { name, description, type: 'party', logo: getPartyLogoUrl(name) });
+  showIdeologyPopup = (name, description) => showModernProfilePopup(getProfileByName(name, 'ideology') || { name, description, type: 'ideology', logo: getIdeologyLogoUrl(name) });
 
   function bindRankingPopups() {
     document.querySelectorAll('.ranking-item[data-profile-name]').forEach(row => {
@@ -447,11 +539,7 @@
     const mine = answerFor(userAnswers, question.id);
     return Boolean(mine?.answerData && ([...(mine.answerData.values_for || []), ...(mine.answerData.values_against || [])].includes(value)));
   }
-  function profilePopup(profile) {
-    popup.querySelector('.popup-logo-img')?.remove();
-    const logo = document.createElement('img'); logo.src = profileLogo(profile); logo.className = 'popup-logo-img'; logo.alt = profile.name; popup.querySelector('.popup-content').insertBefore(logo, popupText);
-    popupText.textContent = `${profile.name}\n\n${profile.description || 'Brak opisu.'}`; appendTagsToPopup(profile); popup.classList.remove('hidden');
-  }
+  function profilePopup(profile) { showModernProfilePopup(profile); }
   function profileAnswerGroups(question, answer) {
     const groups = [['Ideologie', 'ideology'], ['Partie', 'party'], ['Użytkownicy', 'user'], ['Figury', 'figure']];
     const profiles = allComparisonProfiles().filter(profile => profile.type !== 'friend');
