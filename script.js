@@ -418,8 +418,8 @@ const valueColors = {
 };
 
 function showPopup(message) {
-  const existingLogo = popup.querySelector('.popup-logo-img');
-  if (existingLogo) existingLogo.remove();
+  popup.querySelectorAll('.popup-logo-img, .profile-popup-layout, .popup-profile-tags').forEach(node => node.remove());
+  popupText.hidden = false;
   popupText.innerText = message;
   popup.classList.remove('hidden');
 }
