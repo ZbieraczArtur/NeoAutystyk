@@ -42,10 +42,12 @@
         <summary><span>Przeglądaj wszystkie pytania</span><small>pełna lista według części testu</small></summary>
         <div class="question-catalog-toolbar">
           <label class="catalog-description-toggle"><input id="catalog-show-descriptions" type="checkbox"> Pokaż dodatkowe opisy</label>
+          <label class="catalog-sort">Sortuj: <select id="catalog-sort"><option value="default">domyślna kolejność</option><option value="id-asc">ID rosnąco</option><option value="id-desc">ID malejąco</option></select></label>
           <button id="catalog-copy-btn" type="button" class="catalog-copy-btn">Kopiuj listę</button>
         </div>
         <p id="question-catalog-status" class="question-catalog-status" aria-live="polite">Lista zostanie wczytana po otwarciu.</p>
         <div id="question-catalog-content" class="question-catalog-content" aria-label="Lista wszystkich pytań"></div>
+        <aside id="question-catalog-diagnostics" class="question-catalog-diagnostics" hidden aria-live="polite"></aside>
       </details>
     </div>
   </section>
@@ -155,6 +157,7 @@
           <label><input type="checkbox" id="toggle-users"> 🐻 Użytkownicy</label>
           <label><input type="checkbox" id="toggle-figures"> 👤 Figury polityczne</label>
         </div>
+        <label class="figure-year-filter">Rok lub okres figur <input id="figure-year-filter" inputmode="numeric" pattern="[0-9]{1,4}(-[0-9]{1,4})?" placeholder="np. 1820 lub 1820-1900"></label>
         <div class="overlay-size-controls" role="group" aria-label="Wielkość nakładek na kompasie">
           <span>Wielkość nakładek</span><button type="button" class="overlay-size-button" data-overlay-size-step="-4" aria-label="Zmniejsz nakładki">−</button>
           <input id="overlay-size-range" type="range" min="16" max="52" value="24" step="2" aria-label="Wielkość nakładek"><button type="button" class="overlay-size-button" data-overlay-size-step="4" aria-label="Zwiększ nakładki">+</button><output id="overlay-size-value" for="overlay-size-range">24 px</output>
@@ -202,6 +205,7 @@
             <label><input type="checkbox" id="modal-toggle-users"> 🐻 Użytkownicy</label>
             <label><input type="checkbox" id="modal-toggle-figures"> 👤 Figury polityczne</label>
           </div>
+          <label class="figure-year-filter">Rok lub okres figur <input id="modal-figure-year-filter" inputmode="numeric" pattern="[0-9]{1,4}(-[0-9]{1,4})?" placeholder="np. 1820 lub 1820-1900"></label>
           <div class="overlay-size-controls" role="group" aria-label="Wielkość nakładek na kompasie">
             <span>Wielkość nakładek</span><button type="button" class="overlay-size-button" data-overlay-size-step="-4" aria-label="Zmniejsz nakładki">−</button>
             <input id="modal-overlay-size-range" type="range" min="16" max="52" value="24" step="2" aria-label="Wielkość nakładek"><button type="button" class="overlay-size-button" data-overlay-size-step="4" aria-label="Zwiększ nakładki">+</button><output id="modal-overlay-size-value" for="modal-overlay-size-range">24 px</output>
