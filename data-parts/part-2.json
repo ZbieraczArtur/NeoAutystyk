@@ -6342,6 +6342,4330 @@
         }
       ],
       "weight": 5
+    },
+    [
+  {
+    "id": 489,
+    "text": "Znaczenie jednostki dla społeczeństwa wynika przede wszystkim z jej przynależności do wspólnoty, której jest członkiem",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Kolektywizm",
+          "Organicyzm"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Kontraktualizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Kolektywizm",
+          "Organicyzm"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Kontraktualizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Kontraktualizm"
+        ],
+        "values_against": [
+          "Kolektywizm",
+          "Organicyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Kontraktualizm"
+        ],
+        "values_against": [
+          "Kolektywizm",
+          "Organicyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 490,
+    "text": "Istniejący porządek polityczny powinien zostać zastąpiony zasadniczo odmiennym sposobem organizacji państwa lub społeczeństwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Rewolucja",
+          "Anty-demokracja",
+          "Anty-etatyzm",
+          "Zmiana ustrojowa"
+        ],
+        "values_against": [
+          "Reformizm",
+          "Kontynuacja instytucjonalna"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Rewolucja",
+          "Anty-demokracja",
+          "Anty-etatyzm",
+          "Zmiana ustrojowa"
+        ],
+        "values_against": [
+          "Reformizm",
+          "Kontynuacja instytucjonalna"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Reformizm",
+          "Kontynuacja instytucjonalna"
+        ],
+        "values_against": [
+          "Rewolucja",
+          "Anty-demokracja"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Reformizm",
+          "Kontynuacja instytucjonalna"
+        ],
+        "values_against": [
+          "Rewolucja",
+          "Anty-demokracja"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 491,
+    "text": "System cen jako podstawowy mechanizm określania wartości i dystrybucji dóbr powinien zostać zniesiony",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Gospodarka centralnie planowana",
+          "Równość ekonomiczna",
+          "Anty-kapitalizm",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Gospodarka centralnie planowana",
+          "Równość ekonomiczna",
+          "Anty-kapitalizm",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ],
+        "values_against": [
+          "Gospodarka centralnie planowana",
+          "Anty-kapitalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ],
+        "values_against": [
+          "Gospodarka centralnie planowana",
+          "Anty-kapitalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 492,
+    "text": "Zadania administracji publicznej powinny być w możliwie dużym zakresie wykonywane przez władze regionalne i lokalne zamiast przez administrację centralną",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Samorządność",
+          "Subsydiarność",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Samorządność",
+          "Subsydiarność",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 493,
+    "text": "Władze lokalne powinny samodzielnie decydować o sposobie wykonywania większości powierzonych im zadań administracyjnych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Autonomia lokalna",
+          "Samorządność",
+          "Decentralizacja"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unifikacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Autonomia lokalna",
+          "Samorządność",
+          "Decentralizacja"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unifikacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Autonomia lokalna",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Autonomia lokalna",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 494,
+    "text": "Sprawy dotyczące lokalnych społeczności powinny być w możliwie dużym zakresie zarządzane przez władze lokalne",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Subsydiarność",
+          "Samorządność",
+          "Decentralizacja"
+        ],
+        "values_against": [
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Subsydiarność",
+          "Samorządność",
+          "Decentralizacja"
+        ],
+        "values_against": [
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Subsydiarność",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Subsydiarność",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 495,
+    "text": "Władze centralne powinny mieć możliwość przejmowania wykonywania zadań należących do władz lokalnych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Samorządność"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Samorządność"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 496,
+    "text": "Jednolity sposób wykonywania zadań administracyjnych powinien być stosowany na całym terytorium państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Unifikacja",
+          "Centralizacja",
+          "Równość prawna"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Regionalizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Unifikacja",
+          "Centralizacja",
+          "Równość prawna"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Regionalizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Regionalizm"
+        ],
+        "values_against": [
+          "Unifikacja",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Regionalizm"
+        ],
+        "values_against": [
+          "Unifikacja",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 497,
+    "text": "Najważniejsze decyzje polityczne powinny być podejmowane przez władze centralne",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Federalizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Federalizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 498,
+    "text": "Władze regionalne lub lokalne powinny posiadać własne kompetencje polityczne dotyczące spraw lokalnych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Samorządność",
+          "Decentralizacja"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Samorządność",
+          "Decentralizacja"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 499,
+    "text": "Władze regionalne lub lokalne powinny posiadać kompetencje polityczne, których władza centralna nie może jednostronnie odebrać",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Samorządność",
+          "Ograniczenie władzy centralnej"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Samorządność",
+          "Ograniczenie władzy centralnej"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 500,
+    "text": "Władze regionalne lub lokalne powinny mieć możliwość ustanawiania własnych zasad prawnych w określonych dziedzinach",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Samorządność",
+          "Autonomia lokalna"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unifikacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Samorządność",
+          "Autonomia lokalna"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unifikacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 501,
+    "text": "Jednostki terytorialne powinny mieć prawo do samodzielnego kształtowania części swojej polityki gospodarczej",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Regionalizm",
+          "Autonomia gospodarcza"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Decentralizacja",
+          "Regionalizm",
+          "Autonomia gospodarcza"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Regionalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Decentralizacja",
+          "Regionalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 502,
+    "text": "Państwo powinno pozostawiać regionom możliwie szeroki zakres samodzielnego stanowienia prawa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Regionalizm",
+          "Decentralizacja ustawodawcza"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Regionalizm",
+          "Decentralizacja ustawodawcza"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Regionalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Regionalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 503,
+    "text": "Zakres władzy politycznej władz centralnych powinien być ograniczony do spraw, których nie można skutecznie pozostawić władzom regionalnym lub lokalnym",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Subsydiarność",
+          "Decentralizacja",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Subsydiarność",
+          "Decentralizacja",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Subsydiarność",
+          "Decentralizacja"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Subsydiarność",
+          "Decentralizacja"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 504,
+    "text": "Władze regionalne lub lokalne powinny mieć możliwość odmowy stosowania określonych decyzji władz centralnych w sprawach należących do ich własnych kompetencji",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Samorządność",
+          "Ograniczenie władzy centralnej"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Federalizm",
+          "Samorządność",
+          "Ograniczenie władzy centralnej"
+        ],
+        "values_against": [
+          "Centralizacja",
+          "Unitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Centralizacja",
+          "Unitaryzm"
+        ],
+        "values_against": [
+          "Federalizm",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 505,
+    "text": "Secesja części terytorium państwa może być uzasadnionym sposobem zmiany jego statusu politycznego",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prawo do secesji",
+          "Samostanowienie",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prawo do secesji",
+          "Samostanowienie",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ],
+        "values_against": [
+          "Prawo do secesji",
+          "Samostanowienie"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ],
+        "values_against": [
+          "Prawo do secesji",
+          "Samostanowienie"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 506,
+    "text": "Narody powinny mieć prawo do utworzenia własnego państwa poprzez secesję z istniejącego państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Samostanowienie narodów",
+          "Prawo do secesji",
+          "Nacjonalizm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Samostanowienie narodów",
+          "Prawo do secesji",
+          "Nacjonalizm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ],
+        "values_against": [
+          "Samostanowienie narodów",
+          "Prawo do secesji"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Nienaruszalność granic"
+        ],
+        "values_against": [
+          "Samostanowienie narodów",
+          "Prawo do secesji"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 507,
+    "text": "Mniejsze jednostki polityczne takie jak gminy powinny mieć prawa secesji z istniejącego państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Samostanowienie lokalne",
+          "Federalizm",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Samostanowienie lokalne",
+          "Federalizm",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Samostanowienie lokalne",
+          "Federalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Samostanowienie lokalne",
+          "Federalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 508,
+    "text": "Grupy zamieszkujące określone terytorium powinny mieć możliwość utworzenia odrębnej jednostki politycznej poprzez secesję",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Samostanowienie terytorialne",
+          "Prawo do secesji",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Samostanowienie terytorialne",
+          "Prawo do secesji",
+          "Federalizm"
+        ],
+        "values_against": [
+          "Unitaryzm",
+          "Centralizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Samostanowienie terytorialne",
+          "Prawo do secesji"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Unitaryzm",
+          "Centralizacja"
+        ],
+        "values_against": [
+          "Samostanowienie terytorialne",
+          "Prawo do secesji"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 509,
+    "text": "Jednostki powinny mieć możliwość wystąpienia z państwa, którego są obywatelami",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Anty-etatyzm",
+          "Autonomia jednostki"
+        ],
+        "values_against": [
+          "Kolektywizm",
+          "Obowiązkowość wspólnoty"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Anty-etatyzm",
+          "Autonomia jednostki"
+        ],
+        "values_against": [
+          "Kolektywizm",
+          "Obowiązkowość wspólnoty"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Kolektywizm",
+          "Obowiązkowość wspólnoty"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Kolektywizm",
+          "Obowiązkowość wspólnoty"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 510,
+    "text": "Prawo do uczestniczenia w wyborach powinno przysługiwać każdemu dorosłemu członkowi społeczeństwa jako podstawowe prawo polityczne",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Demokracja",
+          "Równość polityczna",
+          "Powszechne prawo wyborcze"
+        ],
+        "values_against": [
+          "Anty-demokracja",
+          "Elitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Demokracja",
+          "Równość polityczna",
+          "Powszechne prawo wyborcze"
+        ],
+        "values_against": [
+          "Anty-demokracja",
+          "Elitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Anty-demokracja",
+          "Elitaryzm"
+        ],
+        "values_against": [
+          "Demokracja",
+          "Równość polityczna"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Anty-demokracja",
+          "Elitaryzm"
+        ],
+        "values_against": [
+          "Demokracja",
+          "Równość polityczna"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 511,
+    "text": "Wspólnoty lokalne powinny ustanawiać wiążące zasady wspólnego życia poprzez bezpośrednie podejmowanie decyzji przez ich mieszkańców",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Demokracja bezpośrednia",
+          "Samorządność",
+          "Partycypacja"
+        ],
+        "values_against": [
+          "Demokracja przedstawicielska",
+          "Elitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Demokracja bezpośrednia",
+          "Samorządność",
+          "Partycypacja"
+        ],
+        "values_against": [
+          "Demokracja przedstawicielska",
+          "Elitaryzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Demokracja przedstawicielska",
+          "Elitaryzm"
+        ],
+        "values_against": [
+          "Demokracja bezpośrednia",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Demokracja przedstawicielska",
+          "Elitaryzm"
+        ],
+        "values_against": [
+          "Demokracja bezpośrednia",
+          "Samorządność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 512,
+    "text": "Decyzje podjęte przez zgromadzenie mieszkańców powinny być wiążące dla wszystkich członków lokalnej wspólnoty",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Demokracja bezpośrednia",
+          "Wspólnotowość",
+          "Prawomocność większości"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Wolność negatywna"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Demokracja bezpośrednia",
+          "Wspólnotowość",
+          "Prawomocność większości"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Wolność negatywna"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Wolność negatywna"
+        ],
+        "values_against": [
+          "Demokracja bezpośrednia",
+          "Wspólnotowość"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Wolność negatywna"
+        ],
+        "values_against": [
+          "Demokracja bezpośrednia",
+          "Wspólnotowość"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 513,
+    "text": "Żadna trwała instytucja posiadająca władzę nad jednostkami nie powinna istnieć, nawet jeśli jej władza wynika z decyzji lokalnej wspólnoty",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Anarchizm",
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Instytucjonalizm",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Anarchizm",
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Instytucjonalizm",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Instytucjonalizm",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Anarchizm",
+          "Indywidualizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Instytucjonalizm",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Anarchizm",
+          "Indywidualizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 514,
+    "text": "Państwo powinno tworzyć lub aktywnie wspierać przedsiębiorstwa zdolne do konkurowania na światowych rynkach z największymi zagranicznymi firmami",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizm gospodarczy",
+          "Protekcjonizm"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Globalizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizm gospodarczy",
+          "Protekcjonizm"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Globalizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Globalizm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizm gospodarczy"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Globalizm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizm gospodarczy"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 515,
+    "text": "Prawo własności powinno być uzależnione od wykorzystywania majątku zgodnie z interesem państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Kolektywizm",
+          "Ograniczenie własności"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Kolektywizm",
+          "Ograniczenie własności"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 516,
+    "text": "Państwo powinno ustalać maksymalne lub obowiązkowe ceny wybranych dóbr i usług",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Interwencjonizm",
+          "Regulacja rynku"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Interwencjonizm",
+          "Regulacja rynku"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Kapitalizm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 517,
+    "text": "Państwo powinno zapewniać, aby wynagrodzenia pracowników nie spadały poniżej określonego minimalnego poziomu",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Ochrona pracowników",
+          "Sprawiedliwość społeczna",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Deregulacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Ochrona pracowników",
+          "Sprawiedliwość społeczna",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Deregulacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Deregulacja"
+        ],
+        "values_against": [
+          "Ochrona pracowników",
+          "Sprawiedliwość społeczna"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Deregulacja"
+        ],
+        "values_against": [
+          "Ochrona pracowników",
+          "Sprawiedliwość społeczna"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 518,
+    "text": "Państwo powinno bezpośrednio ustalać minimalny poziom wynagrodzeń obowiązujący pracowników",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Regulacja płac",
+          "Interwencjonizm",
+          "Ochrona pracowników"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Deregulacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Regulacja płac",
+          "Interwencjonizm",
+          "Ochrona pracowników"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Deregulacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Deregulacja"
+        ],
+        "values_against": [
+          "Regulacja płac",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Deregulacja"
+        ],
+        "values_against": [
+          "Regulacja płac",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 519,
+    "text": "Własność środków produkcji powinna być rozproszona tak szeroko, aby praca była nierozerwalnie złączona z posiadaniem kapitału, na którym jest wykonywana",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Własność pracownicza",
+          "Równość ekonomiczna",
+          "Anty-kapitalizm"
+        ],
+        "values_against": [
+          "Koncentracja kapitału",
+          "Kapitalizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Własność pracownicza",
+          "Równość ekonomiczna",
+          "Anty-kapitalizm"
+        ],
+        "values_against": [
+          "Koncentracja kapitału",
+          "Kapitalizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Koncentracja kapitału",
+          "Kapitalizm"
+        ],
+        "values_against": [
+          "Własność pracownicza",
+          "Równość ekonomiczna"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Koncentracja kapitału",
+          "Kapitalizm"
+        ],
+        "values_against": [
+          "Własność pracownicza",
+          "Równość ekonomiczna"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 520,
+    "text": "Państwo nie powinno budować ani utrzymywać żadnej infrastruktury",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Anty-etatyzm",
+          "Minarchizm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Anty-etatyzm",
+          "Minarchizm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 521,
+    "text": "Państwo powinno współpracować z prywatnymi przedsiębiorstwami przy finansowaniu i świadczeniu usług publicznych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne",
+          "Efektywność"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne",
+          "Efektywność"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 522,
+    "text": "Prywatne przedsiębiorstwa powinny uczestniczyć w budowie i zarządzaniu infrastrukturą finansowaną ze środków publicznych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne",
+          "Efektywność"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne",
+          "Efektywność"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 523,
+    "text": "Prywatne podmioty powinny być dopuszczone do budowy i utrzymywania infrastruktury",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Wolny rynek",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Wolny rynek",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 524,
+    "text": "Państwo powinno wykorzystywać prywatnych przedsiębiorców do świadczenia części usług publicznych, pozostawiając sobie odpowiedzialność za ich finansowanie i nadzór",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne",
+          "Efektywność"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne",
+          "Efektywność"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Nacjonalizacja"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Partnerstwo publiczno-prywatne"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 525,
+    "text": "Prywatne przedsiębiorstwa świadczące usługi publiczne powinny podlegać szczególnemu nadzorowi państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Regulacja rynku",
+          "Nadzór państwowy",
+          "Ochrona konsumentów"
+        ],
+        "values_against": [
+          "Deregulacja",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Regulacja rynku",
+          "Nadzór państwowy",
+          "Ochrona konsumentów"
+        ],
+        "values_against": [
+          "Deregulacja",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Deregulacja",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Regulacja rynku",
+          "Nadzór państwowy"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Deregulacja",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Regulacja rynku",
+          "Nadzór państwowy"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 526,
+    "text": "Tworzenie i rozwijanie działalności gospodarczej poza kontrolą państwa powinno być główną i dominującą metodą ograniczania jego wpływu na społeczeństwo",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Anty-etatyzm",
+          "Alternatywy instytucjonalne",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Anty-etatyzm",
+          "Alternatywy instytucjonalne",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Anty-etatyzm",
+          "Alternatywy instytucjonalne"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Anty-etatyzm",
+          "Alternatywy instytucjonalne"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 527,
+    "text": "Zamiast dążyć do zmiany państwa poprzez jego instytucje, należy przede wszystkim rozwijać alternatywne struktury działające poza jego kontrolą",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Anty-etatyzm",
+          "Oddolne inicjatywy",
+          "Alternatywy instytucjonalne"
+        ],
+        "values_against": [
+          "Reformizm",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Anty-etatyzm",
+          "Oddolne inicjatywy",
+          "Alternatywy instytucjonalne"
+        ],
+        "values_against": [
+          "Reformizm",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Reformizm",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Anty-etatyzm",
+          "Oddolne inicjatywy"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Reformizm",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Anty-etatyzm",
+          "Oddolne inicjatywy"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 528,
+    "text": "Niewolnictwo może być dopuszczalną formą organizacji stosunków społecznych lub gospodarczych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 529,
+    "text": "Jedna osoba powinna mieć możliwość pozostawania pod trwałą własnością lub kontrolą innej osoby",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Wolność osobista",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Autokracja",
+          "Heteronomia",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 530,
+    "text": "Status niewolnika może być dziedziczony przez dzieci osoby pozostającej w niewoli",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Tradycjonalizm",
+          "Heteronomia",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość",
+          "Wolność osobista"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Tradycjonalizm",
+          "Heteronomia",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość",
+          "Wolność osobista"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Wolność osobista"
+        ],
+        "values_against": [
+          "Tradycjonalizm",
+          "Heteronomia"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Wolność osobista"
+        ],
+        "values_against": [
+          "Tradycjonalizm",
+          "Heteronomia"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 531,
+    "text": "Państwo powinno mieć możliwość wykorzystywania pracy osób pozbawionych wolności do wykonywania obowiązków gospodarczych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Autokracja",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Prawa człowieka",
+          "Wolność osobista"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Autokracja",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Prawa człowieka",
+          "Wolność osobista"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prawa człowieka",
+          "Wolność osobista"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Autokracja"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prawa człowieka",
+          "Wolność osobista"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Autokracja"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 532,
+    "text": "Państwo powinno mieć możliwość zmuszania określonych osób do wykonywania pracy na jego rzecz bez ich zgody",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Autokracja",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Autokracja",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Autokracja"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Autokracja"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 533,
+    "text": "Państwo powinno mieć możliwość przydzielania ludzi do wykonywania określonej pracy na rzecz państwa przez określony czas",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Obowiązkowość wspólnoty",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Obowiązkowość wspólnoty",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Obowiązkowość wspólnoty"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Obowiązkowość wspólnoty"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 534,
+    "text": "Państwo powinno mieć możliwość trwałego podporządkowania jednostki obowiązkowi pracy na rzecz państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Totalitaryzm",
+          "Etatyzm",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Totalitaryzm",
+          "Etatyzm",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Totalitaryzm",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Totalitaryzm",
+          "Etatyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 535,
+    "text": "Państwo powinno mieć możliwość wykorzystywania przymusowej pracy jako źródła produkcji dóbr i usług",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Praca przymusowa",
+          "Gospodarka centralnie planowana"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Prawa pracownicze"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Praca przymusowa",
+          "Gospodarka centralnie planowana"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Prawa pracownicze"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Prawa pracownicze"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Praca przymusowa"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Prawa pracownicze"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Praca przymusowa"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 536,
+    "text": "Państwo powinno mieć możliwość kierowania ludzi do pracy w wybranych przez siebie sektorach gospodarki",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Gospodarka centralnie planowana",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Autonomia jednostki"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Gospodarka centralnie planowana",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Wolny rynek",
+          "Autonomia jednostki"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Autonomia jednostki"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Gospodarka centralnie planowana"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolny rynek",
+          "Autonomia jednostki"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Gospodarka centralnie planowana"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 537,
+    "text": "Obowiązek wykonywania pracy może istnieć niezależnie od prawa do otrzymywania wynagrodzenia",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Praca przymusowa",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Prawa pracownicze",
+          "Sprawiedliwość społeczna"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Praca przymusowa",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Prawa pracownicze",
+          "Sprawiedliwość społeczna"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prawa pracownicze",
+          "Sprawiedliwość społeczna"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Praca przymusowa"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prawa pracownicze",
+          "Sprawiedliwość społeczna"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Praca przymusowa"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 538,
+    "text": "Osoba zamieszkująca określoną ziemię może być prawnie zobowiązana do pozostawania na niej i wykonywania określonych obowiązków wobec jej właściciela",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Równość"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Równość"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 539,
+    "text": "Właściciel ziemi powinien mieć prawo wymagać od osób zamieszkujących jego ziemię określonych świadczeń w pracy",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Wolność osobista",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Równość"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność osobista",
+          "Równość"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 540,
+    "text": "Osoba związana z określoną ziemią nie powinna móc swobodnie opuścić jej bez zgody właściciela lub władzy",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Ograniczenie mobilności"
+        ],
+        "values_against": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Ograniczenie mobilności"
+        ],
+        "values_against": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 541,
+    "text": "Obowiązki związane z poddaństwem mogą przechodzić z rodziców na ich dzieci",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość szans",
+          "Mobilność społeczna"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Nierówność prawna"
+        ],
+        "values_against": [
+          "Równość szans",
+          "Mobilność społeczna"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość szans",
+          "Mobilność społeczna"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość szans",
+          "Mobilność społeczna"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 542,
+    "text": "Status prawny osoby powinien być związany z ziemią, na której się urodziła, niezależnie od jej własnej zgody",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Autonomia",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Feudalizm",
+          "Tradycjonalizm",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Autonomia",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Autonomia",
+          "Równość"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Autonomia",
+          "Równość"
+        ],
+        "values_against": [
+          "Feudalizm",
+          "Tradycjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 543,
+    "text": "Przynależność rasowa lub pochodzenie etniczne może być podstawą odmiennego statusu prawnego człowieka",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Dyskryminacja rasowa",
+          "Nierówność prawna",
+          "Tradycjonalizm"
+        ],
+        "values_against": [
+          "Równość",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Dyskryminacja rasowa",
+          "Nierówność prawna",
+          "Tradycjonalizm"
+        ],
+        "values_against": [
+          "Równość",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Dyskryminacja rasowa",
+          "Nierówność prawna"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Dyskryminacja rasowa",
+          "Nierówność prawna"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 544,
+    "text": "Państwo może ustanawiać różne prawa i obowiązki dla ludzi ze względu na ich przynależność rasową",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Rasizm instytucjonalny",
+          "Nierówność prawna",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Równość",
+          "Demokracja"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Rasizm instytucjonalny",
+          "Nierówność prawna",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Równość",
+          "Demokracja"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Demokracja"
+        ],
+        "values_against": [
+          "Rasizm instytucjonalny",
+          "Nierówność prawna"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Demokracja"
+        ],
+        "values_against": [
+          "Rasizm instytucjonalny",
+          "Nierówność prawna"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 545,
+    "text": "Osoby należące do określonej grupy rasowej mogą być prawnie zobowiązane do wykonywania pracy na rzecz innych grup",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Dyskryminacja rasowa",
+          "Heteronomia",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Równość",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Dyskryminacja rasowa",
+          "Heteronomia",
+          "Praca przymusowa"
+        ],
+        "values_against": [
+          "Równość",
+          "Prawa człowieka"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Dyskryminacja rasowa",
+          "Heteronomia"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość",
+          "Prawa człowieka"
+        ],
+        "values_against": [
+          "Dyskryminacja rasowa",
+          "Heteronomia"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 546,
+    "text": "Przynależność do określonej rasy może być podstawą ograniczenia prawa do swobodnego przemieszczania się",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Segregacja rasowa",
+          "Ograniczenie mobilności",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Wolność przemieszczania się",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Segregacja rasowa",
+          "Ograniczenie mobilności",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Wolność przemieszczania się",
+          "Równość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność przemieszczania się",
+          "Równość"
+        ],
+        "values_against": [
+          "Segregacja rasowa",
+          "Ograniczenie mobilności"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność przemieszczania się",
+          "Równość"
+        ],
+        "values_against": [
+          "Segregacja rasowa",
+          "Ograniczenie mobilności"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 547,
+    "text": "Przynależność rasowa może być podstawą pozbawienia człowieka prawa do samodzielnego wyboru wykonywanej pracy",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Dyskryminacja rasowa",
+          "Praca przymusowa",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Równość szans",
+          "Wolność wyboru"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Dyskryminacja rasowa",
+          "Praca przymusowa",
+          "Heteronomia"
+        ],
+        "values_against": [
+          "Równość szans",
+          "Wolność wyboru"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Równość szans",
+          "Wolność wyboru"
+        ],
+        "values_against": [
+          "Dyskryminacja rasowa",
+          "Praca przymusowa"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Równość szans",
+          "Wolność wyboru"
+        ],
+        "values_against": [
+          "Dyskryminacja rasowa",
+          "Praca przymusowa"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 548,
+    "text": "Każda osoba powinna mieć indywidualne prawo do posiadania broni palnej, niezależnie od jej obowiązku wobec państwa lub społeczeństwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Prawo do broni",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Regulacja rynku",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Prawo do broni",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Regulacja rynku",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Regulacja rynku",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Prawo do broni"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Regulacja rynku",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Prawo do broni"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 549,
+    "text": "Powszechne posiadanie broni przez ludność powinno służyć przede wszystkim zapewnieniu powszechnej zdolności społeczeństwa do obrony państwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Obrona narodowa",
+          "Prawo do broni",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Anty-etatyzm",
+          "Indywidualizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Obrona narodowa",
+          "Prawo do broni",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Anty-etatyzm",
+          "Indywidualizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Anty-etatyzm",
+          "Indywidualizm"
+        ],
+        "values_against": [
+          "Obrona narodowa",
+          "Prawo do broni"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Anty-etatyzm",
+          "Indywidualizm"
+        ],
+        "values_against": [
+          "Obrona narodowa",
+          "Prawo do broni"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 550,
+    "text": "Posiadanie broni przez obywateli powinno być związane z obowiązkami wobec państwa w zakresie obrony kraju",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Obowiązkowość wspólnoty",
+          "Prawo do broni",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Obowiązkowość wspólnoty",
+          "Prawo do broni",
+          "Etatyzm"
+        ],
+        "values_against": [
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Obowiązkowość wspólnoty",
+          "Prawo do broni"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Indywidualizm",
+          "Anty-etatyzm"
+        ],
+        "values_against": [
+          "Obowiązkowość wspólnoty",
+          "Prawo do broni"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 551,
+    "text": "Państwo powinno zakazywać publicznych wypowiedzi uznawanych za poniżające lub znieważające naród jako wspólnotę",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Nacjonalizm",
+          "Ograniczenie wolności słowa",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Wolność słowa",
+          "Indywidualizm"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Nacjonalizm",
+          "Ograniczenie wolności słowa",
+          "Kolektywizm"
+        ],
+        "values_against": [
+          "Wolność słowa",
+          "Indywidualizm"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność słowa",
+          "Indywidualizm"
+        ],
+        "values_against": [
+          "Nacjonalizm",
+          "Ograniczenie wolności słowa"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność słowa",
+          "Indywidualizm"
+        ],
+        "values_against": [
+          "Nacjonalizm",
+          "Ograniczenie wolności słowa"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 552,
+    "text": "Państwo powinno ograniczać dostępność alkoholu lub jego spożycie",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Interwencjonizm",
+          "Paternalizm",
+          "Ochrona zdrowia"
+        ],
+        "values_against": [
+          "Wolność wyboru",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Interwencjonizm",
+          "Paternalizm",
+          "Ochrona zdrowia"
+        ],
+        "values_against": [
+          "Wolność wyboru",
+          "Wolny rynek"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność wyboru",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Interwencjonizm",
+          "Paternalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność wyboru",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Interwencjonizm",
+          "Paternalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 553,
+    "text": "Państwo powinno ograniczać spożycie alkoholu przede wszystkim w celu zmniejszenia szkód zdrowotnych i społecznych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Ochrona zdrowia",
+          "Interwencjonizm",
+          "Paternalizm"
+        ],
+        "values_against": [
+          "Wolność wyboru"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Ochrona zdrowia",
+          "Interwencjonizm",
+          "Paternalizm"
+        ],
+        "values_against": [
+          "Wolność wyboru"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność wyboru"
+        ],
+        "values_against": [
+          "Ochrona zdrowia",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność wyboru"
+        ],
+        "values_against": [
+          "Ochrona zdrowia",
+          "Interwencjonizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 554,
+    "text": "Państwo powinno ograniczać spożycie alkoholu ze względu na ochronę tradycyjnych norm obyczajowych i życia rodzinnego",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Tradycjonalizm",
+          "Ochrona rodziny",
+          "Konserwatyzm"
+        ],
+        "values_against": [
+          "Liberalizm kulturowy"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Tradycjonalizm",
+          "Ochrona rodziny",
+          "Konserwatyzm"
+        ],
+        "values_against": [
+          "Liberalizm kulturowy"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Liberalizm kulturowy"
+        ],
+        "values_against": [
+          "Tradycjonalizm",
+          "Ochrona rodziny"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Liberalizm kulturowy"
+        ],
+        "values_against": [
+          "Tradycjonalizm",
+          "Ochrona rodziny"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 555,
+    "text": "Państwo powinno mieć możliwość ograniczania prawa mieszkańców do swobodnego przemieszczania się między regionami kraju",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Kontrola przestrzenna",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Kontrola przestrzenna",
+          "Interwencjonizm"
+        ],
+        "values_against": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Kontrola przestrzenna"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Wolność przemieszczania się",
+          "Autonomia"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Kontrola przestrzenna"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 556,
+    "text": "Należy dopuścić prywatne podmioty do pełnienia niezależnych usług policyjno-sądowych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Anty-etatyzm",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Monopol państwowy"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Prywatyzacja",
+          "Anty-etatyzm",
+          "Wolny rynek"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Monopol państwowy"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Monopol państwowy"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Monopol państwowy"
+        ],
+        "values_against": [
+          "Prywatyzacja",
+          "Anty-etatyzm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 557,
+    "text": "Państwo powinno mieć pierwszeństwo przed rodzicami w określaniu sposobu wychowania dzieci",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Kolektywizm",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Prawa rodzicielskie",
+          "Autonomia rodziny"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Etatyzm",
+          "Kolektywizm",
+          "Unifikacja"
+        ],
+        "values_against": [
+          "Prawa rodzicielskie",
+          "Autonomia rodziny"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prawa rodzicielskie",
+          "Autonomia rodziny"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prawa rodzicielskie",
+          "Autonomia rodziny"
+        ],
+        "values_against": [
+          "Etatyzm",
+          "Kolektywizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 397,
+    "text": "Państwo nie powinno dążyć do asymilacji grup uznawanych za odrębne rasowo lub etnicznie, lecz powinno utrzymywać między nimi trwały podział",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Segregacja rasowa",
+          "Nacjonalizm",
+          "Tradycjonalizm"
+        ],
+        "values_against": [
+          "Integracja",
+          "Równość",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Segregacja rasowa",
+          "Nacjonalizm",
+          "Tradycjonalizm"
+        ],
+        "values_against": [
+          "Integracja",
+          "Równość",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Integracja",
+          "Równość",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Segregacja rasowa",
+          "Nacjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Integracja",
+          "Równość",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Segregacja rasowa",
+          "Nacjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 422,
+    "text": "Państwo powinno mieć możliwość przymusowego usuwania z jego terytorium osób należących do określonych grup narodowych lub etnicznych",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Nacjonalizm",
+          "Czystki etniczne",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Prawa człowieka",
+          "Równość",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Nacjonalizm",
+          "Czystki etniczne",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Prawa człowieka",
+          "Równość",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prawa człowieka",
+          "Równość",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Nacjonalizm",
+          "Czystki etniczne"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prawa człowieka",
+          "Równość",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Nacjonalizm",
+          "Czystki etniczne"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 424,
+    "text": "Państwo powinno mieć możliwość przymusowego usuwania migrantów, którzy nie posiadają jego obywatelstwa",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Restrykcyjna polityka migracyjna",
+          "Suwerenność",
+          "Nacjonalizm"
+        ],
+        "values_against": [
+          "Prawa migrantów",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Restrykcyjna polityka migracyjna",
+          "Suwerenność",
+          "Nacjonalizm"
+        ],
+        "values_against": [
+          "Prawa migrantów",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prawa migrantów",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Restrykcyjna polityka migracyjna",
+          "Suwerenność"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prawa migrantów",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Restrykcyjna polityka migracyjna",
+          "Suwerenność"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
+  },
+  {
+    "id": 425,
+    "text": "Państwo powinno mieć możliwość przymusowego wysiedlania całych grup narodowych lub etnicznych ze swojego terytorium",
+    "comment": "Placeholder",
+    "answers": [
+      {
+        "label": "Zdecydowanie zgadzam się",
+        "values_for": [
+          "Czystki etniczne",
+          "Nacjonalizm",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Prawa człowieka",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo zgadzam się",
+        "values_for": [
+          "Czystki etniczne",
+          "Nacjonalizm",
+          "Autokracja"
+        ],
+        "values_against": [
+          "Prawa człowieka",
+          "Wielokulturowość"
+        ]
+      },
+      {
+        "label": "Częściowo nie zgadzam się",
+        "values_for": [
+          "Prawa człowieka",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Czystki etniczne",
+          "Nacjonalizm"
+        ]
+      },
+      {
+        "label": "Zdecydowanie nie zgadzam się",
+        "values_for": [
+          "Prawa człowieka",
+          "Wielokulturowość"
+        ],
+        "values_against": [
+          "Czystki etniczne",
+          "Nacjonalizm"
+        ]
+      },
+      {
+        "label": "Pomiń pytanie",
+        "values_for": [],
+        "values_against": []
+      }
+    ],
+    "weight": 4.5
     }
   ]
 }
