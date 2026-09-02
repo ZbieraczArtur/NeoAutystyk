@@ -6342,6 +6342,732 @@
         }
       ],
       "weight": 5
+    },
+    {
+      "id": 492,
+      "text": "Zadania administracji publicznej powinny być w możliwie dużym zakresie wykonywane przez władze regionalne i lokalne zamiast przez administrację centralną",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Decentralizacja", "Samorządność", "Subsydiarność", "Anty-etatyzm"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Decentralizacja", "Samorządność", "Subsydiarność", "Anty-etatyzm"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm"],
+          "values_against": ["Decentralizacja", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm"],
+          "values_against": ["Decentralizacja", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 493,
+      "text": "Władze lokalne powinny samodzielnie decydować o sposobie wykonywania większości powierzonych im zadań administracyjnych",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Autonomia lokalna", "Samorządność", "Decentralizacja"],
+          "values_against": ["Centralizacja", "Unifikacja"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Autonomia lokalna", "Samorządność", "Decentralizacja"],
+          "values_against": ["Centralizacja", "Unifikacja"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Unifikacja"],
+          "values_against": ["Autonomia lokalna", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Unifikacja"],
+          "values_against": ["Autonomia lokalna", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 494,
+      "text": "Sprawy dotyczące lokalnych społeczności powinny być w możliwie dużym zakresie zarządzane przez władze lokalne",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Subsydiarność", "Samorządność", "Decentralizacja"],
+          "values_against": ["Centralizacja"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Subsydiarność", "Samorządność", "Decentralizacja"],
+          "values_against": ["Centralizacja"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja"],
+          "values_against": ["Subsydiarność", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja"],
+          "values_against": ["Subsydiarność", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 495,
+      "text": "Władze centralne powinny mieć możliwość przejmowania wykonywania zadań należących do władz lokalnych",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm", "Unifikacja"],
+          "values_against": ["Decentralizacja", "Samorządność"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm", "Unifikacja"],
+          "values_against": ["Decentralizacja", "Samorządność"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Decentralizacja", "Samorządność"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Decentralizacja", "Samorządność"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 496,
+      "text": "Jednolity sposób wykonywania zadań administracyjnych powinien być stosowany na całym terytorium państwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Unifikacja", "Centralizacja", "Równość prawna"],
+          "values_against": ["Decentralizacja", "Regionalizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Unifikacja", "Centralizacja", "Równość prawna"],
+          "values_against": ["Decentralizacja", "Regionalizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Decentralizacja", "Regionalizm"],
+          "values_against": ["Unifikacja", "Centralizacja"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Decentralizacja", "Regionalizm"],
+          "values_against": ["Unifikacja", "Centralizacja"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 497,
+      "text": "Najważniejsze decyzje polityczne powinny być podejmowane przez władze centralne",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm", "Unitaryzm"],
+          "values_against": ["Decentralizacja", "Federalizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm", "Unitaryzm"],
+          "values_against": ["Decentralizacja", "Federalizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Decentralizacja", "Federalizm"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Decentralizacja", "Federalizm"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 498,
+      "text": "Władze regionalne lub lokalne powinny posiadać własne kompetencje polityczne dotyczące spraw lokalnych",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Federalizm", "Samorządność", "Decentralizacja"],
+          "values_against": ["Centralizacja", "Unitaryzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Federalizm", "Samorządność", "Decentralizacja"],
+          "values_against": ["Centralizacja", "Unitaryzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Unitaryzm"],
+          "values_against": ["Federalizm", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Unitaryzm"],
+          "values_against": ["Federalizm", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 499,
+      "text": "Władze regionalne lub lokalne powinny posiadać kompetencje polityczne, których władza centralna nie może jednostronnie odebrać",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Federalizm", "Samorządność", "Ograniczenie władzy centralnej"],
+          "values_against": ["Centralizacja", "Unitaryzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Federalizm", "Samorządność", "Ograniczenie władzy centralnej"],
+          "values_against": ["Centralizacja", "Unitaryzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Unitaryzm"],
+          "values_against": ["Federalizm", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Unitaryzm"],
+          "values_against": ["Federalizm", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 500,
+      "text": "Władze regionalne lub lokalne powinny mieć możliwość ustanawiania własnych zasad prawnych w określonych dziedzinach",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Decentralizacja", "Samorządność", "Autonomia lokalna"],
+          "values_against": ["Centralizacja", "Unifikacja"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Decentralizacja", "Samorządność", "Autonomia lokalna"],
+          "values_against": ["Centralizacja", "Unifikacja"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Unifikacja"],
+          "values_against": ["Decentralizacja", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Unifikacja"],
+          "values_against": ["Decentralizacja", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 501,
+      "text": "Jednostki terytorialne powinny mieć prawo do samodzielnego kształtowania części swojej polityki gospodarczej",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Decentralizacja", "Regionalizm", "Autonomia gospodarcza"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Decentralizacja", "Regionalizm", "Autonomia gospodarcza"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm"],
+          "values_against": ["Decentralizacja", "Regionalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm"],
+          "values_against": ["Decentralizacja", "Regionalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 502,
+      "text": "Państwo powinno pozostawiać regionom możliwie szeroki zakres samodzielnego stanowienia prawa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Federalizm", "Regionalizm", "Decentralizacja ustawodawcza"],
+          "values_against": ["Unitaryzm", "Centralizacja"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Federalizm", "Regionalizm", "Decentralizacja ustawodawcza"],
+          "values_against": ["Unitaryzm", "Centralizacja"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Unitaryzm", "Centralizacja"],
+          "values_against": ["Federalizm", "Regionalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Unitaryzm", "Centralizacja"],
+          "values_against": ["Federalizm", "Regionalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 503,
+      "text": "Zakres władzy politycznej władz centralnych powinien być ograniczony do spraw, których nie można skutecznie pozostawić władzom regionalnym lub lokalnym",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Subsydiarność", "Decentralizacja", "Federalizm"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Subsydiarność", "Decentralizacja", "Federalizm"],
+          "values_against": ["Centralizacja", "Etatyzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm"],
+          "values_against": ["Subsydiarność", "Decentralizacja"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Etatyzm"],
+          "values_against": ["Subsydiarność", "Decentralizacja"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 504,
+      "text": "Władze regionalne lub lokalne powinny mieć możliwość odmowy stosowania określonych decyzji władz centralnych w sprawach należących do ich własnych kompetencji",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Federalizm", "Samorządność", "Ograniczenie władzy centralnej"],
+          "values_against": ["Centralizacja", "Unitaryzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Federalizm", "Samorządność", "Ograniczenie władzy centralnej"],
+          "values_against": ["Centralizacja", "Unitaryzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Centralizacja", "Unitaryzm"],
+          "values_against": ["Federalizm", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Centralizacja", "Unitaryzm"],
+          "values_against": ["Federalizm", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 505,
+      "text": "Secesja części terytorium państwa może być uzasadnionym sposobem zmiany jego statusu politycznego",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Prawo do secesji", "Samostanowienie", "Federalizm"],
+          "values_against": ["Unitaryzm", "Nienaruszalność granic"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Prawo do secesji", "Samostanowienie", "Federalizm"],
+          "values_against": ["Unitaryzm", "Nienaruszalność granic"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Unitaryzm", "Nienaruszalność granic"],
+          "values_against": ["Prawo do secesji", "Samostanowienie"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Unitaryzm", "Nienaruszalność granic"],
+          "values_against": ["Prawo do secesji", "Samostanowienie"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 506,
+      "text": "Narody powinny mieć prawo do utworzenia własnego państwa poprzez secesję z istniejącego państwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Samostanowienie narodów", "Prawo do secesji", "Nacjonalizm"],
+          "values_against": ["Unitaryzm", "Nienaruszalność granic"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Samostanowienie narodów", "Prawo do secesji", "Nacjonalizm"],
+          "values_against": ["Unitaryzm", "Nienaruszalność granic"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Unitaryzm", "Nienaruszalność granic"],
+          "values_against": ["Samostanowienie narodów", "Prawo do secesji"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Unitaryzm", "Nienaruszalność granic"],
+          "values_against": ["Samostanowienie narodów", "Prawo do secesji"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 507,
+      "text": "Mniejsze jednostki polityczne takie jak gminy powinny mieć prawa secesji z istniejącego państwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Samostanowienie lokalne", "Federalizm", "Anty-etatyzm"],
+          "values_against": ["Unitaryzm", "Centralizacja"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Samostanowienie lokalne", "Federalizm", "Anty-etatyzm"],
+          "values_against": ["Unitaryzm", "Centralizacja"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Unitaryzm", "Centralizacja"],
+          "values_against": ["Samostanowienie lokalne", "Federalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Unitaryzm", "Centralizacja"],
+          "values_against": ["Samostanowienie lokalne", "Federalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 508,
+      "text": "Grupy zamieszkujące określone terytorium powinny mieć możliwość utworzenia odrębnej jednostki politycznej poprzez secesję",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Samostanowienie terytorialne", "Prawo do secesji", "Federalizm"],
+          "values_against": ["Unitaryzm", "Centralizacja"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Samostanowienie terytorialne", "Prawo do secesji", "Federalizm"],
+          "values_against": ["Unitaryzm", "Centralizacja"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Unitaryzm", "Centralizacja"],
+          "values_against": ["Samostanowienie terytorialne", "Prawo do secesji"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Unitaryzm", "Centralizacja"],
+          "values_against": ["Samostanowienie terytorialne", "Prawo do secesji"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 509,
+      "text": "Jednostki powinny mieć możliwość wystąpienia z państwa, którego są obywatelami",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Indywidualizm", "Anty-etatyzm", "Autonomia jednostki"],
+          "values_against": ["Kolektywizm", "Obowiązkowość wspólnoty"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Indywidualizm", "Anty-etatyzm", "Autonomia jednostki"],
+          "values_against": ["Kolektywizm", "Obowiązkowość wspólnoty"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Kolektywizm", "Obowiązkowość wspólnoty"],
+          "values_against": ["Indywidualizm", "Anty-etatyzm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Kolektywizm", "Obowiązkowość wspólnoty"],
+          "values_against": ["Indywidualizm", "Anty-etatyzm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 510,
+      "text": "Prawo do uczestniczenia w wyborach powinno przysługiwać każdemu dorosłemu członkowi społeczeństwa jako podstawowe prawo polityczne",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Demokracja", "Równość polityczna", "Powszechne prawo wyborcze"],
+          "values_against": ["Anty-demokracja", "Elitaryzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Demokracja", "Równość polityczna", "Powszechne prawo wyborcze"],
+          "values_against": ["Anty-demokracja", "Elitaryzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Anty-demokracja", "Elitaryzm"],
+          "values_against": ["Demokracja", "Równość polityczna"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Anty-demokracja", "Elitaryzm"],
+          "values_against": ["Demokracja", "Równość polityczna"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 511,
+      "text": "Wspólnoty lokalne powinny ustanawiać wiążące zasady wspólnego życia poprzez bezpośrednie podejmowanie decyzji przez ich mieszkańców",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Demokracja bezpośrednia", "Samorządność", "Partycypacja"],
+          "values_against": ["Demokracja przedstawicielska", "Elitaryzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Demokracja bezpośrednia", "Samorządność", "Partycypacja"],
+          "values_against": ["Demokracja przedstawicielska", "Elitaryzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Demokracja przedstawicielska", "Elitaryzm"],
+          "values_against": ["Demokracja bezpośrednia", "Samorządność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Demokracja przedstawicielska", "Elitaryzm"],
+          "values_against": ["Demokracja bezpośrednia", "Samorządność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 512,
+      "text": "Decyzje podjęte przez zgromadzenie mieszkańców powinny być wiążące dla wszystkich członków lokalnej wspólnoty",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Demokracja bezpośrednia", "Wspólnotowość", "Prawomocność większości"],
+          "values_against": ["Indywidualizm", "Wolność negatywna"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Demokracja bezpośrednia", "Wspólnotowość", "Prawomocność większości"],
+          "values_against": ["Indywidualizm", "Wolność negatywna"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Indywidualizm", "Wolność negatywna"],
+          "values_against": ["Demokracja bezpośrednia", "Wspólnotowość"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Indywidualizm", "Wolność negatywna"],
+          "values_against": ["Demokracja bezpośrednia", "Wspólnotowość"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 513,
+      "text": "Żadna trwała instytucja posiadająca władzę nad jednostkami nie powinna istnieć, nawet jeśli jej władza wynika z decyzji lokalnej wspólnoty",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Anarchizm", "Indywidualizm", "Anty-etatyzm"],
+          "values_against": ["Instytucjonalizm", "Kolektywizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Anarchizm", "Indywidualizm", "Anty-etatyzm"],
+          "values_against": ["Instytucjonalizm", "Kolektywizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Instytucjonalizm", "Kolektywizm"],
+          "values_against": ["Anarchizm", "Indywidualizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Instytucjonalizm", "Kolektywizm"],
+          "values_against": ["Anarchizm", "Indywidualizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
     }
   ]
 }
