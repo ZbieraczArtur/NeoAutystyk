@@ -5663,6 +5663,270 @@
         }
       ],
       "weight": 4.5
+    },
+    {
+      "id": 548,
+      "text": "Każda osoba powinna mieć indywidualne prawo do posiadania broni palnej, niezależnie od jej obowiązku wobec państwa lub społeczeństwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Indywidualizm", "Prawo do broni", "Anty-etatyzm"],
+          "values_against": ["Regulacja rynku", "Kolektywizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Indywidualizm", "Prawo do broni", "Anty-etatyzm"],
+          "values_against": ["Regulacja rynku", "Kolektywizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Regulacja rynku", "Kolektywizm"],
+          "values_against": ["Indywidualizm", "Prawo do broni"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Regulacja rynku", "Kolektywizm"],
+          "values_against": ["Indywidualizm", "Prawo do broni"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 549,
+      "text": "Powszechne posiadanie broni przez ludność powinno służyć przede wszystkim zapewnieniu powszechnej zdolności społeczeństwa do obrony państwa",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Obrona narodowa", "Prawo do broni", "Kolektywizm"],
+          "values_against": ["Anty-etatyzm", "Indywidualizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Obrona narodowa", "Prawo do broni", "Kolektywizm"],
+          "values_against": ["Anty-etatyzm", "Indywidualizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Anty-etatyzm", "Indywidualizm"],
+          "values_against": ["Obrona narodowa", "Prawo do broni"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Anty-etatyzm", "Indywidualizm"],
+          "values_against": ["Obrona narodowa", "Prawo do broni"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 550,
+      "text": "Posiadanie broni przez obywateli powinno być związane z obowiązkami wobec państwa w zakresie obrony kraju",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Obowiązkowość wspólnoty", "Prawo do broni", "Etatyzm"],
+          "values_against": ["Indywidualizm", "Anty-etatyzm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Obowiązkowość wspólnoty", "Prawo do broni", "Etatyzm"],
+          "values_against": ["Indywidualizm", "Anty-etatyzm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Indywidualizm", "Anty-etatyzm"],
+          "values_against": ["Obowiązkowość wspólnoty", "Prawo do broni"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Indywidualizm", "Anty-etatyzm"],
+          "values_against": ["Obowiązkowość wspólnoty", "Prawo do broni"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 551,
+      "text": "Państwo powinno zakazywać publicznych wypowiedzi uznawanych za poniżające lub znieważające naród jako wspólnotę",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Nacjonalizm", "Ograniczenie wolności słowa", "Kolektywizm"],
+          "values_against": ["Wolność słowa", "Indywidualizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Nacjonalizm", "Ograniczenie wolności słowa", "Kolektywizm"],
+          "values_against": ["Wolność słowa", "Indywidualizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Wolność słowa", "Indywidualizm"],
+          "values_against": ["Nacjonalizm", "Ograniczenie wolności słowa"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Wolność słowa", "Indywidualizm"],
+          "values_against": ["Nacjonalizm", "Ograniczenie wolności słowa"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 552,
+      "text": "Państwo powinno ograniczać dostępność alkoholu lub jego spożycie",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Interwencjonizm", "Paternalizm", "Ochrona zdrowia"],
+          "values_against": ["Wolność wyboru", "Wolny rynek"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Interwencjonizm", "Paternalizm", "Ochrona zdrowia"],
+          "values_against": ["Wolność wyboru", "Wolny rynek"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Wolność wyboru", "Wolny rynek"],
+          "values_against": ["Interwencjonizm", "Paternalizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Wolność wyboru", "Wolny rynek"],
+          "values_against": ["Interwencjonizm", "Paternalizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 553,
+      "text": "Państwo powinno ograniczać spożycie alkoholu przede wszystkim w celu zmniejszenia szkód zdrowotnych i społecznych",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Ochrona zdrowia", "Interwencjonizm", "Paternalizm"],
+          "values_against": ["Wolność wyboru"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Ochrona zdrowia", "Interwencjonizm", "Paternalizm"],
+          "values_against": ["Wolność wyboru"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Wolność wyboru"],
+          "values_against": ["Ochrona zdrowia", "Interwencjonizm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Wolność wyboru"],
+          "values_against": ["Ochrona zdrowia", "Interwencjonizm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 555,
+      "text": "Państwo powinno mieć możliwość ograniczania prawa mieszkańców do swobodnego przemieszczania się między regionami kraju",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Etatyzm", "Kontrola przestrzenna", "Interwencjonizm"],
+          "values_against": ["Wolność przemieszczania się", "Autonomia"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Etatyzm", "Kontrola przestrzenna", "Interwencjonizm"],
+          "values_against": ["Wolność przemieszczania się", "Autonomia"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Wolność przemieszczania się", "Autonomia"],
+          "values_against": ["Etatyzm", "Kontrola przestrzenna"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Wolność przemieszczania się", "Autonomia"],
+          "values_against": ["Etatyzm", "Kontrola przestrzenna"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 556,
+      "text": "Należy dopuścić prywatne podmioty do pełnienia niezależnych usług policyjno-sądowych",
+      "comment": "Placeholder",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Prywatyzacja", "Anty-etatyzm", "Wolny rynek"],
+          "values_against": ["Etatyzm", "Monopol państwowy"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Prywatyzacja", "Anty-etatyzm", "Wolny rynek"],
+          "values_against": ["Etatyzm", "Monopol państwowy"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Etatyzm", "Monopol państwowy"],
+          "values_against": ["Prywatyzacja", "Anty-etatyzm"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Etatyzm", "Monopol państwowy"],
+          "values_against": ["Prywatyzacja", "Anty-etatyzm"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [],
+          "values_against": []
+        }
+      ],
+      "weight": 4.5
     }
   ]
 }
