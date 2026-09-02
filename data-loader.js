@@ -51,12 +51,35 @@ function conditionIsMet(condition) {
   const rowsFor = questionId => userAnswers.filter(row => Number(row.questionId) === Number(questionId) && !row.noteOnly);
   const positive = questionId => rowsFor(questionId).some(row => !row.neither && Number(row.answerValue) > 0);
   const negative = questionId => rowsFor(questionId).some(row => !row.neither && Number(row.answerValue) < 0);
-  return (condition.require_yes || []).every(positive) && (condition.require_no || []).every(negative);
+  return requirementIsMet(condition?.require_yes, positive) && requirementIsMet(condition?.require_no, negative);
+}
+
+// Stary zapis [1, 2] oznacza 1 AND 2. Nowy zapis [[1], [2, 3]]
+// oznacza 1 OR (2 AND 3). Normalizacja jest wspólna dla loadera i UI.
+function normalizeRequirementGroups(requirement) {
+  if (!Array.isArray(requirement) || !requirement.length) return [];
+  return requirement.some(Array.isArray)
+    ? requirement.filter(Array.isArray).map(group => group.map(Number).filter(Number.isFinite)).filter(group => group.length)
+    : [requirement.map(Number).filter(Number.isFinite)];
+}
+function requirementIsMet(requirement, predicate) {
+  const groups = normalizeRequirementGroups(requirement);
+  return !groups.length || groups.some(group => group.every(predicate));
+}
+function conditionQuestionIds(condition) {
+  return [...normalizeRequirementGroups(condition?.require_yes), ...normalizeRequirementGroups(condition?.require_no)].flat();
+}
+function getCondition(questionId) {
+  return dataManifest?.conditionalQuestions?.find(condition => Number(condition.id) === Number(questionId)) || null;
 }
 function activeQuestionIds(baseIds) {
-  const selected = new Set((window.__selectedTestQuestionIds || dataManifest.parts.flatMap(part => part.questionIds)).map(Number));
-  const active = new Set(baseIds.map(Number));
-  (dataManifest.conditionalQuestions || []).forEach(condition => {
+  const manifest = dataManifest || { parts: [], conditionalQuestions: [] };
+  const selected = new Set((window.__selectedTestQuestionIds || manifest.parts.flatMap(part => part.questionIds)).map(Number));
+  const conditional = new Set((manifest.conditionalQuestions || []).map(condition => Number(condition.id)));
+  // Pytania warunkowe nie mogą znaleźć się na liście tylko dlatego, że są w
+  // manifeście. Dodajemy je wyłącznie po spełnieniu wymagań.
+  const active = new Set(baseIds.map(Number).filter(id => !conditional.has(id)));
+  (manifest.conditionalQuestions || []).forEach(condition => {
     if (selected.has(Number(condition.id)) && conditionIsMet(condition)) active.add(Number(condition.id));
   });
   return [...active];
@@ -67,7 +90,11 @@ async function activateQuestionData(questionIds) {
   await ensureQuestionData(baseIds);
   const ids = activeQuestionIds(baseIds);
   await ensureQuestionData(ids);
-  window.__activeTestQuestionIds = ids;
+  // Konfiguracja zawiera wszystkie wybrane pytania, aby tryb deweloperski mógł
+  // obejrzeć również ukryte tezy. Widok użytkownika opiera się na osobnej,
+  // wyliczonej liście i nie renderuje ich przed spełnieniem requires.
+  window.__activeTestQuestionIds = [...new Set(baseIds)];
+  window.__visibleTestQuestionIds = ids;
   applyTranslationsToConfig();
 }
 async function refreshDynamicQuestionData() {
@@ -77,5 +104,6 @@ window.NeoDataParts = {
   initialize: initializeDataParts, loadPart: loadDataPart, ensureQuestions: ensureQuestionData,
   activateQuestions: activateQuestionData, refreshDynamicQuestions: refreshDynamicQuestionData,
   getQuestion: questionId => questionById.get(Number(questionId)),
+  getCondition, conditionIsMet, normalizeRequirementGroups, conditionQuestionIds,
   allQuestionIds: () => dataManifest?.parts.flatMap(part => part.questionIds.map(Number)) || []
 };
