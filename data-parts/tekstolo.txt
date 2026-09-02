@@ -1,0 +1,522 @@
+Wprowadź poniższe zmiany w istniejącym programie. Nie przebudowuj całej aplikacji od zera i nie zmieniaj istniejącej logiki, która nie jest bezpośrednio związana z opisanymi poniżej zmianami. Najpierw przeanalizuj obecną implementację, sposób działania manifestu, systemu odpowiedzi, requires, wartości for/against, profili oraz popupów. Następnie wprowadź zmiany możliwie kompatybilnie z istniejącą strukturą.
+
+PRIORYTET 1 — POPRAWNA LOGIKA NEITHER
+
+Zmodyfikuj sposób działania odpowiedzi Neither.
+
+1. Automatyczne Neither dla pytań ukrytych
+Każda teza, która jest obecnie ukryta z powodu niespełnionych warunków requires, musi automatycznie posiadać odpowiedź Neither.
+
+Przykład:
+
+{
+  "id": 5,
+  "require_yes": [75],
+  "require_no": [44]
+}
+
+Jeżeli warunki nie zostały spełnione, pytanie 5 jest ukryte, ale jego stan odpowiedzi powinien być traktowany jako:
+Neither
+Nie oznacza to jednak, że ukryte pytanie ma być traktowane tak samo jak aktywnie wybrane Neither pod względem interfejsu — chodzi o zachowanie poprawnego stanu logicznego i wartości.
+2. Neither NIE daje values_for ani values_against
+Jeżeli użytkownik wybierze Neither, nie może otrzymać żadnych punktów for ani against z tej odpowiedzi.
+
+Czyli:
+Neither → values_for = 0
+Neither → values_against = 0
+Neither powinno przekazywać wyłącznie wartości przypisane do odpowiednich profili z expoertcode, np.:
+partii,
+użytkowników,
+figur politycznych,
+ideologii,
+innych encji,
+jeżeli obecna architektura programu wykorzystuje takie wartości.
+To chyba już mniej więcej istnieje, ale mogą być wymagane poprawki
+
+3. Wyjątek: tryb deweloperski
+W trybie deweloperskim chcę mieć możliwość ręcznego zaznaczenia innej odpowiedzi dla pytania, które normalnie jest ukryte i automatycznie ma Neither.
+Przykład:
+Pytanie jest ukryte:
+Neither = aktywne automatycznie
+W trybie deweloperskim mogę dodatkowo zaznaczyć:
+Zdecydowanie się nie zgadzam
+Wtedy obie odpowiedzi pozostają zaznaczone:
+☑ Neither
+☑ Zdecydowanie się nie zgadzam
+Jest to celowe zachowanie trybu deweloperskiego i nie powinno być automatycznie uznawane za błąd.
+
+4. Punktacja w takim przypadku
+Jeżeli Neither pozostaje zaznaczone i jednocześnie deweloper ręcznie zaznaczy inną odpowiedź, odpowiedź Neither:
+nie daje values_for,
+nie daje values_against,
+daje +1 punkt w odpowiednim liczniku związanym z Neither.
+
+Jeżeli dodatkowo zaznaczona jest odpowiedź:
+Zdecydowanie się nie zgadzam
+to również przyznawany jest +1 punkt zgodnie z obecnym systemem punktacji tej odpowiedzi.
+Pozostałe odpowiedzi, z wyjątkiem Pomiń, zachowują obecny sposób naliczania punktów ujemnych.
+
+5. Nie zmieniaj znaczenia pozostałych odpowiedzi
+Nieither ma być specjalnym stanem automatyczny stan pytania nieaktywnego - ale wciśnięcie go szybko 3 razy powinno go wyłączyć w danym pytaniu - powinien wtedy zmienić barwę by komunikować nieaktywność.
+Nie należy zmieniać obecnej punktacji pozostałych odpowiedzi poza sytuacjami opisanymi powyżej.
+
+PRIORYTET 2 — NAPRAWA PYTAŃ DYNAMICZNYCH / REQUIRES
+Ostatnie zmiany spowodowały problemy z działaniem tez warunkowych. Napraw cały system dynamicznego ujawniania pytań.
+Podstawowa zasada
+Jeżeli teza znajduje się w manifest.json i posiada wymagania requires, to początkowo jest ukryta.
+Przykład:
+{
+  "id": 5,
+  "require_yes": [75],
+  "require_no": [44]
+}
+Oznacza to:
+Pytanie 5:
+- początkowo ukryte,
+- pojawia się dopiero, i od razu po spełnieniu wszystkich odpowiednich warunków, jeśli jest więcej to powinny być obok siebie,
+- po pojawieniu się staje się normalnie widoczne i odpowiadalne.
+Ważne
+Warunki muszą być sprawdzane dynamicznie podczas korzystania z testu.
+Jeżeli użytkownik zmieni odpowiedź na pytanie będące warunkiem, system musi natychmiast ponownie obliczyć zależności.
+Przykładowo:
+Pytanie 75 → zmiana odpowiedzi
+        ↓
+ponowne sprawdzenie requires
+        ↓
+Pytanie 5 → pokazuje się / ukrywa
+Nie może być sytuacji, w której pytanie pozostaje widoczne lub niewidoczne mimo zmiany odpowiedzi spełniającej warunek.
+
+PRIORYTET 3 — NOWY SYSTEM OR W REQUIRES
+
+Rozszerz system wymagań o możliwość definiowania alternatywnych warunków OR.
+
+Obecnie mamy np.:
+{
+  "id": 84,
+  "require_yes": [101],
+  "require_no": []
+}
+
+Chcę możliwość zapisania:
+
+{
+  "id": 84,
+  "require_yes": [
+    [101],
+    [73]
+  ],
+  "require_no": []
+}
+
+co oznacza:
+101 LUB 73
+
+Jeszcze bardziej złożony przypadek:
+{
+  "id": 84,
+  "require_yes": [
+    [101],
+    [73, 25]
+  ],
+  "require_no": []
+}
+oznacza:
+
+101 LUB (73 I 25)
+
+Czyli:
+grupa [101] = jeden warunek,
+grupa [73, 25] = oba warunki muszą być spełnione,
+pomiędzy grupami występuje OR.
+Wszystkie istniejące requires należy ujednolicić
+
+Obecny system:
+"require_yes": [101, 73, 25]
+powinien zostać logicznie potraktowany jako:
+101 AND 73 AND 25
+Natomiast nowa struktura pozwala wyrazić:
+101 OR 73 OR (73 AND 101 AND 25)
+System powinien więc rozróżniać:
+
+warunki wewnątrz grupy = AND
+grupy = OR
+
+Przy zachowaniu kompatybilności możesz obsługiwać również starą składnię, jeżeli jest ona już używana w istniejących danych.
+
+require_no
+
+Analogiczny mechanizm powinien działać dla require_no.
+
+PRIORYTET 4 — WIZUALNE OZNACZENIE PYTAŃ AKTYWOWANYCH
+
+Tezy, które zostały ujawnione dzięki spełnieniu warunków requires, powinny być wizualnie odróżnione od zwykłych pytań.
+Obecnie pytania posiadają po lewej stronie kolorowy:
+left accent border,
+side indicator bar
+lub podobny element - nie potrafię tego nazwać.
+
+Nie zmieniaj całego komponentu.
+Chcę jedynie, aby pytania aktywowane dynamicznie otrzymały inny kolor tego lewego paska.
+Obecny stan
+Zwykłe pytanie:
+niebiesko-zielony gradient
+Nowy stan
+Pytanie aktywowane przez requires:
+żółto-czerwony gradient
+Powinno być jasne wizualnie, że jest to pytanie dodatkowe / warunkowe.
+
+Nie zmieniaj koloru wszystkich pytań — tylko tych, które zostały aktywowane przez system dynamiczny.
+
+PRIORYTET 5 — SORTOWANIE TEZ PO ID + WYKRYWANIE BRAKUJĄCYCH ID
+Na stronie startowej, podczas przeglądania listy pytań, dodaj możliwość sortowania tez według ID.
+Dodaj opcję:
+Sortuj:
+- domyślna kolejność
+- ID rosnąco
+- ID malejąco
+Najważniejsze jest sortowanie rosnące.
+Przykład:
+ID 1
+ID 2
+ID 3
+ID 4
+...
+ID 45
+ID 46
+ID 48
+
+System powinien automatycznie wykryć, że brakuje:
+
+ID 47
+Panel diagnostyczny
+
+Na końcu tabeli, poza właściwą listą pytań, pokaż panel diagnostyczny informujący o brakujących ID.
+
+Przykład:
+
+⚠ Brakujące tezy
+
+Brakuje tezy o ID 47.
+
+Aktualna kolejność:
+ID 45 → ID 46 → ID 48
+
+Jeżeli występuje więcej brakujących ID, pokaż wszystkie.
+
+Sprawdzenie bazy tez
+
+System powinien dodatkowo sprawdzić, czy brakujące ID:
+rzeczywiście nie istnieje w data-parts,
+czy istnieje w bazie, ale nie zostało dodane do manifest.json.
+
+Przykład:
+
+⚠ ID 47
+
+Teza o ID 47 istnieje w bazie Part3 [Treść pytania],
+ale nie została dodana do manifest.json.
+
+albo:
+
+⚠ ID 47
+
+Teza o ID 47 nie istnieje w bazie.
+
+To ma być narzędzie diagnostyczne dla dewelopera, a nie element normalnego widoku użytkownika.
+
+KWESTIA DRUGORZĘDNA — POPUPY I UX
+
+Ulepsz ogólny wygląd popupów, okien dialogowych oraz mniejszych elementów interfejsu.
+Celem nie jest stworzenie ciężkiego, przeładowanego UI.
+
+Chcę:
+bardziej nowoczesnego wyglądu,
+lepszej hierarchii informacji,
+lepszej czytelności,
+odpowiednich odstępów,
+lepszego wykorzystania przestrzeni,
+płynnych animacji,
+poprawnej responsywności,
+lepszego działania na małych ekranach,
+spójności pomiędzy wszystkimi popupami.
+Lepszej estetyki i funkcjonalności pop-upów
+
+Nie poświęcaj wydajności dla efektów wizualnych.
+Unikaj zbędnych animacji, ciężkich efektów i elementów, które mogą spowalniać aplikację.
+
+KWESTIA DRUGORZĘDNA — POPUPY PROFILI
+Popupy profili:
+partii,
+użytkowników,
+figur politycznych,
+ideologii,
+
+są obecnie zbyt surowe i minimalistyczne.
+Przebuduj je wizualnie tak, aby przypominały nowoczesne profile informacyjne.
+
+Układ
+
+Preferowany układ na większych ekranach:
+
+┌──────────────────────────────────────────────┐
+│ Nazwa profilu                         X      │
+├──────────────────────┬───────────────────────┤
+│                      │ INFOBOX               │
+│ DESCRIPTION          │ Obraz                 │
+│                      │ Typ: ...              │
+│ Opis                 │ Lata: ...             │
+│ w kilku akapitach    │                       │
+│                      │ Stanowisko: ...       │
+│                      │ ...                   │
+└──────────────────────┴───────────────────────┘
+
+Po lewej:
+
+nazwa,
+opis, dodatkowe informacje.
+
+Po prawej:
+osobny infobox z podstawowymi informacjami.
+Na urządzeniach mobilnych układ powinien automatycznie przechodzić do jednej kolumny.
+Infobox
+Infobox powinien być modułowy.
+
+Każdy element infoboxa powinien dać się:
+łatwo edytować,
+dodać,
+usunąć,
+zmienić jego kolejność,
+wyłączyć dla konkretnego profilu.
+
+Nie każdy profil powinien posiadać wszystkie pola.
+Przykład:
+
+Polityk:
+
+Stanowisko państwowe: ...
+Partia: ...
+Data urodzenia: ...
+Data śmierci: ...
+
+Filozof:
+
+Dziedzina: ...
+Data urodzenia: ...
+Data śmierci: ...
+
+Osoba, która nigdy nie pełniła funkcji państwowej, nie powinna otrzymywać pustego pola „Stanowisko państwowe”.
+
+Nie pokazuj pustych lub nieadekwatnych pól tylko dlatego, że istnieją w globalnym schemacie.
+
+Każdy profil powinien mieć oddzielny szablon infoboxa z innymi elementami.
+
+KWESTIA DRUGORZĘDNA — POLITICAL PROFILES
+W sekcji Political_Profiles ulepsz system opisu profili.
+Description - od tego będzie zależał opis i infobox.
+Opis powinien być: łatwy do edycji, czytelnie formatowany
+Nie ograniczaj opisu do jednego dużego bloku tekstu, obecnie jest słaba możliwość formatowania tekstu w pop-upach.
+
+Infobox
+Dodaj infobox dla profili politycznych.
+Powinien obsługiwać podstawowe dane dotyczące osoby, partii lub innego typu profilu.
+
+KWESTIA DRUGORZĘDNA — LATA ŻYCIA FIGUR POLITYCZNYCH
+W przypadku wszystkich Political Figures podstawowym elementem infoboxa powinny być lata życia.
+Pole powinno składać się z:
+Data urodzenia: DD.MM.RRRR
+Data śmierci: DD.MM.RRRR
+Dla osoby żyjącej:
+Data urodzenia: DD.MM.RRRR
+Data śmierci: —
+
+Nie wpisuj sztucznej daty śmierci dla żyjących osób.
+Dane powinny być łatwe do edycji z poziomu systemu zarządzania profilem.
+
+KWESTIA DRUGORZĘDNA — TAGI W POPUPACH
+Napraw system wyświetlania tagów.
+Obecnie niektóre profile otrzymują tagi, które należą do innych kategorii.
+Przykład błędu:
+Andrzej Lepper
+→ Parlamentarne
+jeżeli Parlamentarne jest tagiem przeznaczonym dla partii, a nie dla figur politycznych.
+Analogiczny problem występuje przy innych profilach.
+Przykład:
+Kapitalizm
+Socjalizm
+Konserwatyzm
+nie powinny otrzymywać tagu:
+Parlamentarne
+jeżeli ten tag opisuje kategorię partii politycznych.
+
+KWESTIA TRZECIORZĘDNA — FILTROWANIE FIGUR NA KOMPASIE PO ROKU LUB OKRESIE
+
+Na stronie kompasu dodaj opcję filtrowania nakładek figur politycznych według roku.
+
+Przykład:
+
+Rok: [1820] lub [1820-1900] 
+
+Po wpisaniu roku 1820 kompas powinien automatycznie pokazać tylko figury, które żyły w tym czasie.
+Nie chcę ręcznego przypisywania każdego roku do figury.
+System powinien obliczać to automatycznie na podstawie:
+data urodzenia
+data śmierci
+Logika
+Dla figury:
+urodzenie: 1780
+śmierć: 1840
+dla:
+1820
+figura jest aktywna:
+TAK
+Dla:
+1850
+jest:
+NIE
+Dla osoby żyjącej:
+urodzenie: 1950
+śmierć: brak
+każdy rok od 1950 wzwyż powinien być traktowany jako okres jej życia.
+Ważne
+Uwzględnij również sam rok urodzenia i rok śmierci.
+
+Przykład:
+urodzenie: 1800
+śmierć: 1850
+figura powinna być uznawana za żyjącą zarówno w:
+1800 jak i: 1850
+
+Funkcja powinna działać automatycznie dla wszystkich figur posiadających odpowiednie dane.
+
+ZASADY OGÓLNE IMPLEMENTACJI
+Nie usuwaj istniejących funkcji, chyba że jest to konieczne do naprawienia opisanych problemów.
+Zachowaj kompatybilność z istniejącymi danymi.
+Przed zmianami przeanalizuj aktualny sposób działania:
+manifest.json,
+requires,
+odpowiedzi,
+Neither,
+values_for,
+values_against,
+profili,
+tagów,
+kompasu.
+Nie twórz kilku różnych systemów rozwiązujących ten sam problem. Jeżeli istnieje już mechanizm obsługujący dany element, rozszerz go zamiast tworzyć jego duplikat.
+Szczególnie dopilnuj, aby zmiana systemu requires nie zepsuła:
+dynamicznych pytań,
+punktacji,
+odpowiedzi Neither,
+istniejących manifestów.
+Wszystkie operacje zależne od requires powinny korzystać z jednego spójnego mechanizmu oceny warunków.
+Po implementacji przetestuj co najmniej następujące przypadki:
+Test A — zwykłe pytanie
+Pytanie bez requires
+→ widoczne
+→ Neither nie daje for/against
+Test B — ukryte pytanie
+Pytanie z niespełnionym requires
+→ ukryte
+→ automatyczne Neither
+→ brak for/against
+Test C — aktywacja
+Warunek zostaje spełniony
+→ pytanie pojawia się natychmiast
+→ pytanie jest odpowiadalne
+Test D — dezaktywacja
+Warunek przestaje być spełniony
+→ pytanie znika
+→ wraca do Neither
+→ nie generuje wartości for/against
+Test E — OR
+101 OR 73
+
+Sprawdź wszystkie kombinacje:
+
+101 = false, 73 = false → ukryte
+101 = true, 73 = false → widoczne
+101 = false, 73 = true → widoczne
+101 = true, 73 = true → widoczne
+Test F — OR + AND
+
+Dla:
+
+101 OR (73 AND 25)
+
+sprawdź, czy:
+
+101 = true → widoczne
+
+101 = false
+73 = true
+25 = true
+→ widoczne
+
+101 = false
+73 = true
+25 = false
+→ ukryte
+Test G — Neither
+
+Sprawdź, że:
+
+Neither
+→ values_for = 0
+→ values_against = 0
+→ zachowane są wyłącznie wartości profili/encji zgodnie z istniejącą logiką
+Test H — tryb deweloperski
+
+Ukryte pytanie:
+
+Neither + Zdecydowanie się nie zgadzam
+
+powinno być dozwolone w trybie deweloperskim i obie opcje powinny pozostać zaznaczone.
+
+Test I — brakujące ID
+
+Dla:
+
+45
+46
+48
+
+system powinien wykryć:
+
+47
+
+i określić, czy:
+
+47 istnieje w bazie, ale nie ma go w manifest.json
+
+czy:
+
+47 nie istnieje w bazie
+Test J — filtrowanie figur
+
+Dla:
+
+urodzenie: 1780
+śmierć: 1840
+
+sprawdź:
+
+1779 → ukryta
+1780 → widoczna
+1820 → widoczna
+1840 → widoczna
+1841 → ukryta
+NAJWAŻNIEJSZA ZASADA
+
+Nie traktuj tego promptu jako sugestii wizualnych. To jest specyfikacja zachowania programu.
+
+Najpierw popraw poprawność logiczną:
+
+Neither
+pytania dynamiczne
+requires
+OR
+punktację
+diagnostykę ID
+
+Dopiero później zajmij się warstwą wizualną i UX.
+
+Po implementacji sprawdź, czy nowe mechanizmy nie powodują regresji w istniejącym systemie.
