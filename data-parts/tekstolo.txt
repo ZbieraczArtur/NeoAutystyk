@@ -1,522 +1,711 @@
-Wprowadź poniższe zmiany w istniejącym programie. Nie przebudowuj całej aplikacji od zera i nie zmieniaj istniejącej logiki, która nie jest bezpośrednio związana z opisanymi poniżej zmianami. Najpierw przeanalizuj obecną implementację, sposób działania manifestu, systemu odpowiedzi, requires, wartości for/against, profili oraz popupów. Następnie wprowadź zmiany możliwie kompatybilnie z istniejącą strukturą.
+# KOMPLEKSOWY REDESIGN I ULEPSZENIE APLIKACJI AUTYSTYK
 
-PRIORYTET 1 — POPRAWNA LOGIKA NEITHER
+Przebuduj i unowocześnij interfejs całej aplikacji. Potraktuj to jako **kompleksowy redesign UI/UX**, a nie jedynie kosmetyczną zmianę CSS.
 
-Zmodyfikuj sposób działania odpowiedzi Neither.
+## 1. ZASADA NACZELNA — NIE PSUJ ISTNIEJĄCEJ MECHANIKI
 
-1. Automatyczne Neither dla pytań ukrytych
-Każda teza, która jest obecnie ukryta z powodu niespełnionych warunków requires, musi automatycznie posiadać odpowiedź Neither.
+Przed rozpoczęciem zmian przeanalizuj istniejący kod, strukturę komponentów, CSS, sposób zapisywania odpowiedzi, obliczania wyników, filtrowania, tagowania, działania trybu deweloperskiego oraz mechanizmy dynamicznych pytań.
 
-Przykład:
+**Nie zmieniaj bez potrzeby logiki aplikacji.**
 
-{
-  "id": 5,
-  "require_yes": [75],
-  "require_no": [44]
-}
+W szczególności zachowaj:
 
-Jeżeli warunki nie zostały spełnione, pytanie 5 jest ukryte, ale jego stan odpowiedzi powinien być traktowany jako:
-Neither
-Nie oznacza to jednak, że ukryte pytanie ma być traktowane tak samo jak aktywnie wybrane Neither pod względem interfejsu — chodzi o zachowanie poprawnego stanu logicznego i wartości.
-2. Neither NIE daje values_for ani values_against
-Jeżeli użytkownik wybierze Neither, nie może otrzymać żadnych punktów for ani against z tej odpowiedzi.
+* obecny algorytm obliczania wyników,
+* sposób punktowania odpowiedzi,
+* wagi pytań,
+* istniejące dane,
+* strukturę pytań,
+* mechanizm dynamicznych pytań,
+* mechanizm odpowiedzi użytkownika,
+* istniejące funkcje testu,
+* system tagów,
+* tryb deweloperski.
 
-Czyli:
-Neither → values_for = 0
-Neither → values_against = 0
-Neither powinno przekazywać wyłącznie wartości przypisane do odpowiednich profili z expoertcode, np.:
-partii,
-użytkowników,
-figur politycznych,
-ideologii,
-innych encji,
-jeżeli obecna architektura programu wykorzystuje takie wartości.
-To chyba już mniej więcej istnieje, ale mogą być wymagane poprawki
+Jeżeli jakaś zmiana UI wymaga modyfikacji JavaScript/HTML/komponentów, wykonaj ją w sposób kompatybilny z istniejącą logiką.
 
-3. Wyjątek: tryb deweloperski
-W trybie deweloperskim chcę mieć możliwość ręcznego zaznaczenia innej odpowiedzi dla pytania, które normalnie jest ukryte i automatycznie ma Neither.
-Przykład:
-Pytanie jest ukryte:
-Neither = aktywne automatycznie
-W trybie deweloperskim mogę dodatkowo zaznaczyć:
-Zdecydowanie się nie zgadzam
-Wtedy obie odpowiedzi pozostają zaznaczone:
-☑ Neither
-☑ Zdecydowanie się nie zgadzam
-Jest to celowe zachowanie trybu deweloperskiego i nie powinno być automatycznie uznawane za błąd.
+**Najpierw przeanalizuj aplikację, następnie zaplanuj zmiany, a dopiero potem je implementuj.**
 
-4. Punktacja w takim przypadku
-Jeżeli Neither pozostaje zaznaczone i jednocześnie deweloper ręcznie zaznaczy inną odpowiedź, odpowiedź Neither:
-nie daje values_for,
-nie daje values_against,
-daje +1 punkt w odpowiednim liczniku związanym z Neither.
+---
 
-Jeżeli dodatkowo zaznaczona jest odpowiedź:
-Zdecydowanie się nie zgadzam
-to również przyznawany jest +1 punkt zgodnie z obecnym systemem punktacji tej odpowiedzi.
-Pozostałe odpowiedzi, z wyjątkiem Pomiń, zachowują obecny sposób naliczania punktów ujemnych.
+# 2. NOWY KIERUNEK WIZUALNY
 
-5. Nie zmieniaj znaczenia pozostałych odpowiedzi
-Nieither ma być specjalnym stanem automatyczny stan pytania nieaktywnego - ale wciśnięcie go szybko 3 razy powinno go wyłączyć w danym pytaniu - powinien wtedy zmienić barwę by komunikować nieaktywność.
-Nie należy zmieniać obecnej punktacji pozostałych odpowiedzi poza sytuacjami opisanymi powyżej.
+Obecny interfejs jest zbyt minimalistyczny, miejscami brutalistyczny i wykorzystuje zbyt dużo pustej przestrzeni.
 
-PRIORYTET 2 — NAPRAWA PYTAŃ DYNAMICZNYCH / REQUIRES
-Ostatnie zmiany spowodowały problemy z działaniem tez warunkowych. Napraw cały system dynamicznego ujawniania pytań.
-Podstawowa zasada
-Jeżeli teza znajduje się w manifest.json i posiada wymagania requires, to początkowo jest ukryta.
-Przykład:
-{
-  "id": 5,
-  "require_yes": [75],
-  "require_no": [44]
-}
-Oznacza to:
-Pytanie 5:
-- początkowo ukryte,
-- pojawia się dopiero, i od razu po spełnieniu wszystkich odpowiednich warunków, jeśli jest więcej to powinny być obok siebie,
-- po pojawieniu się staje się normalnie widoczne i odpowiadalne.
-Ważne
-Warunki muszą być sprawdzane dynamicznie podczas korzystania z testu.
-Jeżeli użytkownik zmieni odpowiedź na pytanie będące warunkiem, system musi natychmiast ponownie obliczyć zależności.
+Chcę odejść od tego stylu.
+
+Zaprojektuj aplikację jako **nowoczesne narzędzie internetowe**, które może przypominać współczesne aplikacje analityczne, dashboardy, narzędzia edukacyjne lub zaawansowane aplikacje webowe.
+
+Nie kopiuj konkretnej istniejącej strony.
+
+### Cel wizualny:
+
+* nowoczesność,
+* czytelność,
+* wyraźna hierarchia informacji,
+* więcej kolorów,
+* subtelne gradienty,
+* karty,
+* ikony,
+* wizualne oznaczenia stanu,
+* delikatne cienie,
+* zaokrąglenia,
+* atrakcyjne elementy interaktywne,
+* animacje tam, gdzie mają sens,
+* dobra gęstość informacji,
+* mniej pustych powierzchni,
+* profesjonalny wygląd,
+* spójność między wszystkimi ekranami.
+
+Nie przesadzaj jednak z efektami. Interfejs ma wyglądać nowocześnie, a nie jak strona zrobiona przez człowieka, który właśnie odkrył CSS gradients.
+
+---
+
+# 3. PRZEBUDOWA STYLE.CSS
+
+Dokonaj gruntownego przeglądu `style.css`.
+
+Nie ograniczaj się do dopisywania kolejnych wyjątków i hacków.
+
+Jeżeli obecny CSS jest chaotyczny, powtarzalny lub zawiera konflikty, **uporządkuj go i zrefaktoryzuj**.
+
+Wprowadź spójny system:
+
+* zmiennych CSS,
+* kolorów,
+* typografii,
+* odstępów,
+* promieni zaokrągleń,
+* cieni,
+* breakpointów,
+* stanów hover/focus/active/disabled,
+* komponentów,
+* kart,
+* przycisków,
+* formularzy,
+* popupów,
+* tabel,
+* badge'ów,
+* progress barów.
+
+Unikaj sytuacji, w której ten sam element ma kilka różnych definicji CSS zależnie od miejsca występowania.
+
+---
+
+# 4. RESPONSYWNOŚĆ — KOMPUTER + TELEFON
+
+Przeprowadź pełny audyt responsywności.
+
+Aplikacja ma działać poprawnie na:
+
+* dużych monitorach,
+* laptopach,
+* tabletach,
+* telefonach,
+* telefonach w orientacji pionowej,
+* telefonach w orientacji poziomej.
+
+Nie projektuj osobnego interfejsu wyłącznie dla desktopu i nie próbuj później „upychać” go na telefonie.
+
+Responsywność powinna być częścią projektu od początku.
+
+### Szczególnie napraw:
+
+W sekcji:
+
+**„Symuluj odpowiedzi:”**
+
+lista rozwijana oraz przyciski:
+
+* „Symuluj”
+* „Przywróć moje odpowiedzi”
+
+obecnie wychodzą poza prawą krawędź białej karty i wchodzą na niebieskie tło.
+
+Napraw to prawidłowo, a nie poprzez przypadkowe zmniejszanie elementu.
+
+Sprawdź:
+
+* szerokości,
+* `box-sizing`,
+* padding,
+* margin,
+* flexbox,
+* grid,
+* `min-width`,
+* `max-width`,
+* overflow,
+* zawijanie tekstu,
+* szerokość przycisków.
+
+Elementy formularzy powinny automatycznie dostosowywać się do dostępnej przestrzeni.
+
+---
+
+# 5. DARK MODE
+
+Przeprowadź pełny audyt trybu ciemnego.
+
+Obecnie część tekstów pozostaje ciemna na ciemnym tle, przez co informacje stają się praktycznie niewidoczne.
+
+Nie naprawiaj wyłącznie zauważonych przypadków.
+
+Znajdź **wszystkie elementy posiadające nieprawidłowy kontrast**.
+
+Sprawdź m.in.:
+
+* tekst podstawowy,
+* tekst drugorzędny,
+* nagłówki,
+* linki,
+* przyciski,
+* checkboxy,
+* radio buttony,
+* dropdowny,
+* tooltipy,
+* popupy,
+* infoboxy,
+* tabele,
+* karty,
+* badge,
+* komunikaty,
+* formularze,
+* dane źródłowe,
+* wyniki,
+* wykresy,
+* elementy trybu deweloperskiego.
+
+Dark mode powinien być zaprojektowany jako pełnoprawny motyw, a nie jako filtr nakładany na jasny interfejs.
+
+Analogicznie popraw i dopracuj **jasny motyw**.
+
+---
+
+# 6. SYSTEM KOLORÓW ODPOWIEDZI
+
+Ujednolić sposób wizualnego oznaczania odpowiedzi:
+
+* zdecydowanie się zgadzam,
+* zgadzam się,
+* częściowo się zgadzam,
+* neutralnie,
+* częściowo się nie zgadzam,
+* nie zgadzam się,
+* zdecydowanie się nie zgadzam,
+* pomijam / brak odpowiedzi.
+
+Obecnie niektóre odpowiedzi mają inne kolory, a część nie ma ich wcale.
+
+Utwórz **jeden centralny system kolorów odpowiedzi**.
+
+Kolor powinien być przypisany do wartości odpowiedzi, a nie do konkretnego komponentu.
+
+Ten sam poziom odpowiedzi powinien wyglądać identycznie:
+
+* w pytaniu,
+* w popupie,
+* w wynikach,
+* w podsumowaniu,
+* w trybie deweloperskim,
+* w symulatorze.
+
+Dodaj również wyraźny stan:
+
+* aktywna odpowiedź,
+* hover,
+* focus,
+* odpowiedź zaznaczona,
+* odpowiedź nieaktywna.
+
+Zaznaczenie powinno być wizualnie satysfakcjonujące i jednoznaczne.
+
+---
+
+# 7. NOWOCZESNE ODPOWIADANIE NA PYTANIA
+
+Przebuduj wygląd wyboru odpowiedzi.
+
+Nie muszą to być zwykłe prostokątne przyciski.
+
+Możesz zastosować np.:
+
+* kolorowe karty,
+* subtelne ikony,
+* animowane zaznaczenie,
+* progress indicator,
+* delikatne efekty hover,
+* wyraźny focus,
+* animację zmiany odpowiedzi,
+* wizualne potwierdzenie wyboru.
+
+Interakcja powinna być intuicyjna zarówno myszką, jak i dotykiem.
+
+Na telefonie elementy muszą mieć odpowiednio duży obszar kliknięcia.
+
+---
+
+# 8. POPUPY I INFOBOXY
+
+Popraw wszystkie popupy.
+
+Na urządzeniach mobilnych **infobox powinien znajdować się przed tekstem**, a nie pod nim.
+
+Przeanalizuj strukturę popupów i zastosuj odpowiedni responsive layout zamiast ręcznego przesuwania elementów.
+
+Popraw również problem dziwnego łamania słów.
+
+Przykład obecnego błędu:
+
+„Figu
+Ry polit
+Yczne”
+
+Tekst powinien być łamany według naturalnych granic słów.
+
+Sprawdź szczególnie:
+
+* `word-break`,
+* `overflow-wrap`,
+* `white-space`,
+* szerokości kontenerów,
+* flex/grid,
+* długie nazwy,
+* nagłówki,
+* przyciski.
+
+Żadne normalne polskie słowo nie powinno być łamane w absurdalnych miejscach.
+
+---
+
+# 9. STRONA WYNIKÓW — RADYKALNA PRZEBUDOWA
+
+Strona wyników wymaga znacznie większej zmiany niż zwykły redesign CSS.
+
+**Zaprojektuj ją praktycznie od nowa.**
+
+Nie zmieniaj sposobu obliczania wyników.
+
+Zmień natomiast sposób ich prezentacji.
+
+Obecny problem:
+
+rankingi są ustawione np. jako 3 elementy obok siebie i 1 poniżej, co wygląda przypadkowo i niesymetrycznie.
+
+Zaprojektuj nową strukturę wyników.
+
+### Wyniki powinny zawierać np.:
+
+* główny wynik,
+* najbliższe ideologie,
+* ranking dopasowania,
+* główne osie,
+* profil użytkownika,
+* statystyki odpowiedzi,
+* poziom zgodności,
+* pominięte pytania,
+* rozkład odpowiedzi,
+* informacje o spójności,
+* najważniejsze odchylenia,
+* dodatkowe informacje diagnostyczne.
+
+Możesz zaproponować i wdrożyć **nowe statystyki**, o ile nie zmieniają istniejącego algorytmu wyników.
+
+Możesz wykorzystać:
+
+* wykresy radarowe,
+* wykresy słupkowe,
+* karty statystyczne,
+* paski zgodności,
+* mapy wyników,
+* wizualizacje osi,
+* heatmapy,
+* procentowe wskaźniki,
+* mini-wykresy.
+
+Nie dodawaj jednak wykresów tylko dlatego, że można je dodać.
+
+Każdy element powinien pomagać użytkownikowi zrozumieć wynik.
+
+### Układ strony wyników
+
+Zadbaj o:
+
+* symetrię,
+* logiczną hierarchię,
+* dobrą gęstość informacji,
+* responsywność,
+* wyraźne sekcje,
+* spójne karty,
+* dobre wykorzystanie szerokości ekranu.
+
+Na desktopie wykorzystuj przestrzeń efektywniej.
+
+Na telefonie sekcje powinny układać się pionowo w logicznej kolejności.
+
+---
+
+# 10. FILTROWANIE TAGÓW
+
+Radykalnie przebuduj interfejs filtrowania nakładek po tagach.
+
+Obecny system jest niewygodny:
+
+po otwarciu kategorii tagów wszystkie tagi dziwnie się rozszerzają i trudno z nich korzystać.
+
+Zaprojektuj nowoczesny system filtrowania.
+
+Możesz zastosować:
+
+* grupy tagów,
+* accordion,
+* wyszukiwarkę tagów,
+* checkboxy,
+* badge'y,
+* liczniki,
+* aktywne filtry,
+* możliwość szybkiego usunięcia filtra,
+* „Wyczyść wszystkie”,
+* sticky panel filtrów,
+* responsywny drawer na telefonie.
+
+Tagi powinny zajmować tylko tyle miejsca, ile rzeczywiście potrzebują.
+
+Nie pozwalaj, aby otwarcie jednej kategorii powodowało chaotyczne rozszerzanie całego interfejsu.
+
+### Ważna zmiana funkcjonalna
+
+**Usuń tagi przypisane do ideologii politycznych.**
+
+Tagi mają być używane dla:
+
+1. partii politycznych,
+2. figur politycznych.
+
+Nie twórz ani nie przywracaj osobnego systemu tagowania ideologii politycznych.
+
+---
+
+# 11. TRYB DEWELOPERSKI
+
+Rozbuduj tryb deweloperski.
+
+Nie ograniczaj go do obecnych funkcji.
+
+Dodaj przydatne narzędzia, które rzeczywiście mogą pomagać podczas tworzenia i testowania aplikacji.
+
+Przykładowe funkcje:
+
+* podgląd wszystkich odpowiedzi użytkownika,
+* reset odpowiedzi,
+* symulowanie odpowiedzi,
+* szybkie przejście do konkretnego pytania,
+* wyszukiwanie pytania,
+* filtrowanie pytań,
+* podgląd ID pytania,
+* podgląd kategorii,
+* podgląd tagów,
+* podgląd wag,
+* podgląd aktywnych warunków dynamicznych,
+* podgląd tego, dlaczego pytanie zostało aktywowane,
+* podgląd obliczanych wartości,
+* wykrywanie brakujących danych,
+* wykrywanie duplikatów ID,
+* wykrywanie pytań bez odpowiedzi,
+* wykrywanie problemów z tagami,
+* testowanie responsywności,
+* eksport/import danych testowych,
+* przywracanie domyślnego stanu,
+* debugowanie wyników.
+
+Jeżeli niektóre z tych funkcji już istnieją, ulepsz ich interfejs zamiast tworzyć duplikaty.
+
+---
+
+# 12. DANE ŹRÓDŁOWE W TRYBIE DEWELOPERSKIM
+
+Ulepsz prezentację danych źródłowych.
+
+Powinny być łatwiejsze do szybkiego analizowania.
+
+Wykorzystaj kolory semantyczne.
+
 Przykładowo:
-Pytanie 75 → zmiana odpowiedzi
-        ↓
-ponowne sprawdzenie requires
-        ↓
-Pytanie 5 → pokazuje się / ukrywa
-Nie może być sytuacji, w której pytanie pozostaje widoczne lub niewidoczne mimo zmiany odpowiedzi spełniającej warunek.
-
-PRIORYTET 3 — NOWY SYSTEM OR W REQUIRES
-
-Rozszerz system wymagań o możliwość definiowania alternatywnych warunków OR.
-
-Obecnie mamy np.:
-{
-  "id": 84,
-  "require_yes": [101],
-  "require_no": []
-}
-
-Chcę możliwość zapisania:
-
-{
-  "id": 84,
-  "require_yes": [
-    [101],
-    [73]
-  ],
-  "require_no": []
-}
-
-co oznacza:
-101 LUB 73
-
-Jeszcze bardziej złożony przypadek:
-{
-  "id": 84,
-  "require_yes": [
-    [101],
-    [73, 25]
-  ],
-  "require_no": []
-}
-oznacza:
-
-101 LUB (73 I 25)
 
-Czyli:
-grupa [101] = jeden warunek,
-grupa [73, 25] = oba warunki muszą być spełnione,
-pomiędzy grupami występuje OR.
-Wszystkie istniejące requires należy ujednolicić
+* zielony — poprawne / kompletne,
+* czerwony — błąd / brak,
+* żółty — ostrzeżenie,
+* niebieski — informacja,
+* fioletowy — dane specjalne / techniczne.
 
-Obecny system:
-"require_yes": [101, 73, 25]
-powinien zostać logicznie potraktowany jako:
-101 AND 73 AND 25
-Natomiast nowa struktura pozwala wyrazić:
-101 OR 73 OR (73 AND 101 AND 25)
-System powinien więc rozróżniać:
-
-warunki wewnątrz grupy = AND
-grupy = OR
-
-Przy zachowaniu kompatybilności możesz obsługiwać również starą składnię, jeżeli jest ona już używana w istniejących danych.
-
-require_no
-
-Analogiczny mechanizm powinien działać dla require_no.
-
-PRIORYTET 4 — WIZUALNE OZNACZENIE PYTAŃ AKTYWOWANYCH
-
-Tezy, które zostały ujawnione dzięki spełnieniu warunków requires, powinny być wizualnie odróżnione od zwykłych pytań.
-Obecnie pytania posiadają po lewej stronie kolorowy:
-left accent border,
-side indicator bar
-lub podobny element - nie potrafię tego nazwać.
-
-Nie zmieniaj całego komponentu.
-Chcę jedynie, aby pytania aktywowane dynamicznie otrzymały inny kolor tego lewego paska.
-Obecny stan
-Zwykłe pytanie:
-niebiesko-zielony gradient
-Nowy stan
-Pytanie aktywowane przez requires:
-żółto-czerwony gradient
-Powinno być jasne wizualnie, że jest to pytanie dodatkowe / warunkowe.
-
-Nie zmieniaj koloru wszystkich pytań — tylko tych, które zostały aktywowane przez system dynamiczny.
-
-PRIORYTET 5 — SORTOWANIE TEZ PO ID + WYKRYWANIE BRAKUJĄCYCH ID
-Na stronie startowej, podczas przeglądania listy pytań, dodaj możliwość sortowania tez według ID.
-Dodaj opcję:
-Sortuj:
-- domyślna kolejność
-- ID rosnąco
-- ID malejąco
-Najważniejsze jest sortowanie rosnące.
-Przykład:
-ID 1
-ID 2
-ID 3
-ID 4
-...
-ID 45
-ID 46
-ID 48
+Nie używaj kolorów przypadkowo.
 
-System powinien automatycznie wykryć, że brakuje:
+Kolor powinien mieć stałe znaczenie w całym trybie deweloperskim.
 
-ID 47
-Panel diagnostyczny
+Dodaj również czytelniejsze:
 
-Na końcu tabeli, poza właściwą listą pytań, pokaż panel diagnostyczny informujący o brakujących ID.
+* sekcje,
+* nagłówki,
+* badge,
+* statusy,
+* tabele,
+* rozwijane szczegóły.
 
-Przykład:
+---
 
-⚠ Brakujące tezy
+# 13. DODATKOWE FUNKCJE UX
 
-Brakuje tezy o ID 47.
+Masz swobodę dodania niewielkich funkcji, których obecnie brakuje, jeśli realnie poprawiają korzystanie z aplikacji.
 
-Aktualna kolejność:
-ID 45 → ID 46 → ID 48
+Rozważ m.in.:
 
-Jeżeli występuje więcej brakujących ID, pokaż wszystkie.
+* zapamiętywanie miejsca, w którym użytkownik skończył test,
+* przycisk powrotu do ostatniego pytania,
+* pasek postępu,
+* informację o liczbie pozostałych pytań,
+* animowane przejścia między pytaniami,
+* przycisk „przejdź dalej”,
+* możliwość szybkiego cofnięcia odpowiedzi,
+* potwierdzenie opuszczenia testu przy niezapisanych zmianach,
+* skróty klawiaturowe na desktopie,
+* lepsze komunikaty błędów,
+* toast notifications,
+* skeleton/loading states,
+* empty states,
+* tooltipy,
+* animacje mikrointerakcji.
 
-Sprawdzenie bazy tez
+Nie dodawaj funkcji na siłę.
 
-System powinien dodatkowo sprawdzić, czy brakujące ID:
-rzeczywiście nie istnieje w data-parts,
-czy istnieje w bazie, ale nie zostało dodane do manifest.json.
+Jeżeli proponujesz nową funkcję, upewnij się, że nie koliduje z istniejącą mechaniką.
 
-Przykład:
+---
 
-⚠ ID 47
+# 14. TYPOGRAFIA
 
-Teza o ID 47 istnieje w bazie Part3 [Treść pytania],
-ale nie została dodana do manifest.json.
+Popraw typografię całej aplikacji.
 
-albo:
+Zadbaj o:
 
-⚠ ID 47
+* hierarchię nagłówków,
+* czytelność tekstu,
+* odpowiednie line-height,
+* odpowiednie odstępy,
+* długość linii,
+* kontrast,
+* czytelność małych tekstów.
 
-Teza o ID 47 nie istnieje w bazie.
+Szczególną uwagę zwróć na język polski i długie nazwy.
 
-To ma być narzędzie diagnostyczne dla dewelopera, a nie element normalnego widoku użytkownika.
+Nie dopuszczaj do przypadkowego rozbijania słów.
 
-KWESTIA DRUGORZĘDNA — POPUPY I UX
+---
 
-Ulepsz ogólny wygląd popupów, okien dialogowych oraz mniejszych elementów interfejsu.
-Celem nie jest stworzenie ciężkiego, przeładowanego UI.
+# 15. ANIMACJE I MIKROINTERAKCJE
 
-Chcę:
-bardziej nowoczesnego wyglądu,
-lepszej hierarchii informacji,
-lepszej czytelności,
-odpowiednich odstępów,
-lepszego wykorzystania przestrzeni,
-płynnych animacji,
-poprawnej responsywności,
-lepszego działania na małych ekranach,
-spójności pomiędzy wszystkimi popupami.
-Lepszej estetyki i funkcjonalności pop-upów
+Dodaj subtelne animacje:
 
-Nie poświęcaj wydajności dla efektów wizualnych.
-Unikaj zbędnych animacji, ciężkich efektów i elementów, które mogą spowalniać aplikację.
+* hover,
+* focus,
+* zaznaczanie odpowiedzi,
+* otwieranie popupów,
+* rozwijanie sekcji,
+* zmiana filtrów,
+* przechodzenie między pytaniami,
+* pojawianie się wyników.
 
-KWESTIA DRUGORZĘDNA — POPUPY PROFILI
-Popupy profili:
-partii,
-użytkowników,
-figur politycznych,
-ideologii,
+Animacje powinny być szybkie i funkcjonalne.
 
-są obecnie zbyt surowe i minimalistyczne.
-Przebuduj je wizualnie tak, aby przypominały nowoczesne profile informacyjne.
+Nie przesadzaj.
 
-Układ
+Aplikacja ma sprawiać wrażenie responsywnej, a nie jak prezentacja PowerPoint po trzech kawach.
 
-Preferowany układ na większych ekranach:
+Uwzględnij także `prefers-reduced-motion`.
 
-┌──────────────────────────────────────────────┐
-│ Nazwa profilu                         X      │
-├──────────────────────┬───────────────────────┤
-│                      │ INFOBOX               │
-│ DESCRIPTION          │ Obraz                 │
-│                      │ Typ: ...              │
-│ Opis                 │ Lata: ...             │
-│ w kilku akapitach    │                       │
-│                      │ Stanowisko: ...       │
-│                      │ ...                   │
-└──────────────────────┴───────────────────────┘
+---
 
-Po lewej:
+# 16. DOSTĘPNOŚĆ
 
-nazwa,
-opis, dodatkowe informacje.
-
-Po prawej:
-osobny infobox z podstawowymi informacjami.
-Na urządzeniach mobilnych układ powinien automatycznie przechodzić do jednej kolumny.
-Infobox
-Infobox powinien być modułowy.
-
-Każdy element infoboxa powinien dać się:
-łatwo edytować,
-dodać,
-usunąć,
-zmienić jego kolejność,
-wyłączyć dla konkretnego profilu.
-
-Nie każdy profil powinien posiadać wszystkie pola.
-Przykład:
-
-Polityk:
-
-Stanowisko państwowe: ...
-Partia: ...
-Data urodzenia: ...
-Data śmierci: ...
-
-Filozof:
-
-Dziedzina: ...
-Data urodzenia: ...
-Data śmierci: ...
-
-Osoba, która nigdy nie pełniła funkcji państwowej, nie powinna otrzymywać pustego pola „Stanowisko państwowe”.
-
-Nie pokazuj pustych lub nieadekwatnych pól tylko dlatego, że istnieją w globalnym schemacie.
-
-Każdy profil powinien mieć oddzielny szablon infoboxa z innymi elementami.
-
-KWESTIA DRUGORZĘDNA — POLITICAL PROFILES
-W sekcji Political_Profiles ulepsz system opisu profili.
-Description - od tego będzie zależał opis i infobox.
-Opis powinien być: łatwy do edycji, czytelnie formatowany
-Nie ograniczaj opisu do jednego dużego bloku tekstu, obecnie jest słaba możliwość formatowania tekstu w pop-upach.
-
-Infobox
-Dodaj infobox dla profili politycznych.
-Powinien obsługiwać podstawowe dane dotyczące osoby, partii lub innego typu profilu.
-
-KWESTIA DRUGORZĘDNA — LATA ŻYCIA FIGUR POLITYCZNYCH
-W przypadku wszystkich Political Figures podstawowym elementem infoboxa powinny być lata życia.
-Pole powinno składać się z:
-Data urodzenia: DD.MM.RRRR
-Data śmierci: DD.MM.RRRR
-Dla osoby żyjącej:
-Data urodzenia: DD.MM.RRRR
-Data śmierci: —
-
-Nie wpisuj sztucznej daty śmierci dla żyjących osób.
-Dane powinny być łatwe do edycji z poziomu systemu zarządzania profilem.
-
-KWESTIA DRUGORZĘDNA — TAGI W POPUPACH
-Napraw system wyświetlania tagów.
-Obecnie niektóre profile otrzymują tagi, które należą do innych kategorii.
-Przykład błędu:
-Andrzej Lepper
-→ Parlamentarne
-jeżeli Parlamentarne jest tagiem przeznaczonym dla partii, a nie dla figur politycznych.
-Analogiczny problem występuje przy innych profilach.
-Przykład:
-Kapitalizm
-Socjalizm
-Konserwatyzm
-nie powinny otrzymywać tagu:
-Parlamentarne
-jeżeli ten tag opisuje kategorię partii politycznych.
-
-KWESTIA TRZECIORZĘDNA — FILTROWANIE FIGUR NA KOMPASIE PO ROKU LUB OKRESIE
-
-Na stronie kompasu dodaj opcję filtrowania nakładek figur politycznych według roku.
-
-Przykład:
-
-Rok: [1820] lub [1820-1900] 
-
-Po wpisaniu roku 1820 kompas powinien automatycznie pokazać tylko figury, które żyły w tym czasie.
-Nie chcę ręcznego przypisywania każdego roku do figury.
-System powinien obliczać to automatycznie na podstawie:
-data urodzenia
-data śmierci
-Logika
-Dla figury:
-urodzenie: 1780
-śmierć: 1840
-dla:
-1820
-figura jest aktywna:
-TAK
-Dla:
-1850
-jest:
-NIE
-Dla osoby żyjącej:
-urodzenie: 1950
-śmierć: brak
-każdy rok od 1950 wzwyż powinien być traktowany jako okres jej życia.
-Ważne
-Uwzględnij również sam rok urodzenia i rok śmierci.
-
-Przykład:
-urodzenie: 1800
-śmierć: 1850
-figura powinna być uznawana za żyjącą zarówno w:
-1800 jak i: 1850
-
-Funkcja powinna działać automatycznie dla wszystkich figur posiadających odpowiednie dane.
-
-ZASADY OGÓLNE IMPLEMENTACJI
-Nie usuwaj istniejących funkcji, chyba że jest to konieczne do naprawienia opisanych problemów.
-Zachowaj kompatybilność z istniejącymi danymi.
-Przed zmianami przeanalizuj aktualny sposób działania:
-manifest.json,
-requires,
-odpowiedzi,
-Neither,
-values_for,
-values_against,
-profili,
-tagów,
-kompasu.
-Nie twórz kilku różnych systemów rozwiązujących ten sam problem. Jeżeli istnieje już mechanizm obsługujący dany element, rozszerz go zamiast tworzyć jego duplikat.
-Szczególnie dopilnuj, aby zmiana systemu requires nie zepsuła:
-dynamicznych pytań,
-punktacji,
-odpowiedzi Neither,
-istniejących manifestów.
-Wszystkie operacje zależne od requires powinny korzystać z jednego spójnego mechanizmu oceny warunków.
-Po implementacji przetestuj co najmniej następujące przypadki:
-Test A — zwykłe pytanie
-Pytanie bez requires
-→ widoczne
-→ Neither nie daje for/against
-Test B — ukryte pytanie
-Pytanie z niespełnionym requires
-→ ukryte
-→ automatyczne Neither
-→ brak for/against
-Test C — aktywacja
-Warunek zostaje spełniony
-→ pytanie pojawia się natychmiast
-→ pytanie jest odpowiadalne
-Test D — dezaktywacja
-Warunek przestaje być spełniony
-→ pytanie znika
-→ wraca do Neither
-→ nie generuje wartości for/against
-Test E — OR
-101 OR 73
-
-Sprawdź wszystkie kombinacje:
-
-101 = false, 73 = false → ukryte
-101 = true, 73 = false → widoczne
-101 = false, 73 = true → widoczne
-101 = true, 73 = true → widoczne
-Test F — OR + AND
-
-Dla:
-
-101 OR (73 AND 25)
-
-sprawdź, czy:
-
-101 = true → widoczne
-
-101 = false
-73 = true
-25 = true
-→ widoczne
-
-101 = false
-73 = true
-25 = false
-→ ukryte
-Test G — Neither
-
-Sprawdź, że:
-
-Neither
-→ values_for = 0
-→ values_against = 0
-→ zachowane są wyłącznie wartości profili/encji zgodnie z istniejącą logiką
-Test H — tryb deweloperski
-
-Ukryte pytanie:
-
-Neither + Zdecydowanie się nie zgadzam
-
-powinno być dozwolone w trybie deweloperskim i obie opcje powinny pozostać zaznaczone.
-
-Test I — brakujące ID
-
-Dla:
-
-45
-46
-48
-
-system powinien wykryć:
-
-47
-
-i określić, czy:
-
-47 istnieje w bazie, ale nie ma go w manifest.json
-
-czy:
-
-47 nie istnieje w bazie
-Test J — filtrowanie figur
-
-Dla:
-
-urodzenie: 1780
-śmierć: 1840
-
-sprawdź:
-
-1779 → ukryta
-1780 → widoczna
-1820 → widoczna
-1840 → widoczna
-1841 → ukryta
-NAJWAŻNIEJSZA ZASADA
-
-Nie traktuj tego promptu jako sugestii wizualnych. To jest specyfikacja zachowania programu.
-
-Najpierw popraw poprawność logiczną:
-
-Neither
-pytania dynamiczne
-requires
-OR
-punktację
-diagnostykę ID
-
-Dopiero później zajmij się warstwą wizualną i UX.
-
-Po implementacji sprawdź, czy nowe mechanizmy nie powodują regresji w istniejącym systemie.
+Podczas redesignu popraw dostępność.
+
+Zadbaj o:
+
+* odpowiedni kontrast,
+* focus states,
+* obsługę klawiatury,
+* odpowiednie rozmiary elementów dotykowych,
+* czytelne komunikaty,
+* semantyczne elementy HTML,
+* ARIA tylko tam, gdzie rzeczywiście jest potrzebna.
+
+Nie usuwaj widocznych oznaczeń focus tylko dlatego, że „brzydko wyglądają”.
+
+---
+
+# 17. AUDYT PRZED ZAKOŃCZENIEM
+
+Po wykonaniu zmian przeprowadź własny audyt całej aplikacji.
+
+Sprawdź:
+
+### UI
+
+* czy wszystkie komponenty są spójne,
+* czy nic nie wystaje poza kontenery,
+* czy nie ma przypadkowych pustych przestrzeni,
+* czy nie ma elementów nachodzących na siebie.
+
+### Responsywność
+
+* desktop,
+* laptop,
+* tablet,
+* telefon,
+* portrait,
+* landscape.
+
+### Dark mode
+
+* wszystkie teksty,
+* wszystkie karty,
+* popupy,
+* formularze,
+* wyniki,
+* developer mode.
+
+### Odpowiedzi
+
+* wszystkie poziomy odpowiedzi,
+* kolory,
+* zaznaczenie,
+* hover,
+* focus.
+
+### Popupy
+
+* kolejność elementów,
+* łamanie tekstu,
+* szerokość,
+* wysokość,
+* przewijanie.
+
+### Wyniki
+
+* symetria,
+* wykresy,
+* rankingi,
+* karty,
+* responsywność.
+
+### Tagi
+
+* filtrowanie,
+* rozwijanie,
+* wyszukiwanie,
+* telefon,
+* desktop.
+
+### Developer mode
+
+* czytelność,
+* statusy,
+* dane źródłowe,
+* błędy,
+* narzędzia.
+
+---
+
+# 18. WAŻNE — NIE STOSUJ PÓŁŚRODKÓW
+
+Nie chcę jedynie:
+
+* zmiany kilku kolorów,
+* większych border-radius,
+* dodania dwóch cieni,
+* zmniejszenia paddingu,
+* kilku media queries.
+
+Chcę **rzeczywistej modernizacji interfejsu**.
+
+Jednocześnie nie przebudowuj logiki aplikacji tylko dlatego, że przebudowujesz UI.
+
+Myśl o projekcie jako:
+
+**istniejąca mechanika + nowa warstwa UX/UI.**
+
+Jeżeli obecna struktura techniczna utrudnia osiągnięcie dobrego efektu, możesz ją uporządkować lub zrefaktoryzować, ale zachowaj kompatybilność z istniejącą funkcjonalnością.
+
+---
+
+# 19. OCZEKIWANY REZULTAT
+
+Po zakończeniu aplikacja powinna sprawiać wrażenie współczesnego, dopracowanego produktu.
+
+Użytkownik powinien odczuwać:
+
+**„To jest nowoczesne narzędzie do analizy poglądów politycznych”**
+
+a nie:
+
+**„To jest formularz HTML, do którego ktoś później dopisał CSS.”**
+
+Priorytetem są:
+
+1. poprawność istniejącej mechaniki,
+2. responsywność,
+3. czytelność,
+4. dark/light mode,
+5. spójność komponentów,
+6. nowoczesny wygląd,
+7. strona wyników,
+8. wygodne filtrowanie,
+9. tryb deweloperski,
+10. mikrointerakcje i dodatkowe funkcje.
+
+**Nie zmieniaj algorytmu obliczania wyników ani znaczenia istniejących odpowiedzi.**
+
+Jeżeli podczas pracy znajdziesz problem, którego nie da się bezpiecznie naprawić bez zmiany logiki, najpierw przeanalizuj jego konsekwencje i wybierz rozwiązanie najmniej ingerujące w mechanikę.
+
+Na końcu sprawdź, czy redesign nie wprowadził regresji funkcjonalnych.
+
+
+
+# KOMPONENT: PRZEBUDOWA SYSTEMU WYKONYWANIA TESTU I STRUKTURY APLIKACJI
+
+## CEL
+
+Przebuduj sposób, w jaki użytkownik przechodzi z ekranu głównego do właściwego wykonywania testu.
+
+Obecnie strona działa w sposób zbliżony do:
+
+**Landing page → wybór testu → przewinięcie strony → lista pytań znajdująca się pod landing page.**
+
+To rozwiązanie należy zastąpić rzeczywistym podziałem aplikacji na **niezależne ekrany/moduły**.
+
+Najważniejsza zmiana:
+
+> **Strona główna i wykonywanie testu mają być od siebie całkowicie niezależnymi widokami.**
+
+Nie chodzi jednak o stworzenie sztywnego, liniowego quizu. Użytkownik nadal powinien mieć dużą swobodę poruszania się po teście.
+
+---
+
+# 1. NOWA STRONA GŁÓWNA / HUB APLIKACJI
+
+Po wejściu do Autystyku użytkownik powinien trafiać na **dedykowaną stronę główną aplikacji**, a nie na stronę, która płynnie przechodzi w formularz z pytaniami.
+
+Strona główna powinna pełnić funkcję nowoczesnego **centrum Autystyku**.
+
+Powinna zawierać m.in.:
+
+* rozpoczęcie nowego testu,
+* wybór wersji testu,
+* kontynuowanie rozpoczętego testu,
+* dostęp do wyników poprzednich testów, jeśli system je przechowuje,
+* informacje o dostępnych wersjach testu,
+* możliwość przejścia do listy pytań / przeglądania pytań,
+* informacje o metodologii,
+* informacje o osiach i sposobie obliczania wyniku,
+* ustawienia,
+* tryb jasny/ciemny,
+* ewentualne dodatkowe moduły aplikacji.
+
+Nie wszystkie elementy muszą być jednocześnie ogromnymi przyciskami. Zaprojektuj je jako spójny dashboard/h
