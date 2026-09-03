@@ -15,14 +15,15 @@
   </header>
   <main class="compass-page-layout">
     <aside class="compass-sidebar">
-      <section><h1>Ustawienia kompasu</h1><p id="compass-status">Wczytywanie wyniku…</p></section>
+      <section><p class="compass-page-kicker">PRZESTRZEŃ ANALIZY</p><h1>Ustawienia kompasu</h1><p id="compass-status">Wczytywanie wyniku…</p></section>
+      <section><h2>Tryb obliczeń</h2><label class="compass-select-label">Metoda <select id="compass-calc-mode"><option value="weighted">⚖️ Tryb wagowy</option><option value="equal">📏 Jednakowe wagi</option><option value="institutional">🏛️ Instytucjonalny</option></select></label><p id="calc-mode-description" class="muted-small">Wagowy uwzględnia znaczenie poszczególnych par wartości.</p></section>
       <section><h2>Nakładki</h2><label><input type="checkbox" data-kind="user" checked> Użytkownicy</label><label><input type="checkbox" data-kind="figure" checked> Figury polityczne</label><label><input type="checkbox" data-kind="party" checked> Partie</label><label><input type="checkbox" data-kind="ideology" checked> Ideologie</label></section>
       <section><h2>Filtry tagów</h2><p class="muted-small">Profil musi spełniać wszystkie zaznaczone tagi.</p><div id="tag-filters"></div></section>
       <section><h2>Znajomy</h2><input id="friend-name" type="text" maxlength="40" placeholder="Nazwa znajomego"><textarea id="friend-code" rows="4" placeholder="Wklej kod eksportu znajomego"></textarea><button id="friend-import" type="button">Dodaj na kompas</button><p id="friend-message" class="muted-small"></p></section>
-      <section><h2>Legenda i sterowanie</h2><ul class="compass-legend"><li><i class="legend-dot self"></i> Twój wynik</li><li><i class="legend-dot profile"></i> Profil referencyjny</li></ul><p class="muted-small">Kółko myszy lub gest szczypania: zoom. Przeciągnij pustą przestrzeń, aby przesunąć widok. Kliknij marker, aby zobaczyć opis i współrzędne.</p><button id="reset-view" type="button">Wyśrodkuj widok</button></section>
+      <section><h2>Widok i sterowanie</h2><label class="compass-select-label">Wielkość markerów <input id="marker-size" type="range" min="22" max="48" value="30"><output id="marker-size-output">30 px</output></label><ul class="compass-legend"><li><i class="legend-dot self"></i> Twój wynik</li><li><i class="legend-dot profile"></i> Profil referencyjny</li></ul><p class="muted-small">Kółko myszy lub gest szczypania: zoom. Przeciągnij pustą przestrzeń, aby przesunąć widok. Kliknij marker, aby zobaczyć opis i współrzędne.</p><button id="reset-view" type="button">Wyśrodkuj widok</button></section>
     </aside>
     <section class="compass-stage-wrap" aria-label="Interaktywny kompas">
-      <div id="compass-stage" class="compass-stage"><div id="compass-grid" class="compass-grid"></div><div id="compass-markers" class="compass-markers"></div></div>
+      <div id="compass-stage" class="compass-stage"><div class="compass-quadrants" aria-hidden="true"><span class="q-nw">Wspólnota<br>i regulacja</span><span class="q-ne">Rynek<br>i regulacja</span><span class="q-sw">Wspólnota<br>i autonomia</span><span class="q-se">Rynek<br>i autonomia</span></div><div id="compass-grid" class="compass-grid"></div><div id="compass-markers" class="compass-markers"></div></div>
       <div id="marker-details" class="marker-details" hidden></div>
       <div class="zoom-readout">Zoom: <span id="zoom-value">100%</span></div>
     </section>
