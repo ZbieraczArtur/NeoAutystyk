@@ -1,23 +1,657 @@
-system nakładek dla figur, partii powinien być osobny 
-np. obecnie jeśli ktoś ma włączone jednocześnie nakładki partii i figur, właczy tag dla jednej z nich np. "partia parlamentarna" to znikają również figury, ponieważ one też nie mają takiego tagu. 
-tryb ciemny na porównywarce nie działa - tamtą stronę też trzeba zmodernizować, ulepszyć responsywność, wprowadzić pożyteczne opcje dla porównywarki wyników dopasować do nowych zmian na innych stronach.
-w porównywarce powinna być od razu pełna lista tez - obecnie pojawia się dopiero gdy zaznaczymy jakiś profil - chcemy by pełna lista była od razu
-Zmodyfikuj 
-Jeśli mamy nie zaznaczony żaden profil wtedy widzimy w porównywarce wszystkie tezy, a po rozwinięciu powinny być wszyskie odpowiedzi zgodne i niezgodne, a także pomiń lub inne dodatkowe odpowiedzi. W trybie deweloperskim powinniśmy móc zobaczyć również ukrytą opcję neither.
-Każda odpowiedź powinna mieć przy sobie podział na każdy profil typu ideologie figura user etc. Przy każdej odpowiedzi są w tych kolumnach małe ikonki z logo. Po wciśnięciu na daną powinien otworzyć się taki sam pop up jak w rankingu. Każda odpowiedź ma w sobie wszystkie profile, tak żeby nie było że jest kilka odpowiedzi. 
-Strona główna po włączeniu powinna mieć możliwość włączenia ciemnego trybu - aktualnie jest błąd i nie można zmienić motywu, aż do czasu przejścia do pytań - przedtem strona główna jest wiecznie jasna. 
-Ogólnie uprość wizualnie porównywarkę, by była bardziej czytelna, nie nie przebodźcowywała użytkownikowi nadmiarem opcji, że ma przed sobą ścianę tekstu.
-Design całkowicie trzeba przebudować, od fundamentów i strukturę porównywarki. Zmień proporcje, dodaj jakieś upiększacze, czy zgrabnie uporządkuj elementy.
+Wprowadź poniższe zmiany jako spójny zestaw modyfikacji istniejącego systemu.
 
-Przy rok lub okres na tablicy wyników dodaj opcję dodania lub odjęcia określonej liczby lat np. -/+ 1 rok; -/+5 lat; -/+10 lat lub dowolna liczba wybrana przez użytkownika, tak by mógł swobodnie klikać i sprawdzać jak przez dekady zmieniały się różne osobistości w historii.
-Gdy mamy włączony tryb deweloperski to na stronie głównej powinien pojawić się dodatkowy przycisk - gdzie przenosi nas na nową podstronę, która pokazuje graficzną mape rozgałęzień, takie tree pytań, związanych z requires for i against. Powinno być to jednak dobrze zoptymalizowane, oraz widoczne i zrozumiałe na wszystkich ekranach.
-Pytania które są aktywowane w trybie niedeweloperskim powinny się lekko i subtelnie różnić od innych pytań, np jakiś inny kolor paska czy coś innego.
-W trybie deweloperskim widać pytania które są niewidoczne i ukryte - powinniśmy mieć możliwość zobaczenia czy dane pytanie wpływa jakoś na inne pytanie, np. czy aktywuje inne czy jest aktywowane jakąś sekwencją.
-Tezy ukryte powinny pojawiać się automatycznie po spełnieniu warunków - tak w trybie deweloperskim i bez.
-W trybie deweloperskim ukryte pytania powinny się mocniej wyróżniać, może jakiś inny kolor podświetlenia - pamiętaj by pasowało do reszty strony.
-popupy profili powinny być trochę szersze.
-Kompas na stronie powinien być większy i wyglądać lepiej na tej stronie z wynikami.
+Nie ograniczaj się do kosmetycznych zmian CSS. Tam, gdzie obecna struktura logiczna aplikacji powoduje opisane problemy, przebuduj odpowiednią architekturę komponentów i sposób zarządzania stanem.
 
-Popraw błąd na stronie głównej - gdy wybierzemy test pojawia nam się pole wyboru "Jak chcesz wykonywać test? Wybierz układ pytań, który będzie dla Ciebie wygodniejszy. Jedna ciągła lista Wszystkie pytania jedno pod drugim, bez zakładek. 6 zakładek tematycznych Pytania podzielone na części z dotychczasową nawigacją." - pojawia się ono dziwnie w lewym górnym rogu i jest słabo widoczne w trybie ciemnym - popraw to
-Czasami pokrycie w procentach przy wyniku daje jakieś absurdalne liczby typu 400% pokrycia
+Nie zmieniaj istniejącej metodologii ani mechaniki obliczania wyników, chyba że poniżej wyraźnie wskazano zmianę.
 
+---
+
+ PRIORYTET 1 — NIEZALEŻNE SYSTEMY NAKŁADEK FIGUR I PARTII
+
+Obecnie nakładki dla figur politycznych i partii politycznych są ze sobą zbyt mocno powiązane.
+
+Przykładowy błąd:
+
+* użytkownik włącza jednocześnie nakładki figur i partii,
+* aktywuje filtr/tag „partia parlamentarna”,
+* ponieważ figury nie posiadają tego tagu, znikają również figury.
+
+To jest błędne zachowanie.
+
+ Nowa logika
+
+Nakładki powinny być traktowane jako dwa niezależne systemy filtracji:
+
+Figury
+
+* własny zestaw filtrów,
+* własne tagi,
+* własna widoczność,
+* własny stan aktywnych filtrów.
+
+Partie
+
+* własny zestaw filtrów,
+* własne tagi,
+* własna widoczność,
+* własny stan aktywnych filtrów.
+
+Filtr należący do jednego typu obiektu nie może wpływać na widoczność drugiego typu obiektu.
+
+Przykład:
+
+> Włączone: Figury + Partie
+> Filtr partii: „partia parlamentarna”
+
+Rezultat:
+
+* partie są filtrowane według tego tagu,
+* figury pozostają widoczne zgodnie z własnymi filtrami,
+* brak danego tagu u figury nie powoduje jej ukrycia.
+
+Jeżeli użytkownik chce filtrować figury, musi użyć filtrów przeznaczonych dla figur.
+
+ Ważne
+
+Nie twórz jednego globalnego mechanizmu:
+
+`aktywny tag → filtruj wszystkie profile`
+
+Zamiast tego zastosuj logiczne rozdzielenie:
+
+`filtry figur → tylko figury`
+
+`filtry partii → tylko partie`
+
+System powinien również poprawnie obsługiwać sytuację, w której aktywne są oba typy nakładek, ale każdy z nich ma zupełnie inny zestaw filtrów.
+
+---
+
+ PRIORYTET 2 — KOMPLETNA PRZEBUDOWA PORÓWNYWARKI
+
+Porównywarka wymaga gruntownej przebudowy, zarówno wizualnej, jak i funkcjonalnej.
+
+Nie traktuj tego jako poprawienia kilku elementów istniejącego layoutu.
+
+Przebuduj jej strukturę od fundamentów.
+
+ 2.1. Pełna lista tez od początku
+
+Obecnie lista tez pojawia się dopiero po zaznaczeniu któregoś profilu.
+
+Zmień to.
+
+ Po wejściu do porównywarki:
+
+pełna lista wszystkich tez powinna być widoczna od razu, nawet jeżeli użytkownik nie zaznaczył jeszcze żadnego profilu.
+
+Nie powinno być sytuacji:
+
+> „najpierw wybierz profil, dopiero wtedy zobaczysz pytania”.
+
+Porównywarka powinna być przede wszystkim narzędziem przeglądania i porównywania odpowiedzi na tezy.
+
+Znajdź i rozwiąż również błędy związane z optymalizacją trybu deweloperskiego oraz porównywarki - one działają w wolniejszy sposób, rozwiąż to na dowolny sposób, nawet jeśli stworzysz jakąś nową mechanikę.
+
+---
+
+ 3. ZACHOWANIE PRZY BRAKU WYBRANYCH PROFILI
+
+Jeżeli użytkownik nie zaznaczy żadnego profilu, nadal powinien widzieć:
+
+* wszystkie tezy,
+* możliwość ich rozwijania,
+* wszystkie dostępne odpowiedzi/profilowe stanowiska.
+
+Po rozwinięciu konkretnej tezy użytkownik powinien zobaczyć odpowiedzi wszystkich dostępnych profili.
+
+Dotyczy to m.in.:
+
+* zgodnych,
+* niezgodnych,
+* „pomiń”,
+* innych dostępnych typów odpowiedzi.
+
+W trybie deweloperskim dodatkowo pokazuj ukrytą odpowiedź:
+
+* `neither`.
+
+`Neither` może być ukryte w normalnym trybie użytkownika, jeżeli taka jest obecna logika aplikacji, ale developer mode powinien umożliwiać jej inspekcję.
+
+---
+
+ 4. JEDNA TEZA = JEDEN BLOK ODPOWIEDZI
+
+Nie twórz osobnych duplikatów tej samej tezy dla każdego profilu.
+
+Chcemy struktury:
+
+TEZA
+
+→ odpowiedź / stanowisko
+
+→ profil A | profil B | profil C | użytkownik | ideologia itd.
+
+Każda teza powinna być reprezentowana przez jeden wspólny blok, wewnątrz którego znajduje się odpowiedź oraz informacja, jak poszczególne profile odpowiadają na tę samą tezę.
+
+Nie może powstać sytuacja:
+
+> Teza X — odpowiedź Ideologia A
+> Teza X — odpowiedź Ideologia B
+> Teza X — odpowiedź Figura A
+
+To powoduje niepotrzebne powielanie treści i tworzy „ścianę tekstu”.
+
+---
+
+ 5. PROFILE JAKO KOLUMNY / MINI-IKONY
+
+Przy każdej odpowiedzi pokaż informację o wszystkich profilach, których stanowisko jest dostępne.
+
+Każdy profil powinien być reprezentowany przez:
+
+* małą ikonę/logo/avatar,
+* ewentualnie krótką nazwę lub tooltip,
+* czytelny stan odpowiedzi.
+
+Przykładowa struktura:
+
+Teza
+
+> „Państwo powinno…”
+
+Odpowiedź: ZGADZAM SIĘ
+
+| Profil | Profil | Profil | Użytkownik |
+| ------ | ------ | ------ | ---------- |
+| 🟢     | 🔴     | 🟢     | 🟡         |
+
+Ikony powinny być małe i nie dominować nad treścią.
+
+ Interakcja
+
+Po kliknięciu ikony konkretnego profilu:
+
+otwórz ten sam typ popupu profilu, który wykorzystywany jest obecnie w rankingu.
+
+Nie twórz drugiego, odmiennego systemu popupów.
+
+Wykorzystaj istniejący komponent i dostosuj go do potrzeb porównywarki.
+
+Dzięki temu użytkownik może np.:
+
+1. zobaczyć tezę,
+2. zobaczyć odpowiedź,
+3. zobaczyć, że dana figura się z nią zgadza,
+4. kliknąć jej ikonę,
+5. otworzyć pełny popup tej figury.
+
+---
+
+ 6. PORÓWNYWARKA — UPROSZCZENIE WIZUALNE
+
+Obecna porównywarka może generować ścianę tekstu i nadmiar informacji jednocześnie.
+
+Należy zachować dużą ilość danych, ale zmienić sposób ich prezentacji.
+
+Cel:
+
+> dużo informacji ≠ wizualny chaos.
+
+Zaprojektuj ją jako nowoczesne narzędzie analityczne.
+
+ Preferowany kierunek
+
+* większa hierarchia informacji,
+* mniej przypadkowych elementów,
+* lepsze wykorzystanie przestrzeni,
+* wyraźne sekcje,
+* rozwijane bloki,
+* subtelne separatory,
+* czytelne nagłówki,
+* profile reprezentowane przede wszystkim przez ikony,
+* ograniczenie powtarzającego się tekstu,
+* odpowiednie marginesy i odstępy,
+* dobre proporcje między treścią a elementami pomocniczymi.
+
+Nie próbuj zmieścić wszystkiego na ekranie jednocześnie.
+
+Informacje drugorzędne mogą być ujawniane po rozwinięciu lub kliknięciu.
+
+---
+
+ 7. RESPONSYWNOŚĆ PORÓWNYWARKI
+
+Porównywarka musi zostać zaprojektowana od początku z myślą o:
+
+* desktopie,
+* laptopach,
+* tabletach,
+* telefonach.
+
+Nie wystarczy zmniejszyć desktopowego layoutu.
+
+Na telefonie układ profili powinien automatycznie zmieniać formę, np.:
+
+* poziomy przewijany pasek profili,
+* zwijane sekcje,
+* grid,
+* lista ikon,
+* albo inny logiczny układ.
+
+Nie dopuszczaj do poziomego overflow całej strony tylko dlatego, że jest wiele profili.
+
+Jeżeli konieczne jest przewijanie poziome, powinno ono dotyczyć konkretnego komponentu, a nie całej strony.
+
+---
+
+ 8. DARK MODE PORÓWNYWARKI
+
+Napraw działanie trybu ciemnego w porównywarce.
+
+Obecnie dark mode na tej stronie nie działa prawidłowo.
+
+Przeprowadź pełny audyt:
+
+* tła,
+* kart,
+* tekstów,
+* nagłówków,
+* tabel,
+* ikon,
+* popupów,
+* filtrów,
+* przycisków,
+* stanów hover,
+* stanów aktywnych,
+* obramowań,
+* tooltipów.
+
+Nie wystarczy zmienić głównego tła.
+
+Każdy element porównywarki musi respektować aktywny motyw.
+
+Zachowaj zgodność z globalnym systemem dark/light mode całej aplikacji.
+
+---
+
+ PRIORYTET 3 — TABLICA WYNIKÓW I PRZEGLĄDANIE LAT
+
+Przy elemencie:
+
+„Rok lub okres”
+
+dodaj możliwość szybkiego przesuwania osi czasu.
+
+Użytkownik powinien móc:
+
+* cofnąć o 1 rok,
+* przesunąć o +1 rok,
+* cofnąć o 5 lat,
+* przesunąć o +5 lat,
+* cofnąć o 10 lat,
+* przesunąć o +10 lat,
+* wpisać własną wartość przesunięcia.
+
+Przykład:
+
+`← 1 rok | ← 5 lat | ← 10 lat | [ własna liczba ] | +10 lat → | +5 lat → | +1 rok →`
+
+Mechanizm powinien pozwalać na szybkie eksperymentowanie z okresem.
+
+ Cel
+
+Użytkownik ma móc swobodnie badać:
+
+> „Jak wyglądałyby wyniki / profile tych osób 5, 10, 20 czy 50 lat wcześniej lub później?”
+
+Nie ograniczaj użytkownika do kilku sztywnych wartości.
+
+---
+
+ PRIORYTET 4 — DARK MODE NA STRONIE GŁÓWNEJ
+
+Napraw błąd, przez który po uruchomieniu aplikacji strona główna pozostaje w trybie jasnym i nie pozwala przełączyć motywu aż do wejścia do pytań.
+
+Dark mode powinien działać już od pierwszego ekranu aplikacji.
+
+Jeżeli użytkownik ma zapisany preferowany motyw:
+
+* zastosuj go natychmiast po uruchomieniu,
+* nie czekaj na przejście do testu.
+
+Przełącznik motywu powinien być dostępny na stronie głównej.
+
+Nie może istnieć osobny „system motywu” dla landing page i osobny dla reszty aplikacji.
+
+---
+
+ PRIORYTET 5 — MAPA ZALEŻNOŚCI PYTAŃ W DEVELOPER MODE
+
+Jeżeli aktywny jest tryb deweloperski, na stronie głównej dodaj dodatkowy przycisk prowadzący do nowej podstrony:
+
+ „Mapa zależności pytań”
+
+Podstrona powinna przedstawiać graficzną mapę rozgałęzień pytań.
+
+Powinna wizualizować zależności takie jak:
+
+* `requires for`,
+* `requires against`,
+* `neither`,
+* aktywowanie pytania przez inne pytanie,
+* zależności warunkowe,
+* sekwencje aktywacji.
+
+Przykład koncepcyjny:
+
+Pytanie A
+
+├── odpowiedź X → Pytanie B
+│                         └── odpowiedź Y → Pytanie C
+│
+└── odpowiedź Z → Pytanie D
+
+Nie musi wyglądać dokładnie tak — stwórz nowoczesną wizualizację typu tree / dependency graph.
+
+---
+
+ 5.1. WYMAGANIA DLA MAPY
+
+Mapa musi być:
+
+* czytelna,
+* interaktywna,
+* responsywna,
+* zoptymalizowana dla dużej liczby pytań,
+* możliwa do przesuwania,
+* możliwa do powiększania i pomniejszania,
+* wyposażona w wyszukiwanie pytania,
+* wyposażona w możliwość skupienia widoku na wybranym pytaniu.
+
+Przy dużej liczbie zależności nie renderuj wszystkiego w sposób powodujący ogromny spadek wydajności.
+
+Rozważ odpowiednie techniki:
+
+* lazy rendering,
+* virtualizację,
+* ograniczenie liczby jednocześnie renderowanych elementów,
+* filtrowanie,
+* zwijanie gałęzi.
+
+---
+
+ PRIORYTET 6 — WIZUALNE OZNACZENIE PYTAŃ DYNAMICZNYCH
+
+Pytania aktywowane warunkowo powinny subtelnie różnić się wizualnie od zwykłych pytań.
+
+Nie rób jednak z nich ogromnych kolorowych bloków.
+
+Może to być np.:
+
+* delikatnie inny pasek boczny,
+* mała ikona,
+* subtelny kolor nagłówka,
+* niewielkie oznaczenie „dynamiczne”,
+* delikatne tło.
+
+Użytkownik powinien intuicyjnie zauważyć:
+
+> „To pytanie pojawiło się dlatego, że wcześniej odpowiedziałem w określony sposób.”
+
+Ale pytanie nadal powinno wizualnie należeć do tego samego systemu co reszta testu.
+
+---
+
+ 7. DEVELOPER MODE — WIDOCZNE PYTANIA UKRYTE
+
+W trybie deweloperskim pokaż również pytania, które normalnie są niewidoczne.
+
+Powinno być jednoznacznie widoczne:
+
+* które pytanie jest ukryte,
+* dlaczego jest ukryte,
+* jaki warunek je aktywuje,
+* czy samo aktywuje inne pytanie,
+* jakie odpowiedzi uruchamiają zależność,
+* czy pytanie jest częścią sekwencji.
+
+Developer powinien móc np. kliknąć pytanie i zobaczyć:
+
+Aktywowane przez:
+
+* Pytanie 24 → odpowiedź „Zdecydowanie zgadzam się”
+
+Aktywuje:
+
+* Pytanie 87 → odpowiedź „Zgadzam się”
+* Pytanie 103 → odpowiedź „Nie zgadzam się”
+
+---
+
+ 8. AUTOMATYCZNE POJAWIANIE SIĘ PYTAŃ DYNAMICZNYCH
+
+Ukryte pytania mają być automatycznie wstawiane do testu po spełnieniu wszystkich wymaganych warunków.
+
+Zachowanie powinno być naturalne:
+
+1. użytkownik odpowiada na pytanie,
+2. system sprawdza zależności,
+3. warunki zostają spełnione,
+4. pytanie zostaje aktywowane,
+5. pytanie pojawia się bezpośrednio w odpowiednim miejscu pod pytaniem/gałęzią, która je uruchomiła.
+
+Nie powinno być konieczności:
+
+* odświeżania strony,
+* przechodzenia do innej zakładki,
+* ponownego uruchamiania testu,
+* ręcznego włączania pytania.
+
+Wrażenie powinno być takie, jakby pytanie pojawiło się / „teleportowało” pod właściwe pytanie w momencie spełnienia warunków.
+
+Jeżeli aktywowane pytanie jest przypisane do konkretnego miejsca w strukturze testu, zachowaj tę strukturę.
+
+---
+
+ 9. WIDOCZNOŚĆ UKRYTYCH PYTAŃ W DEVELOPER MODE
+
+W trybie deweloperskim ukryte pytania powinny być znacznie mocniej wyróżnione niż dynamiczne pytania w zwykłym trybie.
+
+Można zastosować:
+
+* inny kolor akcentu,
+* ikonę oka / ukrycia,
+* oznaczenie `HIDDEN`,
+* specjalny pasek,
+* delikatne obramowanie.
+
+Kolorystyka musi jednak pasować do istniejącego designu.
+
+Nie twórz przypadkowej „tęczowej” kolorystyki tylko po to, żeby elementy się wyróżniały.
+
+---
+
+ PRIORYTET 7 — POPUPY PROFILI
+
+Popupy profili powinny być nieco szersze.
+
+Zwiększ ich szerokość w sposób kontrolowany, tak aby:
+
+* długie nazwy nie łamały się absurdalnie,
+* opisy były wygodniejsze do czytania,
+* informacje o profilu miały więcej przestrzeni,
+* popup nadal był wygodny na telefonie.
+
+Na urządzeniach mobilnych szerokość powinna być automatycznie dopasowana do viewportu.
+
+Nie dopuść do poziomego overflow.
+
+---
+
+ PRIORYTET 8 — KOMPAS NA STRONIE WYNIKÓW
+
+Kompas na stronie wyników powinien być:
+
+* większy,
+* bardziej dopracowany wizualnie,
+* lepiej zintegrowany z resztą strony wyników,
+* czytelniejszy,
+* odpowiednio responsywny.
+
+Nie zmieniaj jego mechaniki ani sposobu wyliczania pozycji.
+
+Zmodyfikuj prezentację, nie matematykę.
+
+Można poprawić:
+
+* skalę,
+* typografię,
+* oznaczenia osi,
+* punkty/profil użytkownika,
+* legendę,
+* obramowanie,
+* tło,
+* animację,
+* tooltipy.
+
+---
+
+ PRIORYTET 9 — POPRAWKA WYBORU UKŁADU TESTU
+
+Na stronie głównej po wybraniu wersji testu pojawia się wybór:
+
+„Jak chcesz wykonywać test?”
+
+z opcjami:
+
+* Jedna ciągła lista
+
+  * wszystkie pytania jedno pod drugim,
+  * bez zakładek.
+
+* 6 zakładek tematycznych
+
+  * pytania podzielone na części,
+  * dotychczasowa nawigacja.
+
+Obecnie komponent ten pojawia się w dziwnym miejscu, np. w lewym górnym rogu, i jest słabo widoczny w trybie ciemnym.
+
+ Przebuduj ten komponent.
+
+Powinien być wyraźną częścią procesu rozpoczęcia testu.
+
+Preferowana struktura:
+
+Wybierz sposób wykonywania testu
+
+[ 🧾 Jedna ciągła lista ]
+Wszystkie pytania na jednej stronie.
+
+[ 🗂 6 zakładek tematycznych ]
+Pytania podzielone według kategorii.
+
+Może być zastosowany układ kart wyboru zamiast klasycznego selecta.
+
+Po wybraniu jednej opcji użytkownik powinien jednoznacznie widzieć, która opcja jest aktywna.
+
+Komponent musi poprawnie działać w:
+
+* light mode,
+* dark mode,
+* desktopie,
+* telefonie.
+
+Nie może pojawiać się jako przypadkowy element w rogu strony.
+
+---
+
+ PRIORYTET 10 — BŁĄD „400% POKRYCIA”
+
+Napraw błąd, przez który wynik może pokazywać absurdalne wartości typu:
+
+400% pokrycia
+
+Przeanalizuj najpierw źródło problemu w obliczeniach, a nie tylko sposób wyświetlania.
+
+Sprawdź m.in.:
+
+* sposób liczenia pokrycia,
+* liczbę uwzględnianych tez,
+* duplikowanie odpowiedzi,
+* pytania dynamiczne,
+* profile posiadające wiele odpowiedzi dla jednej tezy,
+* sposób normalizacji wartości,
+* sumowanie wag,
+* mianownik procentu,
+* sytuacje, w których jedna teza jest liczona więcej niż jeden raz.
+
+ Kluczowa zasada
+
+Jeżeli „pokrycie” jest procentem reprezentującym stopień pokrycia dostępnych danych, wynik powinien mieć logicznie ograniczony zakres:
+
+0–100%
+
+Nie rozwiązuj problemu poprzez zwykłe:
+
+`Math.min(100, calculatedValue)`
+
+jeżeli rzeczywisty problem znajduje się wcześniej.
+
+Najpierw znajdź i napraw przyczynę, a dopiero potem zastosuj odpowiednią walidację zakresu jako zabezpieczenie.
+
+---
+
+ ZASADA KOŃCOWA — SPÓJNOŚĆ SYSTEMU
+
+Wszystkie powyższe zmiany powinny wyglądać jak elementy jednej aplikacji, a nie osobne funkcje dodawane w różnych momentach.
+
+Szczególnie zachowaj spójność między:
+
+* stroną główną,
+* testem,
+* wynikami,
+* porównywarką,
+* popupami,
+* nakładkami,
+* developer mode,
+* mapą zależności,
+* dark/light mode.
+
+Nie twórz osobnych stylów i mechanizmów tam, gdzie można wykorzystać istniejące komponenty.
+
+ Najważniejsze zasady:
+
+1. Nie zmieniaj mechaniki obliczania wyników, poza naprawą jawnie wskazanych błędów.
+2. Nie zmieniaj znaczenia odpowiedzi ani metodologii testu.
+3. Nie łącz filtrów figur i partii w jeden globalny system.
+4. Porównywarka ma pokazywać wszystkie tezy również bez wybranego profilu.
+5. Jedna teza powinna mieć jeden wspólny blok, a profile powinny być przedstawiane jako zestaw stanowisk wobec niej.
+6. Developer mode ma ujawniać zależności i ukryte pytania, których zwykły użytkownik nie widzi.
+7. Pytania dynamiczne muszą pojawiać się automatycznie po spełnieniu warunków.
+8. Dark mode musi działać od pierwszego ekranu aplikacji.
+9. Wszystkie nowe elementy muszą być responsywne.
+10. Nie rozwiązuj problemów wyłącznie poprzez CSS-owe obejścia, jeżeli ich źródłem jest błędna architektura lub logika.
+11. Nie dodawaj funkcji tylko dlatego, że można je dodać. Każda funkcja ma poprawiać użyteczność, czytelność albo możliwość analizy danych.
+12. Przed implementacją przeanalizuj istniejący kod i zależności między komponentami, aby nie stworzyć kilku konkurujących systemów obsługi tego samego elementu.
+
+ OCZEKIWANY EFEKT
+
+Po wdrożeniu:
+
+* nakładki figur i partii działają niezależnie,
+* porównywarka jest pełnoprawnym narzędziem analitycznym, a nie listą powielonych odpowiedzi,
+* wszystkie tezy są dostępne od razu,
+* profile są łatwe do porównywania bez tworzenia ściany tekstu,
+* popupy można otwierać bezpośrednio z odpowiedzi,
+* porównywarka działa poprawnie w dark mode,
+* całość jest responsywna,
+* developer może wizualnie analizować strukturę zależności pytań,
+* pytania dynamiczne są natychmiast aktywowane i pojawiają się we właściwym miejscu,
+* ukryte pytania są łatwe do debugowania,
+* można swobodnie przeskakiwać między okresami historycznymi,
+* strona główna prawidłowo obsługuje dark mode,
+* wybór sposobu wykonywania testu jest czytelny,
+* wartości pokrycia nie mogą generować absurdalnych wyników typu 400%.
+
+Nie wykonuj jedynie serii drobnych poprawek. Potraktuj opisane problemy jako sygnał, że część obecnej struktury wymaga uporządkowania i przebudowy.
