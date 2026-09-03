@@ -2465,3 +2465,10 @@ body.dark .comparison-import input, body.dark .comparison-import textarea, body.
 
 .question-card.activated-question { border-left:6px solid transparent !important; border-image:linear-gradient(to bottom,#facc15 0%,#facc15 50%,#dc2626 50%,#dc2626 100%) 1; }
 .developer-activation-data { margin:.65rem 0; padding:.55rem .65rem; border-radius:7px; background:color-mix(in srgb, #facc15 14%, transparent); line-height:1.45; }
+
+/* Integrated result controls, including independent overlay filters. */
+.timeline-shift-controls{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;margin:.6rem 0}.timeline-shift-controls button,.timeline-shift-controls input{min-height:34px;padding:.35rem .55rem;border:1px solid var(--border-color,#cbd5e1);border-radius:8px;color:var(--text-color,#1e293b);background:var(--card-bg,#fff);font:inherit}.timeline-shift-controls button{cursor:pointer}.timeline-shift-controls input{width:78px}.overlay-filter-system{margin:.75rem 0;padding:.65rem;border:1px solid var(--border-color,#cbd5e1);border-radius:10px;background:color-mix(in srgb,var(--card-bg,#fff) 92%,var(--primary-color,#2563eb))}.overlay-filter-system strong{display:block;margin-bottom:.35rem}.overlay-filter-system .tag-options{display:flex;flex-wrap:wrap;gap:.35rem}.overlay-filter-system label{padding:.25rem .45rem;border:1px solid var(--border-color,#cbd5e1);border-radius:99px;font-size:.8rem}.activated-question{border-left:4px solid color-mix(in srgb,var(--primary-color,#2563eb) 70%,#22c55e)}.developer-inactive-question{border-left:4px solid #f59e0b;background:color-mix(in srgb,#f59e0b 8%,var(--card-bg,#fff))}body.dark .timeline-shift-controls button,body.dark .timeline-shift-controls input,body.dark .overlay-filter-system{color:#e5edf8;background:#172033;border-color:#475569}
+@media(max-width:600px){.timeline-shift-controls button{font-size:.75rem}.timeline-shift-controls{gap:.25rem}}
+
+/* The same profile dialog is intentionally roomy on large screens, never wider than the phone viewport. */
+.popup-content{width:min(620px,calc(100vw - 2rem));max-width:none}
