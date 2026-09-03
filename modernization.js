@@ -388,9 +388,9 @@
   function visibleProfileTags(profile) {
     const tags = Array.isArray(profile?.tags) ? profile.tags : [];
     const type = profile?.type;
-    // Nie pokazujemy tagu przeznaczonego wyłącznie dla innej kategorii.
-    if (type === 'figure' || type === 'user') return tags.filter(tag => !TAGS_BY_TYPE.party.has(tag) && !TAGS_BY_TYPE.ideology.has(tag));
-    return tags;
+    // Filtry i etykiety pozostają wyłącznie domeną partii oraz figur politycznych.
+    if (type !== 'figure' && type !== 'party') return [];
+    return tags.filter(tag => !TAGS_BY_TYPE.ideology.has(tag));
   }
   function profileDate(profile, keys) {
     for (const key of keys) {
