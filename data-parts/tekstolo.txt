@@ -1,2 +1,23 @@
 system nakładek dla figur, partii powinien być osobny 
 np. obecnie jeśli ktoś ma włączone jednocześnie nakładki partii i figur, właczy tag dla jednej z nich np. "partia parlamentarna" to znikają również figury, ponieważ one też nie mają takiego tagu. 
+tryb ciemny na porównywarce nie działa - tamtą stronę też trzeba zmodernizować, ulepszyć responsywność, wprowadzić pożyteczne opcje dla porównywarki wyników dopasować do nowych zmian na innych stronach.
+w porównywarce powinna być od razu pełna lista tez - obecnie pojawia się dopiero gdy zaznaczymy jakiś profil - chcemy by pełna lista była od razu
+Zmodyfikuj 
+Jeśli mamy nie zaznaczony żaden profil wtedy widzimy w porównywarce wszystkie tezy, a po rozwinięciu powinny być wszyskie odpowiedzi zgodne i niezgodne, a także pomiń lub inne dodatkowe odpowiedzi. W trybie deweloperskim powinniśmy móc zobaczyć również ukrytą opcję neither.
+Każda odpowiedź powinna mieć przy sobie podział na każdy profil typu ideologie figura user etc. Przy każdej odpowiedzi są w tych kolumnach małe ikonki z logo. Po wciśnięciu na daną powinien otworzyć się taki sam pop up jak w rankingu. Każda odpowiedź ma w sobie wszystkie profile, tak żeby nie było że jest kilka odpowiedzi. 
+Strona główna po włączeniu powinna mieć możliwość włączenia ciemnego trybu - aktualnie jest błąd i nie można zmienić motywu, aż do czasu przejścia do pytań - przedtem strona główna jest wiecznie jasna. 
+Ogólnie uprość wizualnie porównywarkę, by była bardziej czytelna, nie nie przebodźcowywała użytkownikowi nadmiarem opcji, że ma przed sobą ścianę tekstu.
+Design całkowicie trzeba przebudować, od fundamentów i strukturę porównywarki. Zmień proporcje, dodaj jakieś upiększacze, czy zgrabnie uporządkuj elementy.
+
+Przy rok lub okres na tablicy wyników dodaj opcję dodania lub odjęcia określonej liczby lat np. -/+ 1 rok; -/+5 lat; -/+10 lat lub dowolna liczba wybrana przez użytkownika, tak by mógł swobodnie klikać i sprawdzać jak przez dekady zmieniały się różne osobistości w historii.
+Gdy mamy włączony tryb deweloperski to na stronie głównej powinien pojawić się dodatkowy przycisk - gdzie przenosi nas na nową podstronę, która pokazuje graficzną mape rozgałęzień, takie tree pytań, związanych z requires for i against. Powinno być to jednak dobrze zoptymalizowane, oraz widoczne i zrozumiałe na wszystkich ekranach.
+Pytania które są aktywowane w trybie niedeweloperskim powinny się lekko i subtelnie różnić od innych pytań, np jakiś inny kolor paska czy coś innego.
+W trybie deweloperskim widać pytania które są niewidoczne i ukryte - powinniśmy mieć możliwość zobaczenia czy dane pytanie wpływa jakoś na inne pytanie, np. czy aktywuje inne czy jest aktywowane jakąś sekwencją.
+Tezy ukryte powinny pojawiać się automatycznie po spełnieniu warunków - tak w trybie deweloperskim i bez.
+W trybie deweloperskim ukryte pytania powinny się mocniej wyróżniać, może jakiś inny kolor podświetlenia - pamiętaj by pasowało do reszty strony.
+popupy profili powinny być trochę szersze.
+Kompas na stronie powinien być większy i wyglądać lepiej na tej stronie z wynikami.
+
+Popraw błąd na stronie głównej - gdy wybierzemy test pojawia nam się pole wyboru "Jak chcesz wykonywać test? Wybierz układ pytań, który będzie dla Ciebie wygodniejszy. Jedna ciągła lista Wszystkie pytania jedno pod drugim, bez zakładek. 6 zakładek tematycznych Pytania podzielone na części z dotychczasową nawigacją." - pojawia się ono dziwnie w lewym górnym rogu i jest słabo widoczne w trybie ciemnym - popraw to
+Czasami pokrycie w procentach przy wyniku daje jakieś absurdalne liczby typu 400% pokrycia
+
