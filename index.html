@@ -10,34 +10,36 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="compass.css">
   <link rel="stylesheet" href="ux-refresh.css">
+  <link rel="stylesheet" href="product-ui.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
   <button id="floating-theme-toggle" class="floating-theme-toggle" type="button" aria-label="Przełącz tryb jasny lub ciemny">🌙</button>
   <section id="landing-page" class="landing-page" aria-labelledby="landing-title">
-    <div class="landing-card">
-      <img src="images/ALogo.svg" alt="Logo NeoAutystyk" class="landing-logo">
-      <p class="landing-kicker">POLITYCZNY PROFIL WARTOŚCI</p>
-      <h1 id="landing-title">NeoAutystyk</h1>
-      <p class="landing-description">Poznaj swój profil polityczny, sprawdź zgodność z ideologiami, partiami i figurami politycznymi oraz zobacz wynik na kompasie wartości.</p>
-      <section class="test-mode-selector" aria-label="Wybór wersji testu">
-        <p class="test-mode-title">Wybierz wersję testu</p>
+    <div class="app-hub">
+      <header class="hub-header">
+        <a class="hub-brand" href="#top" aria-label="NeoAutystyk — strona główna"><img src="images/ALogo.svg" alt="" class="landing-logo"><span>NeoAutystyk</span></a>
+        <div class="hub-header-actions"><span class="hub-status"><i></i> narzędzie analityczne</span><button id="hub-theme-toggle" class="icon-action" type="button" aria-label="Przełącz motyw">◐</button></div>
+      </header>
+      <section class="hub-hero">
+        <div class="hub-copy">
+          <p class="landing-kicker">POLITYCZNY PROFIL WARTOŚCI</p>
+          <h1 id="landing-title">Zobacz układ swoich poglądów.</h1>
+          <p class="landing-description">Odpowiadaj w swoim tempie, analizuj osie wartości i porównaj profil z ideologiami, partiami oraz figurami politycznymi.</p>
+          <div class="hub-primary-actions"><button id="continue-test" class="hub-continue" type="button" hidden>↗ Kontynuuj ostatni test</button><a class="hub-text-link" href="#hub-tests">Wybierz wersję testu <span>↓</span></a></div>
+        </div>
+        <aside class="hub-insight" aria-label="Jak działa test"><div class="insight-icon">✦</div><p>Twój wynik</p><strong>profil, nie etykieta</strong><span>Analiza zachowuje niuanse odpowiedzi i pokazuje stopień dopasowania.</span></aside>
+      </section>
+      <section id="hub-tests" class="test-mode-selector" aria-labelledby="test-mode-title">
+        <div class="section-heading"><div><p class="section-eyebrow">ROZPOCZNIJ ANALIZĘ</p><h2 id="test-mode-title">Wybierz tempo</h2></div><p>Każdą wersję możesz przerwać i kontynuować później.</p></div>
         <div class="test-mode-grid">
-          <button class="landing-start test-mode-button" type="button" data-test-mode="full">
-            <span>Pełny test</span>
-            <small>Maksymalna ilość pytań w teście: <b data-question-count="full">…</b></small>
-          </button>
-          <button class="landing-start test-mode-button" type="button" data-test-mode="balanced">
-            <span>Test zbalansowany</span>
-            <small>Maksymalna ilość pytań w teście: <b data-question-count="balanced">…</b></small>
-          </button>
-          <button class="landing-start test-mode-button" type="button" data-test-mode="short">
-            <span>Test skrócony</span>
-            <small>Maksymalna ilość pytań w teście: <b data-question-count="short">…</b></small>
-          </button>
+          <button class="landing-start test-mode-button" type="button" data-test-mode="full"><span class="mode-icon">◌</span><span>Pełny test</span><small>Najszerszy obraz · <b data-question-count="full">…</b> pytań</small><em>Rozpocznij →</em></button>
+          <button class="landing-start test-mode-button featured" type="button" data-test-mode="balanced"><span class="mode-icon">◈</span><span>Test zbalansowany</span><small>Dobry punkt startu · <b data-question-count="balanced">…</b> pytań</small><em>Rozpocznij →</em></button>
+          <button class="landing-start test-mode-button" type="button" data-test-mode="short"><span class="mode-icon">◐</span><span>Test skrócony</span><small>Szybki zarys · <b data-question-count="short">…</b> pytań</small><em>Rozpocznij →</em></button>
         </div>
       </section>
+      <section class="hub-info-grid" aria-label="Informacje o aplikacji"><article><span>◎</span><h2>Własne tempo</h2><p>Pytania możesz przeglądać swobodnie, pomijać i uzupełniać później.</p></article><article><span>◫</span><h2>Przejrzysty wynik</h2><p>Osie wartości, rankingi dopasowania i kompas w jednym miejscu.</p></article><article><span>◒</span><h2>Twoje dane</h2><p>Eksportuj odpowiedzi, aby przenieść je na inne urządzenie.</p></article></section>
       <details class="question-catalog" id="question-catalog">
         <summary><span>Przeglądaj wszystkie pytania</span><small>pełna lista według części testu</small></summary>
         <div class="question-catalog-toolbar">
@@ -200,5 +202,6 @@
   <script src="compass-integration.js"></script>
   <script src="ux-refresh.js"></script>
   <script src="test-modes.js"></script>
+  <script src="product-ux.js"></script>
 </body>
 </html>
