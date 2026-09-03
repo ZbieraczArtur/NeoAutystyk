@@ -265,13 +265,13 @@
   }
   initLandingAndTheme();
 
-  // Kompas działa na osobnej stronie; wynik jest przenoszony jako kod eksportu,
-  // więc powrót przeglądarki nie resetuje odpowiedzi.
+  // Narzędzia analityczne działają w osobnych kartach; wynik jest przenoszony
+  // jako kod eksportu, więc otwarcie narzędzia nie resetuje testu.
   document.addEventListener('click', event => {
     const openCompass = event.target.closest('#open-compass-modal');
-    if (!openCompass) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
+    const openComparison = event.target.closest('#open-comparison-page');
+    if (!openCompass && !openComparison) return;
+    event.preventDefault(); event.stopImmediatePropagation();
     if (resultsDiv.style.display === 'none' || !userAnswers.length) {
       showPopup('Najpierw pokaż wyniki testu, aby otworzyć kompas.');
       return;
@@ -279,7 +279,7 @@
     const code = generateExportCode();
     sessionStorage.setItem('neoAutystykExportCode', code);
     localStorage.setItem('neoAutystykExportCode', code);
-    location.href = 'compass.html';
+    window.open(openCompass ? 'compass.html' : 'comparison.html', '_blank', 'noopener');
   }, true);
 
   let tries = 0;
