@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NeoAutystyk — Porównywarka</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="comparison-page.css">
+</head>
+<body class="comparison-page-body">
+  <header class="comparison-page-header"><a href="index.html#results" class="comparison-back">← Powrót do wyników</a><div><strong>NeoAutystyk</strong><span> · laboratorium porównań</span></div><button id="comparison-theme" class="theme-toggle" type="button" aria-label="Zmień motyw">🌙</button></header>
+  <main class="comparison-page-layout">
+    <aside class="comparison-sidebar">
+      <p class="comparison-kicker">LABORATORIUM WYNIKÓW</p><h1>Porównaj perspektywy</h1><p class="comparison-intro">Zestaw swój wynik z wieloma profilami albo kodami znajomych. Filtry analizują faktyczne mapowania wartości wybranych odpowiedzi.</p>
+      <section class="control-card profile-picker-card"><div class="control-heading"><h2>Porównywane profile</h2><button id="clear-profiles" type="button">Wyczyść</button></div><label class="comparison-field">Szukaj profilu <input id="profile-search" type="search" placeholder="np. liberalizm, partia, osoba"></label><div class="profile-type-toggles" role="group" aria-label="Kategorie profili"><label><input type="checkbox" value="ideology" checked> Ideologie</label><label><input type="checkbox" value="party" checked> Partie</label><label><input type="checkbox" value="user" checked> Użytkownicy</label><label><input type="checkbox" value="figure" checked> Figury</label><label><input type="checkbox" value="friend" checked> Importy</label></div><div id="profile-picker" class="profile-picker" aria-live="polite"></div></section>
+      <section class="control-card filter-card"><div class="control-heading"><h2>Filtry pytań</h2><button id="clear-filters" type="button">Resetuj</button></div><label class="comparison-field">Szukaj tezy <input id="comparison-search" type="search" placeholder="fragment pytania"></label><label class="comparison-field">Zgodność <select id="comparison-filter"><option value="all">Wszystkie pytania</option><option value="same">Zgodne ze wszystkimi wybranymi</option><option value="different">Różne od co najmniej jednego</option><option value="answered">Tylko z Twoją odpowiedzią</option><option value="notes">Z uzasadnieniem</option></select></label><label class="comparison-field">Wartość <select id="value-filter"><option value="">Wszystkie wartości</option></select></label><div class="mapping-filter"><label><input type="radio" name="mapping" value="any" checked> każde mapowanie</label><label><input type="radio" name="mapping" value="for"> values for</label><label><input type="radio" name="mapping" value="against"> values against</label></div><label class="comparison-field">Szukaj wartości w <select id="value-scope"><option value="my-answer">mojej zaznaczonej odpowiedzi</option><option value="question">dowolnej odpowiedzi w pytaniu</option></select></label></section>
+      <section class="comparison-import-card"><h2>Dodaj wynik znajomego</h2><label>Nazwa<input id="friend-name" maxlength="40" placeholder="np. Alex"></label><label>Kod eksportu<textarea id="friend-code" rows="4" placeholder="Wklej kod eksportu NeoAutystyk"></textarea></label><button id="friend-add" type="button">Dodaj do porównań</button><p id="friend-message" aria-live="polite"></p></section>
+    </aside>
+    <section class="comparison-workspace"><section class="comparison-hero"><div><p>AKTYWNE PORÓWNANIE</p><h2 id="comparison-title">Wczytywanie profili…</h2><span id="comparison-subtitle">—</span></div><div id="comparison-scorecards" class="comparison-scorecards"></div></section><div class="comparison-toolbar"><div class="comparison-legend"><span><i class="legend-mine"></i> Twoja odpowiedź</span><span><i class="legend-theirs"></i> Odpowiedź profilu</span><span><i class="legend-note"></i> Uzasadnienie</span></div><div><button id="expand-all" type="button">Rozwiń wszystkie</button><button id="copy-view" type="button">Kopiuj widok</button></div></div><p id="comparison-status" class="comparison-status" aria-live="polite"></p><div id="comparison-list" class="comparison-list-page"></div></section>
+  </main>
+  <script src="comparison-page.js"></script>
+</body>
+</html>
