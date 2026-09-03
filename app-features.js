@@ -48,15 +48,7 @@
         'Okupacja / Interwencja zewnętrzna'
       ]
     },
-    parties: { Status: ['Parlamentarne', 'Pozaparlamentarne'] },
-    ideologies: {
-      Kierunek: [
-        'Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne',
-        'Konserwatywne', 'Socjalistyczne', 'Libertariańskie',
-        'Anarchistyczne', 'Monarchistyczne'
-
-      ]
-    }
+    parties: { Status: ['Parlamentarne', 'Pozaparlamentarne'] }
   };
   const selectedTags = new Set();
   let showAllTags = true;
@@ -75,7 +67,8 @@
   const crossCategoryTags = new Set(['Parlamentarne', 'Pozaparlamentarne', 'Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne', 'Konserwatywne', 'Socjalistyczne', 'Libertariańskie', 'Anarchistyczne', 'Monarchistyczne']);
   function profileTags(profile) {
     const tags = Array.isArray(profile?.tags) ? profile.tags : [];
-    return (profile?.type === 'figure' || profile?.type === 'user') ? tags.filter(tag => !crossCategoryTags.has(tag)) : tags;
+    // Tags deliberately classify only parties and political figures, never ideologies or user profiles.
+    return (profile?.type === 'figure' || profile?.type === 'party') ? tags.filter(tag => !crossCategoryTags.has(tag)) : [];
   }
   function matchesSelectedTags(profile) { return showAllTags || [...selectedTags].every(tag => profileTags(profile).includes(tag)); }
   function findProfile(name) { return allProfiles().find(p => p.name === name || p.key === name || p.id === name); }
@@ -239,7 +232,7 @@
     title.textContent = 'Wybierz tagi — profil musi spełniać wszystkie zaznaczone warunki.'; body.appendChild(title);
     Object.entries(TAG_CATALOG).forEach(([kind, groups]) => Object.entries(groups).forEach(([group, tags]) => {
       const row = document.createElement('details'); row.className = 'compact-filter-group';
-      const label = document.createElement('summary'); label.textContent = `${kind === 'figures' ? 'Figury' : kind === 'parties' ? 'Partie' : 'Ideologie'} · ${group}`; row.appendChild(label);
+      const label = document.createElement('summary'); label.textContent = `${kind === 'figures' ? 'Figury polityczne' : 'Partie polityczne'} · ${group}`; row.appendChild(label);
       const options = document.createElement('div'); options.className = 'tag-options';
       tags.forEach(tag => {
         const chip = document.createElement('label'); chip.className = 'tag-chip';
