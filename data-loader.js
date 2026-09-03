@@ -105,5 +105,7 @@ window.NeoDataParts = {
   activateQuestions: activateQuestionData, refreshDynamicQuestions: refreshDynamicQuestionData,
   getQuestion: questionId => questionById.get(Number(questionId)),
   getCondition, conditionIsMet, normalizeRequirementGroups, conditionQuestionIds,
-  allQuestionIds: () => dataManifest?.parts.flatMap(part => part.questionIds.map(Number)) || []
+  allQuestionIds: () => dataManifest?.parts.flatMap(part => part.questionIds.map(Number)) || [],
+  // Read-only UI hook for progress persistence; it deliberately exposes no scoring internals.
+  getUserAnswers: () => userAnswers
 };
