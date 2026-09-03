@@ -374,6 +374,7 @@
 
   function appendTagsToPopup(profile) {
     const content = popup.querySelector('.popup-content');
+    if (content.querySelector('.profile-popup-layout')) return;
     content.querySelector('.popup-profile-tags')?.remove();
     const tags = visibleProfileTags(profile); if (!tags.length) return;
     const list = document.createElement('div'); list.className = 'popup-profile-tags'; list.innerHTML = '<strong>Tagi</strong>';
@@ -426,11 +427,21 @@
     content.querySelectorAll('.popup-logo-img, .profile-popup-layout, .popup-profile-tags').forEach(node => node.remove());
     popupText.hidden = true;
     const layout = document.createElement('section'); layout.className = 'profile-popup-layout';
+    layout.dataset.profileType = profile.type || 'profile';
     const main = document.createElement('div'); main.className = 'profile-popup-main';
-    const title = document.createElement('h2'); title.textContent = profile.name; main.appendChild(title);
-    String(profile.description || 'Brak opisu.').split(/\n\s*\n/).filter(Boolean).forEach(text => { const p = document.createElement('p'); p.textContent = text; main.appendChild(p); });
+    const hero = document.createElement('header'); hero.className = 'profile-popup-hero';
+    const typeName = { party: 'Partia polityczna', ideology: 'Ideologia', user: 'Profil użytkownika', figure: 'Figura polityczna' }[profile.type] || 'Profil';
+    const type = document.createElement('span'); type.className = 'profile-popup-type'; type.textContent = typeName;
+    const title = document.createElement('h2'); title.textContent = profile.name;
+    const lead = document.createElement('p'); lead.className = 'profile-popup-lead'; lead.textContent = 'Profil referencyjny w NeoAutystyk';
+    hero.append(type, title, lead); main.appendChild(hero);
+    const about = document.createElement('h3'); about.className = 'profile-popup-section-title'; about.textContent = 'O profilu'; main.appendChild(about);
+    String(profile.description || 'Brak opisu.').split(/\n\s*\n/).filter(Boolean).forEach(text => { const p = document.createElement('p'); p.className = 'profile-popup-description'; p.textContent = text; main.appendChild(p); });
     const aside = document.createElement('aside'); aside.className = 'profile-popup-infobox';
-    if (profile.logo) { const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = 'popup-logo-img'; aside.appendChild(image); }
+    const visual = document.createElement('div'); visual.className = 'profile-popup-visual';
+    if (profile.logo) { const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = 'popup-logo-img'; visual.appendChild(image); }
+    else { const monogram = document.createElement('span'); monogram.className = 'profile-popup-monogram'; monogram.textContent = String(profile.name || '?').trim().slice(0, 1).toUpperCase(); visual.appendChild(monogram); }
+    aside.appendChild(visual);
     const rows = infoboxRows(profile);
     if (rows.length) { const list = document.createElement('dl'); rows.forEach(row => { const dt = document.createElement('dt'); dt.textContent = row.label; const dd = document.createElement('dd'); dd.textContent = row.value; list.append(dt, dd); }); aside.appendChild(list); }
     const tags = visibleProfileTags(profile);
@@ -582,6 +593,9 @@
     body.querySelectorAll('.comparison-profile-logo').forEach(button => button.addEventListener('click', () => profilePopup(allComparisonProfiles().find(item => item.type === button.dataset.profileType && item.name === button.dataset.profileName))));
   }
   function ensureComparisonPanel() {
+    // Szczegóły porównania są celowo w osobnej karcie (comparison.html), aby
+    // strona wyników pozostała szybka i czytelna na telefonach.
+    return;
     if (document.getElementById('comparison-panel') || !resultsDiv) return;
     const panel = document.createElement('section'); panel.id = 'comparison-panel'; panel.className = 'comparison-panel';
     const values = [...new Set(config?.questions?.flatMap(question => question.answers.flatMap(answer => [...(answer.values_for || []), ...(answer.values_against || [])])) || [])].sort();
