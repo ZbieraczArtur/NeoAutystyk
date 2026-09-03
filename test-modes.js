@@ -104,7 +104,7 @@
   }
   window.NeoTestPages = { maybeAdvance, showPage };
 
-  async function beginTest(mode, selectedView) {
+  async function beginTest(mode, selectedView, restoredAnswers = null) {
     const selectedIds = [...new Set(idsFor(mode).map(Number))];
     const selected = new Set(selectedIds);
     const manifest = await window.NeoDataParts.initialize();
@@ -113,7 +113,7 @@
       ? [{ id: 'all', ids: selectedIds }]
       : manifest.parts.map(part => ({ id: part.id, ids: part.questionIds.map(Number).filter(id => selected.has(id)) })).filter(page => page.ids.length);
     window.__selectedTestQuestionIds = selectedIds;
-    userAnswers = [];
+    userAnswers = Array.isArray(restoredAnswers) ? restoredAnswers : [];
     window.resetQuestionReview?.(); window.resetQuestionPagination?.();
     document.body.classList.remove('landing-active'); document.body.dataset.testMode = mode; document.body.dataset.testView = viewMode;
     if (viewMode === 'tabs') createNavigation(); else { navigation?.remove(); navigation = null; }
@@ -122,7 +122,11 @@
       initApp(); setupSimulation(); setupMatchingModeSelector(); setupModeSelector(); setupImportExport(); setupLanguageSelector();
     } else resultsDiv.style.display = 'none';
     await showPage(0);
+    window.dispatchEvent(new CustomEvent('neoAutystykTestStarted', { detail: { mode, view: viewMode, restored: !!restoredAnswers } }));
   }
+
+  // Public, deliberately small UI API. It changes only the screen state; scoring remains in script.js.
+  window.NeoTestModes = { beginTest };
 
   function chooseViewAndBegin(mode) {
     const dialog = createViewChoiceDialog();
