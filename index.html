@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#1e293b">
   <title>NeoAutystyk</title>
+  <script>document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches));</script>
   <link rel="icon" type="image/svg+xml" href="images/ALogo.svg">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="compass.css">
@@ -160,6 +161,7 @@
           <label><input type="checkbox" id="toggle-figures"> 👤 Figury polityczne</label>
         </div>
         <label class="figure-year-filter">Rok lub okres figur <input id="figure-year-filter" inputmode="numeric" pattern="[0-9]{1,4}(-[0-9]{1,4})?" placeholder="np. 1820 lub 1820-1900"></label>
+        <div id="timeline-shift-controls" class="timeline-shift-controls" aria-label="Szybkie przesuwanie okresu"></div>
         <div class="overlay-size-controls" role="group" aria-label="Wielkość nakładek na kompasie">
           <span>Wielkość nakładek</span><button type="button" class="overlay-size-button" data-overlay-size-step="-4" aria-label="Zmniejsz nakładki">−</button>
           <input id="overlay-size-range" type="range" min="16" max="52" value="24" step="2" aria-label="Wielkość nakładek"><button type="button" class="overlay-size-button" data-overlay-size-step="4" aria-label="Zwiększ nakładki">+</button><output id="overlay-size-value" for="overlay-size-range">24 px</output>
@@ -203,5 +205,6 @@
   <script src="ux-refresh.js"></script>
   <script src="test-modes.js"></script>
   <script src="product-ux.js"></script>
+  <script src="architecture-refresh.js"></script>
 </body>
 </html>
