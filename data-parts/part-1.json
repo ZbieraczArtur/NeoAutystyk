@@ -7475,7 +7475,39 @@
         }
       ],
       "weight": 4.5
-    }
-  ]
+    },
+    {
+      "id": 566,
+      "text": "Likwidacja państwa powinna przebiegać w sposób powolny, kontrolowany i uporządkowany",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": ["Gradualizm", "Projektywizm", "Transformacja"],
+          "values_against": ["Rewolucjonizm", "Retrospektywizm"]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": ["Gradualizm", "Projektywizm", "Transformacja"],
+          "values_against": ["Rewolucjonizm", "Retrospektywizm"]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": ["Rewolucjonizm", "Projektywizm", "Transformacja"],
+          "values_against": ["Gradualizm", "Stabilność"]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": ["Rewolucjonizm", "Projektywizm", "Transformacja"],
+          "values_against": ["Gradualizm", "Stabilność"]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4
+        }
+    ]
 }
-
