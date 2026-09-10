@@ -2638,6 +2638,39 @@
         }
       ],
       "weight": 2
-    }
-  ]
+    },
+     {
+      "id": 567,
+      "text": "Zadawanie cierpienia czującym istotom dla zaspokojenia trywialnych potrzeb ludzkich jest moralnie niedopuszczalne",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+        }
+    ]
 }
