@@ -8569,6 +8569,271 @@
         }
       ],
       "weight": 4.5
-    }
-  ]
+    },
+        {
+      "id": 558,
+      "text": "Państwo powinno zapewniać takie same podstawowe warunki konkurencji przedsiębiorstwom prywatnym i publicznym",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 559,
+      "text": "Państwo powinno aktywnie kierować rozwojem wybranych sektorów gospodarki poprzez dotacje, inwestycje lub preferencje regulacyjne.",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 560,
+      "text": "Państwo powinno pobierać podatek od majątku przekazywanego w drodze dziedziczenia",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 561,
+      "text": "Dziedziczenie bardzo dużych majątków powinno podlegać wysokiemu opodatkowaniu",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 562,
+      "text": "Wysokość podatku od dziedziczonego majątku powinna zwiększać się wraz z jego wartością",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 563,
+      "text": "Najważniejsze ograniczenia zadłużenia publicznego powinny być zapisane w konstytucji, aby nie mogły być łatwo zmieniane pod wpływem bieżącej polityki",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 564,
+      "text": "Poziom płac na rynku pracy powinien być w pełni elastyczny i dostosowywać się bezpośrednio do wahań koniunkturalnych",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+    },
+    {
+      "id": 568,
+      "text": "Społeczeństwo powinno dążyć do stanu bezklasowego opierającego się na wspólnej własności dóbr produkcyjnych",
+      "comment": "",
+      "answers": [
+        {
+          "label": "Zdecydowanie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Częściowo nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Zdecydowanie nie zgadzam się",
+          "values_for": [""],
+          "values_against": [""]
+        },
+        {
+          "label": "Pomiń pytanie",
+          "values_for": [""],
+          "values_against": [""]
+        }
+      ],
+      "weight": 4.5
+        }
+    ]
 }
+
