@@ -206,7 +206,7 @@ window.BadgesRegistry = {
       requiredNo: [67, 73]
     },
         },
-    federalism: {
+    SToV: {
       id: "Subiektywna teoria wartości",
       name: { pl: "Subiektywna teoria wartości", en: "Subjective theory of value" },
       description: {
