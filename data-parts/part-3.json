@@ -1795,7 +1795,7 @@
     },
     {
       "id": 113,
-      "text": "Towar jest warty tyle, ile gotów jest za niego zapłacić klient",
+      "text": "Wartość jakiegokolwiek dobra nie jest stała, a o jej wartości decyduje to, jak mocno odpowiada ono na indywidualne potrzeby nabywcy",
       "description": "XXXXXX",
       "comment": "Placeholder",
       "answers": [
@@ -1836,7 +1836,6 @@
           ],
           "values_against": [
             "Rynek",
-            "Samoregulacja",
             "Indywidualizm"
           ]
         },
@@ -1849,7 +1848,6 @@
           ],
           "values_against": [
             "Rynek",
-            "Samoregulacja",
             "Indywidualizm"
           ]
         },
