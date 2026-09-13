@@ -205,6 +205,17 @@ window.BadgesRegistry = {
       requiredYes: [65, 70, 69, 292],
       requiredNo: [67, 73]
     },
+        },
+    federalism: {
+      id: "Subiektywna teoria wartości",
+      name: { pl: "Subiektywna teoria wartości", en: "Subjective theory of value" },
+      description: {
+        pl: "Koncepcja ekonomiczna, zgodnie z którą wartość danego dobra nie wynika z obiektywnych czynników, takich jak np. ilość włożonej w nie pracy, lecz zależy od indywidualnej, subiektywnej oceny jego użyteczności dokonywanej przez poszczególne jednostki",
+        en: "An economic concept according to which the value of a given good does not stem from objective factors, such as the amount of labour invested in it, but depends on the individual, subjective assessment of its utility made by each person"
+      },
+      requiredYes: [113],
+      requiredNo: []
+    },
     confederalism: {
       id: "confederalism",
       name: { pl: "Konfederalizm", en: "Confederalism" },
