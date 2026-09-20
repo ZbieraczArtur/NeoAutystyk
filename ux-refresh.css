@@ -327,6 +327,8 @@ header,
     box-shadow: 0 7px 18px rgba(37, 99, 235, 0.18);
 }
 .profile-popup-layout {
+    --profile-color-primary: 37, 99, 235;
+    --profile-color-secondary: 124, 58, 237;
     position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1.45fr) minmax(218px, 0.8fr);
@@ -339,7 +341,7 @@ header,
     position: absolute;
     inset: 0 0 auto;
     height: 5px;
-    background: linear-gradient(90deg, #2563eb, #7c3aed 55%, #ec4899);
+    background: linear-gradient(90deg, rgb(var(--profile-color-primary)), rgb(var(--profile-color-secondary)) 55%, rgb(var(--profile-color-primary)));
 }
 .profile-popup-main {
     min-width: 0;
@@ -392,15 +394,7 @@ header,
     padding: clamp(1.2rem, 2.5vw, 1.8rem);
     border-left: 1px solid
         color-mix(in srgb, var(--border-color, #cbd5e1) 80%, transparent);
-    background: linear-gradient(
-        155deg,
-        color-mix(
-            in srgb,
-            var(--primary-color, #2563eb) 11%,
-            var(--card-bg, #fff)
-        ),
-        var(--card-bg, #fff)
-    );
+    background: linear-gradient(155deg, rgba(var(--profile-color-primary), 0.14), rgba(var(--profile-color-secondary), 0.07) 52%, var(--card-bg, #fff));
 }
 .profile-popup-visual {
     display: grid;
@@ -412,11 +406,7 @@ header,
             rgba(255, 255, 255, 0.95),
             transparent 30%
         ),
-        linear-gradient(
-            135deg,
-            rgba(37, 99, 235, 0.16),
-            rgba(124, 58, 237, 0.2)
-        );
+        linear-gradient(135deg, rgba(var(--profile-color-primary), 0.20), rgba(var(--profile-color-secondary), 0.24));
 }
 .profile-popup-infobox .popup-logo-img {
     width: min(130px, 75%);
