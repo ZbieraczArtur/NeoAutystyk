@@ -21,7 +21,26 @@
     }
     return questionsById.get(idOf(id));
   };
-  const answerRows = id => userAnswers.filter(row => idOf(row.questionId) === idOf(id) && !row.noteOnly);
+  // Indeks jest przebudowywany wyłącznie po zmianie tablicy odpowiedzi. Dzięki
+  // temu renderowanie nie wykonuje wielokrotnie filtrowania całej tablicy dla
+  // każdego przycisku i każdego pola notatki.
+  let answerIndexSource = null;
+  let answerIndexLength = -1;
+  let answersByQuestion = new Map();
+  function answerRows(id) {
+    if (answerIndexSource !== userAnswers || answerIndexLength !== userAnswers.length) {
+      answerIndexSource = userAnswers;
+      answerIndexLength = userAnswers.length;
+      answersByQuestion = new Map();
+      userAnswers.forEach(row => {
+        if (row.noteOnly) return;
+        const key = idOf(row.questionId);
+        const rows = answersByQuestion.get(key) || [];
+        rows.push(row); answersByQuestion.set(key, rows);
+      });
+    }
+    return answersByQuestion.get(idOf(id)) || [];
+  }
   const primaryAnswer = id => answerRows(id).find(row => !row.neither) || answerRows(id)[0] || null;
   const isPositive = row => row && !row.neither && Number(row.answerValue) > 0;
   const isNegative = row => row && !row.neither && Number(row.answerValue) < 0;
@@ -178,7 +197,7 @@
       try {
         const conditions = conditionIds(question);
         const activatedIds = (dataManifest?.conditionalQuestions || [])
-          .filter(item => [...(item.require_yes || []), ...(item.require_no || [])].map(idOf).includes(idOf(question.id)))
+          .filter(item => (window.NeoDataParts?.conditionQuestionIds?.(item) || []).map(idOf).includes(idOf(question.id)))
           .map(item => idOf(item.id));
         await window.NeoDataParts?.ensureQuestions([...conditions, ...activatedIds]);
         const addRelation = (label, ids) => {
@@ -240,9 +259,7 @@
       userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
       userAnswers.push({ questionId: question.id, answerIndex: index, answerValue: answer.value, answerData: answer, note });
     }
-    window.NeoDataParts?.refreshDynamicQuestions?.().then(() => {
-      reconcileDynamicAnswers(); renderQuestions();
-    }).catch(error => { console.error(error); reconcileDynamicAnswers(); renderQuestions(); });
+    updateAfterAnswer(question.id);
   }
 
   function setNeither(question) {
@@ -255,9 +272,32 @@
       userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
       userAnswers.push({ questionId: question.id, answerIndex: -1, answerValue: 0, answerData: null, neither: true, note });
     }
+    updateAfterAnswer(question.id);
+  }
+
+  function updateAfterAnswer(questionId) {
+    // Większość odpowiedzi nie jest warunkiem widoczności żadnej tezy. W takim
+    // przypadku wystarczy podmienić zaznaczenie i liczniki — bez kosztownego
+    // klonowania konfiguracji, zapytań sieciowych i tworzenia kart od nowa.
+    const affectsConditions = window.NeoDataParts?.hasConditionalDependency?.(questionId);
+    if (!affectsConditions) {
+      markSelections();
+      updateReviewControls();
+      window.NeoTestPages?.maybeAdvance?.();
+      return;
+    }
+
+    const before = orderedActiveQuestions().map(question => idOf(question.id)).join(',');
     window.NeoDataParts?.refreshDynamicQuestions?.().then(() => {
+      reconcileDynamicAnswers();
+      const after = orderedActiveQuestions().map(question => idOf(question.id)).join(',');
+      if (before !== after) renderQuestions();
+      else { markSelections(); updateReviewControls(); }
+      window.NeoTestPages?.maybeAdvance?.();
+    }).catch(error => {
+      console.error(error);
       reconcileDynamicAnswers(); renderQuestions();
-    }).catch(error => { console.error(error); reconcileDynamicAnswers(); renderQuestions(); });
+    });
   }
 
   function renderModernQuestions() {
@@ -268,6 +308,7 @@
     const visibleQuestions = window.DEV_MODE
       ? config.questions
       : activeQuestions.filter(question => !reviewFilter || answerState(question) === reviewFilter);
+    const fragment = document.createDocumentFragment();
     visibleQuestions.forEach((question, position) => {
       const active = isQuestionVisible(question);
       const conditional = conditionIds(question).length > 0;
@@ -307,8 +348,9 @@
       const note = document.createElement('div'); note.className = 'answer-note-wrap'; note.innerHTML = `<label for="answer-note-${question.id}">Uzasadnienie odpowiedzi</label><textarea id="answer-note-${question.id}" class="answer-note" rows="3" maxlength="3000"></textarea>`;
       const input = note.querySelector('textarea'); input.value = primaryAnswer(question.id)?.note || ''; input.addEventListener('input', () => { const row = primaryAnswer(question.id); if (row) row.note = input.value; }); card.appendChild(note);
       if (window.DEV_MODE) card.appendChild(developerPanel(question));
-      questionsContainer.appendChild(card);
+      fragment.appendChild(card);
     });
+    questionsContainer.appendChild(fragment);
     ensureBear(); markSelections();
   }
 
@@ -421,6 +463,42 @@
     if (typeLabel) rows.unshift({ label: 'Typ', value: typeLabel });
     return rows;
   }
+
+  // Próbkujemy obraz lokalnie w małym canvasie. Nie zapisujemy ani nie
+  // wysyłamy pikseli; wynik służy wyłącznie do ustawienia zmiennych CSS popupu.
+  function applyProfileImagePalette(image, layout) {
+    try {
+      const side = 64;
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = side;
+      const context = canvas.getContext('2d', { willReadFrequently: true });
+      context.drawImage(image, 0, 0, side, side);
+      const pixels = context.getImageData(0, 0, side, side).data;
+      const colors = new Map();
+      for (let index = 0; index < pixels.length; index += 16) {
+        const red = pixels[index], green = pixels[index + 1], blue = pixels[index + 2], alpha = pixels[index + 3];
+        if (alpha < 160) continue;
+        const maximum = Math.max(red, green, blue), minimum = Math.min(red, green, blue);
+        // Białe / prawie białe tło znaku nie powinno zdominować palety.
+        if (maximum > 235 && maximum - minimum < 18) continue;
+        const key = `${Math.round(red / 24) * 24},${Math.round(green / 24) * 24},${Math.round(blue / 24) * 24}`;
+        const saturation = maximum ? (maximum - minimum) / maximum : 0;
+        colors.set(key, (colors.get(key) || 0) + 1 + saturation);
+      }
+      const palette = [...colors.entries()]
+        .map(([key, weight]) => ({ rgb: key.split(',').map(Number), weight }))
+        .sort((left, right) => right.weight - left.weight);
+      if (!palette.length) return;
+      const primary = palette[0].rgb;
+      const secondary = (palette.find(({ rgb }) => Math.hypot(rgb[0] - primary[0], rgb[1] - primary[1], rgb[2] - primary[2]) > 55) || palette[0]).rgb;
+      layout.style.setProperty('--profile-color-primary', primary.join(', '));
+      layout.style.setProperty('--profile-color-secondary', secondary.join(', '));
+      layout.dataset.profilePalette = 'image';
+    } catch (error) {
+      // Nieobsługiwany format lub obraz z innego źródła pozostawia domyślny styl.
+      console.debug('Nie udało się odczytać palety obrazu profilu.', error);
+    }
+  }
   function showModernProfilePopup(profile) {
     if (!profile) return;
     const content = popup.querySelector('.popup-content');
@@ -439,7 +517,12 @@
     String(profile.description || 'Brak opisu.').split(/\n\s*\n/).filter(Boolean).forEach(text => { const p = document.createElement('p'); p.className = 'profile-popup-description'; p.textContent = text; main.appendChild(p); });
     const aside = document.createElement('aside'); aside.className = 'profile-popup-infobox';
     const visual = document.createElement('div'); visual.className = 'profile-popup-visual';
-    if (profile.logo) { const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = 'popup-logo-img'; visual.appendChild(image); }
+    if (profile.logo) {
+      const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = 'popup-logo-img';
+      image.addEventListener('load', () => applyProfileImagePalette(image, layout), { once: true });
+      visual.appendChild(image);
+      if (image.complete && image.naturalWidth) applyProfileImagePalette(image, layout);
+    }
     else { const monogram = document.createElement('span'); monogram.className = 'profile-popup-monogram'; monogram.textContent = String(profile.name || '?').trim().slice(0, 1).toUpperCase(); visual.appendChild(monogram); }
     aside.appendChild(visual);
     const rows = infoboxRows(profile);
