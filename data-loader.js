@@ -14,6 +14,9 @@ let dataManifest = null;
 const questionById = new Map();
 const dataPartCache = new Map();
 const dataPartRequests = new Map();
+let conditionAnswerSource = null;
+let conditionAnswerLength = -1;
+let conditionAnswerState = new Map();
 
 function registerDataPart(part) {
   (part?.questions || []).forEach(question => questionById.set(Number(question.id), question));
@@ -48,26 +51,67 @@ async function ensureQuestionData(questionIds) {
   await Promise.all(manifest.parts.filter(part => part.questionIds.some(id => needed.has(Number(id)))).map(part => loadDataPart(part.id)));
 }
 function conditionIsMet(condition) {
-  const rowsFor = questionId => userAnswers.filter(row => Number(row.questionId) === Number(questionId) && !row.noteOnly);
-  const positive = questionId => rowsFor(questionId).some(row => !row.neither && Number(row.answerValue) > 0);
-  const negative = questionId => rowsFor(questionId).some(row => !row.neither && Number(row.answerValue) < 0);
-  return requirementIsMet(condition?.require_yes, positive) && requirementIsMet(condition?.require_no, negative);
+  if (conditionAnswerSource !== userAnswers || conditionAnswerLength !== userAnswers.length) {
+    conditionAnswerSource = userAnswers;
+    conditionAnswerLength = userAnswers.length;
+    conditionAnswerState = new Map();
+    userAnswers.forEach(row => {
+      if (row.noteOnly || row.neither) return;
+      const id = Number(row.questionId);
+      const state = conditionAnswerState.get(id) || { positive: false, negative: false };
+      if (Number(row.answerValue) > 0) state.positive = true;
+      if (Number(row.answerValue) < 0) state.negative = true;
+      conditionAnswerState.set(id, state);
+    });
+  }
+  const positive = questionId => conditionAnswerState.get(Number(questionId))?.positive || false;
+  const negative = questionId => conditionAnswerState.get(Number(questionId))?.negative || false;
+  return normalizeConditionRequirements(condition).some(requirement =>
+    requirement.yes.every(positive) && requirement.no.every(negative)
+  );
 }
 
-// Stary zapis [1, 2] oznacza 1 AND 2. Nowy zapis [[1], [2, 3]]
-// oznacza 1 OR (2 AND 3). Normalizacja jest wspólna dla loadera i UI.
+// Pomocnik dla starszego zapisu: [1, 2] oznacza 1 AND 2, a
+// [[1], [2, 3]] oznacza 1 OR (2 AND 3).
 function normalizeRequirementGroups(requirement) {
   if (!Array.isArray(requirement) || !requirement.length) return [];
   return requirement.some(Array.isArray)
     ? requirement.filter(Array.isArray).map(group => group.map(Number).filter(Number.isFinite)).filter(group => group.length)
     : [requirement.map(Number).filter(Number.isFinite)];
 }
-function requirementIsMet(requirement, predicate) {
-  const groups = normalizeRequirementGroups(requirement);
-  return !groups.length || groups.some(group => group.every(predicate));
+
+function normalizeConditionIds(ids) {
+  return Array.isArray(ids) ? ids.map(Number).filter(Number.isFinite) : [];
+}
+
+// Nowy format jest listą alternatyw (OR). W każdej alternatywie wszystkie
+// pozycje yes oraz no są wymagane jednocześnie (AND). Pozostawiamy pełną
+// zgodność ze starymi require_yes / require_no, łącznie z ich grupami OR.
+function normalizeConditionRequirements(condition) {
+  if (Array.isArray(condition?.require)) {
+    const alternatives = condition.require
+      .filter(requirement => requirement && typeof requirement === 'object' && !Array.isArray(requirement))
+      .map(requirement => ({
+        yes: normalizeConditionIds(requirement.yes),
+        no: normalizeConditionIds(requirement.no)
+      }));
+    return alternatives.length ? alternatives : [{ yes: [], no: [] }];
+  }
+
+  const yesGroups = normalizeRequirementGroups(condition?.require_yes);
+  const noGroups = normalizeRequirementGroups(condition?.require_no);
+  const yesAlternatives = yesGroups.length ? yesGroups : [[]];
+  const noAlternatives = noGroups.length ? noGroups : [[]];
+  return yesAlternatives.flatMap(yes => noAlternatives.map(no => ({ yes, no })));
 }
 function conditionQuestionIds(condition) {
-  return [...normalizeRequirementGroups(condition?.require_yes), ...normalizeRequirementGroups(condition?.require_no)].flat();
+  return normalizeConditionRequirements(condition).flatMap(requirement => [...requirement.yes, ...requirement.no]);
+}
+function hasConditionalDependency(questionId) {
+  const id = Number(questionId);
+  return (dataManifest?.conditionalQuestions || []).some(condition =>
+    conditionQuestionIds(condition).some(dependencyId => Number(dependencyId) === id)
+  );
 }
 function getCondition(questionId) {
   return dataManifest?.conditionalQuestions?.find(condition => Number(condition.id) === Number(questionId)) || null;
@@ -104,7 +148,8 @@ window.NeoDataParts = {
   initialize: initializeDataParts, loadPart: loadDataPart, ensureQuestions: ensureQuestionData,
   activateQuestions: activateQuestionData, refreshDynamicQuestions: refreshDynamicQuestionData,
   getQuestion: questionId => questionById.get(Number(questionId)),
-  getCondition, conditionIsMet, normalizeRequirementGroups, conditionQuestionIds,
+  getCondition, conditionIsMet, normalizeRequirementGroups, normalizeConditionRequirements, conditionQuestionIds,
+  hasConditionalDependency,
   allQuestionIds: () => dataManifest?.parts.flatMap(part => part.questionIds.map(Number)) || [],
   // Read-only UI hook for progress persistence; it deliberately exposes no scoring internals.
   getUserAnswers: () => userAnswers
