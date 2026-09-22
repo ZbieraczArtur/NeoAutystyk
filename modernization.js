@@ -9,6 +9,9 @@
   let reviewFilter = null;
   const autoNeitherDisabled = new Set();
   const neitherClickState = new Map();
+  // Kolejność odłożonych pytań jest niezależna od odpowiedzi: nie narusza
+  // wyniku ani zapisanych notatek, a działa również po ponownym renderowaniu.
+  const deferredQuestionIds = [];
 
   const idOf = value => Number(value);
   let indexedQuestions = null;
@@ -91,8 +94,22 @@
         break;
       }
     }
-    return ordered;
+    const deferred = new Set(deferredQuestionIds);
+    return [...ordered.filter(question => !deferred.has(idOf(question.id))), ...deferredQuestionIds.map(questionId => ordered.find(question => idOf(question.id) === questionId)).filter(Boolean)];
   }
+
+  function deferQuestion(questionId) {
+    const id = idOf(questionId);
+    const position = deferredQuestionIds.indexOf(id);
+    if (position >= 0) deferredQuestionIds.splice(position, 1);
+    deferredQuestionIds.push(id);
+    renderQuestions();
+    requestAnimationFrame(() => {
+      const next = document.querySelector(`.question-card[data-id]:not([data-id="${id}"])`);
+      (next || document.querySelector(`.question-card[data-id="${id}"]`))?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+  window.NeoQuestionQueue = { deferQuestion, reset: () => { deferredQuestionIds.length = 0; } };
 
   function answerState(question) {
     const answer = primaryAnswer(question.id);
@@ -327,6 +344,10 @@
         if (answerRows(question.id).some(row => row.answerIndex === index && !row.neither)) option.classList.add('selected');
         option.addEventListener('click', () => setAnswer(question, index, answer)); answers.appendChild(option);
       });
+      const defer = document.createElement('button'); defer.type = 'button'; defer.className = 'answer-option answer-later'; defer.textContent = 'Pokaż później';
+      defer.setAttribute('aria-label', `Odłóż pytanie: ${question.text}`);
+      defer.addEventListener('click', () => deferQuestion(question.id));
+      answers.appendChild(defer);
       if (window.DEV_MODE) {
         const neither = document.createElement('button'); neither.type = 'button'; neither.className = 'answer-option answer-neither'; neither.textContent = NEITHER;
         const neitherActive = answerRows(question.id).some(row => row.neither);
@@ -529,6 +550,7 @@
     if (rows.length) { const list = document.createElement('dl'); rows.forEach(row => { const dt = document.createElement('dt'); dt.textContent = row.label; const dd = document.createElement('dd'); dd.textContent = row.value; list.append(dt, dd); }); aside.appendChild(list); }
     const tags = visibleProfileTags(profile);
     if (tags.length) { const tagBox = document.createElement('div'); tagBox.className = 'popup-profile-tags'; const label = document.createElement('strong'); label.textContent = 'Tagi'; tagBox.appendChild(label); tags.forEach(tag => { const chip = document.createElement('span'); chip.className = 'profile-tag'; chip.textContent = tag; tagBox.appendChild(chip); }); aside.appendChild(tagBox); }
+    const albumLink = document.createElement('a'); albumLink.className = 'profile-popup-album-link'; albumLink.href = `album.html#${encodeURIComponent(profile.id || profile.key || profile.name)}`; albumLink.target = '_blank'; albumLink.rel = 'noopener noreferrer'; albumLink.textContent = 'Przejdź do pełnego profilu ↗'; main.appendChild(albumLink);
     layout.append(main, aside); content.insertBefore(layout, popupText); popup.classList.remove('hidden');
   }
   window.showModernProfilePopup = showModernProfilePopup;
