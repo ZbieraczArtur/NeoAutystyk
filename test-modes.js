@@ -113,6 +113,7 @@
       ? [{ id: 'all', ids: selectedIds }]
       : manifest.parts.map(part => ({ id: part.id, ids: part.questionIds.map(Number).filter(id => selected.has(id)) })).filter(page => page.ids.length);
     window.__selectedTestQuestionIds = selectedIds;
+    window.NeoQuestionQueue?.reset?.();
     userAnswers = Array.isArray(restoredAnswers) ? restoredAnswers : [];
     window.resetQuestionReview?.(); window.resetQuestionPagination?.();
     document.body.classList.remove('landing-active'); document.body.dataset.testMode = mode; document.body.dataset.testView = viewMode;
