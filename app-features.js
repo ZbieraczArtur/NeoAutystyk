@@ -169,11 +169,12 @@
   }
 
   function figureLifeRange(profile) {
-    const field = (...keys) => keys.map(key => profile?.[key] ?? profile?.metadata?.[key]).find(value => value !== undefined && value !== null && String(value).trim());
-    const fromFields = [field('birthDate', 'born', 'birth', 'dateOfBirth'), field('deathDate', 'died', 'death', 'dateOfDeath')];
-    const text = String(profile?.description || ''); const match = text.match(/[([](?:ur\.\s*)?(\d{4})(?:\s*[–-]\s*(\d{4}))?/i);
+    // Zakres figur pochodzi wyłącznie z modelu Albumu. Opis nie jest źródłem
+    // danych, dzięki czemu zmiana jego treści nie zmienia wyniku filtrowania.
+    const field = key => profile?.infobox?.[key];
+    const fromFields = [field('birthDate'), field('deathDate')];
     const year = value => { const found = String(value || '').match(/\d{4}/); return found ? Number(found[0]) : null; };
-    return { birth: year(fromFields[0]) || Number(match?.[1]) || null, death: year(fromFields[1]) || Number(match?.[2]) || null };
+    return { birth: year(fromFields[0]), death: year(fromFields[1]) };
   }
   function figureMatchesYear(profile, raw) {
     const value = String(raw || '').trim(); if (!value) return true;
