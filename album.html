@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Album profili — NeoAutystyk</title><link rel="icon" href="images/ALogo.svg"><link rel="stylesheet" href="album.css">
+</head>
+<body>
+  <header class="album-header"><a href="index.html" class="brand"><img src="images/ALogo.svg" alt="">NeoAutystyk</a><span>Album profili politycznych</span></header>
+  <main class="album-shell">
+    <nav class="album-tabs" aria-label="Rodzaje profili"><button class="active" data-type="party">Partie</button><button data-type="ideology">Ideologie</button><button data-type="figure">Figury</button><button data-type="user">Użytkownicy</button></nav>
+    <aside class="album-sidebar"><label>Wyszukaj<input id="album-search" type="search" placeholder="Nazwa, tag lub kraj"></label><details open><summary>Tagi</summary><div id="album-tags" class="tag-list"></div></details><details><summary>Ustawienia zaawansowane</summary><label>Sortowanie<select id="album-sort"><option value="name">Nazwa A–Z</option><option value="type">Typ</option></select></label><label class="checkbox"><input id="album-with-image" type="checkbox"> Tylko ze zdjęciem</label></details></aside>
+    <section class="album-content"><p id="album-count" class="album-count" aria-live="polite"></p><div id="album-grid" class="album-grid"></div></section>
+  </main>
+  <dialog id="profile-dialog" class="profile-dialog"><button class="dialog-close" aria-label="Zamknij">×</button><article id="profile-view"></article></dialog>
+  <script src="album.js"></script>
+</body>
+</html>
