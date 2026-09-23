@@ -3531,7 +3531,11 @@
       "description": "Michael Huemer to amerykański filozof analityczny i profesor na Uniwersytecie Kolorado w Boulder. Specjalizuje się w epistemologii, metaetyce, etyce zwierząt oraz filozofii politycznej. Zasłynął z obrony intuicjonizmu etycznego, fenomenalizmu konserwatywnego, weganizmu oraz anarchokapitalizmu opartego na krytyce autorytetu politycznego. Jego dorobek stanowi jeden z najbardziej wyrazistych filarów współczesnej zdroworozsądkowej filozofii wolnościowej.",
       "logo": "images/Figury/Estymat_Huemer",
       "exportCode": "",
-      "metadata": {},
+      "metadata": {
+        "source": "data.json",
+        "generatedFromLegacy": true,
+        "migratedAt": "2026-06-24"
+      },
       "tags": [
         "Żyje",
         "Mężczyzna",
@@ -3540,7 +3544,7 @@
         "Filozof",
         "Akademik",
         "Myśliciel społeczny",
-        "Publicysta ",
+        "Publicysta",
         "Libertarianizm",
         "Liberalizm gospodarczy",
         "Anarchizm",
