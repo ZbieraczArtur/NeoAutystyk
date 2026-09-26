@@ -3806,15 +3806,13 @@
       "religion": "chrześcijaństwo / rzymskokatolickie"
     }
     },
-
-[
   {
     "type": "figure",
     "id": "figure:jamesdavidvance",
     "key": "JamesDavidVance",
     "name": "James David Vance",
     "description": "James David Vance (ur. 1984) to amerykański polityk, wiceprezydent USA, autor i były inwestor. Zyskał rozgłos autobiografią „Elegia dla bidoków” ukazującą kryzys klasy robotniczej. Jako lider Nowej Prawicy i postliberalizmu odrzuca wolnorynkowy dogmatyzm na rzecz nacjonalizmu gospodarczego, protekcjonizmu, ochrony tradycyjnej rodziny oraz suwerenności państwa.",
-    "logo": "images/Figury/Estymat_JDV.webp",
+    "logo": "images/Figury/Estymat_Vance",
     "exportCode": "PLACEHOLDER",
     "metadata": {
       "source": "data.json"
@@ -3835,7 +3833,6 @@
       "XXI wiek",
       "Konserwatyzm",
       "Nacjonalizm",
-      "Republikanizm",
       "Tradycjonalizm",
       "Ameryka Północna",
       "Wybory demokratyczne"
