@@ -569,3 +569,7 @@ body.dark .comparison-sidebar textarea {
     flex: 1;
   }
 }
+
+/* Czytelniejsze porównanie: profil i odpowiedź użytkownika mają jasną hierarchię. */
+.comparison-page-body{--compare-radius:18px}.comparison-sidebar{position:sticky;top:65px;align-self:start;max-height:calc(100vh - 65px);scrollbar-gutter:stable}.comparison-workspace{width:100%;margin:0 auto}.comparison-hero{align-items:flex-start}.comparison-scorecard{min-width:min(220px,100%);box-shadow:0 8px 20px #02061720}.comparison-scorecard b{padding:.25rem .45rem;border-radius:8px;background:#ffffff1c}.comparison-row{transition:border-color .16s,box-shadow .16s}.comparison-row[open]{border-color:color-mix(in srgb,var(--primary-color,#2563eb) 40%,var(--border-color,#cbd5e1));box-shadow:0 12px 28px #17233b10}.comparison-row summary{min-height:58px}.comparison-question-description{max-width:78ch}.comparison-answer-lane{grid-template-columns:minmax(145px,20%) minmax(0,1fr);background:color-mix(in srgb,var(--primary-color,#5666e8) 3%,var(--card-bg,#fff))}.comparison-icon-strip{scrollbar-width:thin}.comparison-status{position:sticky;top:65px;z-index:4;padding:.5rem .7rem;border:1px solid var(--border-color,#cbd5e1);border-radius:10px;background:color-mix(in srgb,var(--card-bg,#fff) 92%,transparent);backdrop-filter:blur(8px)}
+@media(max-width:760px){.comparison-sidebar{position:static;max-height:none}.comparison-status{top:58px}.comparison-answer-lane{grid-template-columns:1fr;gap:.35rem}.comparison-hero{border-radius:18px}.comparison-toolbar{position:static}}
