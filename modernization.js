@@ -113,8 +113,9 @@
 
   function answerState(question) {
     const answer = primaryAnswer(question.id);
-    if (!answer || answer.neither) return 'unanswered';
-    return Number(answer.answerValue) === 0 ? 'skipped' : 'answered';
+    if (!answer || answer.neither || answer.noteOnly) return 'unanswered';
+    if (Number(answer.answerValue) !== 0) return 'answered';
+    return /pomin|skip/i.test(normalizeProfileText(answer.answerData?.label)) ? 'skipped' : 'unanswered';
   }
 
   function updateReviewControls(activeQuestions = orderedActiveQuestions()) {
@@ -347,7 +348,7 @@
       const defer = document.createElement('button'); defer.type = 'button'; defer.className = 'answer-option answer-later'; defer.textContent = 'Pokaż później';
       defer.setAttribute('aria-label', `Odłóż pytanie: ${question.text}`);
       defer.addEventListener('click', () => deferQuestion(question.id));
-      answers.appendChild(defer);
+      tools.appendChild(defer);
       if (window.DEV_MODE) {
         const neither = document.createElement('button'); neither.type = 'button'; neither.className = 'answer-option answer-neither'; neither.textContent = NEITHER;
         const neitherActive = answerRows(question.id).some(row => row.neither);
@@ -471,7 +472,8 @@
   }
   function infoboxRows(profile) {
     const configured = profile?.infobox || profile?.metadata?.infobox;
-    if (Array.isArray(configured)) return configured.filter(row => row && row.value !== undefined && String(row.value).trim());
+    if (Array.isArray(configured)) return configured.filter(row => row && row.value !== undefined && String(row.value).trim()).map(row => ({ ...row, label: polishInfoboxLabel(row.label) }));
+    if (configured && typeof configured === 'object') return Object.entries(configured).filter(([, value]) => value !== null && value !== undefined && String(value).trim()).map(([key, value]) => ({ label: polishInfoboxLabel(key), value }));
     const rows = [];
     if (profile?.type === 'figure') {
       const life = inferredLifeDates(profile);
@@ -483,6 +485,11 @@
     const typeLabel = { party: 'Partia polityczna', ideology: 'Ideologia', user: 'Użytkownik', figure: 'Figura polityczna' }[profile?.type];
     if (typeLabel) rows.unshift({ label: 'Typ', value: typeLabel });
     return rows;
+  }
+  function polishInfoboxLabel(value) {
+    const key = String(value || '').replace(/([a-z])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ').trim().toLocaleLowerCase('pl');
+    const labels = { birth: 'Data urodzenia', birthdate: 'Data urodzenia', 'date of birth': 'Data urodzenia', dateofbirth: 'Data urodzenia', born: 'Data urodzenia', death: 'Data śmierci', deathdate: 'Data śmierci', 'date of death': 'Data śmierci', dateofdeath: 'Data śmierci', died: 'Data śmierci', country: 'Kraj', founded: 'Data założenia', headquarters: 'Siedziba', leader: 'Lider', ideology: 'Ideologia', status: 'Status', type: 'Typ', party: 'Partia', name: 'Nazwa', website: 'Strona internetowa' };
+    return labels[key.replace(/\s/g, '')] || labels[key] || String(value || 'Informacja');
   }
 
   // Próbkujemy obraz lokalnie w małym canvasie. Nie zapisujemy ani nie
@@ -551,7 +558,7 @@
     const tags = visibleProfileTags(profile);
     if (tags.length) { const tagBox = document.createElement('div'); tagBox.className = 'popup-profile-tags'; const label = document.createElement('strong'); label.textContent = 'Tagi'; tagBox.appendChild(label); tags.forEach(tag => { const chip = document.createElement('span'); chip.className = 'profile-tag'; chip.textContent = tag; tagBox.appendChild(chip); }); aside.appendChild(tagBox); }
     const albumLink = document.createElement('a'); albumLink.className = 'profile-popup-album-link'; albumLink.href = `album.html#${encodeURIComponent(profile.id || profile.key || profile.name)}`; albumLink.target = '_blank'; albumLink.rel = 'noopener noreferrer'; albumLink.textContent = 'Przejdź do pełnego profilu ↗'; main.appendChild(albumLink);
-    layout.append(main, aside); content.insertBefore(layout, popupText); popup.classList.remove('hidden');
+    layout.append(main, aside); content.insertBefore(layout, popupText); content.scrollTop = 0; popup.scrollTop = 0; popup.classList.remove('hidden');
   }
   window.showModernProfilePopup = showModernProfilePopup;
   // Zachowujemy publiczne API starszych handlerów, ale każdy profil korzysta
