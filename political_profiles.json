@@ -1877,7 +1877,7 @@
       "key": "anarchizm_chrześcijański",
       "name": "Anarchizm chrześcijański",
       "description": "XXXXXXX",
-      "logo": "images/Ideologie/Anarchizm_chrzescijanski.png",
+      "logo": "images/Ideologie/Anarchizm_chrzescijanski.webp",
       "exportCode": "",
       "metadata": {
         "source": "data.json",
@@ -1891,7 +1891,7 @@
       "key": "anarchodystrybucjonizm",
       "name": "Anarchodystrybucjonizm",
       "description": "XXXXXXX",
-      "logo": "images/Ideologie/anarcho-distributism.svg",
+      "logo": "images/Ideologie/Anarchodystrybucjonizm.svg",
       "exportCode": "",
       "metadata": {
         "source": "data.json",
