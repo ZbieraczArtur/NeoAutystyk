@@ -1,9 +1,6 @@
 (async function() {
     'use strict';
     const state = {
-        zoom: 1,
-        panX: 0,
-        panY: 0,
         tags: {
             figure: new Set(),
             party: new Set(),
@@ -13,8 +10,6 @@
         profiles: null,
         data: null,
         friends: [],
-        pointer: new Map(),
-        lastPinch: null,
         mode: 'weighted'
     };
     const stage = document.getElementById('compass-stage'),
@@ -187,24 +182,13 @@
     }
 
     function lifeRange(profile) {
-        const find = (...keys) => keys.map(k => profile?.[k] ?? profile?.metadata?.[k]).find(v => v !== undefined && v !== null && String(v).trim());
-        const year = v => Number(String(v || '').match(/\d{4}/)?.[0]) || null;
-        const m = String(profile?.description || '').match(/[([](?:ur\.\s*)?(\d{4})(?:\s*[–-]\s*(\d{4}))?/i);
-        return {
-            birth: year(find('birthDate', 'born', 'birth', 'dateOfBirth')) || Number(m?.[1]) || null,
-            death: year(find('deathDate', 'died', 'death', 'dateOfDeath')) || Number(m?.[2]) || null
-        }
+        return window.NeoProfileLife?.lifeRange(profile) || {birth:null,death:null};
     }
 
     function matchesFigureYear(profile) {
         const raw = String(document.getElementById('figure-year-filter')?.value || '').trim();
         if (!raw) return true;
-        const m = raw.match(/^(\d{1,4})(?:\s*-\s*(\d{1,4}))?$/);
-        if (!m) return true;
-        const life = lifeRange(profile),
-            from = Number(m[1]),
-            to = Number(m[2] || m[1]);
-        return !!life.birth && life.birth <= to && (life.death || Infinity) >= from
+        return window.NeoProfileLife?.matchesYear(profile, raw) ?? !raw;
     }
 
     function profiles() {
@@ -216,15 +200,18 @@
         ].flatMap(([kind, list]) => list.map(p => ({
             ...p,
             kind
-        }))).filter(valid).filter(p => p.kind !== 'figure' || matchesFigureYear(p))
+        }))).filter(valid).filter(p => p.kind !== 'figure' || matchesFigureYear(p)).filter(p => {
+            const query = answerNorm(document.getElementById('profile-search')?.value);
+            return !query || answerNorm(`${p.name} ${(p.tags || []).join(' ')}`).includes(query);
+        })
     }
 
     function pos(x, y) {
         const r = stage.getBoundingClientRect(),
-            u = Math.min(r.width, r.height) / 20 * state.zoom;
+            u = Math.min(r.width, r.height) / 20;
         return {
-            x: r.width / 2 + state.panX + x * u,
-            y: r.height / 2 + state.panY - y * u,
+            x: r.width / 2 + x * u,
+            y: r.height / 2 - y * u,
             unit: u
         }
     }
@@ -254,7 +241,11 @@
                     y: c.y
                 })
             } for (const p of state.friends) addMarker(p);
-        document.getElementById('zoom-value').textContent = `${Math.round(state.zoom*100)}%`
+        const rawYear = document.getElementById('figure-year-filter').value.trim();
+        const status = document.getElementById('figure-year-status');
+        const yearValid = !rawYear || /^(\d{1,4})(?:\s*[-–—]\s*(\d{1,4}))?$/.test(rawYear);
+        const visibleFigures = profiles().filter(profile => profile.kind === 'figure').length;
+        if (status) status.textContent = !yearValid ? 'Podaj rok lub zakres, np. 1950 albo 1900–1950.' : rawYear ? `${visibleFigures} figur żyło w tym okresie.` : 'Wszystkie okresy';
     }
 
     function addMarker(p) {
@@ -263,6 +254,7 @@
         const el = document.createElement('button');
         el.type = 'button';
         el.className = `compass-marker ${p.kind}`;
+        el.setAttribute('aria-label', `${p.name}, X ${p.x.toFixed(2)}, Y ${p.y.toFixed(2)}. Otwórz szczegóły.`);
         el.style.left = `${q.x}px`;
         el.style.top = `${q.y}px`;
         if (p.logo) {
@@ -274,7 +266,6 @@
         const label = document.createElement('span');
         label.className = 'marker-label';
         label.textContent = `${p.name} (${p.x.toFixed(2)}, ${p.y.toFixed(2)})`;
-        label.hidden = state.zoom < 1.4;
         el.append(label);
         el.onclick = e => {
             e.stopPropagation();
@@ -308,59 +299,11 @@
             }
     }
 
-    function zoomAt(factor, cx, cy) {
-        const before = pos(0, 0);
-        state.zoom = Math.max(.2, state.zoom * factor);
-        const after = pos(0, 0);
-        state.panX += cx - (after.x - (before.x - cx));
-        state.panY += cy - (after.y - (before.y - cy));
-        render()
-    }
-    stage.addEventListener('wheel', e => {
-        e.preventDefault();
-        const r = stage.getBoundingClientRect();
-        zoomAt(e.deltaY < 0 ? 1.15 : 1 / 1.15, e.clientX - r.left, e.clientY - r.top)
-    }, {
-        passive: false
-    });
-    stage.addEventListener('pointerdown', e => {
-        stage.setPointerCapture(e.pointerId);
-        state.pointer.set(e.pointerId, {
-            x: e.clientX,
-            y: e.clientY
-        })
-    });
-    stage.addEventListener('pointermove', e => {
-        if (!state.pointer.has(e.pointerId)) return;
-        const old = state.pointer.get(e.pointerId);
-        state.pointer.set(e.pointerId, {
-            x: e.clientX,
-            y: e.clientY
-        });
-        const pts = [...state.pointer.values()];
-        if (pts.length === 1) {
-            state.panX += e.clientX - old.x;
-            state.panY += e.clientY - old.y;
-            render()
-        } else if (pts.length === 2) {
-            const d = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
-            if (state.lastPinch) zoomAt(d / state.lastPinch, stage.clientWidth / 2, stage.clientHeight / 2);
-            state.lastPinch = d
-        }
-    });
-    ['pointerup', 'pointercancel'].forEach(t => stage.addEventListener(t, e => {
-        state.pointer.delete(e.pointerId);
-        state.lastPinch = null
-    }));
     stage.onclick = () => details.hidden = true;
     window.addEventListener('resize', render);
     document.querySelectorAll('[data-kind]').forEach(x => x.onchange = render);
     document.getElementById('figure-year-filter').oninput = render;
-    document.getElementById('reset-view').onclick = () => {
-        state.zoom = 1;
-        state.panX = state.panY = 0;
-        render()
-    };
+    document.getElementById('profile-search').oninput = render;
     document.getElementById('friend-import').onclick = () => {
         const raw = document.getElementById('friend-code').value.trim(),
             name = document.getElementById('friend-name').value.trim() || `Znajomy ${state.friends.length+1}`,
@@ -402,12 +345,12 @@
         render()
     };
     markerSize.oninput = () => {
-        stage.style.setProperty('--marker-size', `${markerSize.value}px`);
+        document.documentElement.style.setProperty('--marker-size', `${markerSize.value}px`);
         markerOutput.value = `${markerSize.value} px`;
         render()
     };
     try {
-        const [manifest, p] = await Promise.all([fetch('data-parts/manifest.json').then(r => r.json()), fetch('political_profiles.json').then(r => r.json())]);
+        const [manifest, p] = await Promise.all([fetch('data-parts/manifest.json').then(r => r.json()), window.loadPoliticalProfiles()]);
         const parts = await Promise.all(manifest.parts.map(part => fetch(part.file).then(r => r.json())));
         const d = {
             ...parts[0],
