@@ -316,7 +316,7 @@
       return {
         key: profile.key || profile.id || profile.name,
         name: profile.name,
-        percent: match.percent,
+        percent: match.compared ? match.percent : null,
         agreements: 0,
         disagreements: 0,
         involved: match.compared,
@@ -358,7 +358,7 @@
   function syncProfilesIntoConfig() {
     if (!config || !politicalProfiles) return;
     if (Array.isArray(politicalProfiles.users)) config.users = politicalProfiles.users;
-    // Dane prezentacyjne i profile należą do political_profiles.json; data.json zawiera tylko test.
+    // Dane prezentacyjne i profile należą do political_profiles/; data.json zawiera tylko test.
     if (Array.isArray(politicalProfiles.parties)) config.parties = politicalProfiles.parties;
     if (Array.isArray(politicalProfiles.ideologies)) config.ideologies = politicalProfiles.ideologies;
 
