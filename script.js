@@ -421,6 +421,8 @@ function showPopup(message) {
   popup.querySelectorAll('.popup-logo-img, .profile-popup-layout, .popup-profile-tags').forEach(node => node.remove());
   popupText.hidden = false;
   popupText.innerText = message;
+  popup.querySelector('.popup-content').scrollTop = 0;
+  popup.scrollTop = 0;
   popup.classList.remove('hidden');
 }
 
@@ -439,6 +441,8 @@ function showPartyPopup(partyName, description) {
     popupContent.insertBefore(logoImg, popupText);
   }
   popupText.innerText = `${partyName}\n\n${description || 'Brak opisu.'}`;
+  popup.querySelector('.popup-content').scrollTop = 0;
+  popup.scrollTop = 0;
   popup.classList.remove('hidden');
 }
 
@@ -457,6 +461,8 @@ function showIdeologyPopup(ideologyName, description) {
     popupContent.insertBefore(logoImg, popupText);
   }
   popupText.innerText = `${ideologyName}\n\n${description || 'Brak opisu.'}`;
+  popup.querySelector('.popup-content').scrollTop = 0;
+  popup.scrollTop = 0;
   popup.classList.remove('hidden');
 }
 
@@ -650,15 +656,14 @@ async function loadConfig() {
     await initializeDataParts();
     configBase = await loadDataPart(1);
     try {
-      const profilesResponse = await fetch('political_profiles.json');
-      if (profilesResponse.ok) politicalProfiles = await profilesResponse.json();
+      politicalProfiles = await window.loadPoliticalProfiles();
     } catch (profilesErr) {
-      console.warn('Nie udało się wczytać political_profiles.json, używam migracji runtime.', profilesErr);
+      console.warn('Nie udało się wczytać podzielonej bazy profili, używam migracji runtime.', profilesErr);
     }
     if (!politicalProfiles) politicalProfiles = buildMigratedProfilesFromConfig();
 
     // data.json zawiera pytania i pary wartości, natomiast katalog profili został
-    // przeniesiony do political_profiles.json. Starsza część silnika punktacji
+    // przeniesiony do political_profiles/. Starsza część silnika punktacji
     // nadal korzysta z config.parties / config.ideologies, dlatego składamy jeden
     // spójny model danych przed uruchomieniem interfejsu oraz symulacji.
     configBase = {
@@ -1330,7 +1335,7 @@ function createRankingSection(title, items, type) {
 
     const percentSpan = document.createElement('span');
     percentSpan.className = 'rank-percent';
-    percentSpan.textContent = `${Math.round(item.percent)}%`;
+    percentSpan.textContent = item.percent !== null && Number.isFinite(Number(item.percent)) ? `${Math.round(item.percent)}%` : 'Brak danych';
     itemDiv.appendChild(percentSpan);
 
     // Zmodyfikowana obsługa kliknięcia
@@ -1584,17 +1589,6 @@ function syncUserAnswersFromDOM() {
         answerValue: answerData.value,
         answerData: answerData
       });
-    } else {
-      const skipAnswer = questionConfig.answers.find(a => a.value === 0 && (a.label.includes('Pomiń') || a.label.includes('Skip')));
-      if (skipAnswer) {
-        const ansIdx = questionConfig.answers.indexOf(skipAnswer);
-        newAnswers.push({
-          questionId: qid,
-          answerIndex: ansIdx,
-          answerValue: 0,
-          answerData: skipAnswer
-        });
-      }
     }
   });
   userAnswers = newAnswers;
