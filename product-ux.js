@@ -37,13 +37,22 @@
     if (!results || results.style.display === 'none') return;
     const answers = window.NeoDataParts?.getUserAnswers?.() || [];
     const responseRows = answers.filter(row => !row.noteOnly && (row.answerData || row.neither));
-    const skipped = responseRows.filter(row => row.neither || Number(row.answerValue) === 0).length;
-    const active = document.querySelectorAll('.question-card:not(.developer-inactive-question)').length;
-    const answered = responseRows.length - skipped;
-    const top = [...results.querySelectorAll('.ranking-section')].map(section => ({ title: section.querySelector('h3')?.textContent || '', name: section.querySelector('.ranking-item .rank-name')?.textContent?.trim() })).find(item => item.name);
+    const skipped = responseRows.filter(row => !row.neither && Number(row.answerValue) === 0 && /pomin|skip/i.test(String(row.answerData?.label || ''))).length;
+    const answered = responseRows.filter(row => !row.neither && Number(row.answerValue) !== 0).length;
+    const top = [...results.querySelectorAll('.ranking-section')].map(section => ({ title: section.querySelector('h3')?.textContent || '', row: section.querySelector('.ranking-item') })).find(item => item.row && item.row.querySelector('.rank-percent')?.textContent !== 'Brak danych');
     let summary = document.getElementById('results-summary-grid');
     if (!summary) { summary = document.createElement('section'); summary.id = 'results-summary-grid'; summary.className = 'results-summary-grid'; summary.setAttribute('aria-label', 'Podsumowanie odpowiedzi'); results.querySelector('#resultsTitle')?.insertAdjacentElement('afterend', summary); }
-    summary.innerHTML = `<article><span>ODPOWIEDZI</span><strong>${answered}</strong><small>udzielonych odpowiedzi</small></article><article><span>POMINIĘTE</span><strong>${skipped}</strong><small>bez wpływu na wynik</small></article><article><span>POKRYCIE</span><strong>${active ? Math.round((responseRows.length / active) * 100) : 0}%</strong><small>aktywnych pytań</small></article><article class="summary-match"><span>NAJBLIŻSZE DOPASOWANIE</span><strong>${top?.name || '—'}</strong><small>${top?.title?.replace(/[👤🏛️💡🐻]/g, '').trim() || 'ranking profili'}</small></article>`;
+    let navigation = document.getElementById('results-quick-nav');
+    if (!navigation) {
+      navigation = document.createElement('nav'); navigation.id = 'results-quick-nav'; navigation.className = 'results-quick-nav'; navigation.setAttribute('aria-label', 'Przejdź do części wyników');
+      [['values-results','Osie wartości'],['ideologies-results','Rankingi'],['compass-container','Kompas'],['open-comparison-page','Porównywarka']].forEach(([id,label]) => {
+        const link = document.createElement('a'); link.href = `#${id}`; link.textContent = label;
+        link.addEventListener('click', event => { event.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior:'smooth', block:'start' }); });
+        navigation.appendChild(link);
+      });
+      summary.insertAdjacentElement('afterend', navigation);
+    }
+    summary.innerHTML = `<article><span>ODPOWIEDZI</span><strong>${answered}</strong><small>udzielonych odpowiedzi</small></article><article><span>POMINIĘTE</span><strong>${skipped}</strong><small>świadomie oznaczone · bez wpływu na wynik</small></article><article class="summary-match"><span>NAJBLIŻSZE DOPASOWANIE</span><strong>${top?.row.querySelector('.rank-name')?.textContent?.trim() || '—'}</strong><small>${top?.title.replace(/[👤🏛️💡🐻]/g, '').trim() || (answered ? 'brak wspólnych odpowiedzi z profilami' : 'odpowiedz na pytania, aby zobaczyć dopasowanie')}</small></article>`;
   }
   document.addEventListener('click', event => {
     if (event.target.closest('.answer-option, #simulateBtn, #restoreBtn, #importBtn')) setTimeout(() => { persist(); refreshProgress(); }, 60);
