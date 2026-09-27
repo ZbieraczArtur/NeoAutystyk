@@ -1184,5 +1184,4 @@ window.BadgesRegistry = {
       requiredYes: [],
       requiredNo: [135, 227, 368, 369]
     }
-  }
 };
