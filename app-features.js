@@ -51,6 +51,7 @@
     parties: { Status: ['Parlamentarne', 'Pozaparlamentarne'] }
   };
   const selectedTags = new Set();
+  const overlayRenderRevision = new WeakMap();
   let showAllTags = true;
   const originalCreateRankingSection = window.createRankingSection || createRankingSection;
   const originalComputeAndDisplayResults = window.computeAndDisplayResults || computeAndDisplayResults;
@@ -142,6 +143,8 @@
 
   async function filteredOverlays(showParties, showIdeologies, compassInstance) {
     if (!compassInstance?.clearOverlays || !politicalProfiles) return;
+    const revision = (overlayRenderRevision.get(compassInstance) || 0) + 1;
+    overlayRenderRevision.set(compassInstance, revision);
     compassInstance.clearOverlays();
     const modal = compassInstance === window.modalCompassInstance;
     const enabled = {
@@ -163,25 +166,17 @@
           const scores = computeScoresForAnswers(parsed, currentScoringMode);
           coords = computeCoordinatesFromValues(buildUserValuesMap(scores.pairResults), currentCompassMode, currentCreativeConfig);
         } else coords = await getEntityCoordinates(profile.key || profile.name, type);
+        if (overlayRenderRevision.get(compassInstance) !== revision) return;
         if (coords) compassInstance.addOverlay(profileLogo(profile), coords.x, coords.y, type, profile.name, profile.description || '');
       }
     }
   }
 
   function figureLifeRange(profile) {
-    // Zakres figur pochodzi wyłącznie z modelu Albumu. Opis nie jest źródłem
-    // danych, dzięki czemu zmiana jego treści nie zmienia wyniku filtrowania.
-    const field = key => profile?.infobox?.[key];
-    const fromFields = [field('birthDate'), field('deathDate')];
-    const year = value => { const found = String(value || '').match(/\d{4}/); return found ? Number(found[0]) : null; };
-    return { birth: year(fromFields[0]), death: year(fromFields[1]) };
+    return window.NeoProfileLife?.lifeRange(profile) || { birth:null, death:null };
   }
   function figureMatchesYear(profile, raw) {
-    const value = String(raw || '').trim(); if (!value) return true;
-    const match = value.match(/^(\d{1,4})(?:\s*-\s*(\d{1,4}))?$/); if (!match) return true;
-    const start = Number(match[1]), end = Number(match[2] || match[1]); const life = figureLifeRange(profile);
-    if (!life.birth) return false;
-    return life.birth <= end && (life.death || Infinity) >= start;
+    return window.NeoProfileLife?.matchesYear(profile, raw) ?? !String(raw || '').trim();
   }
   loadOverlays = filteredOverlays;
   window.loadOverlays = filteredOverlays;
@@ -231,8 +226,28 @@
 
     const title = document.createElement('p'); title.className = 'tag-filter-title';
     title.textContent = 'Wybierz tagi — profil musi spełniać wszystkie zaznaczone warunki.'; body.appendChild(title);
-    Object.entries(TAG_CATALOG).forEach(([kind, groups]) => Object.entries(groups).forEach(([group, tags]) => {
+    const categories = Object.entries(TAG_CATALOG).flatMap(([kind, groups]) => Object.entries(groups).map(([group, tags]) => ({ kind, group, tags })));
+    const tabs = document.createElement('div'); tabs.className = 'tag-category-tabs'; tabs.setAttribute('role', 'tablist');
+    categories.forEach((category, index) => {
+      const tab = document.createElement('button'); tab.type = 'button'; tab.className = 'tag-category-tab'; tab.setAttribute('role', 'tab'); tab.setAttribute('aria-selected', String(index === 0));
+      tab.textContent = `${category.kind === 'figures' ? 'Figury' : 'Partie'} · ${category.group}`;
+      tab.addEventListener('click', () => {
+        tabs.querySelectorAll('button').forEach((button, tabIndex) => { const active = tabIndex === index; button.classList.toggle('active', active); button.setAttribute('aria-selected', String(active)); });
+        body.querySelectorAll('.compact-filter-group').forEach((row, rowIndex) => { row.hidden = rowIndex !== index; });
+      });
+      if (index === 0) tab.classList.add('active'); tabs.appendChild(tab);
+    });
+    const yearInput = document.getElementById('figure-year-filter');
+    const yearRaw = yearInput?.value.trim() || '';
+    const yearIsValid = !yearRaw || /^(\d{1,4})(?:\s*[-–—]\s*(\d{1,4}))?$/.test(yearRaw);
+    const yearCount = (politicalProfiles?.figures || []).filter(profile => figureMatchesYear(profile, yearRaw)).length;
+    document.querySelectorAll('#figure-year-status, #modal-figure-year-status').forEach(status => {
+      status.textContent = !yearIsValid ? 'Wpisz rok lub zakres, np. 1950 lub 1900–1950.' : yearRaw ? `${yearCount} figur żyło w tym okresie.` : 'Wszystkie okresy';
+    });
+    body.appendChild(tabs);
+    categories.forEach(({ kind, group, tags }, categoryIndex) => {
       const row = document.createElement('details'); row.className = 'compact-filter-group';
+      row.hidden = categoryIndex !== 0;
       const label = document.createElement('summary'); label.textContent = `${kind === 'figures' ? 'Figury polityczne' : 'Partie polityczne'} · ${group}`; row.appendChild(label);
       const options = document.createElement('div'); options.className = 'tag-options';
       tags.forEach(tag => {
@@ -248,7 +263,7 @@
         chip.append(input, document.createTextNode(tag)); options.appendChild(chip);
       });
       row.appendChild(options); body.appendChild(row);
-    }));
+    });
     panel.appendChild(body); container.appendChild(panel);
   }
   function initLandingAndTheme() {
@@ -284,6 +299,16 @@
       renderTagFilters(document.getElementById('modal-compass-tag-filters'));
       bindOverlayToggles();
       const savedCode = sessionStorage.getItem('neoAutystykExportCode');
+      const requestedSimulation = new URLSearchParams(location.search).get('simulate');
+      if (requestedSimulation) {
+        const target = [...(politicalProfiles?.ideologies || []), ...(politicalProfiles?.parties || []), ...(politicalProfiles?.figures || []), ...(politicalProfiles?.users || [])].find(profile => profile.name === requestedSimulation || profile.key === requestedSimulation || profile.id === requestedSimulation);
+        if (target) {
+          document.body.classList.remove('landing-active');
+          window.simulateAnswers?.(target.name);
+          history.replaceState(null, '', `${location.pathname}#results`);
+          return;
+        }
+      }
       if (location.hash === '#results' && savedCode && !userAnswers.length) {
         await importAnswersFromExportCode(savedCode);
         computeAndDisplayResults();
