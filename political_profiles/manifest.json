@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "defaultMatchingMode": "modern",
+  "exportCodeFormat": "short-v2: id:(answer[, answer]); optional note line id#opis:text",
+  "logoSources": {
+    "users": "images/IUsers",
+    "parties": "images/Partie",
+    "ideologies": "images/Ideologie",
+    "badges": "images/Odznaki"
+  },
+  "files": {
+    "ideologies": "ideologies.json",
+    "parties": "parties.json",
+    "users": "users.json",
+    "figures": [
+      "figures-1.json",
+      "figures-2.json",
+      "figures-3.json",
+      "figures-4.json",
+      "figures-5.json",
+      "figures-6.json"
+    ]
+  }
+}
