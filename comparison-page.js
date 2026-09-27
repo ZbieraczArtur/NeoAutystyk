@@ -162,7 +162,7 @@
     }
     async function load() {
         try {
-            const [manifest, data] = await Promise.all([fetch('data-parts/manifest.json').then(r => r.json()), fetch('political_profiles.json').then(r => r.json())]);
+            const [manifest, data] = await Promise.all([fetch('data-parts/manifest.json').then(r => r.json()), window.loadPoliticalProfiles()]);
             const parts = await Promise.all(manifest.parts.map(x => fetch(x.file).then(r => r.json())));
             state.questions = parts.flatMap(x => x.questions || []).sort((a, b) => Number(a.id) - Number(b.id));
             state.profiles = [
@@ -176,6 +176,9 @@
                 id: `${type}:${p.key||p.name||i}`
             })));
             state.mine = parse(sessionStorage.getItem('neoAutystykExportCode') || localStorage.getItem('neoAutystykExportCode') || '');
+            const preset = new URLSearchParams(location.search).get('profile');
+            const presetProfile = state.profiles.find(profile => profile.id === preset || profile.key === preset || profile.name === preset);
+            if (presetProfile) state.selected.add(presetProfile.id);
             picker();
             render();
         } catch (e) {
