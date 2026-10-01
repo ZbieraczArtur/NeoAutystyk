@@ -12,6 +12,8 @@
   const root = $('#album-grid'), dialog = $('#profile-dialog'), view = $('#profile-view');
   let db = null, active = 'party';
   const selectedTags = new Set();
+  // A second, tabbed filter can be supplied by album-advanced-filters.js.
+  let advancedTagFilter = () => true;
   let favorites = new Set();
   try { favorites = new Set(JSON.parse(localStorage.getItem('neoAutystykFavorites') || '[]')); } catch { favorites = new Set(); }
   const profiles = () => db?.[TYPES[active]] || [];
@@ -46,7 +48,7 @@
     const query = $('#album-search').value.trim().toLocaleLowerCase('pl'), imageOnly = $('#album-with-image').checked, favoritesOnly = $('#album-favorites-only').checked;
     return profiles().filter(profile => {
       const haystack = [profile.name,profile.description,profile.country,...(profile.tags||[]),...Object.values(profile.infobox||{})].join(' ').toLocaleLowerCase('pl');
-      return (!query || haystack.includes(query)) && (!imageOnly || profile.logo) && (!favoritesOnly || favorites.has(profileId(profile))) && [...selectedTags].every(tag => (profile.tags||[]).includes(tag));
+      return (!query || haystack.includes(query)) && (!imageOnly || profile.logo) && (!favoritesOnly || favorites.has(profileId(profile))) && [...selectedTags].every(tag => (profile.tags||[]).includes(tag)) && advancedTagFilter(profile);
     }).sort((a,b) => $('#album-sort').value==='type' ? String(a.type).localeCompare(String(b.type),'pl') || a.name.localeCompare(b.name,'pl') : a.name.localeCompare(b.name,'pl'));
   }
   function toggleFavorite(profile, button) {
@@ -89,6 +91,11 @@
   }
   function setType(type) { active=type; selectedTags.clear(); document.querySelectorAll('[data-type]').forEach(button=>{const chosen=button.dataset.type===type;button.classList.toggle('active',chosen);button.setAttribute('aria-current',chosen?'page':'false');});renderTags();renderGrid(); }
   document.querySelectorAll('[data-type]').forEach(button=>button.onclick=()=>setType(button.dataset.type));
+  window.NeoAlbum = {
+    setAdvancedTagFilter(predicate) { advancedTagFilter = typeof predicate === 'function' ? predicate : () => true; renderGrid(); },
+    getProfiles: () => profiles(),
+    getActiveType: () => active
+  };
   $('#album-search').addEventListener('input',renderGrid); $('#album-sort').addEventListener('change',renderGrid); $('#album-with-image').addEventListener('change',renderGrid); $('#album-favorites-only').addEventListener('change',renderGrid);
   $('.dialog-close').onclick=()=>dialog.close(); dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();}); dialog.addEventListener('close',()=>{history.replaceState(null,'',location.pathname);});
   window.loadPoliticalProfiles().then(data=>{db=data;const hash=decodeURIComponent(location.hash.slice(1));const profile=allProfiles().find(item=>profileId(item)===hash||item.id===hash||item.key===hash||item.name===hash);if(profile){active=profile.type;setType(active);openProfile(profileId(profile));}else setType(active);}).catch(()=>{root.textContent='Nie udało się wczytać bazy profili.';});
