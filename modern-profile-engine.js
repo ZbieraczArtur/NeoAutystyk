@@ -152,8 +152,37 @@
     return source.split(',').map(item => item.trim()).filter(Boolean);
   }
 
+  // NA2 is the compact, LZ-String-compressed format emitted by
+  // compressed-export.js.  Keeping this decoder inside the profile engine is
+  // important: political_profiles JSON is ranked through this module, rather
+  // than through the main page importer.
+  function parseCompactExportCode(rawCode) {
+    const source = String(rawCode || '').replace(/\s+/g, '');
+    if (!source.startsWith('NA2:')) return null;
+    try {
+      if (!window.LZString) return [];
+      const decoded = window.LZString.decompressFromBase64(source.slice(4));
+      const payload = decoded && JSON.parse(decoded);
+      if (!payload || payload.v !== 2 || !Array.isArray(payload.a)) return [];
+      const notes = payload.d && typeof payload.d === 'object' ? payload.d : {};
+      const questions = new Map((config?.questions || []).map(question => [Number(question.id), question]));
+      const seen = new Set();
+      return payload.a.flatMap(entry => {
+        const id = Number(entry?.[0]), choice = Number(entry?.[1]), question = questions.get(id);
+        if (!question || !Number.isInteger(choice) || choice < 0 || choice > 6 || !question.answers?.[choice] || seen.has(id)) return [];
+        seen.add(id);
+        return [{ questionId: id, answerIndex: choice, answerValue: Number(question.answers[choice].value), answerData: question.answers[choice], note: typeof notes[id] === 'string' ? notes[id].slice(0, NOTE_LIMIT) : '' }];
+      });
+    } catch (error) {
+      console.warn('[NeoAutystyk] Nieprawidłowy kod NA2 w profilu:', error);
+      return [];
+    }
+  }
+
   function parseExportCodeModern(rawCode) {
     if (!config?.questions) return [];
+    const compactRows = parseCompactExportCode(rawCode);
+    if (compactRows) return compactRows;
 
     const notes = new Map();
     for (const line of splitExportEntries(rawCode)) {
@@ -203,6 +232,12 @@
     const reference = new Map();
     if (!config?.questions) return reference;
     const questionsById = questionIndex();
+
+    const compactRows = parseCompactExportCode(rawCode);
+    if (compactRows) {
+      compactRows.forEach(row => reference.set(Number(row.questionId), [{ label: row.answerData.label, value: Number(row.answerValue), answerData: row.answerData }]));
+      return reference;
+    }
 
     for (const line of splitExportEntries(rawCode)) {
       const parsed = parseExportLine(line);
