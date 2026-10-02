@@ -79,13 +79,14 @@
     text(ctx, 'MÓJ PROFIL POLITYCZNY', 78, 160, { size: 42, weight: 800 });
     text(ctx, theme.title.toUpperCase(), 78, 208, { size: 22, weight: 750, color: 'rgba(255,255,255,.8)' });
 
-    roundedRect(ctx, 68, 258, 944, 322, 36); ctx.fillStyle = 'rgba(10,18,35,.27)'; ctx.fill();
+    roundedRect(ctx, 68, 258, 944, 360, 36); ctx.fillStyle = 'rgba(10,18,35,.27)'; ctx.fill();
     drawCompass(ctx, point, 112, 304, 230);
-    const ideology = ranking('ideologies'), party = ranking('parties');
+    const ideology = ranking('ideologies'), party = ranking('parties'), figure = ranking('figures');
     text(ctx, 'NAJBLIŻSZA IDEOLOGIA', 390, 334, { size: 21, weight: 800, color: 'rgba(255,255,255,.7)' });
     const nextLine = drawWrapped(ctx, ideology.name, 390, 390, 560, 53, { size: 46, weight: 800 });
     text(ctx, ideology.percent, 390, Math.max(505, nextLine + 22), { size: 42, weight: 800 });
     text(ctx, `Najbliższa partia: ${party.name}  ${party.percent}`, 390, 548, { size: 21, weight: 650, color: 'rgba(255,255,255,.84)' });
+    text(ctx, `Najbliższa figura: ${figure.name}  ${figure.percent}`, 390, 580, { size: 19, weight: 650, color: 'rgba(255,255,255,.84)' });
 
     const pairs = typeof computeScores === 'function' ? computeScores(currentScoringMode).pairResults.slice(0, 5) : [];
     text(ctx, 'NAJWAŻNIEJSZE OSIE', 78, 662, { size: 25, weight: 800, color: 'rgba(255,255,255,.76)' });
@@ -107,17 +108,38 @@
   function saveCanvas(canvas) {
     const link = document.createElement('a'); link.href = canvas.toDataURL('image/png'); link.download = 'neoautystyk-karta-wyniku.png'; link.click();
   }
+  function resultsUrl() {
+    const url = new URL(location.href);
+    url.hash = `results;code=${encodeURIComponent(generateExportCode())}`;
+    return url.href;
+  }
 
   function mount() {
     const results = document.getElementById('results-container');
     if (!results || document.getElementById('share-card-section')) return;
     const section = document.createElement('section'); section.id = 'share-card-section'; section.className = 'share-card-section';
-    section.innerHTML = '<div><p class="results-tools-eyebrow">UDOSTĘPNIJ WYNIK</p><h3>Karta do mediów społecznościowych</h3><p>Wygeneruj pionową kartę PNG z kompasem, najbliższą ideologią i kluczowymi osiami.</p></div><div class="share-card-actions"><button type="button" data-share-card="download">Pobierz kartę PNG</button><button type="button" data-share-card="share" class="share-card-secondary">Udostępnij</button></div>';
+    section.innerHTML = '<div><p class="results-tools-eyebrow">UDOSTĘPNIJ WYNIK</p><h3>Karta wyników</h3><p>Pobierz przygotowaną kartę PNG, skopiuj link albo udostępnij wynik.</p></div><div class="share-card-actions"><button type="button" data-share-card="download">Pobierz PNG</button><button type="button" data-share-card="copy" class="share-card-secondary">Kopiuj link</button><button type="button" data-share-card="share" class="share-card-secondary">Udostępnij</button></div>';
     section.querySelector('[data-share-card="download"]').onclick = () => saveCanvas(generateShareCard());
-    section.querySelector('[data-share-card="share"]').onclick = async () => {
+    section.querySelector('[data-share-card="copy"]').onclick = async event => {
+      const button = event.currentTarget;
+      let link = location.href;
+      try { link = resultsUrl(); await navigator.clipboard.writeText(link); button.textContent = 'Skopiowano link'; }
+      catch (_) { window.prompt('Skopiuj link do wyników:', link); }
+      setTimeout(() => { button.textContent = 'Kopiuj link'; }, 1800);
+    };
+    const shareButton = section.querySelector('[data-share-card="share"]');
+    shareButton.hidden = typeof navigator.share !== 'function';
+    shareButton.onclick = async () => {
       const canvas = generateShareCard();
-      if (!navigator.share || !canvas.toBlob) return saveCanvas(canvas);
-      canvas.toBlob(async blob => { try { await navigator.share({ title: 'Mój profil NeoAutystyk', files: [new File([blob], 'neoautystyk-karta-wyniku.png', { type: 'image/png' })] }); } catch (_) { /* user cancelled the system share sheet */ } });
+      if (!canvas.toBlob) return;
+      canvas.toBlob(async blob => {
+        try {
+          const file = new File([blob], 'neoautystyk-karta-wyniku.png', { type: 'image/png' });
+          const payload = { title: 'Mój profil NeoAutystyk', text: 'Mój profil wartości w NeoAutystyk.', url: resultsUrl() };
+          if (navigator.canShare?.({ files: [file] })) payload.files = [file];
+          await navigator.share(payload);
+        } catch (_) { /* user cancelled the system share sheet */ }
+      }, 'image/png');
     };
     results.querySelector('#resultsTitle')?.insertAdjacentElement('afterend', section);
   }
