@@ -1,10 +1,10 @@
 Przebuduj całkowicie stronę „Wyniki”. Nie chcę kolejnej kosmetycznej poprawki obecnego layoutu. Obecny układ został wcześniej przypadkowo uszkodzony i wymaga uporządkowania architektury całej strony.
 
-**Główny cel:** stworzyć nowoczesną, schludną, responsywną i logicznie uporządkowaną stronę wyników, która dobrze prezentuje dużą ilość informacji. Strona ma być długa i przewijana pionowo — nie próbuj wciskać wszystkich informacji do jednego ekranu.
+Główny cel: stworzyć nowoczesną, schludną, responsywną i logicznie uporządkowaną stronę wyników, która dobrze prezentuje dużą ilość informacji. Strona ma być długa i przewijana pionowo — nie próbuj wciskać wszystkich informacji do jednego ekranu.
 
 Nie zmieniaj logiki obliczania wyników, danych, wzorów, punktacji ani istniejących funkcji. Zmień przede wszystkim strukturę, hierarchię wizualną, rozmieszczenie, responsywność i sposób prezentacji informacji.
 
-## 1. NOWA ARCHITEKTURA STRONY
+ 1. NOWA ARCHITEKTURA STRONY
 
 Zaprojektuj stronę jako uporządkowany dashboard wyników składający się z następujących sekcji, w tej kolejności:
 
@@ -16,47 +16,41 @@ Zaprojektuj stronę jako uporządkowany dashboard wyników składający się z n
 6. Odznaki
 7. Informacje dodatkowe / metodologia wyniku, jeśli obecnie istnieje
 
-Nie twórz osobnej sekcji „Najbliższa partia” na dole strony. Najbliższa partia jest już prezentowana w podsumowaniu i rankingu. Nie duplikuj jej bez potrzeby.
-
-## 2. „TWÓJ WYNIK W PIGUŁCE”
-
+ 2. „TWÓJ WYNIK W PIGUŁCE”
 Na samej górze strony pozostaw główne podsumowanie wyników.
-
 Powinno zawierać dokładnie cztery najważniejsze informacje:
-
-* Liczba uzupełnionych odpowiedzi
-* Najbliższa ideologia
-* Najbliższa partia
-* Najbliższa figura polityczna
+ Liczba uzupełnionych odpowiedzi
+ Najbliższa ideologia
+ Najbliższa partia
+ Najbliższa figura polityczna
 
 Obecne pole „Położenie” zastąp „Najbliższą figurą polityczną”.
 
 Zaprojektuj te cztery informacje jako cztery nowoczesne, równorzędne karty.
-
 Na desktopie powinny znajdować się w jednym rzędzie, jeśli dostępna szerokość na to pozwala. Na mniejszych ekranach powinny automatycznie przechodzić do 2 kolumn, a na bardzo małych ekranach do jednej kolumny.
 
 Każda karta powinna jasno pokazywać:
-
-* nazwę kategorii,
-* najważniejszą wartość,
-* nazwę profilu,
-* opcjonalnie mały dodatkowy kontekst.
+ nazwę kategorii,
+ najważniejszą wartość,
+ nazwę profilu,
+ opcjonalnie mały dodatkowy kontekst.
 
 Nie przeładowuj tej sekcji.
 
-## 3. MAPA POGLĄDÓW — NAJWAŻNIEJSZA SEKCJA
+3. MAPA POGLĄDÓW — NAJWAŻNIEJSZA SEKCJA
 
 Kompas polityczny ma być wizualnie najważniejszym elementem strony.
 
 Zastosuj i zachowaj założenia z obecnego projektu kompasu:
 
-* rzeczywista plansza kompasu ma zostać znacznie powiększona,
-* docelowo około 500–600 px na typowym dużym ekranie, jeśli dostępna przestrzeń na to pozwala,
-* zachowaj proporcje 1:1,
-* nie zmieniaj matematyki osi ani wyników,
-* nie zmieniaj kolorów czterech ćwiartek,
-* odpowiednio przeskaluj siatkę, osie, etykiety, punkty i oznaczenia,
-* nie dopuszczaj do przycinania planszy.
+ rzeczywista plansza kompasu ma zostać znacznie powiększona,
+ docelowo około 500–600 px na typowym dużym ekranie, jeśli dostępna przestrzeń na to pozwala,
+ zachowaj proporcje 1:1,
+ nie zmieniaj matematyki osi ani wyników,
+ ulepsz wizualnie samą planszę kompasu,
+ nie zmieniaj kolorów czterech ćwiartek,
+ odpowiednio przeskaluj siatkę, osie, etykiety, punkty i oznaczenia,
+ nie dopuszczaj do przycinania planszy.
 
 Na desktopie utwórz układ:
 
@@ -66,12 +60,12 @@ Kompas powinien zajmować większość szerokości sekcji, natomiast konfiguracj
 
 Przenieś do bocznej części wszystkie obecne ustawienia kompasu, które obecnie znajdują się pod nim, między innymi:
 
-* tryb działania,
-* wybór sposobu wyświetlania,
-* ustawienia nakładek,
-* widoczność elementów,
-* skalowanie/zoom,
-* inne istniejące opcje.
+ tryb działania,
+ wybór sposobu wyświetlania,
+ ustawienia nakładek,
+ widoczność elementów,
+ skalowanie/zoom,
+ inne istniejące opcje.
 
 Nie usuwaj żadnych istniejących funkcji.
 
@@ -85,40 +79,18 @@ Na mniejszych ekranach układ ma automatycznie przechodzić w:
 
 bez poziomego przewijania.
 
-## 4. NAKŁADKI I FILTRY
+ 4. NAKŁADKI I FILTRY
 
 Obecne filtrowanie nakładek znajduje się zbyt nisko i jest słabo widoczne w trybie nocnym.
-
 Przenieś je do logicznej części konfiguracji kompasu.
-
 Zaprojektuj filtry jako czytelne tagi/chipsy.
-
 W trybie ciemnym tekst musi mieć odpowiedni kontrast. Nie używaj ciemnego tekstu na ciemnym tle.
-
 Aktywne i nieaktywne filtry powinny być wizualnie łatwe do rozróżnienia.
 
-Jeżeli liczba tagów jest duża, zastosuj:
-
-* zawijanie do kolejnych linii,
-* grupowanie,
-* albo mechanizm „Pokaż więcej”.
-
-Nie twórz ogromnego pionowego bloku zajmującego niepotrzebnie miejsce.
-
-## 5. BILANS WARTOŚCI
-
+ 5. BILANS WARTOŚCI
 Obecnie bilans wartości znajduje się po prawej stronie jako bardzo długa pionowa kolumna. Zmień ten układ.
-
 Nie prezentuj wszystkich kategorii jako jednego pionowego słupka.
-
-Podziel wartości na logiczne grupy, które już istnieją w danych, np.:
-
-* Społeczeństwo i jednostka
-* Władza i ustrój
-* Ekonomia
-* Globalizacja i granice
-* Kultura i zmiana społeczna
-* Środowisko i technologia
+Podziel wartości na logiczne grupy, które już istnieją w danych
 
 Nie zmieniaj istniejących kategorii ani danych bez potrzeby — wykorzystaj aktualną strukturę danych.
 
@@ -134,257 +106,152 @@ Na tabletach przejdź do 2 kolumn, a na telefonach do 1 kolumny.
 
 Dzięki temu bilans wartości ma wykorzystywać szerokość strony zamiast tworzyć bardzo długi, wąski słup.
 
-## 6. RANKINGI — NAJBLIŻSZE PROFILE
+ 6. RANKINGI — NAJBLIŻSZE PROFILE
 
 Obecne rankingi użytkowników, ideologii, figur politycznych i partii są wizualnie słabe i wyglądają jak stare tabelki administracyjne.
 
 Przebuduj je jako cztery równorzędne karty:
-
-* Najbliższe ideologie
-* Najbliższe partie
-* Najbliższe figury polityczne
-* Najbliżsi użytkownicy
+ Najbliższe ideologie
+ Najbliższe partie
+ Najbliższe figury polityczne
+ Najbliżsi użytkownicy
 
 Każda karta powinna zawierać np. TOP 5.
 
 Każdy wpis powinien jasno pokazywać:
-
-* pozycję,
-* nazwę,
-* ikonę / avatar / flagę, jeśli obecnie istnieje,
-* procent lub wynik podobieństwa.
+ pozycję,
+ nazwę,
+ ikonę / avatar / flagę, jeśli obecnie istnieje,
+ procent lub wynik podobieństwa.
 
 Zastosuj wizualną hierarchię dla pierwszych trzech miejsc.
-
 Dodaj przycisk „Zobacz więcej”, jeśli istnieje większa liczba wyników.
-
 Na desktopie zastosuj siatkę 2×2 lub 4 kolumny, zależnie od szerokości.
-
 Na tabletach 2×2.
-
 Na telefonie jedną kolumnę.
-
 Nie twórz ogromnych tabel wymagających wewnętrznego scrollowania, jeśli nie jest to konieczne.
 
-## 7. PORÓWNYWARKA
-
+ 7. PORÓWNYWARKA
 Sekcja prowadząca do porównywarki powinna być znacznie bardziej widoczna.
-
 Stwórz nowoczesną kartę CTA:
-
 „Porównaj swój profil”
-
-Krótki opis:
-„Sprawdź różnice między swoim profilem a wybraną ideologią, partią, figurą polityczną lub innym użytkownikiem.”
-
 Dodaj główny przycisk:
-
 „Otwórz porównywarkę →”
-
-Jeżeli istnieją możliwości bezpośredniego porównania z najbliższymi profilami, można dodać dodatkowe przyciski:
-
-* Porównaj z najbliższą ideologią
-* Porównaj z najbliższą partią
-* Porównaj z najbliższą figurą
 
 Nie zmieniaj istniejącej logiki porównywarki.
 
-## 8. UDOSTĘPNIANIE I EKSPORT
-
+ 8. UDOSTĘPNIANIE I EKSPORT
 Obecna opcja generowania obrazu wyników nie działa.
-
 Nie pozostawiaj interfejsu sugerującego działającą funkcję, jeżeli faktycznie nie działa.
-
 Jeżeli obecna implementacja pozwala na naprawienie eksportu, napraw ją.
 
 Docelowo sekcja powinna umożliwiać:
 
-* Pobranie wyników jako PNG,
-* skopiowanie linku do wyników,
-* udostępnienie wyników, jeśli przeglądarka obsługuje Web Share API.
+ Pobranie wyników jako PNG,
+ skopiowanie linku do wyników,
+ udostępnienie wyników, jeśli przeglądarka obsługuje Web Share API.
 
 Nie generuj screenshotu całej strony.
-
 PNG powinien być specjalnie przygotowaną kartą wyników zawierającą najważniejsze informacje, np.:
-
-* nazwę projektu,
-* najbliższą ideologię,
-* najbliższą partię,
-* najbliższą figurę,
-* kompas,
-* najważniejsze wartości.
+ nazwę projektu,
+ najbliższą ideologię,
+ najbliższą partię,
+ najbliższą figurę,
+ kompas,
+ najważniejsze wartości.
 
 Jeżeli pełna implementacja eksportu wymaga dodatkowych zmian, zachowaj istniejące API i strukturę danych.
 
-## 9. ODZNAKI
-
-Pozostaw odznaki niżej na stronie, ponieważ są informacją dodatkową, a nie głównym wynikiem.
-
-Zaprojektuj je jako kompaktową sekcję.
-
-Pokazuj np. kilka ostatnio zdobytych / najważniejszych odznak i dodaj:
-
-„Zobacz wszystkie →”
-
-Nie pozwól, aby lista odznak tworzyła ogromny pusty lub wysoki panel.
-
-## 10. NAWIGACJA PO DŁUGIEJ STRONIE
+ 9. NAWIGACJA PO DŁUGIEJ STRONIE
 
 Ponieważ strona wyników zawiera dużo informacji, dodaj lekką nawigację po głównych sekcjach.
 
 Na desktopie może to być niewielki sticky pasek:
-
 Podsumowanie | Kompas | Wartości | Rankingi | Odznaki
-
 Kliknięcie powinno przewijać użytkownika do odpowiedniej sekcji.
-
 Na telefonie pasek może być poziomo przewijany.
-
 Nie zasłaniaj nim zawartości.
 
-## 11. RESPONSYWNOŚĆ — PRIORYTET
+ 11. RESPONSYWNOŚĆ — PRIORYTET
 
 Nie projektuj strony wyłącznie pod jeden screenshot.
-
 Strona musi poprawnie działać przynajmniej dla:
-
-* 1920×1080,
-* 1366×768,
-* tabletów,
-* telefonów w pionie,
-* telefonów w poziomie.
+ 1920×1080,
+ 1366×768,
+ tabletów,
+ telefonów w pionie,
+ telefonów w poziomie.
 
 Desktop:
-
-* wykorzystuj dostępną szerokość,
-* unikaj ogromnych pustych obszarów,
-* kompas duży i centralny,
-* konfiguracja obok kompasu,
-* bilans wartości w siatce,
-* rankingi w siatce.
+ wykorzystuj dostępną szerokość,
+ unikaj ogromnych pustych obszarów,
+ kompas duży i centralny,
+ konfiguracja obok kompasu,
+ bilans wartości w siatce,
+ rankingi w siatce.
 
 Tablet:
-
-* bardziej zwarte odstępy,
-* kompas nadal duży,
-* sekcje przechodzące stopniowo do mniejszej liczby kolumn.
+ bardziej zwarte odstępy,
+ kompas nadal duży,
+ sekcje przechodzące stopniowo do mniejszej liczby kolumn.
 
 Telefon:
-
-* jedna kolumna,
-* brak poziomego scrollowania całej strony,
-* kompas dopasowany do szerokości ekranu,
-* konfiguracja pod kompasem,
-* karty wyników jedna pod drugą,
-* bilans wartości jedna karta pod drugą,
-* rankingi jedna karta pod drugą.
+ jedna kolumna,
+ brak poziomego scrollowania całej strony,
+ kompas dopasowany do szerokości ekranu,
+ konfiguracja pod kompasem,
+ karty wyników jedna pod drugą,
+ bilans wartości jedna karta pod drugą,
+ rankingi jedna karta pod drugą.
 
 Nie stosuj sztywnych szerokości, które powodują overflow.
-
 Wykorzystuj responsywne CSS Grid/Flexbox, `clamp()`, `min()`, `max()`, `minmax()`, `max-width`, `max-height`, `dvh`/`svh` tam, gdzie ma to sens.
 
-## 12. WYKORZYSTANIE PRZESTRZENI
-
+ 12. WYKORZYSTANIE PRZESTRZENI
 Bardzo ważne:
-
 Nie rozwiązuj problemu poprzez samo zwiększenie rozmiaru zewnętrznych kontenerów.
-
 Obecnie strona posiada duże puste przestrzenie, szczególnie po lewej stronie pod kompasem.
-
 Każda sekcja powinna wykorzystywać dostępną przestrzeń w sposób celowy.
-
 Nie rozciągaj paneli tylko po to, żeby wypełnić wysokość.
 
 Jeżeli zawartość sekcji jest krótka, panel również powinien być krótki.
-
 Unikaj dużych pustych prostokątów.
-
-## 13. DESIGN SYSTEM
+ 
+13. DESIGN SYSTEM
 
 Ujednolić:
-
-* odstępy,
-* promienie zaokrągleń,
-* wysokości nagłówków,
-* rozmiary tekstu,
-* style kart,
-* style przycisków,
-* style badge/chipów,
-* kolory tła,
-* obramowania.
+ odstępy,
+ promienie zaokrągleń,
+ wysokości nagłówków,
+ rozmiary tekstu,
+ style kart,
+ style przycisków,
+ style badge/chipów,
+ kolory tła,
+ obramowania.
 
 Ogranicz efekt „pudełko w pudełku w pudełku”.
-
 Duże sekcje powinny być wizualnie odróżnione głównie przez hierarchię, odstępy i typografię, a nie przez dziesiątki obramowań.
-
 Zachowaj obecny charakter wizualny aplikacji oraz istniejącą kolorystykę kompasu.
-
 Nie zmieniaj kolorów czterech ćwiartek kompasu.
 
-## 14. TRYB CIEMNY
-
+ 14. TRYB CIEMNY
 Dokładnie sprawdź kontrast wszystkich elementów w dark mode.
-
 Szczególnie:
-
-* tagów,
-* filtrów,
-* tekstów pomocniczych,
-* opisów,
-* rankingów,
-* tekstów na przyciskach,
-* wartości procentowych.
+ tagów,
+ filtrów,
+ tekstów pomocniczych,
+ opisów,
+ rankingów,
+ tekstów na przyciskach,
+ wartości procentowych.
 
 Nie może występować ciemnoszary/czarny tekst na ciemnym tle.
 
 Aktywne elementy muszą być jednoznacznie widoczne.
 
-## 15. NIE USUWAJ FUNKCJI
-
-Przed rozpoczęciem przeanalizuj aktualny kod strony wyników i zidentyfikuj wszystkie istniejące funkcje.
-
-Nie usuwaj:
-
-* istniejących wyników,
-* obliczeń,
-* filtrów,
-* nakładek,
-* trybów kompasu,
-* rankingów,
-* danych użytkowników,
-* danych ideologii,
-* danych partii,
-* danych figur,
-* odznak,
-* porównywarki.
-
-Jeżeli jakiś element jest obecnie źle rozmieszczony, przenieś go zamiast usuwać.
-
-## 16. KOŃCOWA WERYFIKACJA
-
-Po wykonaniu zmian sprawdź:
-
-1. Czy „Najbliższa figura” znajduje się w podsumowaniu zamiast „Położenia”.
-2. Czy kompas jest rzeczywiście znacznie większy.
-3. Czy kompas i jego konfiguracja tworzą jedną spójną sekcję.
-4. Czy nie ma ogromnej pustej przestrzeni pod kompasem.
-5. Czy filtry nakładek są dobrze widoczne w dark mode.
-6. Czy bilans wartości wykorzystuje szerokość strony zamiast tworzyć jeden długi słup.
-7. Czy rankingi wyglądają jak nowoczesne karty, a nie stare tabele.
-8. Czy „Najbliższa partia” nie występuje redundantnie na samym dole.
-9. Czy porównywarka jest dobrze widoczna.
-10. Czy eksport PNG rzeczywiście działa albo jego stan jest jasno oznaczony.
-11. Czy odznaki są sekcją dodatkową, a nie dominującym elementem.
-12. Czy na żadnej rozdzielczości nie powstaje niepotrzebny poziomy scrollbar.
-13. Czy na telefonie całość przechodzi w logiczną jedną kolumnę.
-14. Czy na desktopie szerokość ekranu jest efektywnie wykorzystana.
-15. Czy nie powstały nowe ogromne puste obszary.
-16. Czy nie zmieniono logiki obliczania wyników.
-
-**Najważniejsza zasada projektowa:**
-
-Nie próbuj zmieścić całej strony wyników na jednym ekranie.
-
-To ma być długa, ale dobrze zorganizowana strona, na której użytkownik od razu widzi najważniejsze wyniki, następnie może przejść przez kompas i wartości, potem rankingi i narzędzia dodatkowe. Każda sekcja ma mieć własną funkcję i odpowiednią ilość miejsca.
-
-Najpierw przeanalizuj obecny kod i strukturę komponentów, a następnie przebuduj layout. Nie ograniczaj się do zmiany pojedynczych wartości `width`, `height` lub `grid-template-columns`.
+ALBUM
+W albumie:
+1. dodaj zakładki do filtrowania tagami, obecnie są wszystkie tagi obok siebie, chaotycznie - uporządkuj je i stwórz zakładki do wyboru tagów.
+2. Na stronie profilu np. w albumie mamy opcje Symuluj w teście głównym ↗ Porównaj odpowiedzi ↗ Kopiuj link - obecnie nie działają, np. po wciśnięciu symuluj w teście głównym pojawia się wynik bez żadnych odpowiedzi, z wynikiem centrum, mimo to że w teście da się symulować dany profil.
+3. W albumie, w profilu, na końcu pod tekstem powinien być ładnie wkomponowany wynik z testu głównego, np. kompas i paski wartości. Porównywarka powinna włączać porównywarkę porównujące odpowiedzi użytkownika z wybranym profilem.
