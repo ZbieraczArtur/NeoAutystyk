@@ -59,7 +59,7 @@ function normalizeProfileText(value) {
 }
 
 function getProfileCollection(type) {
-  const key = type === 'party' ? 'parties' : type === 'ideology' ? 'ideologies' : 'users';
+  const key = type === 'party' ? 'parties' : type === 'ideology' ? 'ideologies' : type === 'figure' ? 'figures' : 'users';
   return Array.isArray(politicalProfiles?.[key]) ? politicalProfiles[key] : [];
 }
 
@@ -1518,6 +1518,9 @@ function computeAndDisplayResults() {
     } else if (simulatedEntity.type === 'ideology') {
       logoUrl = getIdeologyLogoUrl(simulatedEntity.name);
       entityTypeLabel = translations?.ui?.simulatingIdeology || 'ideologię';
+    } else if (simulatedEntity.type === 'figure') {
+      logoUrl = getProfileByName(simulatedEntity.name, 'figure')?.logo || null;
+      entityTypeLabel = 'figurę polityczną';
     }
     let logoHtml = '';
     if (logoUrl) {
@@ -1618,6 +1621,16 @@ function simulateAnswersForConfig(selectedName, fullConfig) {
   config = fullConfig;
   const isParty = config.parties.some(p => p.name === selectedName);
   const isIdeology = config.ideologies.some(i => i.name === selectedName);
+  const figureProfile = !isParty && !isIdeology ? getProfileByName(selectedName, 'figure') : null;
+  if (figureProfile?.exportCode && typeof parseExportCode === 'function') {
+    const rows = parseExportCode(figureProfile.exportCode).filter(row => !row.noteOnly && row.answerData);
+    if (rows.length) {
+      simulatedEntity = { type: 'figure', name: selectedName };
+      userAnswers = rows;
+      config = previousConfig;
+      return;
+    }
+  }
   if (isParty) {
     simulatedEntity = { type: 'party', name: selectedName };
   } else if (isIdeology) {
