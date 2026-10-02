@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#1e293b">
   <title>NeoAutystyk</title>
-  <script>document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches));</script>
+  <script>document.documentElement.classList.toggle('dark',localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&matchMedia('(prefers-color-scheme:dark)').matches));document.documentElement.classList.toggle('profile-result-embed',new URLSearchParams(location.search).has('embed'));</script>
   <link rel="icon" type="image/svg+xml" href="images/ALogo.svg">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="compass.css">
@@ -174,10 +174,10 @@
       <section class="results-tools" aria-label="Dalsza analiza wyników">
         <div>
           <p class="results-tools-eyebrow">Dalsza analiza</p>
-          <h3>Porównaj odpowiedzi bez opuszczania swojego wyniku</h3>
+          <h3>Porównaj swój profil</h3>
           <p>Otwórz osobny, wygodny panel do porównania profilu z ideologią, partią, figurą lub kodem znajomego.</p>
         </div>
-        <button id="open-comparison-page" class="comparison-page-button" type="button">↗ Otwórz porównywarkę</button>
+        <button id="open-comparison-page" class="comparison-page-button" type="button">Otwórz porównywarkę →</button>
       </section>
     </div>
 
