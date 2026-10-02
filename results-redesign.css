@@ -139,7 +139,7 @@
   padding: 0.5rem;
 }
 .result-compass-stage #compass-container {
-  width: min(100%, min(64vw, 680px)) !important;
+  width: min(100%, min(58vw, 610px)) !important;
   max-width: none !important;
   min-width: 0;
   margin: 0 auto !important;
@@ -569,7 +569,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
   .result-compass-stage #compass-container {
-    width: min(100%, 58vw) !important;
+    width: min(100%, 52vw) !important;
   }
 }
 @media (max-width: 800px) {
@@ -577,7 +577,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
   .result-compass-stage #compass-container {
-    width: min(100%, min(82vw, 620px)) !important;
+    width: min(100%, min(74vw, 560px)) !important;
   }
   .result-compass-config {
     grid-template-columns: minmax(0, 1fr);
