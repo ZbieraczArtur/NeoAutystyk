@@ -84,6 +84,12 @@
     const sections=LABELS[profile.type]||{}; let sectionCount=0;
     Object.entries(sections).forEach(([field,label])=>{if(typeof profile[field]!=='string'||!profile[field].trim())return;const block=make('section','profile-block');block.append(make('h2','',label),make('p','',profile[field]));main.append(block);sectionCount++;});
     if(!sectionCount) main.append(make('p','album-hint','Ten profil nie ma jeszcze rozwiniętych sekcji.'));
+    const resultSection=make('section','profile-test-result');
+    resultSection.append(make('h2','','Wynik z testu głównego'),make('p','album-hint','Kompas, bilans wartości i dopasowania wyliczone z odpowiedzi tego profilu.'));
+    const preview=document.createElement('iframe'); preview.className='profile-result-frame'; preview.title=`Wynik testu głównego: ${profile.name}`; preview.loading='lazy';
+    preview.src=`index.html?simulate=${encodeURIComponent(profile.key||profile.id||profile.name)}&embed=1`;
+    preview.addEventListener('load',()=>{try{preview.contentWindow.postMessage({type:'neo-profile-results-height-request'},location.origin);}catch(_){}});
+    resultSection.append(preview); main.append(resultSection);
     const aside=make('aside','profile-infobox'); aside.append(image(profile,'profile-infobox-image'));
     const info=profile.infobox && typeof profile.infobox==='object' ? Object.entries(profile.infobox).filter(([,value])=>value!==null&&value!==undefined&&String(value).trim()) : [];
     if(info.length){const dl=document.createElement('dl');info.forEach(([field,value])=>{dl.append(make('dt','',fieldLabel(field)),make('dd','',String(value)));});aside.append(dl);}
@@ -98,5 +104,6 @@
   };
   $('#album-search').addEventListener('input',renderGrid); $('#album-sort').addEventListener('change',renderGrid); $('#album-with-image').addEventListener('change',renderGrid); $('#album-favorites-only').addEventListener('change',renderGrid);
   $('.dialog-close').onclick=()=>dialog.close(); dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();}); dialog.addEventListener('close',()=>{history.replaceState(null,'',location.pathname);});
+  window.addEventListener('message',event=>{if(event.origin!==location.origin||event.data?.type!=='neo-profile-results-height')return;const frame=view.querySelector('.profile-result-frame');if(frame&&event.source===frame.contentWindow)frame.style.height=`${Math.max(720,Number(event.data.height)||900)}px`;});
   window.loadPoliticalProfiles().then(data=>{db=data;const hash=decodeURIComponent(location.hash.slice(1));const profile=allProfiles().find(item=>profileId(item)===hash||item.id===hash||item.key===hash||item.name===hash);if(profile){active=profile.type;setType(active);openProfile(profileId(profile));}else setType(active);}).catch(()=>{root.textContent='Nie udało się wczytać bazy profili.';});
 })();
