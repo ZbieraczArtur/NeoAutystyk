@@ -298,12 +298,22 @@
       renderTagFilters(document.getElementById('compass-tag-filters'));
       renderTagFilters(document.getElementById('modal-compass-tag-filters'));
       bindOverlayToggles();
-      const savedCode = sessionStorage.getItem('neoAutystykExportCode');
+      const savedCode = sessionStorage.getItem('neoAutystykExportCode') || localStorage.getItem('neoAutystykExportCode');
+      const shareCodeMatch = location.hash.match(/^#results;code=([^&]+)$/);
+      if (shareCodeMatch) {
+        await importAnswersFromExportCode(decodeURIComponent(shareCodeMatch[1]));
+        history.replaceState(null, '', `${location.pathname}${location.search}#results`);
+        document.body.classList.remove('landing-active');
+        computeAndDisplayResults();
+        setTimeout(() => resultsDiv.scrollIntoView({ block: 'start' }), 0);
+        return;
+      }
       const requestedSimulation = new URLSearchParams(location.search).get('simulate');
       if (requestedSimulation) {
         const target = [...(politicalProfiles?.ideologies || []), ...(politicalProfiles?.parties || []), ...(politicalProfiles?.figures || []), ...(politicalProfiles?.users || [])].find(profile => profile.name === requestedSimulation || profile.key === requestedSimulation || profile.id === requestedSimulation);
         if (target) {
           document.body.classList.remove('landing-active');
+          if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('profile-result-embed');
           window.simulateAnswers?.(target.name);
           history.replaceState(null, '', `${location.pathname}#results`);
           return;
