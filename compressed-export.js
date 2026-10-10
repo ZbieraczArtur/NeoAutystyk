@@ -1,16 +1,17 @@
 /*
- * Compact answer codes (NA2)
+ * Compact answer codes (NA3, with NA2 backwards compatibility)
  * --------------------------
  * The payload stores a question id and a choice index (0–6), never answer
  * labels.  Optional notes live in a separate dictionary.  Prefixing the
- * compressed Base64 with `NA2:` makes the format self-identifying and leaves
- * all previous, human-readable export codes untouched.
+ * compressed Base64 with `NA3:` makes the format self-identifying; the decoder
+ * still accepts old NA2 and human-readable export codes.
  */
 (function () {
   'use strict';
 
-  const PREFIX = 'NA2:';
-  const FORMAT_VERSION = 2;
+  const PREFIX = 'NA3:';
+  const LEGACY_PREFIX = 'NA2:';
+  const FORMAT_VERSION = 3;
   const legacyGenerate = window.generateExportCode;
   const legacyImport = window.importAnswersFromExportCode;
   const legacyParse = window.parseExportCode;
@@ -21,7 +22,23 @@
   }
 
   function isCompactCode(value) {
-    return compactText(value).startsWith(PREFIX);
+    const source = compactText(value);
+    return source.startsWith(PREFIX) || source.startsWith(LEGACY_PREFIX);
+  }
+
+  function decodeBase64Utf8(value) {
+    const binary = atob(value);
+    const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  }
+
+  function encodeBase64Utf8(value) {
+    const bytes = new TextEncoder().encode(value);
+    let binary = '';
+    for (let index = 0; index < bytes.length; index += 0x8000) {
+      binary += String.fromCharCode(...bytes.subarray(index, index + 0x8000));
+    }
+    return btoa(binary);
   }
 
   function requireLzString() {
@@ -33,11 +50,24 @@
 
   function decodePayload(rawCode) {
     const source = compactText(rawCode);
-    if (!source.startsWith(PREFIX)) return null;
-    const decoded = requireLzString().decompressFromBase64(source.slice(PREFIX.length));
-    if (!decoded) throw new Error('Kod NA2 jest uszkodzony lub niekompletny.');
-    const payload = JSON.parse(decoded);
-    if (!payload || payload.v !== FORMAT_VERSION || !Array.isArray(payload.a)) {
+    const prefix = source.startsWith(PREFIX) ? PREFIX : source.startsWith(LEGACY_PREFIX) ? LEGACY_PREFIX : null;
+    if (!prefix) return null;
+    const encoded = source.slice(prefix.length);
+    let payload = null;
+    if (prefix === LEGACY_PREFIX) {
+      const decoded = requireLzString().decompressFromBase64(encoded);
+      if (decoded) payload = JSON.parse(decoded);
+    } else {
+      try {
+        const decoded = window.LZString?.decompressFromBase64?.(encoded);
+        if (decoded) payload = JSON.parse(decoded);
+      } catch (_) { /* Try native Base64 below. */ }
+      if (!payload) {
+        try { payload = JSON.parse(decodeBase64Utf8(encoded)); } catch (_) { /* malformed compact export */ }
+      }
+    }
+    if (!payload) throw new Error('Kod NA3 jest uszkodzony lub niekompletny.');
+    if (!payload || ![2, FORMAT_VERSION].includes(payload.v) || !Array.isArray(payload.a)) {
       throw new Error('To nie jest obsługiwany kod odpowiedzi NeoAutystyk.');
     }
     return payload;
@@ -68,29 +98,43 @@
         answerIndex: choice,
         answerValue: Number(question.answers[choice].value),
         answerData: question.answers[choice],
-        note: typeof notes[questionId] === 'string' ? notes[questionId].slice(0, 500) : ''
+        note: typeof notes[questionId] === 'string' ? notes[questionId] : ''
       });
+    });
+    Object.entries(notes).forEach(([rawId, note]) => {
+      const questionId = Number(rawId);
+      if (typeof note !== 'string' || !note.length || seen.has(questionId) || !byId.has(questionId)) return;
+      rows.push({ questionId, note, noteOnly: true });
     });
     return rows;
   }
 
   function createPayload() {
     const descriptions = {};
-    const answers = currentAnswers()
-      .filter(answer => answer && !answer.noteOnly && Number.isInteger(Number(answer.answerIndex)))
-      .map(answer => [Number(answer.questionId), Number(answer.answerIndex)])
-      .filter(([questionId, choice]) => Number.isFinite(questionId) && choice >= 0 && choice <= 6);
+    const questions = new Map(questionList().map(question => [Number(question.id), question]));
+    const answerById = new Map();
+    currentAnswers().forEach(answer => {
+      if (!answer || answer.noteOnly || !Number.isFinite(Number(answer.questionId)) || !answer.answerData) return;
+      const questionId = Number(answer.questionId), question = questions.get(questionId);
+      let choice = Number.isInteger(answer.answerIndex) ? answer.answerIndex : -1;
+      if (choice < 0 || choice > 6 || (question && !question.answers?.[choice])) {
+        choice = question?.answers?.findIndex(item => item === answer.answerData || (Number(item.value) === Number(answer.answerValue) && item.label === answer.answerData?.label)) ?? -1;
+      }
+      if (choice >= 0 && choice <= 6) answerById.set(questionId, [questionId, choice]);
+    });
+    const answers = [...answerById.values()];
 
     currentAnswers().forEach(answer => {
-      const note = String(answer?.note || '').trim();
-      if (note && Number.isFinite(Number(answer.questionId))) descriptions[Number(answer.questionId)] = note.slice(0, 500);
+      const note = String(answer?.note || '');
+      if (note.length && Number.isFinite(Number(answer.questionId))) descriptions[Number(answer.questionId)] = note;
     });
-    return { v: FORMAT_VERSION, a: answers, d: descriptions };
+    return { v: FORMAT_VERSION, a: answers, d: descriptions, s: window.NeoTestModes?.metadata?.() || null };
   }
 
   function generateCompactExportCode() {
     const json = JSON.stringify(createPayload());
-    return PREFIX + requireLzString().compressToBase64(json);
+    const compressed = window.LZString?.compressToBase64?.(json);
+    return PREFIX + (compressed || encodeBase64Utf8(json));
   }
 
   async function readAllQuestions() {
@@ -104,12 +148,16 @@
     const payload = decodePayload(rawCode);
     const questions = await readAllQuestions();
     const rows = rowsFromPayload(payload, questions);
-    if (!rows.length) throw new Error('W kodzie nie znaleziono odpowiedzi pasujących do bieżącej wersji testu.');
+    if (!rows.length && !payload.s) throw new Error('W kodzie nie znaleziono odpowiedzi pasujących do bieżącej wersji testu.');
 
     // Keep the same shape as the legacy importer, so scoring and profiles use
     // exactly the same downstream data.
     userAnswers = rows;
     try { answersBeforeSimulation = null; } catch (_) { /* simulation state is optional */ }
+    if (payload.s && window.NeoTestModes?.resumeImported) {
+      await window.NeoTestModes.resumeImported(rows, payload.s);
+      return true;
+    }
     if (typeof updateDOMSelections === 'function') updateDOMSelections();
     if (typeof activateQuestionData === 'function' && typeof getSelectedQuestionIds === 'function') {
       await activateQuestionData(getSelectedQuestionIds());
@@ -127,32 +175,11 @@
   function parseAnyExportCode(rawCode) {
     if (!isCompactCode(rawCode)) return typeof legacyParse === 'function' ? legacyParse(rawCode) : [];
     try { return rowsFromPayload(decodePayload(rawCode)); }
-    catch (error) { console.warn('[NeoAutystyk] Nie można odczytać kodu NA2:', error); return []; }
+    catch (error) { console.warn('[NeoAutystyk] Nie można odczytać kodu skróconego:', error); return []; }
   }
 
-  function scaleIndex(value) {
-    const scale = [1.5, 0.5, -0.5, -1.5];
-    return scale.findIndex(item => Math.abs(item - Number(value)) < 0.01);
-  }
-
-  function scorePair(mine, reference) {
-    const mineIndex = scaleIndex(mine);
-    const referenceIndex = scaleIndex(reference);
-    if (mineIndex < 0 || referenceIndex < 0) return 0;
-    return [1.5, 0.5, -1, -1.5][Math.abs(mineIndex - referenceIndex)] || 0;
-  }
-
-  function compareCompactProfile(answers, profile) {
-    const reference = parseAnyExportCode(profile?.exportCode || '').filter(row => !row.noteOnly && row.answerData);
-    if (!reference.length) return { percent: 0, score: 0, maxPossible: 0, compared: 0 };
-    const mine = new Map((answers || []).filter(row => !row.noteOnly).map(row => [Number(row.questionId), row]));
-    let score = 0;
-    reference.forEach(row => { score += scorePair(mine.get(Number(row.questionId))?.answerValue, row.answerValue); });
-    const maxPossible = reference.length * 1.5;
-    return { percent: Math.max(0, Math.min(100, Math.round(((score + maxPossible) / (2 * maxPossible)) * 100))), score, maxPossible, compared: reference.length };
-  }
-
-  window.NeoAnswerCode = Object.freeze({ PREFIX, createPayload, decodePayload, generateCompactExportCode, parseAnyExportCode, isCompactCode });
+  window.NeoAnswerCode = Object.freeze({ PREFIX, LEGACY_PREFIX, createPayload, decodePayload, generateCompactExportCode, parseAnyExportCode, isCompactCode });
+  window.generateFullExportCode = (...args) => typeof legacyGenerate === 'function' ? legacyGenerate(...args) : '';
   window.parseExportCode = parseAnyExportCode;
   try { parseExportCode = parseAnyExportCode; } catch (_) { /* parser is exposed through window in module builds */ }
 
@@ -169,10 +196,12 @@
   };
   try { importAnswersFromExportCode = window.importAnswersFromExportCode; } catch (_) { /* see note above */ }
 
-  // Reference profiles can now store either old text exports or compact NA2
+  // Reference profiles can now store either old text exports or compact NA2/NA3
   // exports in their ExportCode field.
   window.compareAnswersToReferenceProfile = function compareAnyProfile(answers, profile) {
-    return isCompactCode(profile?.exportCode) ? compareCompactProfile(answers, profile) : legacyCompare(answers, profile);
+    // The shared profile engine parses both formats. Reusing its exact scoring
+    // path keeps compact codes numerically identical to full text exports.
+    return legacyCompare(answers, profile);
   };
   try { compareAnswersToReferenceProfile = window.compareAnswersToReferenceProfile; } catch (_) { /* see note above */ }
 })();
