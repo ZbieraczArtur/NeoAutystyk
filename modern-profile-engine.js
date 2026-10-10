@@ -1,5 +1,4 @@
 (function () {
-  const NOTE_LIMIT = 3000;
   const ANSWER_VALUES = {
     STRONGLY_AGREE: 1.5,
     PARTLY_AGREE: 0.5,
@@ -106,8 +105,8 @@
 
   function decodeNote(value) {
     const text = String(value || '');
-    try { return decodeURIComponent(text).slice(0, NOTE_LIMIT); }
-    catch { return text.slice(0, NOTE_LIMIT); }
+    try { return decodeURIComponent(text); }
+    catch { return text; }
   }
 
   function parseNoteLine(line) {
@@ -158,21 +157,36 @@
   // than through the main page importer.
   function parseCompactExportCode(rawCode) {
     const source = String(rawCode || '').replace(/\s+/g, '');
-    if (!source.startsWith('NA2:')) return null;
+    const prefix = source.startsWith('NA2:') ? 'NA2:' : source.startsWith('NA3:') ? 'NA3:' : null;
+    if (!prefix) return null;
     try {
-      if (!window.LZString) return [];
-      const decoded = window.LZString.decompressFromBase64(source.slice(4));
-      const payload = decoded && JSON.parse(decoded);
-      if (!payload || payload.v !== 2 || !Array.isArray(payload.a)) return [];
+      const encoded = source.slice(prefix.length);
+      let payload = null;
+      try {
+        const decoded = window.LZString?.decompressFromBase64?.(encoded);
+        if (decoded) payload = JSON.parse(decoded);
+      } catch (_) { /* NA3 also supports a native Base64 fallback. */ }
+      if (!payload && prefix === 'NA3:') {
+        try {
+          const bytes = Uint8Array.from(atob(encoded), char => char.charCodeAt(0));
+          payload = JSON.parse(new TextDecoder().decode(bytes));
+        } catch (_) { /* malformed compact profile */ }
+      }
+      if (!payload || ![2, 3].includes(payload.v) || !Array.isArray(payload.a)) return [];
       const notes = payload.d && typeof payload.d === 'object' ? payload.d : {};
       const questions = new Map((config?.questions || []).map(question => [Number(question.id), question]));
       const seen = new Set();
-      return payload.a.flatMap(entry => {
+      const rows = payload.a.flatMap(entry => {
         const id = Number(entry?.[0]), choice = Number(entry?.[1]), question = questions.get(id);
         if (!question || !Number.isInteger(choice) || choice < 0 || choice > 6 || !question.answers?.[choice] || seen.has(id)) return [];
         seen.add(id);
-        return [{ questionId: id, answerIndex: choice, answerValue: Number(question.answers[choice].value), answerData: question.answers[choice], note: typeof notes[id] === 'string' ? notes[id].slice(0, NOTE_LIMIT) : '' }];
+        return [{ questionId: id, answerIndex: choice, answerValue: Number(question.answers[choice].value), answerData: question.answers[choice], note: typeof notes[id] === 'string' ? notes[id] : '' }];
       });
+      Object.entries(notes).forEach(([rawId, note]) => {
+        const id = Number(rawId);
+        if (typeof note === 'string' && note && !seen.has(id) && questions.has(id)) rows.push({ questionId: id, answerIndex: -1, answerValue: 0, answerData: null, note, noteOnly: true });
+      });
+      return rows;
     } catch (error) {
       console.warn('[NeoAutystyk] Nieprawidłowy kod NA2 w profilu:', error);
       return [];
@@ -235,7 +249,16 @@
 
     const compactRows = parseCompactExportCode(rawCode);
     if (compactRows) {
-      compactRows.forEach(row => reference.set(Number(row.questionId), [{ label: row.answerData.label, value: Number(row.answerValue), answerData: row.answerData }]));
+      compactRows.forEach(row => {
+        const label = row.answerData?.label || '';
+        const neither = normalizeProfileText(label) === 'neither';
+        reference.set(Number(row.questionId), [{
+          label: neither ? 'Neither' : label,
+          neither,
+          value: neither ? null : Number(row.answerValue),
+          answerData: row.answerData || null
+        }]);
+      });
       return reference;
     }
 
@@ -482,13 +505,13 @@
   getEntityCoordinates = async function (name, type) {
     if (isModernMatching() || type === 'user') {
       const profile = getProfile(name, type);
-      if (!profile?.exportCode || !String(profile.exportCode).trim()) return { x: 0, y: 0 };
+      if (!profile?.exportCode || !String(profile.exportCode).trim()) return originalGetEntityCoordinates(name, type);
 
       const parsed = type === 'user'
         ? parseExportCodeModern(profile.exportCode).filter(row => !row.noteOnly && row.answerData)
         : entityAnswersForCompass(profile);
 
-      if (!parsed.length) return { x: 0, y: 0 };
+      if (!parsed.length) return originalGetEntityCoordinates(name, type);
       const scores = computeScoresForAnswers(parsed, currentScoringMode);
       const valuesMap = buildUserValuesMap(scores.pairResults);
       const coords = computeCoordinatesFromValues(valuesMap, currentCompassMode, currentCreativeConfig);
@@ -581,17 +604,18 @@
   generateExportCode = function () {
     const dateStr = typeof getCurrentDateTime === 'function' ? getCurrentDateTime() : new Date().toISOString();
     const lines = [`Data wykonania testu: ${dateStr}`, ''];
-    const questions = getSelectedQuestionIds().map(id => questionById.get(Number(id))).filter(Boolean);
-    for (const question of questions) {
-      const answer = userAnswers.find(row => Number(row.questionId) === Number(question.id) && !row.noteOnly);
-      const note = answer?.note || '';
+    const questionIds = getSelectedQuestionIds().map(Number);
+    for (const questionId of questionIds) {
+      const answer = userAnswers.find(row => Number(row.questionId) === questionId && !row.noteOnly);
+      const note = answer?.note || userAnswers.find(row => Number(row.questionId) === questionId)?.note || '';
       const label = answer?.answerData?.label || (answer ? 'Pomiń pytanie' : 'Brak odpowiedzi');
-      lines.push(`${question.id}:(${label});`);
-      if (note.trim()) lines.push(`${question.id}#opis:${encodeURIComponent(note.trim())}`);
+      lines.push(`${questionId}:(${label});`);
+      if (note.length) lines.push(`${questionId}#opis:${encodeURIComponent(note)}`);
     }
     return lines.join('\n');
   };
   window.generateExportCode = generateExportCode;
+  window.generateFullExportCode = generateExportCode;
 
   importAnswersFromExportCode = async function (rawCode) {
     if (!config) return false;
