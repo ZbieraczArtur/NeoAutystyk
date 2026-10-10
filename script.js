@@ -776,6 +776,9 @@ function renderQuestions() {
     q.answers.forEach((ans, ansIdx) => {
       const ansEl = document.createElement('div');
       ansEl.className = 'answer-option';
+      ansEl.setAttribute('role', 'button');
+      ansEl.setAttribute('tabindex', '0');
+      ansEl.setAttribute('aria-pressed', 'false');
       ansEl.innerText = ans.label;
       ansEl.dataset.answerIndex = ansIdx;
       ansEl.dataset.value = ans.value;
@@ -789,8 +792,9 @@ function renderQuestions() {
       // ===== ZMODYFIKOWANY KLIK (zachowanie notatki) =====
       ansEl.addEventListener('click', () => {
         const siblings = answersDiv.querySelectorAll('.answer-option');
-        siblings.forEach(sib => sib.classList.remove('selected'));
+        siblings.forEach(sib => { sib.classList.remove('selected'); sib.setAttribute('aria-pressed', 'false'); });
         ansEl.classList.add('selected');
+        ansEl.setAttribute('aria-pressed', 'true');
         const existing = userAnswers.findIndex(a => a.questionId === q.id);
         // Pobierz notatkę z istniejącego wpisu, jeśli jest
         const existingNote = (existing !== -1 && userAnswers[existing].note) ? userAnswers[existing].note : '';
@@ -803,7 +807,13 @@ function renderQuestions() {
         };
         if (existing !== -1) userAnswers[existing] = answerObj;
         else userAnswers.push(answerObj);
+        window.NeoTestModes?.onAnswerSelected(q.id);
         window.NeoTestPages?.maybeAdvance();
+      });
+      ansEl.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); ansEl.click(); }
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); event.stopPropagation(); ansEl.nextElementSibling?.focus(); }
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); event.stopPropagation(); ansEl.previousElementSibling?.focus(); }
       });
       // ==================================================
       
@@ -832,7 +842,7 @@ function renderQuestions() {
 
     // Nasłuch na zmianę tekstu – aktualizujemy userAnswers
     noteTextarea.addEventListener('input', (e) => {
-      const val = e.target.value.trim();
+      const val = e.target.value;
       const existing = userAnswers.find(a => a.questionId === q.id);
       if (existing) {
         existing.note = val;
@@ -840,6 +850,7 @@ function renderQuestions() {
         // Jeśli nie ma jeszcze wpisu dla tego pytania, tworzymy go z samą notatką
         userAnswers.push({ questionId: q.id, note: val });
       }
+      window.NeoTestModes?.saveSession();
     });
 
     noteDiv.appendChild(noteLabel);
@@ -856,12 +867,12 @@ function attachQuestionEvents() {}
 
 function updateDOMSelections() {
   if (!config) return;
-  document.querySelectorAll('.answer-option').forEach(opt => opt.classList.remove('selected'));
+  document.querySelectorAll('.answer-option').forEach(opt => { opt.classList.remove('selected'); opt.setAttribute('aria-pressed', 'false'); });
   for (const ans of userAnswers) {
     const card = document.querySelector(`.question-card[data-id='${ans.questionId}']`);
     if (!card) continue;
     const targetOption = card.querySelector(`.answer-option[data-answer-index='${ans.answerIndex}']`);
-    if (targetOption) targetOption.classList.add('selected');
+    if (targetOption) { targetOption.classList.add('selected'); targetOption.setAttribute('aria-pressed', 'true'); }
 
     // ----- nowy kod: ustaw notatkę w textarea -----
     const textarea = card.querySelector('.note-textarea');
@@ -916,7 +927,9 @@ function generateExportCode() {
     .filter(Boolean);
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i];
-    const userAns = userAnswers.find(a => a.questionId === q.id);
+    const questionAnswers = userAnswers.filter(a => Number(a.questionId) === Number(q.id));
+    const userAns = questionAnswers.find(a => a.answerData || Number(a.answerValue) === 0) || questionAnswers[0];
+    const note = questionAnswers.find(a => typeof a.note === 'string' && a.note.length)?.note;
     let answerText = 'Brak odpowiedzi';
     if (userAns && userAns.answerData) {
       answerText = userAns.answerData.label;
@@ -924,6 +937,11 @@ function generateExportCode() {
       answerText = 'Pomiń';
     }
     output += `[id:${q.id}]: (${answerText});\n`;
+    // Keep optional explanations in the full, human-readable export too.
+    // The parser accepts this established #opis line format.
+    if (typeof note === 'string' && note.length) {
+      output += `${q.id}#opis:${encodeURIComponent(note)}\n`;
+    }
   }
   return output;
 }
@@ -934,23 +952,50 @@ function createExportSection() {
   exportDiv.className = 'export-answers-section';
   const exportTitle = translations?.ui?.exportTitle || '📋 Eksport Twoich odpowiedzi';
   const exportDesc = translations?.ui?.exportDesc || 'Skopiuj poniższy kod, aby zapisać lub przenieść swoje odpowiedzi do innego urządzenia.';
-  const copyBtnText = translations?.ui?.copyExportBtn || '📋 Kopiuj kod eksportu';
   exportDiv.innerHTML = `
     <h3>${exportTitle}</h3>
     <p>${exportDesc}</p>
-    <textarea id="exportCodeArea" class="export-code" rows="5" readonly></textarea>
-    <button id="copyExportBtn" class="copy-export-btn">${copyBtnText}</button>
-    <button id="downloadExportBtn" class="copy-export-btn" type="button">💾 Pobierz plik .txt</button>
+    <div class="export-code-tabs" role="tablist" aria-label="Format kodu eksportu">
+      <button type="button" role="tab" id="export-short-tab" aria-selected="true" aria-controls="exportCodeArea" data-export-format="short">Kod skrócony</button>
+      <button type="button" role="tab" id="export-full-tab" aria-selected="false" aria-controls="exportCodeArea" data-export-format="full">Kod pełny</button>
+    </div>
+    <p class="export-format-help" aria-live="polite"></p>
+    <textarea id="exportCodeArea" class="export-code" rows="8" readonly aria-label="Kod eksportu"></textarea>
+    <div class="export-code-actions"><button id="copyExportBtn" class="copy-export-btn" type="button">📋 Kopiuj kod</button>
+    <button id="downloadExportBtn" class="copy-export-btn" type="button">💾 Pobierz wybrany kod</button></div>
   `;
   const textarea = exportDiv.querySelector('#exportCodeArea');
-  textarea.value = generateExportCode();
+  const help = exportDiv.querySelector('.export-format-help');
+  let format = 'short';
+  const refreshCode = () => {
+    try {
+      textarea.value = format === 'short'
+        ? (window.generateExportCode?.() || '')
+        : (window.generateFullExportCode?.() || generateExportCode());
+      help.textContent = format === 'short'
+        ? 'Zwięzły kod do przenoszenia odpowiedzi i ustawień sesji.'
+        : 'Klasyczny, czytelny kod tekstowy zgodny ze starszymi profilami.';
+    } catch (error) {
+      textarea.value = '';
+      help.textContent = error?.message || 'Nie udało się utworzyć kodu eksportu.';
+    }
+  };
+  exportDiv.querySelectorAll('[data-export-format]').forEach(button => button.addEventListener('click', () => {
+    format = button.dataset.exportFormat;
+    exportDiv.querySelectorAll('[data-export-format]').forEach(tab => {
+      const selected = tab === button;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
+    refreshCode();
+  }));
+  refreshCode();
   const copyBtn = exportDiv.querySelector('#copyExportBtn');
   copyBtn.addEventListener('click', () => {
     textarea.select();
-    navigator.clipboard.writeText(textarea.value).then(() => {
-      copyBtn.textContent = '✅ ' + (translations?.ui?.copied || 'Skopiowano!');
-      setTimeout(() => { copyBtn.textContent = copyBtnText; }, 2000);
-    }).catch(() => showPopup(translations?.ui?.copyError || 'Nie udało się skopiować. Zaznacz kod ręcznie.'));
+    const copied = () => { copyBtn.textContent = '✅ ' + (translations?.ui?.copied || 'Skopiowano!'); setTimeout(() => { copyBtn.textContent = '📋 Kopiuj kod'; }, 2000); };
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(textarea.value).then(copied).catch(() => showPopup(translations?.ui?.copyError || 'Nie udało się skopiować. Zaznacz kod ręcznie.'));
+    else { try { document.execCommand('copy'); copied(); } catch (_) { showPopup(translations?.ui?.copyError || 'Nie udało się skopiować. Zaznacz kod ręcznie.'); } }
   });
   exportDiv.querySelector('#downloadExportBtn').addEventListener('click', () => {
     const now = new Date();
@@ -958,7 +1003,7 @@ function createExportSection() {
     const blob = new Blob([textarea.value], { type: 'text/plain;charset=utf-8' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `NeoAutystyk_Wynik_${date}.txt`;
+    link.download = `NeoAutystyk_${format === 'short' ? 'KodSkrocony' : 'KodPelny'}_${date}.txt`;
     link.click();
     URL.revokeObjectURL(link.href);
   });
