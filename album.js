@@ -63,6 +63,7 @@
     if (!list.length) { root.append(make('p','album-empty','Nie znaleziono profili. Zmień wyszukiwanie lub filtry.')); return; }
     list.forEach(profile => {
       const card = make('article','profile-card');
+      card.dataset.profileType = profile.type || active;
       const open = document.createElement('button'); open.type='button'; open.className='profile-card-main'; open.setAttribute('aria-label',`Otwórz profil: ${profile.name}`);
       open.append(image(profile,'profile-card-image'), make('strong','',profile.name), make('small','',(profile.tags||[]).slice(0,2).join(' · ') || TYPE_LABEL[active])); open.onclick=()=>openProfile(profileId(profile));
       const favorite=make('button','profile-favorite',favorites.has(profileId(profile))?'♥':'♡');favorite.type='button';favorite.classList.toggle('saved',favorites.has(profileId(profile)));favorite.setAttribute('aria-pressed',String(favorites.has(profileId(profile))));favorite.setAttribute('aria-label',favorites.has(profileId(profile))?'Usuń z zapisanych':'Zapisz profil');favorite.onclick=()=>toggleFavorite(profile,favorite);
@@ -90,7 +91,7 @@
     preview.src=`index.html?simulate=${encodeURIComponent(profile.key||profile.id||profile.name)}&embed=1`;
     preview.addEventListener('load',()=>{try{preview.contentWindow.postMessage({type:'neo-profile-results-height-request'},location.origin);}catch(_){}});
     resultSection.append(preview); main.append(resultSection);
-    const aside=make('aside','profile-infobox'); aside.append(image(profile,'profile-infobox-image'));
+    const aside=make('aside','profile-infobox'); aside.dataset.profileType=profile.type||active; aside.append(image(profile,'profile-infobox-image'));
     const info=profile.infobox && typeof profile.infobox==='object' ? Object.entries(profile.infobox).filter(([,value])=>value!==null&&value!==undefined&&String(value).trim()) : [];
     if(info.length){const dl=document.createElement('dl');info.forEach(([field,value])=>{dl.append(make('dt','',fieldLabel(field)),make('dd','',String(value)));});aside.append(dl);}
     view.append(main,aside); location.hash=encodeURIComponent(profileId(profile)); view.scrollTop=0; dialog.scrollTop=0; dialog.showModal();
