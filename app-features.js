@@ -125,7 +125,14 @@
     section.querySelectorAll('.ranking-item').forEach((row, index) => {
       const profile = items[index].profile;
       const image = document.createElement('img');
-      image.src = profileLogo(profile); image.alt = `Portret ${profile.name}`; image.className = 'user-logo-small';
+      image.src = profile.logo || 'images/ALogo.svg'; image.alt = `Portret ${profile.name}`; image.className = 'figure-portrait'; image.loading = 'lazy';
+      image.addEventListener('error', () => {
+        const fallback = document.createElement('span');
+        fallback.className = 'figure-portrait-fallback';
+        fallback.textContent = String(profile.name || '?').trim().slice(0, 1).toLocaleUpperCase('pl');
+        fallback.setAttribute('aria-label', `Brak zdjęcia: ${profile.name}`);
+        image.replaceWith(fallback);
+      }, { once: true });
       row.insertBefore(image, row.firstChild);
       row.addEventListener('click', event => {
         event.stopImmediatePropagation();
