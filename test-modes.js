@@ -1,153 +1,66 @@
-/* Warianty testu oraz leniwa, wielostronicowa nawigacja po sześciu częściach. */
+/* Wybór wariantu testu, tryb listy i tryb pojedynczych kart. */
 (() => {
   const modeFiles = { short: 'tests/skrocony.json', balanced: 'tests/zbalansowany.json' };
-  let modes = null;
-  let started = false;
-  let pages = [];
-  let currentPage = 0;
-  let navigation = null;
-  let viewMode = 'tabs';
-  let viewChoiceDialog = null;
-
+  const SESSION_KEY = 'neoAutystyk.session.v1';
+  let modes = null, started = false, navigation = null, viewMode = 'cards', viewChoiceDialog = null;
+  let selectedIds = [], queue = [], currentId = null, postponed = new Set(), autoAdvance = false;
+  let settingsDialog;
   async function loadModes() {
     const entries = await Promise.all(Object.entries(modeFiles).map(async ([key, file]) => {
-      const response = await fetch(file);
-      if (!response.ok) throw new Error(`Nie udało się wczytać ${file}`);
-      return [key, await response.json()];
-    }));
-    return Object.fromEntries(entries);
+      const response = await fetch(file); if (!response.ok) throw new Error(`Nie udało się wczytać ${file}`); return [key, await response.json()];
+    })); return Object.fromEntries(entries);
   }
-  function idsFromDefinition(definition) {
-    if (Array.isArray(definition.questionIds)) return new Set(definition.questionIds.map(Number));
-    const range = definition.questionIds;
-    return new Set(Array.from({ length: range.to - range.from + 1 }, (_, index) => range.from + index));
-  }
-  function idsFor(mode) {
-    const all = window.NeoDataParts.allQuestionIds();
-    return mode === 'full' ? all : all.filter(id => idsFromDefinition(modes[mode]).has(Number(id)));
-  }
-  function updateCounts() {
-    ['full', 'balanced', 'short'].forEach(mode => {
-      document.querySelectorAll(`[data-question-count="${mode}"]`).forEach(node => node.textContent = idsFor(mode).length);
-    });
-  }
-  function createNavigation() {
-    navigation?.remove();
-    navigation = document.createElement('nav');
-    navigation.className = 'test-page-navigation';
-    navigation.setAttribute('aria-label', 'Części testu');
-    const tabs = document.createElement('div'); tabs.className = 'test-page-tabs';
-    pages.forEach((page, index) => {
-      const button = document.createElement('button'); button.type = 'button';
-      button.textContent = `Część ${index + 1}`; button.dataset.pageIndex = index;
-      button.addEventListener('click', () => showPage(index)); tabs.appendChild(button);
-    });
-    const controls = document.createElement('div'); controls.className = 'test-page-controls';
-    const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = '← Poprzednia część'; previous.dataset.pageAction = 'previous'; previous.addEventListener('click', () => showPage(currentPage - 1));
-    const status = document.createElement('span'); status.className = 'test-page-status'; status.setAttribute('aria-live', 'polite');
-    const next = document.createElement('button'); next.type = 'button'; next.textContent = 'Następna część →'; next.dataset.pageAction = 'next'; next.addEventListener('click', () => showPage(currentPage + 1));
-    controls.append(previous, status, next); navigation.append(tabs, controls);
-    questionsContainer.before(navigation);
-  }
-
+  function idsFromDefinition(d) { if (Array.isArray(d.questionIds)) return new Set(d.questionIds.map(Number)); const r=d.questionIds; return new Set(Array.from({length:r.to-r.from+1},(_,i)=>r.from+i)); }
+  function idsFor(mode) { const all=window.NeoDataParts.allQuestionIds(); return mode==='full'?all:all.filter(id=>idsFromDefinition(modes[mode]).has(Number(id))); }
+  function updateCounts() { ['full','balanced','short'].forEach(mode=>document.querySelectorAll(`[data-question-count="${mode}"]`).forEach(n=>n.textContent=idsFor(mode).length)); }
+  function answerRows() { return window.NeoDataParts.getUserAnswers(); }
+  function answered(id) { return answerRows().some(a=>Number(a.questionId)===Number(id)&&a.answerData); }
+  function skipped(id) { const a=answerRows().find(a=>Number(a.questionId)===Number(id)&&a.answerData); return !!a&&Number(a.answerValue)===0; }
+  function saveSession() { try { localStorage.setItem(SESSION_KEY,JSON.stringify({mode:document.body.dataset.testMode,view:viewMode,selectedIds,queue,currentId,postponed:[...postponed],autoAdvance,largeText:document.body.classList.contains('large-question-text'),reducedMotion:document.body.classList.contains('reduced-motion'),answers:answerRows()})); document.body.dataset.saved='true'; if(navigation?.querySelector('[data-save-status]'))navigation.querySelector('[data-save-status]').textContent='Zapisano na tym urządzeniu'; } catch(_) { if(navigation?.querySelector('[data-save-status]'))navigation.querySelector('[data-save-status]').textContent='Zapis niedostępny';} }
+  function loadSession() { try { return JSON.parse(localStorage.getItem(SESSION_KEY)||'null'); } catch(_) { return null; } }
+  function metadata() { return { mode:document.body.dataset.testMode||'full',view:viewMode,selectedIds,queue,currentId,postponed:[...postponed],autoAdvance,largeText:document.body.classList.contains('large-question-text'),reducedMotion:document.body.classList.contains('reduced-motion') }; }
+  function applyMetadata(meta) { if(meta&&Array.isArray(meta.selectedIds)) window.__pendingSessionMeta=meta; }
   function createViewChoiceDialog() {
-    if (viewChoiceDialog) return viewChoiceDialog;
-    const dialog = document.createElement('dialog');
-    dialog.className = 'test-view-choice-dialog';
-    dialog.innerHTML = `
-      <form method="dialog" class="test-view-choice-card">
-        <h2>Jak chcesz wykonywać test?</h2>
-        <p>Wybierz układ pytań, który będzie dla Ciebie wygodniejszy.</p>
-        <div class="test-view-choice-options">
-          <button type="button" data-test-view="continuous">
-            <strong>Jedna ciągła lista</strong>
-            <span>Wszystkie pytania jedno pod drugim, bez zakładek.</span>
-          </button>
-          <button type="button" data-test-view="tabs">
-            <strong>6 zakładek tematycznych</strong>
-            <span>Pytania podzielone na części z dotychczasową nawigacją.</span>
-          </button>
-        </div>
-        <button type="submit" class="test-view-choice-cancel">Wróć</button>
-      </form>`;
-    document.body.appendChild(dialog);
-    viewChoiceDialog = dialog;
-    return dialog;
+    if(viewChoiceDialog)return viewChoiceDialog;
+    const d=document.createElement('dialog'); d.className='test-view-choice-dialog'; d.innerHTML=`<form method="dialog" class="test-view-choice-card"><button class="choice-back" type="submit" aria-label="Wróć">←</button><p class="section-eyebrow">WYBIERZ SPOSÓB PRACY</p><h2>Jak chcesz rozwiązywać test?</h2><p>Możesz w każdej chwili zmienić odpowiedź i wrócić do wcześniejszego pytania.</p><div class="test-view-choice-options"><button type="button" data-test-view="continuous"><span class="choice-icon">▤</span><strong>Tryb listy</strong><span>Wszystkie pytania kolejno na jednej stronie.</span><small>Przewijaj, porównuj i odpowiadaj we własnym rytmie.</small></button><button type="button" data-test-view="cards"><span class="choice-icon">▣</span><strong>Tryb kart</strong><span>Jedno pytanie na ekranie.</span><small>Skup się na tezie i przechodź dalej nawigacją.</small></button></div></form>`; document.body.appendChild(d); viewChoiceDialog=d; return d;
   }
-  function updateNavigation() {
-    if (!navigation) return;
-    navigation.querySelectorAll('[data-page-index]').forEach(button => button.classList.toggle('active', Number(button.dataset.pageIndex) === currentPage));
-    navigation.querySelector('[data-page-action="previous"]').disabled = currentPage === 0;
-    navigation.querySelector('[data-page-action="next"]').disabled = currentPage >= pages.length - 1;
-    navigation.querySelector('.test-page-status').textContent = `Część ${currentPage + 1} z ${pages.length} · ${pages[currentPage].ids.length} pytań`;
+  function ensureNavigation() {
+    navigation?.remove(); navigation=document.createElement('section'); navigation.className='card-navigation'; navigation.innerHTML=`<div class="card-nav-top"><button type="button" data-action="prev">← Wstecz</button><span data-progress aria-live="polite"></span><button type="button" data-action="next">Kontynuuj →</button></div><div class="progress-track"><span></span></div><div class="card-nav-tools"><button type="button" data-action="pause">Ⅱ Pauza</button><button type="button" data-action="settings">⚙ Ustawienia</button><button type="button" data-action="toggle-panel" aria-expanded="false">☷ Nawiguj po pytaniach</button><span data-save-status aria-live="polite">Zapisywanie…</span></div><div class="question-nav-panel" hidden><div class="nav-search-row"><input type="search" placeholder="Szukaj po treści, ID lub numerze" aria-label="Szukaj pytania"><button type="button" data-action="postponed">Pokaż odłożone</button></div><div class="nav-shortcuts"><button type="button" data-jump="-5">−5</button><button type="button" data-jump="-1">−1</button><button type="button" data-action="current">Aktualne</button><button type="button" data-jump="1">+1</button><button type="button" data-jump="5">+5</button></div><div class="question-nav-results"></div><p class="status-legend">○ Bez odpowiedzi　✓ Odpowiedziano　– Pominięto　↪ Odłożono</p></div><label class="auto-setting"><input type="checkbox"> Automatycznie przechodź do następnego pytania</label><p class="auto-hint" hidden>Auto: wybór odpowiedzi zapisuje ją i przechodzi dalej.</p>`;
+    questionsContainer.before(navigation);
+    const $=(s)=>navigation.querySelector(s);
+    $('[data-action="prev"]').onclick=()=>{if(viewMode==='cards')jumpRelative(-1);else jumpTo(selectedIds[Math.max(0,selectedIds.indexOf(Number(currentId))-1)]);}; $('[data-action="next"]').onclick=()=>{ if(viewMode==='cards'){if(currentIndex()>=queue.length-1)document.getElementById('submitBtn')?.click();else jumpRelative(1);}else jumpTo(selectedIds[Math.min(selectedIds.length-1,selectedIds.indexOf(Number(currentId))+1)]); };
+    $('[data-action="pause"]').onclick=pauseTest; $('[data-action="settings"]').onclick=showSettings;
+    $('[data-action="toggle-panel"]').onclick=(e)=>{const panel=$('.question-nav-panel'); panel.hidden=!panel.hidden;e.currentTarget.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden) renderNavResults();};
+    $('[data-action="current"]').onclick=()=>jumpTo(currentId); $('[data-action="postponed"]').onclick=()=>renderNavResults(true);
+    $('[data-jump]').forEach(b=>b.onclick=()=>jumpRelative(Number(b.dataset.jump)));
+    $('[type="search"]').oninput=()=>renderNavResults(); const auto=$('.auto-setting input'); auto.checked=autoAdvance; auto.onchange=()=>{autoAdvance=auto.checked;$('.auto-hint').hidden=!autoAdvance;saveSession();}; $('.auto-hint').hidden=!autoAdvance;
+    if(viewMode==='continuous') navigation.classList.add('list-navigation');
   }
-  async function showPage(index) {
-    if (index < 0 || index >= pages.length) return;
-    currentPage = index;
-    questionsContainer.setAttribute('aria-busy', 'true');
-    try {
-      await window.NeoDataParts.activateQuestions(pages[index].ids);
-      renderQuestions();
-      updateNavigation();
-      navigation?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-    } finally { questionsContainer.removeAttribute('aria-busy'); }
+  function currentIndex(){return Math.max(0,queue.indexOf(Number(currentId)));}
+  function updateNavigation(){ if(!navigation)return; const i=viewMode==='cards'?currentIndex():Math.max(0,selectedIds.indexOf(Number(currentId))),total=viewMode==='cards'?queue.length:selectedIds.length; navigation.querySelector('[data-progress]').textContent=`Pytanie ${i+1} z ${total} · ${answerRows().filter(a=>a.answerData&&selectedIds.includes(Number(a.questionId))).length} odpowiedzi`; navigation.querySelector('.progress-track span').style.width=`${total?((i+1)/total)*100:0}%`; navigation.querySelector('[data-action="prev"]').disabled=i===0; navigation.querySelector('[data-action="next"]').textContent=i>=total-1?(viewMode==='cards'?'Zakończ test':'Koniec listy'):'Kontynuuj →'; }
+  async function showQuestion(id){ if(!selectedIds.includes(Number(id)))return; currentId=Number(id); await window.NeoDataParts.activateQuestions(viewMode==='cards'?[currentId]:selectedIds); renderQuestions(); questionsContainer.classList.toggle('cards-view',viewMode==='cards'); questionsContainer.classList.toggle('list-view',viewMode==='continuous'); if(viewMode==='cards'){const card=questionsContainer.querySelector('.question-card');const ordinal=selectedIds.indexOf(currentId)+1;const label=card?.querySelector('.question-text');if(label)label.innerText=`${ordinal}. ${window.NeoDataParts.getQuestion(currentId)?.text||label.innerText.replace(/^\d+\.\s*/,'')}`;const later=document.createElement('button');later.type='button';later.className='defer-question';later.textContent=postponed.has(currentId)?'↪ Odłożone · pokaż później':'↪ Pokaż później';later.onclick=deferCurrent;card?.querySelector('.question-text')?.after(later);} updateNavigation(); saveSession(); }
+  async function showList(){ currentId=queue[0]??selectedIds[0]; await window.NeoDataParts.activateQuestions(selectedIds); renderQuestions(); questionsContainer.classList.add('list-view'); questionsContainer.classList.remove('cards-view'); updateNavigation(); saveSession(); }
+  function jumpRelative(delta){ if(viewMode!=='cards')return; const next=Math.max(0,Math.min(queue.length-1,currentIndex()+delta)); showQuestion(queue[next]); }
+  function jumpTo(id){if(viewMode==='continuous'){currentId=Number(id);document.querySelector(`.question-card[data-id="${Number(id)}"]`)?.scrollIntoView({behavior:'smooth',block:'start'});updateNavigation();saveSession();return;}showQuestion(Number(id));}
+  async function renderNavResults(onlyPostponed=false){ const box=navigation.querySelector('.question-nav-results'), query=navigation.querySelector('[type="search"]').value.trim().toLocaleLowerCase('pl'); await window.NeoDataParts.ensureQuestions(selectedIds); const matches=selectedIds.map((id,i)=>({id,i,q:window.NeoDataParts.getQuestion(id)})).filter(x=>(!onlyPostponed||postponed.has(x.id))&&(!query||String(x.id).includes(query)||String(x.i+1)===query||String(x.q?.text||'').toLocaleLowerCase('pl').includes(query))).slice(0,100); box.replaceChildren(); matches.forEach(({id,i,q})=>{const b=document.createElement('button');b.type='button';b.className='nav-question';const status=postponed.has(id)?'↪ Odłożono':skipped(id)?'– Pominięto':answered(id)?'✓ Odpowiedziano':'○ Bez odpowiedzi';b.innerHTML=`<b>${i+1} · ID ${id}</b><span>${status}</span><small>${(q?.text||'').slice(0,160)}</small>`;b.onclick=()=>{if(viewMode==='cards'){queue=queue.filter(x=>x!==id);queue.splice(Math.min(i,queue.length),0,id);}jumpTo(id);box.closest('.question-nav-panel').hidden=true;};box.appendChild(b);}); if(!matches.length)box.textContent='Brak pasujących pytań.'; }
+  function onAnswerSelected(id){ if(postponed.has(Number(id)))postponed.delete(Number(id)); updateNavigation();saveSession(); if(viewMode==='cards'&&autoAdvance) setTimeout(()=>{if(Number(currentId)===Number(id))jumpRelative(1);},0); }
+  function deferCurrent(){const id=Number(currentId);postponed.add(id);queue=queue.filter(x=>x!==id);queue.push(id);const next=queue.find(x=>x!==id);saveSession();if(next!==undefined)showQuestion(next);else updateNavigation();}
+  function pauseTest(){saveSession();const dialog=document.createElement('dialog');dialog.className='pause-dialog';const code=typeof generateExportCode==='function'?generateExportCode():'';dialog.innerHTML=`<form method="dialog"><p class="section-eyebrow">POSTĘP ZAPISANY</p><h2>Test wstrzymany</h2><p>${answerRows().filter(a=>a.answerData).length} odpowiedzi · pytanie ${currentIndex()+1} z ${queue.length}</p><label for="pause-code">Kod wznowienia</label><textarea id="pause-code" readonly rows="5"></textarea><div class="pause-actions"><button type="button" data-copy>Kopiuj kod</button><button value="resume" class="primary">Wróć do testu</button></div></form>`;dialog.querySelector('textarea').value=code;dialog.querySelector('[data-copy]').onclick=async()=>{try{await navigator.clipboard.writeText(code);dialog.querySelector('[data-copy]').textContent='Skopiowano ✓';}catch(_){dialog.querySelector('textarea').select();}};document.body.appendChild(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();}
+  function showSettings(){ if(!settingsDialog){settingsDialog=document.createElement('dialog');settingsDialog.className='pause-dialog';settingsDialog.innerHTML=`<form method="dialog"><p class="section-eyebrow">DOPASUJ DO SIEBIE</p><h2>Ustawienia testu</h2><label><input type="checkbox" data-auto> Automatycznie przechodź po wyborze odpowiedzi</label><label><input type="checkbox" data-large> Większy tekst pytań</label><label><input type="checkbox" data-reduced> Ogranicz animacje</label><div class="pause-actions"><button value="close" class="primary">Gotowe</button></div></form>`;document.body.appendChild(settingsDialog);settingsDialog.querySelector('[data-auto]').onchange=e=>{autoAdvance=e.target.checked;navigation.querySelector('.auto-setting input').checked=autoAdvance;navigation.querySelector('.auto-hint').hidden=!autoAdvance;saveSession();};settingsDialog.querySelector('[data-large]').onchange=e=>{document.body.classList.toggle('large-question-text',e.target.checked);saveSession();};settingsDialog.querySelector('[data-reduced]').onchange=e=>{document.body.classList.toggle('reduced-motion',e.target.checked);saveSession();};}settingsDialog.querySelector('[data-auto]').checked=autoAdvance;settingsDialog.querySelector('[data-large]').checked=document.body.classList.contains('large-question-text');settingsDialog.querySelector('[data-reduced]').checked=document.body.classList.contains('reduced-motion');settingsDialog.showModal(); }
+  async function beginTest(mode,selectedView,restored=null,meta=null){
+    selectedIds=[...new Set(idsFor(mode).map(Number))]; const selected=new Set(selectedIds); const manifest=await window.NeoDataParts.initialize(); viewMode=selectedView||'cards';
+    window.__selectedTestQuestionIds=selectedIds; window.NeoQuestionQueue?.reset?.(); userAnswers=Array.isArray(restored)?restored:[];
+    queue=meta?.queue?.map(Number).filter(id=>selected.has(id))||[...selectedIds]; selectedIds.forEach(id=>{if(!queue.includes(id))queue.push(id);}); postponed=new Set((meta?.postponed||[]).map(Number).filter(id=>selected.has(id))); autoAdvance=!!meta?.autoAdvance;document.body.classList.toggle('large-question-text',!!meta?.largeText);document.body.classList.toggle('reduced-motion',!!meta?.reducedMotion);
+    window.resetQuestionReview?.();window.resetQuestionPagination?.();document.body.classList.remove('landing-active');document.body.dataset.testMode=mode;document.body.dataset.testView=viewMode;
+    ensureNavigation(); if(!started){started=true;initApp();setupSimulation();setupMatchingModeSelector();setupModeSelector();setupImportExport();setupLanguageSelector();}else resultsDiv.style.display='none';
+    currentId=Number(meta?.currentId)||queue[0]||selectedIds[0]; if(!queue.includes(currentId))currentId=queue[0];
+    if(viewMode==='cards')await showQuestion(currentId);else await showList();
+    document.getElementById('submitBtn').hidden=viewMode==='cards'; document.getElementById('disclaimer').hidden=false;
+    window.dispatchEvent(new CustomEvent('neoAutystykTestStarted',{detail:{mode,view:viewMode,restored:!!restored}}));saveSession();
   }
-  function pageComplete(page) {
-    const answered = new Set(userAnswers.filter(answer => answer.answerData).map(answer => Number(answer.questionId)));
-    return page.ids.length > 0 && page.ids.every(id => answered.has(Number(id)));
-  }
-  let scheduledAdvance = false;
-  function maybeAdvance() {
-    if (scheduledAdvance || !pageComplete(pages[currentPage]) || currentPage >= pages.length - 1) return;
-    scheduledAdvance = true;
-    setTimeout(() => { scheduledAdvance = false; if (pageComplete(pages[currentPage])) showPage(currentPage + 1); }, 180);
-  }
-  window.NeoTestPages = { maybeAdvance, showPage };
-
-  async function beginTest(mode, selectedView, restoredAnswers = null) {
-    const selectedIds = [...new Set(idsFor(mode).map(Number))];
-    const selected = new Set(selectedIds);
-    const manifest = await window.NeoDataParts.initialize();
-    viewMode = selectedView;
-    pages = viewMode === 'continuous'
-      ? [{ id: 'all', ids: selectedIds }]
-      : manifest.parts.map(part => ({ id: part.id, ids: part.questionIds.map(Number).filter(id => selected.has(id)) })).filter(page => page.ids.length);
-    window.__selectedTestQuestionIds = selectedIds;
-    window.NeoQuestionQueue?.reset?.();
-    userAnswers = Array.isArray(restoredAnswers) ? restoredAnswers : [];
-    window.resetQuestionReview?.(); window.resetQuestionPagination?.();
-    document.body.classList.remove('landing-active'); document.body.dataset.testMode = mode; document.body.dataset.testView = viewMode;
-    if (viewMode === 'tabs') createNavigation(); else { navigation?.remove(); navigation = null; }
-    if (!started) {
-      started = true;
-      initApp(); setupSimulation(); setupMatchingModeSelector(); setupModeSelector(); setupImportExport(); setupLanguageSelector();
-    } else resultsDiv.style.display = 'none';
-    await showPage(0);
-    window.dispatchEvent(new CustomEvent('neoAutystykTestStarted', { detail: { mode, view: viewMode, restored: !!restoredAnswers } }));
-  }
-
-  // Public, deliberately small UI API. It changes only the screen state; scoring remains in script.js.
-  window.NeoTestModes = { beginTest };
-
-  function chooseViewAndBegin(mode) {
-    const dialog = createViewChoiceDialog();
-    dialog.querySelectorAll('[data-test-view]').forEach(button => {
-      button.onclick = async () => {
-        dialog.close();
-        try { await beginTest(mode, button.dataset.testView); }
-        catch (error) { console.error(error); showPopup?.('Nie udało się uruchomić wybranego widoku testu.'); }
-      };
-    });
-    dialog.showModal();
-  }
-  async function initializeTestModes() {
-    try {
-      await window.NeoDataParts.initialize(); modes = await loadModes(); updateCounts();
-      document.querySelectorAll('[data-test-mode]').forEach(button => { button.disabled = false; button.addEventListener('click', () => chooseViewAndBegin(button.dataset.testMode)); });
-    } catch (error) {
-      console.error(error);
-      document.querySelector('.test-mode-selector')?.insertAdjacentHTML('beforeend', '<p class="test-mode-error">Nie udało się wczytać wariantów testu.</p>');
-    }
-  }
-  window.addEventListener('neoAutystykConfigReady', initializeTestModes, { once: true });
+  window.NeoTestModes={beginTest,metadata,applyMetadata,onAnswerSelected,saveSession,goTo:(id)=>jumpTo(id),pause:pauseTest,resumeImported:(rows,meta)=>beginTest(meta?.mode||'full',meta?.view||'cards',rows,meta)};
+  function chooseViewAndBegin(mode){const d=createViewChoiceDialog();d.querySelectorAll('[data-test-view]').forEach(b=>b.onclick=async()=>{d.close();try{await beginTest(mode,b.dataset.testView);}catch(e){console.error(e);showPopup?.('Nie udało się uruchomić wybranego widoku testu.');}});d.showModal();}
+  async function initializeTestModes(){try{await window.NeoDataParts.initialize();modes=await loadModes();updateCounts();document.querySelectorAll('[data-test-mode]').forEach(b=>{b.disabled=false;b.addEventListener('click',()=>chooseViewAndBegin(b.dataset.testMode));});const session=loadSession();if(session?.mode){const c=document.getElementById('continue-test');c.hidden=false;c.onclick=()=>beginTest(session.mode,session.view,session.answers,session);}}catch(e){console.error(e);document.querySelector('.test-mode-selector')?.insertAdjacentHTML('beforeend','<p class="test-mode-error">Nie udało się wczytać wariantów testu.</p>');}}
+  window.addEventListener('neoAutystykConfigReady',initializeTestModes,{once:true});
+  window.addEventListener('keydown',e=>{if(viewMode!=='cards'||document.body.classList.contains('landing-active')||e.target.matches('input,textarea,select,[contenteditable="true"]'))return;if(e.key==='ArrowLeft')jumpRelative(-1);if(e.key==='ArrowRight')jumpRelative(1);});
 })();
