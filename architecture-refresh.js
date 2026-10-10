@@ -96,7 +96,7 @@
                 if ((type === 'party' || type === 'figure') && !matches(profile, type)) continue;
                 const point = await coordinateFor(profile, type);
                 if (!point) continue;
-                const logo = profile.logo || (type === 'party' ? getPartyLogoUrl(profile.name) : type === 'ideology' ? getIdeologyLogoUrl(profile.name) : profile.avatar ? `images/IUsers/${profile.avatar}` : 'images/ALogo.svg');
+                const logo = profile.logo || (type === 'party' ? getPartyLogoUrl(profile.name) : type === 'ideology' ? getIdeologyLogoUrl(profile.name) : profile.avatar ? `images/IUsers/${profile.avatar}` : '') || 'images/ALogo.svg';
                 instance.addOverlay(logo, point.x, point.y, type, profile.name, profile.description || '');
             }
         }
