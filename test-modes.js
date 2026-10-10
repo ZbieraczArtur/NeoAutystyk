@@ -32,7 +32,7 @@
     $('[data-action="pause"]').onclick=pauseTest; $('[data-action="settings"]').onclick=showSettings;
     $('[data-action="toggle-panel"]').onclick=(e)=>{const panel=$('.question-nav-panel'); panel.hidden=!panel.hidden;e.currentTarget.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden) renderNavResults();};
     $('[data-action="current"]').onclick=()=>jumpTo(currentId); $('[data-action="postponed"]').onclick=()=>renderNavResults(true);
-    $('[data-jump]').forEach(b=>b.onclick=()=>jumpRelative(Number(b.dataset.jump)));
+    navigation.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>jumpRelative(Number(b.dataset.jump)));
     $('[type="search"]').oninput=()=>renderNavResults(); const auto=$('.auto-setting input'); auto.checked=autoAdvance; auto.onchange=()=>{autoAdvance=auto.checked;$('.auto-hint').hidden=!autoAdvance;saveSession();}; $('.auto-hint').hidden=!autoAdvance;
     if(viewMode==='continuous') navigation.classList.add('list-navigation');
   }
