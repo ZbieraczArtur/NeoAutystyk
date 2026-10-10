@@ -546,7 +546,11 @@
     const aside = document.createElement('aside'); aside.className = 'profile-popup-infobox';
     const visual = document.createElement('div'); visual.className = 'profile-popup-visual';
     if (profile.logo) {
-      const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = 'popup-logo-img';
+      const image = document.createElement('img'); image.src = profile.logo; image.alt = profile.name; image.className = `popup-logo-img${profile.type === 'figure' ? ' figure-profile-photo' : ''}`;
+      image.addEventListener('error', () => {
+        const fallback = document.createElement('span'); fallback.className = 'profile-popup-monogram'; fallback.textContent = String(profile.name || '?').trim().slice(0, 1).toLocaleUpperCase('pl');
+        fallback.setAttribute('aria-label', `Brak zdjęcia: ${profile.name}`); image.replaceWith(fallback);
+      }, { once: true });
       image.addEventListener('load', () => applyProfileImagePalette(image, layout), { once: true });
       visual.appendChild(image);
       if (image.complete && image.naturalWidth) applyProfileImagePalette(image, layout);
