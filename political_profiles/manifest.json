@@ -1,7 +1,7 @@
 {
-  "version": 2,
+  "version": 3,
   "defaultMatchingMode": "modern",
-  "exportCodeFormat": "short-v2: id:(answer[, answer]); optional note line id#opis:text",
+  "exportCodeFormat": "NA3: compressed JSON answer/session payload; NA2 and legacy text codes remain supported",
   "logoSources": {
     "users": "images/IUsers",
     "parties": "images/Partie",
@@ -13,12 +13,31 @@
     "parties": "parties.json",
     "users": "users.json",
     "figures": [
-      "figures-1.json",
-      "figures-2.json",
-      "figures-3.json",
-      "figures-4.json",
-      "figures-5.json",
-      "figures-6.json"
+      "figures-A.json",
+      "figures-B.json",
+      "figures-C.json",
+      "figures-D.json",
+      "figures-E.json",
+      "figures-F.json",
+      "figures-G.json",
+      "figures-H.json",
+      "figures-I.json",
+      "figures-J.json",
+      "figures-K.json",
+      "figures-L.json",
+      "figures-M.json",
+      "figures-N.json",
+      "figures-O.json",
+      "figures-P.json",
+      "figures-R.json",
+      "figures-S.json",
+      "figures-T.json",
+      "figures-U.json",
+      "figures-V.json",
+      "figures-W.json",
+      "figures-X.json",
+      "figures-Y.json",
+      "figures-Z.json"
     ]
   }
 }
