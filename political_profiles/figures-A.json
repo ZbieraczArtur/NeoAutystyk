@@ -61,13 +61,13 @@
     }
   },
     {
-    "type": "figure",
-    "id": "figure:test",
-    "key": "test",
-    "name": "aaa test",
-    "description": "...",
-    "logo": "images/Figury/Estymat_Maududi.webp",
-    "exportCode": "PLACEHOLDER",
+"type": "figure",
+"id": "figure:syedabulalamududi",
+"key": "SyedAbulAlaMaududi",
+"name": "Syed Abul A'la Maududi",
+"description": "Syed Abul A'la Maududi był pakistańskim teologiem, dziennikarzem i filozofem politycznym, uważanym za jednego z najważniejszych ideologów XX-wiecznego islamizmu. Założył organizację Jamaat-e-Islami oraz sformułował doktrynę teodemokracji, opartą na suwerenności Boga i szariacie. Jego dzieła wywarły wpływ na ruchy islamskie na świecie.",
+"logo": "images/Figury/Estymat_Maududi.webp",
+"exportCode": "PLACEHOLDER",
     "metadata": {
       "source": "data.json"
     },
