@@ -283,5 +283,64 @@
       "importantValues": "niepodległość i wolność narodowa, jedność ludu, rewolucyjna moralność (bezinteresowność, skromność, zwalczanie indywidualizmu), suwerenność państwowa, bezstronne służenie społeczeństwu",
       "inspirations": "marksizm-leninizm (w szczególności pisma W. Lenina dotyczące kwestii narodowej i kolonialnej), tradycyjny wietnamski patriotyzm i etyka konfucjańska, buddyjskie pojęcie równości i współczucia, zachodnia tradycja praw człowieka i obywatela (w tym amerykańska Deklaracja Niepodległości i francuska Deklaracja Praw Człowieka i Obywatela)"
     }
+  },
+    {
+    "type": "figure",
+    "id": "figure:hueylong",
+    "key": "HueyLong",
+    "name": "Huey Long",
+    "description": "Huey Pierce Long Jr. (1893–1935) był amerykańskim politykiem i prawnikiem, przywódcą ruchu populistycznego okresu Wielkiego Kryzysu. Sprawował funkcje gubernatora Luizjany i senatora USA. Zasłynął z programu redystrybucji majątku Share Our Wealth oraz bezpłatnej rozbudowy dróg, szkół i szpitali. Stanowi jedną z najbardziej wyrazistych postaci w historii USA, znaną z obrony ubogich i autorytarnych metod.",
+    "logo": "images/Figury/Estymat_Long.webp",
+    "exportCode": "PLACEHOLDER",
+    "metadata": {
+      "source": "data.json"
+    },
+    "tags": [
+      "Polityk",
+      "Samorządowiec",
+      "Prawnik",
+      "Publicysta",
+      "Pisarz",
+      "Parlamentarzysta",
+      "Myśliciel społeczny",
+      "Reformator",
+      "Założyciel partii/ruchu",
+      "Amerykańska",
+      "Martwy",
+      "Mężczyzna",
+      "XIX wiek",
+      "XX wiek",
+      "Socjaldemokracja",
+      "Socjalizm",
+      "Republikanizm",
+      "Autorytaryzm",
+      "Ameryka Północna",
+      "Wybory demokratyczne",
+      "Chrześcijaństwo",
+      "Protestantyzm"
+    ],
+    "intro": "Huey Pierce Long Jr. działał w erze Wielkiego Kryzysu, gdy Stany Zjednoczone zmagały się z masowym bezrobociem i głębokimi różnicami społecznymi. Sytuację Luizjany dodatkowo utrudniała wieloletnia dominacja elity plantatorów, wielkiego biznesu oraz maszyny politycznej z Nowego Orleanu, przy jednoczesnym niedorozwoju infrastruktury i powszechnym analfabetyzmie. W tym kontekście Long stworzył unikalny model lewicowego populizmu gospodarczego, w centrum którego postawił walkę z monopolami, takimi jak Standard Oil, oraz bezpośrednią pomoc dla najuboższych obywateli. Jego dorobek polityczno-społeczny opierał się na rozbudowie infrastruktury drogowej i mostowej, wprowadzeniu darmowych podręczników szkolnych, zniesieniu podatku wyborczego i rozbudowie szkolnictwa wyższego. Równocześnie stosował bezwzględne metody skonsolidowanej władzy patronażowej i kontroli nad aparatem państwowym, co wywoływało ostre oskarżenia o autorytaryzm i demagogię ze strony krytyków oraz administracji prezydenta Franklina D. Roosevelta. Long połączył rolę trybuna ludowego z bezwzględną praktyką polityczną, trwale przekształcając Luizjanę i wywierając istotny wpływ na ogólnokrajową debatę o redystrybucji dóbr.",
+    "history": "Huey Pierce Long Jr. urodził się 30 sierpnia 1893 roku w miejscowości Winnfield w parafii Winn w Luizjanie. Choć w późniejszych wystąpieniach kreował wizerunek wychowanka skrajnej biedy z chaty z polan, pochodził ze stosunkowo zamożnej rodziny rolniczej, w której ceniono edukację i wiarę baptystyczną. Parafia Winn wyróżniała się w Luizjanie tradycją politycznego protestu – od postaw pro-unijnych podczas wojny secesyjnej po silne poparcie dla populizmu i socjalizmu. Long przerwał edukację w szkole średniej, po czym pracował jako komiwojażer, zdobywając umiejętności retoryczne i kontaktów z ludźmi. W 1915 roku, po intensywnej samodzielnej nauce i rocznym pobycie na Tulane University, zdał egzamin adwokacki w wieku 21 lat.\n\nJako młody prawnik zasłynął obroną ubogich klientów w sporach z bankami i korporacjami. W 1918 roku wygrał wybory do Stanowej Komisji Kolejowej (późniejszej Komisji Służby Publicznej), stając się jej przewodniczącym w 1922 roku. Zbudował pozycję polityczną na głośnych bataliach z gigantami naftowymi, zwłaszcza Standard Oil, oraz wygranej sprawie przeciwko Cumberland Telephone Company przed Sądem Najwyższym USA. Po nieudanej próbie zdobycia urzędu gubernatora w 1924 roku, wygrał wybory gubernatorskie w 1928 roku, mobilizując wiejski i biedniejszy elektorat.\n\nNa stanowisku gubernatora dokonał gruntownej przebudowy aparatu państwowego, wprowadzając system patronażowy i zwalniając przeciwników politycznych. W 1929 roku przetrwał próbę odwołania w procedurze impeachmentu, zorganizowaną przez sprzymierzone z przemysłem naftowym opozycyjne elity, dzięki zebraniu podpisów 15 senatorów stanowych (tzw. Round Robin). W 1930 roku zdobył mandat senatora USA, lecz wstrzymał się z objęciem urzędu do początku 1932 roku, dopóki nie zapewnił sukcesji na stanowisku gubernatora swojemu lojalnemu stronnikowi, Oscarowi K. Allenowi.\n\nW Waszyngtonie wyrósł na czołową postać ogólnokrajowej sceny politycznej. Początkowo popierał Franklina D. Roosevelta w wyborach prezydenckich w 1932 roku, jednak szybko zerwał z nim relacje, uznając program New Deal za zbyt zachowawczy. W 1934 roku uruchomił ogólnokrajowy ruch Share Our Wealth Society, przyciągając miliony członków i przygotowując się do startu w wyborach prezydenckich w 1936 roku. 8 września 1935 roku w budynku Kapitolu Stanowego w Baton Rouge został postrzelony przez dr. Carla Weissa i zmarł dwa dni później, 10 września 1935 roku, w wieku 42 lat.",
+    "views": "Myśl polityczna i społeczna Huey Longa była syntezą populizmu, egzekwowania redystrybucji majątkowej oraz pragmatyzmu w sprawowaniu władzy. Long stanowczo odrzucał etykiety marksistowskie czy socjalistyczne, uzasadniając swoje postulaty prawem biblijnym oraz amerykańskimi dokumentami założycielskimi, w tym Deklaracją Niepodległości i myślą Williama Jenningsa Bryana.\n\nGospodarka, własność i redystrybucja dochodów stanowiły ścisłe centrum jego programu. Kluczową koncepcją Longa był plan Share Our Wealth, przedstawiony w 1934 roku. Zakładał on konfiskatę wielkich fortun poprzez bardzo progresywne podatki dochodowe i spadkowe: ograniczenie prywatnego majątku do kilku milionów dolarów, rocznego dochodu do maksymalnie 1 miliona dolarów oraz spadku do 5 milionów dolarów na dziecko. Uzyskane środki miały sfinansować gwarantowane minimum majątkowe dla każdej amerykańskiej rodziny (obejmujące dom, samochód i radio), roczny dochód minimalny, emerytury dla osób starszych, świadczenia dla weteranów oraz bezpłatną edukację wyższą i zawodową dostosowaną do zdolności ucznia, a nie zamożności rodziców. Postulował również skrócenie tygodnia pracy w celu ograniczenia bezrobocia.\n\nW kwestii państwa, demokracji i praworządności Long reprezentował podejście skrajnie instrumentalne i scentralizowane. Twierdził, że w walce z monopolami korporacyjnymi i okopaną oligarchią polityczną konieczne jest stosowanie twardych metod politycznych („walczyć ogniem przeciwko ogniowi”). W Luizjanie skupił w swoich rękach kontrolę nad władzą wykonawczą, ustawodawczą i sądowniczą, podporządkowując sobie struktury samorządowe i tworząc stanowy aparat policji (Bureau of Criminal Identification). Jednocześnie Long uważał swoje rządy za pełną realizację woli ludu, wskazując na znaczne rozszerzenie praw wyborczych. Przeprowadził zniesienie opłaty wyborczej (poll tax), co umożliwiło udział w głosowaniu setkom tysięcy najuboższych obywateli.\n\nKlasa społeczna, kwestie rasowe i wyznaniowe w ujęciu Longa różniły go od większości współczesnych mu polityków z amerykańskiego Południa. Long opierał swój ruch na podziałach klasowych, a nie rasowych, deklarując wsparcie dla wszystkich ubogich, bez względu na kolor skóry. Jego programy edukacyjne, zdrowotne, likwidacji analfabetyzmu oraz infrastrukturalne bezpośrednio przynosiły korzyści populacji afroamerykańskiej. Odrzucał rasistowską demagogię i otwarcie sprzeciwiał się działalności Ku Klux Klanu, zakazując jego przywódcom wstępu do Luizjany. Stanowczo potępiał antysemityzm i uprzedzenia religijne, odrzucając porównania do Adolfa Hitlera i narastającego w Europie faszyzmu.\n\nReligia i wartości służyły Longowi jako podstawowe narzędzie retoryczne i legitymizacyjne. Mimo że prywatnie rzadko uczęszczał do kościoła, w swoich przemówieniach nieustannie cytował Biblię (np. Stary Testament, Księgę Powtórzonego Prawa czy List św. Jakuba), argumentując, że nakaz okresowej redystrybucji dóbr i umorzenia długów jest bezpośrednim nakazem Bożym. W polityce zagranicznej prezentował postawę izolacjonistyczną i antykorporacyjną, krytykując interwencje oraz wpływy wielkich koncernów naftowych za granicą.",
+    "publicActivity": "Działalność publiczna Huey Longa koncentrowała się na przebudowie Luizjany oraz budowie ogólnokrajowego ruchu politycznego. Jako przewodniczący Komisji Służby Publicznej wymusił obniżki stawek opłat telefonicznych i gazowych oraz ograniczył przywileje rurociągowe Standard Oil. Sprawując urząd gubernatora Luizjany (1928–1932) oraz kierując stanem de facto podczas kadencji senatorskiej (1932–1935), zorganizował masowy program robót publicznych: wybudował niemal 10 000 mil utwardzonych dróg, 111 mostów, nowy Kapitol Stanowy oraz rozbudował Port w Nowym Orleanie. W dziedzinie edukacji i ochrony zdrowia wprowadził bezpłatne podręczniki szkolne dla wszystkich dzieci, bezpłatny transport szkolny, programy alfabetyzacji dla 100 000 dorosłych, potroił liczbę studentów Louisiana State University (LSU), utworzył stanową szkołę medyczną oraz bezpłatne kliniki i bezpłatne łóżka w szpitalach charytatywnych. Finansowanie tych projektów zapewnił poprzez podniesienie podatku od wydobycia surowców naturalnych (severance tax) obciążającego koncerny naftowe i przemysłowe. W sferze politycznej utworzył sieć klubów Share Our Wealth Society, która do 1935 roku zgromadziła ponad 7,5 miliona członków w całym kraju, stając się realnym zagrożeniem dla reelekcji prezydenta Roosevelta.",
+    "quotes": "„Jestem za ubogim człowiekiem – wszystkimi ubogimi ludźmi, czarnymi i białymi, wszyscy muszą dostać szansę. Muszą mieć dom, pracę i przyzwoitą edukację dla swoich dzieci. »Każdy człowiekiem jest królem« – oto moje hasło.”\n\n„Mówią, że nie lubią moich metod. Cóż, ja też ich nie lubię. Naprawdę nie lubię musieć robić rzeczy w taki sposób, w jaki robię. [...] Ale wiem, że praw nie tworzy się inaczej. Musisz walczyć z ogniem za pomocą ognia.”\n\n„Jedyna różnica, jaką kiedykolwiek znalazłem między przywództwem Demokratów a przywództwem Republikanów, polega na tym, że jedni obdzierają cię ze skóry od kostek w górę, a drudzy od szyi w dół.”\n\n„Mają zestaw republikańskich kelnerów po jednej stronie i zestaw demokratycznych kelnerów po drugiej stronie, ale bez względu na to, który zestaw kelnerów przyniesie ci danie, ustawowe jedzenie jest przygotowywane w tej samej kuchni na Wall Street.”\n\n„Nie porównujcie mnie do tego sukinsyna. Każdy, kto pozwala, aby jego polityka publiczna mieszała się z uprzedzeniami religijnymi, jest zwykłym cholernym głupcem.” (o Adolfie Hitlerze)\n\n„Traktujcie ich dokładnie tak samo jak każdego innego, dajcie im możliwość zarabiania na życie i zdobycia wykształcenia.” (o ludności afroamerykańskiej)\n\n„Człowiek nie jest dyktatorem, gdy otrzymuje mandat od ludu i go realizuje.”\n\n„Boże, nie pozwól mi umrzeć. Mam tak wiele do zrobienia.” (ostatnie słowa)",
+    "infobox": {
+      "birthDate": "30 sierpnia 1893",
+      "deathDate": "10 września 1935",
+      "continent": "Ameryka Północna",
+      "country": "Stany Zjednoczone",
+      "nationality": "amerykańska",
+      "mainActivity": "polityk\nprawnik",
+      "otherActivities": "komiwojażer (sprzedawca objazdowy)\npublicysta\nautor książek\nautor tekstów piosenek",
+      "publicFunctions": "Przewodniczący Komisji Służby Publicznej Luizjany (1922–1928)\n40. Gubernator Luizjany (1928–1932)\nSenator Stanów Zjednoczonych z Luizjany (1932–1935)",
+      "legitymacy": "Wybory powszechne (zwycięstwa w prawyborach Partii Demokratycznej) oraz budowa masowego poparcia społecznego w oparciu o populistyczny program redystrybucji i stanowy aparat patronażowy",
+      "activePeriod": "1918–1935",
+      "parties": "Partia Demokratyczna",
+      "organizations": "Share Our Wealth Society",
+      "ideologies": "lewicowy populizm\nprogresywizm\nsocjaldemokracja",
+      "importantValues": "Równość szans\nredystrybucja bogactwa\npowszechność edukacji i ochrony zdrowia\nochrona klasy pracującej",
+      "inspirations": "Biblia\nWilliam Jennings Bryan\nTheodore Roosevelt\nWoodrow Wilson\nJohn Clark Ridpath (History of the World)",
+      "religion": "Protestantyzm (Kościół Baptystów)"
+    }
   }
 ]
