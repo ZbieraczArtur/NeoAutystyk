@@ -13,7 +13,7 @@
     'Ideologia': ['Liberalizm','Liberalizm klasyczny','Socjalliberalizm','Ordoliberalizm','Liberalizm gospodarczy','Libertarianizm','Anarchizm','Konserwatyzm','Chrześcijańska demokracja','Tradycjonalizm','Reakcjonizm','Fundamentalizm religijny','Agraryzm','Monarchizm','Republikanizm','Socjalizm','Socjalizm demokratyczny','Socjaldemokracja','Komunizm','Marksizm','Marksizm-Leninizm','Faszyzm','Nacjonalizm','Ekologizm','Korporacjonizm','Technokracja','Autorytaryzm','Demokracja'],
     'Kontynent działalności': ['Afryka','Ameryka Północna','Ameryka Południowa','Azja','Europa','Australia'],
     'Sposób dojścia do władzy / legitymizacja': ['Wybory demokratyczne','Zamach stanu / Coup','Dziedziczenie','Rewolucja','Nominacja / Kooptacja','Okupacja / Interwencja zewnętrzna'],
-    'Religia': ['Chrześcijaństwo','Katolicyzm','Prawosławie','Protestantyzm','Islam','Sunnizm','Szyizm','Ibadizm','Hinduizm','Buddyzm','Judaizm','Judaizm ortodoksyjny','Sikhizm','Taoizm','Konfucjanizm','Islamizm']
+    'Religia': ['Chrześcijaństwo','Katolicyzm','Prawosławie','Protestantyzm','Islam','Sunnizm','Szyizm','Ibadizm','Hinduizm','Buddyzm','Judaizm','Judaizm ortodoksyjny','Sikhizm','Taoizm','Konfucjanizm','Islamizm','Ateizm','Agnostycyzm','Deizm']
   });
   const chosen = new Map();
   let activeTab = Object.keys(CATALOG)[0];
