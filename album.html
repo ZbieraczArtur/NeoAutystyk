@@ -1,17 +1,80 @@
 <!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Album profili — NeoAutystyk</title><link rel="icon" href="images/ALogo.svg"><link rel="stylesheet" href="album.css"><link rel="stylesheet" href="advanced-tags.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#13213d">
+  <title>Album profili — NeoAutystyk</title>
+  <link rel="icon" href="images/ALogo.svg">
+  <link rel="stylesheet" href="album.css">
 </head>
 <body>
-  <header class="album-header"><a href="index.html" class="brand"><img src="images/ALogo.svg" alt="">NeoAutystyk</a><span>Album profili politycznych</span></header>
+  <header class="album-header">
+    <a href="index.html" class="brand"><img src="images/ALogo.svg" alt="">NeoAutystyk</a>
+    <a class="back-link" href="index.html">← Wróć do testu</a>
+  </header>
+
   <main class="album-shell">
-    <nav class="album-tabs" aria-label="Rodzaje profili"><button class="active" data-type="party">Partie</button><button data-type="ideology">Ideologie</button><button data-type="figure">Figury</button><button data-type="user">Użytkownicy</button></nav>
-    <aside class="album-sidebar"><label>Wyszukaj<input id="album-search" type="search" placeholder="Nazwa, tag lub kraj"></label><details open><summary>Tagi</summary><div id="album-tags" class="tag-list"></div></details><details open><summary>Ułatwienia</summary><label>Sortowanie<select id="album-sort"><option value="name">Nazwa A–Z</option><option value="type">Typ profilu</option></select></label><label class="checkbox"><input id="album-with-image" type="checkbox"> Tylko ze zdjęciem</label><label class="checkbox"><input id="album-favorites-only" type="checkbox"> Tylko zapisane profile</label></details><p class="album-hint">Zapisane profile są przechowywane tylko w tej przeglądarce.</p></aside>
-    <section class="album-content"><p id="album-count" class="album-count" aria-live="polite"></p><div id="album-grid" class="album-grid"></div></section>
+    <section class="album-intro" aria-labelledby="album-title">
+      <p class="eyebrow">Baza poglądów i postaci</p>
+      <h1 id="album-title">Album profili politycznych</h1>
+      <p>Przeglądaj partie, ideologie, postacie i profile użytkowników. Filtry tagów są pogrupowane w wygodnych zakładkach.</p>
+    </section>
+
+    <nav class="album-tabs" aria-label="Rodzaje profili" role="tablist">
+      <button class="active" data-type="party" role="tab" aria-selected="true">Partie</button>
+      <button data-type="ideology" role="tab" aria-selected="false">Ideologie</button>
+      <button data-type="figure" role="tab" aria-selected="false">Postacie</button>
+      <button data-type="user" role="tab" aria-selected="false">Użytkownicy</button>
+    </nav>
+
+    <aside class="album-sidebar" aria-label="Filtry albumu">
+      <div class="filter-group">
+        <label for="album-search">Wyszukaj profil</label>
+        <input id="album-search" type="search" placeholder="Nazwa, tag, kraj…" autocomplete="off">
+      </div>
+
+      <div class="filter-group">
+        <label for="album-sort">Sortowanie</label>
+        <select id="album-sort">
+          <option value="name">Nazwa: A–Z</option>
+          <option value="date-asc">Data: od najstarszych</option>
+          <option value="date-desc">Data: od najnowszych</option>
+        </select>
+        <p class="filter-note">Daty są odczytywane z danych profilu, np. z dat urodzenia postaci.</p>
+      </div>
+
+      <div class="filter-group filter-checks">
+        <label class="checkbox"><input id="album-with-image" type="checkbox"> <span>Tylko ze zdjęciem</span></label>
+        <label class="checkbox"><input id="album-favorites-only" type="checkbox"> <span>Tylko zapisane profile</span></label>
+      </div>
+
+      <section class="tag-filter" aria-labelledby="tag-filter-title">
+        <div class="tag-filter-heading">
+          <div><h2 id="tag-filter-title">Filtruj według tagów</h2><p id="tag-filter-status">Wybierz tagi w zakładkach.</p></div>
+          <button id="clear-tags" class="text-button" type="button" disabled>Wyczyść</button>
+        </div>
+        <div id="album-tag-tabs" class="tag-tabs" role="tablist" aria-label="Kategorie tagów"></div>
+        <div id="album-tags" class="tag-choices" aria-live="polite"></div>
+      </section>
+
+      <p class="album-hint">Zapisane profile są przechowywane tylko w tej przeglądarce.</p>
+    </aside>
+
+    <section class="album-content" aria-label="Lista profili">
+      <div class="album-results-heading"><p id="album-count" class="album-count" aria-live="polite"></p><p id="album-order-note" class="album-order-note"></p></div>
+      <div id="album-grid" class="album-grid"></div>
+    </section>
   </main>
-  <dialog id="profile-dialog" class="profile-dialog"><button class="dialog-close" aria-label="Zamknij">×</button><article id="profile-view"></article></dialog>
-  <script src="profiles-loader.js"></script><script src="tag-catalog.js"></script><script src="album.js"></script><script src="album-advanced-filters.js"></script>
+
+  <dialog id="profile-dialog" class="profile-dialog" aria-labelledby="profile-title">
+    <button class="dialog-close" type="button" aria-label="Zamknij profil">×</button>
+    <article id="profile-view"></article>
+  </dialog>
+
+  <script src="profiles-loader.js"></script>
+  <script src="tag-catalog.js"></script>
+  <script src="profile-enrichments.js"></script>
+  <script src="album.js"></script>
 </body>
 </html>
