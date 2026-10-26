@@ -158,7 +158,7 @@
   function toggleFavorite(profile, button) {
     const id = profileId(profile);
     favorites.has(id) ? favorites.delete(id) : favorites.add(id);
-    localStorage.setItem('neoAutystykFavorites', JSON.stringify([...favorites]));
+    try { localStorage.setItem('neoAutystykFavorites', JSON.stringify([...favorites])); } catch (_) { /* favorites remain available for this session */ }
     const saved = favorites.has(id);
     button.classList.toggle('saved', saved);
     button.textContent = saved ? '♥' : '♡';
@@ -248,18 +248,21 @@
   $('#album-with-image').addEventListener('change', renderGrid);
   $('#album-favorites-only').addEventListener('change', renderGrid);
   $('#clear-tags').onclick = () => { selectedTags.clear(); renderTags(); renderGrid(); };
+  $('#album-reset').onclick = () => {
+    $('#album-search').value = ''; $('#album-sort').value = 'name';
+    $('#album-with-image').checked = false; $('#album-favorites-only').checked = false;
+    selectedTags.clear(); renderTags(); renderGrid(); $('#album-search').focus();
+  };
+  $('#album-random').onclick = () => { const list = filtered(); if (list.length) openProfile(profileId(list[Math.floor(Math.random() * list.length)])); };
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && dialog.open) dialog.close(); });
   $('.dialog-close').onclick = () => dialog.close();
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('close', () => { history.replaceState(null, '', location.pathname); });
 
   window.loadPoliticalProfiles().then(data => {
-    const enrichments = window.NeoProfileEnrichments || {};
-    Object.values(TYPES).forEach(collection => (data[collection] || []).forEach(profile => {
-      if (enrichments[profile.id]) Object.assign(profile, enrichments[profile.id]);
-    }));
     db = data;
     const hash = decodeURIComponent(location.hash.slice(1));
     const profile = allProfiles().find(item => [profileId(item), item.id, item.key, item.name].includes(hash));
     if (profile) { active = profile.type; setType(active); openProfile(profileId(profile)); } else setType(active);
-  }).catch(() => { root.textContent = 'Nie udało się wczytać bazy profili.'; });
+  }).catch(error => { console.error('Błąd ładowania bazy profili:', error); root.textContent = 'Nie udało się wczytać bazy profili. Sprawdź, czy wszystkie pliki z political_profiles są dostępne.'; });
 })();
