@@ -58,11 +58,12 @@
         <div id="album-tags" class="tag-choices" aria-live="polite"></div>
       </section>
 
+      <button id="album-reset" class="filter-reset" type="button">Wyczyść filtry</button>
       <p class="album-hint">Zapisane profile są przechowywane tylko w tej przeglądarce.</p>
     </aside>
 
     <section class="album-content" aria-label="Lista profili">
-      <div class="album-results-heading"><p id="album-count" class="album-count" aria-live="polite"></p><p id="album-order-note" class="album-order-note"></p></div>
+      <div class="album-results-heading"><p id="album-count" class="album-count" aria-live="polite"></p><p id="album-order-note" class="album-order-note"></p><button id="album-random" class="album-random" type="button">Losuj profil</button></div>
       <div id="album-grid" class="album-grid"></div>
     </section>
   </main>
@@ -74,7 +75,6 @@
 
   <script src="profiles-loader.js"></script>
   <script src="tag-catalog.js"></script>
-  <script src="profile-enrichments.js"></script>
   <script src="album.js"></script>
 </body>
 </html>
