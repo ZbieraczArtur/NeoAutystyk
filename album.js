@@ -16,9 +16,13 @@
   const view = $('#profile-view');
   const collator = new Intl.Collator('pl', { sensitivity: 'base', numeric: true });
   const selectedTags = new Map();
+  const groupLogic = new Map();
   let db = null;
   let active = 'party';
   let activeTagTab = null;
+  let tagLogic = 'or';
+  let minimumTags = 1;
+  let savedScrollY = 0;
   let favorites = new Set();
   try { favorites = new Set(JSON.parse(localStorage.getItem('neoAutystykFavorites') || '[]')); } catch (_) { /* local storage can be unavailable */ }
 
@@ -82,8 +86,68 @@
 
   function selectedTagCount() { return [...selectedTags.values()].reduce((sum, tags) => sum + tags.size, 0); }
   function matchesSelectedTags(profile) {
+    const chosen = [...selectedTags.values()].flatMap(tags => [...tags]);
+    if (!chosen.length) return true;
     const ownTags = new Set(profileTags(profile));
-    return [...selectedTags.values()].every(tags => !tags.size || [...tags].some(tag => ownTags.has(tag)));
+    const count = chosen.filter(tag => ownTags.has(tag)).length;
+    if (tagLogic === 'or') return count > 0;
+    if (tagLogic === 'and') return count === chosen.length;
+    if (tagLogic === 'not') return count === 0;
+    if (tagLogic === 'threshold') return count >= Math.min(minimumTags, chosen.length);
+    return [...selectedTags.entries()].every(([group, tags]) => {
+      const operation = groupLogic.get(group) || 'or';
+      const matches = [...tags].filter(tag => ownTags.has(tag)).length;
+      if (operation === 'and') return matches === tags.size;
+      if (operation === 'not') return matches === 0;
+      return matches > 0;
+    });
+  }
+
+  function updateLogicControls() {
+    const count = selectedTagCount();
+    const threshold = $('#threshold-control');
+    const slider = $('#tag-threshold');
+    slider.max = String(Math.max(1, count));
+    minimumTags = Math.max(1, Math.min(minimumTags, count || 1));
+    slider.value = String(Math.min(minimumTags, count || 1));
+    $('#threshold-value').value = slider.value;
+    $('#threshold-value').textContent = slider.value;
+    threshold.hidden = tagLogic !== 'threshold' || !count;
+    document.querySelectorAll('.group-logic-control').forEach(control => { control.hidden = tagLogic !== 'conditional' || !selectedTags.has(control.dataset.group); });
+    document.querySelectorAll('[name="tag-logic"]').forEach(input => { input.checked = input.value === tagLogic; });
+  }
+
+  function renderActiveFilters() {
+    const host = $('#active-filters');
+    host.replaceChildren();
+    const entries = [];
+    if ($('#album-search').value.trim()) entries.push(['search', `Szukaj: ${$('#album-search').value.trim()}`]);
+    if ($('#album-with-image').checked) entries.push(['image', 'Tylko ze zdjęciem']);
+    if ($('#album-favorites-only').checked) entries.push(['favorites', 'Tylko zapisane']);
+    selectedTags.forEach((tags, group) => tags.forEach(tag => entries.push([`tag:${group}:${tag}`, tag])));
+    if (selectedTagCount() && tagLogic !== 'or') {
+      const rule = tagLogic === 'threshold' ? `minimum ${minimumTags} z ${selectedTagCount()}` : ({ and: 'AND', not: 'NOT', conditional: 'grupy warunkowe' }[tagLogic]);
+      entries.push(['logic', `Logika: ${rule}`]);
+    }
+    if (tagLogic === 'conditional') groupLogic.forEach((operation, group) => { if (operation !== 'or' && selectedTags.has(group)) entries.push([`group:${group}`, `${group}: ${operation.toUpperCase()}`]); });
+    host.hidden = entries.length === 0;
+    entries.forEach(([key, label]) => {
+      const chip = make('button', 'active-filter-chip', `${label} ×`);
+      chip.type = 'button'; chip.setAttribute('aria-label', `Usuń filtr: ${label}`);
+      chip.onclick = () => {
+        if (key === 'search') $('#album-search').value = '';
+        else if (key === 'image') $('#album-with-image').checked = false;
+        else if (key === 'favorites') $('#album-favorites-only').checked = false;
+        else if (key === 'logic') { tagLogic = 'or'; updateLogicControls(); }
+        else if (key.startsWith('group:')) { groupLogic.set(key.slice(6), 'or'); renderTags(); }
+        else { const [, group, ...rest] = key.split(':'); const tag = rest.join(':'); const values = selectedTags.get(group); values?.delete(tag); if (!values?.size) selectedTags.delete(group); renderTags(); }
+        renderGrid();
+      };
+      host.append(chip);
+    });
+    const activeCount = entries.length;
+    $('#filter-badge').hidden = activeCount === 0;
+    $('#filter-badge').textContent = String(activeCount);
   }
 
   function renderTags() {
@@ -113,6 +177,15 @@
       button.onclick = () => { activeTagTab = name; renderTags(); };
       tabs.append(button);
       if (!isActive) return;
+      const logicLabel = make('label', 'group-logic-control');
+      logicLabel.dataset.group = name;
+      logicLabel.hidden = tagLogic !== 'conditional' || !selectedTags.has(name);
+      logicLabel.append(make('span', '', `Reguła grupy „${name}”`));
+      const logicSelect = document.createElement('select'); logicSelect.setAttribute('aria-label', `Reguła logiczna tagów: ${name}`);
+      [['or','OR — dowolny tag'],['and','AND — wszystkie tagi'],['not','NOT — żaden tag']].forEach(([value,label]) => { const option = document.createElement('option'); option.value = value; option.textContent = label; logicSelect.append(option); });
+      logicSelect.value = groupLogic.get(name) || 'or';
+      logicSelect.onchange = () => { groupLogic.set(name, logicSelect.value); renderGrid(); };
+      logicLabel.append(logicSelect); choices.append(logicLabel);
       const selected = selectedTags.get(name) || new Set();
       tags.forEach(tag => {
         const chip = make('button', 'tag-chip', tag);
@@ -130,8 +203,9 @@
       });
     });
     const count = selectedTagCount();
-    status.textContent = count ? `${count} ${count === 1 ? 'aktywny tag' : 'aktywne tagi'} · zakładki łączą się ze sobą.` : 'Wybierz tagi w zakładkach. W jednej zakładce możesz wybrać kilka opcji.';
+    status.textContent = count ? `${count} ${count === 1 ? 'aktywny tag' : 'aktywne tagi'} · ${tagLogic === 'conditional' ? 'grupy łączą się przez AND.' : 'reguła dotyczy wszystkich wybranych tagów.'}` : 'Wybierz tagi w zakładkach.';
     clear.disabled = !count;
+    updateLogicControls();
   }
 
   function filtered() {
@@ -172,6 +246,7 @@
     const sort = $('#album-sort').value;
     $('#album-count').textContent = `${list.length} ${list.length === 1 ? 'profil' : 'profili'} · ${TYPE_LABEL[active].toLocaleLowerCase('pl')}`;
     $('#album-order-note').textContent = sort === 'date-asc' ? 'Od najstarszej dostępnej daty' : sort === 'date-desc' ? 'Od najnowszej dostępnej daty' : '';
+    renderActiveFilters();
     root.replaceChildren();
     if (!list.length) { root.append(make('p', 'album-empty', 'Nie znaleziono profili. Zmień wyszukiwanie lub filtry.')); return; }
     list.forEach(profile => {
@@ -229,12 +304,13 @@
     } else aside.append(make('p', 'album-hint', 'Brak dodatkowych informacji.'));
     const layout = make('div', 'profile-layout'); layout.append(main, aside);
     view.append(hero, layout);
+    savedScrollY = window.scrollY;
     location.hash = encodeURIComponent(profileId(profile));
     dialog.scrollTop = 0; dialog.showModal();
   }
 
   function setType(type) {
-    active = type; selectedTags.clear(); activeTagTab = null;
+    active = type; selectedTags.clear(); groupLogic.clear(); tagLogic = 'or'; minimumTags = 1; activeTagTab = null;
     document.querySelectorAll('[data-type]').forEach(button => {
       const chosen = button.dataset.type === type;
       button.classList.toggle('active', chosen); button.setAttribute('aria-selected', String(chosen));
@@ -243,21 +319,39 @@
   }
 
   document.querySelectorAll('[data-type]').forEach(button => { button.onclick = () => setType(button.dataset.type); });
-  $('#album-search').addEventListener('input', renderGrid);
   $('#album-sort').addEventListener('change', renderGrid);
   $('#album-with-image').addEventListener('change', renderGrid);
   $('#album-favorites-only').addEventListener('change', renderGrid);
-  $('#clear-tags').onclick = () => { selectedTags.clear(); renderTags(); renderGrid(); };
+  $('#clear-tags').onclick = () => { selectedTags.clear(); groupLogic.clear(); tagLogic = 'or'; minimumTags = 1; renderTags(); renderGrid(); };
   $('#album-reset').onclick = () => {
     $('#album-search').value = ''; $('#album-sort').value = 'name';
     $('#album-with-image').checked = false; $('#album-favorites-only').checked = false;
-    selectedTags.clear(); renderTags(); renderGrid(); $('#album-search').focus();
+    selectedTags.clear(); groupLogic.clear(); tagLogic = 'or'; minimumTags = 1; renderTags(); renderGrid(); $('#album-search').focus();
   };
   $('#album-random').onclick = () => { const list = filtered(); if (list.length) openProfile(profileId(list[Math.floor(Math.random() * list.length)])); };
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && dialog.open) dialog.close(); });
+  $('#filters-toggle').onclick = () => {
+    const panel = $('#album-sidebar'); const opening = panel.hidden;
+    panel.hidden = !opening; $('#filters-toggle').setAttribute('aria-expanded', String(opening));
+    if (opening && matchMedia('(max-width: 700px)').matches) { document.body.classList.add('filters-open'); panel.setAttribute('aria-modal', 'true'); $('#filters-close').focus(); }
+    if (!opening) { document.body.classList.remove('filters-open'); $('#filters-toggle').focus(); }
+  };
+  $('#filters-close').onclick = () => { $('#album-sidebar').hidden = true; $('#album-sidebar').removeAttribute('aria-modal'); $('#filters-toggle').setAttribute('aria-expanded', 'false'); document.body.classList.remove('filters-open'); $('#filters-toggle').focus(); };
+  document.querySelectorAll('[name="tag-logic"]').forEach(input => input.addEventListener('change', () => { tagLogic = input.value; renderTags(); renderGrid(); }));
+  $('#tag-threshold').addEventListener('input', event => { minimumTags = Number(event.target.value); updateLogicControls(); renderGrid(); });
+  $('#album-search').addEventListener('input', renderGrid);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && dialog.open) dialog.close();
+    else if (event.key === 'Escape' && !$('#album-sidebar').hidden) $('#filters-close').click();
+    else if (event.key === 'Tab' && !$('#album-sidebar').hidden && matchMedia('(max-width: 700px)').matches) {
+      const focusable = [...$('#album-sidebar').querySelectorAll('button:not(:disabled),input:not(:disabled),select:not(:disabled),[tabindex]:not([tabindex="-1"])')].filter(element => element.getClientRects().length);
+      const first = focusable[0]; const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    }
+  });
   $('.dialog-close').onclick = () => dialog.close();
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener('close', () => { history.replaceState(null, '', location.pathname); });
+  dialog.addEventListener('close', () => { history.replaceState(null, '', location.pathname + location.search); window.scrollTo(0, savedScrollY); });
 
   window.loadPoliticalProfiles().then(data => {
     db = data;
