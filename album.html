@@ -18,7 +18,13 @@
     <section class="album-intro" aria-labelledby="album-title">
       <p class="eyebrow">Baza poglądów i postaci</p>
       <h1 id="album-title">Album profili politycznych</h1>
-      <p>Przeglądaj partie, ideologie, postacie i profile użytkowników. Filtry tagów są pogrupowane w wygodnych zakładkach.</p>
+      <p>Przeglądaj partie, ideologie, postacie i profile użytkowników.</p>
+    </section>
+
+    <section class="album-toolbar" aria-label="Wyszukiwanie i filtry">
+      <label class="visually-hidden" for="album-search">Wyszukaj profil</label>
+      <input id="album-search" type="search" placeholder="Nazwa, tag, kraj…" autocomplete="off">
+      <button id="filters-toggle" class="filters-toggle" type="button" aria-expanded="false" aria-controls="album-sidebar">Filtry <span id="filter-badge" class="filter-badge" hidden></span></button>
     </section>
 
     <nav class="album-tabs" aria-label="Rodzaje profili" role="tablist">
@@ -28,12 +34,8 @@
       <button data-type="user" role="tab" aria-selected="false">Użytkownicy</button>
     </nav>
 
-    <aside class="album-sidebar" aria-label="Filtry albumu">
-      <div class="filter-group">
-        <label for="album-search">Wyszukaj profil</label>
-        <input id="album-search" type="search" placeholder="Nazwa, tag, kraj…" autocomplete="off">
-      </div>
-
+    <aside id="album-sidebar" class="album-sidebar" aria-label="Filtry albumu" hidden>
+      <div class="filter-panel-heading"><h2>Filtry</h2><button id="filters-close" class="filters-close" type="button" aria-label="Zamknij filtry">×</button></div>
       <div class="filter-group">
         <label for="album-sort">Sortowanie</label>
         <select id="album-sort">
@@ -55,12 +57,27 @@
           <button id="clear-tags" class="text-button" type="button" disabled>Wyczyść</button>
         </div>
         <div id="album-tag-tabs" class="tag-tabs" role="tablist" aria-label="Kategorie tagów"></div>
+        <fieldset class="tag-logic">
+          <legend>Jak łączyć tagi?</legend>
+          <div class="logic-options">
+            <label><input type="radio" name="tag-logic" value="or" checked> Suma (OR)</label>
+            <label><input type="radio" name="tag-logic" value="and"> Część wspólna (AND)</label>
+            <label><input type="radio" name="tag-logic" value="not"> Wykluczenie (NOT)</label>
+            <label><input type="radio" name="tag-logic" value="conditional"> Warunkowy (grupy)</label>
+            <label><input type="radio" name="tag-logic" value="threshold"> Minimum N z M</label>
+          </div>
+          <label id="threshold-control" class="threshold-control" hidden for="tag-threshold">Wymagane tagi: <output id="threshold-value">1</output>
+            <input id="tag-threshold" type="range" min="1" max="1" value="1">
+          </label>
+        </fieldset>
         <div id="album-tags" class="tag-choices" aria-live="polite"></div>
       </section>
 
       <button id="album-reset" class="filter-reset" type="button">Wyczyść filtry</button>
       <p class="album-hint">Zapisane profile są przechowywane tylko w tej przeglądarce.</p>
     </aside>
+
+    <div id="active-filters" class="active-filters" aria-label="Aktywne filtry" hidden></div>
 
     <section class="album-content" aria-label="Lista profili">
       <div class="album-results-heading"><p id="album-count" class="album-count" aria-live="polite"></p><p id="album-order-note" class="album-order-note"></p><button id="album-random" class="album-random" type="button">Losuj profil</button></div>
