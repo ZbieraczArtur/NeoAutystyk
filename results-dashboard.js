@@ -33,7 +33,7 @@
       const config = document.createElement('aside'); config.className = 'result-compass-config'; config.setAttribute('aria-label', 'Informacje i konfiguracja kompasu');
       const info = document.createElement('div'); info.className = 'compass-live-info'; info.innerHTML = '<h4>Aktualny profil</h4><div class="compass-coordinates"></div><div class="compass-pairs"></div>';
       config.append(info, controls); compassLayout.append(stage, config); compassSection.append(compassLayout);
-      const valuesSection = makeSection('results-values', 'ANALIZA OSI', 'Bilans wartości', 'Procenty pokazują rozkład każdej pary wartości.'); valuesSection.append(values);
+      const valuesSection = makeSection('results-values', 'ANALIZA OSI', 'Bilans wartości', 'Pozycja na każdej osi pokazuje relację między dwoma biegunami.'); valuesSection.append(values);
       const rankingsSection = makeSection('results-rankings', 'DOPASOWANIA', 'Najbliższe profile', 'Najwyższy wynik oznacza największe podobieństwo odpowiedzi.'); rankingsSection.append(rankings);
       const tools = $('.results-tools', results), share = $('#share-card-section', results);
       const compareSection = makeSection('results-compare', 'DALSZA ANALIZA', 'Porównywarka i udostępnianie');
