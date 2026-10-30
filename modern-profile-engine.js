@@ -34,7 +34,6 @@
   function profileKey(type) {
     if (type === 'party') return 'parties';
     if (type === 'ideology') return 'ideologies';
-    if (type === 'figure') return 'figures';
     return 'users';
   }
 
@@ -346,7 +345,6 @@
     let score = 0;
     let maxPossible = 0;
     let compared = 0;
-    const details = [];
 
     for (const question of config.questions) {
       const allowed = reference.get(Number(question.id));
@@ -363,11 +361,10 @@
       score += best * questionWeight * answerValueWeight;
       maxPossible += 1.5 * questionWeight * answerValueWeight;
       compared++;
-      details.push({ questionId: Number(question.id), score: best, weightedScore: best * questionWeight * answerValueWeight, maxPossible: 1.5 * questionWeight * answerValueWeight, weight: questionWeight * answerValueWeight, userAnswer: userAnswer.answerData?.label || '', profileAnswer: allowed.map(answer => answer.answerData?.label || '').filter(Boolean).join(' / ') });
     }
 
     const percent = maxPossible ? Math.round(((score + maxPossible) / (2 * maxPossible)) * 100) : 0;
-    return { percent: Math.min(100, Math.max(0, percent)), score, maxPossible, compared, details };
+    return { percent: Math.min(100, Math.max(0, percent)), score, maxPossible, compared };
   }
 
   function getModernRanking(type) {
@@ -388,12 +385,6 @@
       };
     }).sort((a, b) => b.percent - a.percent || String(a.name || '').localeCompare(String(b.name || ''), 'pl'));
   }
-  window.getModernRanking = getModernRanking;
-  window.isModernProfileMatching = isModernMatching;
-  window.getPoliticalProfiles = () => politicalProfiles || {};
-  window.getCurrentUserAnswers = () => userAnswers || [];
-  window.compareProfileAnswers = (answers, profile) => compareAnswersToReferenceProfileModern(answers, profile);
-  window.parseProfileExportCode = parseExportCodeModern;
 
   function firstAnswersFromReference(profile) {
     const reference = cachedReference(profile);
