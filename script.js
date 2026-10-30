@@ -1214,6 +1214,7 @@ function computeScores(mode = currentScoringMode) {
       rightKey: pair.rightKey || pair.right,
       leftPercent: leftPercent,
       rightPercent: rightPercent,
+      hasData: totalMax > 0,
       leftDef: pair.leftDef,
       rightDef: pair.rightDef
     });
@@ -1475,6 +1476,60 @@ function generateShareCode(pairResults) {
   return container;
 }
 
+function escapeValueHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+}
+
+function showValueAxisDetails(pair) {
+  let dialog = document.getElementById('value-axis-dialog');
+  if (!dialog) {
+    dialog = document.createElement('dialog');
+    dialog.id = 'value-axis-dialog';
+    dialog.className = 'value-axis-dialog';
+    document.body.appendChild(dialog);
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  }
+  const responses = userAnswers.filter(answer => {
+    const data = answer?.answerData;
+    return data && Number.isFinite(Number(answer.answerValue)) && Number(answer.answerValue) !== 0 &&
+      [...(data.values_for || []), ...(data.values_against || [])].some(value => value === pair.leftKey || value === pair.rightKey);
+  });
+  const row = (title, body) => body ? `<section><h4>${escapeValueHtml(title)}</h4><p>${escapeValueHtml(body)}</p></section>` : '';
+  const explanation = pair.hasData
+    ? (pair.leftPercent === 50 ? 'Wynik znajduje się w środku osi.' : `Wynik przechyla się w stronę ${pair.leftPercent > 50 ? pair.left : pair.right}.`)
+    : '';
+  dialog.innerHTML = `<button type="button" class="value-dialog-close" aria-label="Zamknij">×</button><p class="results-eyebrow">SZCZEGÓŁY WYMIARU</p><h2>${escapeValueHtml(pair.left)} ↔ ${escapeValueHtml(pair.right)}</h2><div class="value-dialog-score">${pair.hasData ? `${Math.round(pair.leftPercent)}%` : 'Brak obliczonego wyniku'}</div>${row(pair.left, pair.leftDef)}${row(pair.right, pair.rightDef)}${row('Interpretacja', explanation)}${row('Sposób obliczenia', 'Pozycja wynika z porównania ważonych odpowiedzi przypisanych do obu biegunów; zastosowano aktualny tryb liczenia testu.')}${responses.length ? `<section><h4>Tezy i odpowiedzi (${responses.length})</h4><ul>${responses.map(answer => { const question = questionById.get(Number(answer.questionId)); const label = question?.text || `Teza ${answer.questionId}`; const value = answer.answerLabel || answer.label || `${Number(answer.answerValue) > 0 ? 'Zgoda' : 'Niezgoda'} (${answer.answerValue})`; return `<li><span>${escapeValueHtml(label)}</span><small>${escapeValueHtml(value)}</small></li>`; }).join('')}</ul></section>` : ''}`;
+  const profiles = ['ideology', 'party', 'figure', 'user'].flatMap(type => getProfileCollection(type).map(profile => ({ ...profile, type }))).filter(profile => profile.exportCode && typeof parseExportCode === 'function');
+  if (profiles.length) {
+    const comparison = document.createElement('section');
+    comparison.className = 'value-axis-comparison';
+    comparison.innerHTML = '<h4>Porównaj profile</h4><label>Wybierz profile <select multiple size="5" aria-label="Profile do porównania"></select></label><div class="value-comparison-results" aria-live="polite"></div>';
+    const select = comparison.querySelector('select');
+    profiles.forEach((profile, index) => { const option = document.createElement('option'); option.value = String(index); option.textContent = `${profile.name} · ${{ ideology: 'Ideologia', party: 'Partia', figure: 'Postać', user: 'Użytkownik' }[profile.type]}`; select.append(option); });
+    select.addEventListener('change', () => {
+      const output = comparison.querySelector('.value-comparison-results');
+      output.replaceChildren();
+      select.selectedOptions.forEach(option => {
+        const profile = profiles[Number(option.value)];
+        const answers = parseExportCode(profile.exportCode).filter(answer => !answer.noteOnly && answer.answerData);
+        const result = computeScoresForAnswers(answers, currentScoringMode).pairResults.find(item => item.leftKey === pair.leftKey && item.rightKey === pair.rightKey);
+        if (!result?.hasData) return;
+        const button = document.createElement('button');
+        button.type = 'button'; button.className = 'value-comparison-profile';
+        button.style.setProperty('--profile-position', `${result.leftPercent}%`);
+        button.title = `${profile.name}: ${Math.round(result.leftPercent)}%`;
+        button.innerHTML = `<span class="value-comparison-marker" style="left:${result.leftPercent}%"></span><span>${escapeValueHtml(profile.name)}</span><strong>${Math.round(result.leftPercent)}%</strong>`;
+        button.addEventListener('click', () => profile.type === 'party' ? showPartyPopup(profile.name, profile.description || '') : profile.type === 'ideology' ? showIdeologyPopup(profile.name, profile.description || '') : showPopup(`${profile.name}\n\n${profile.description || ''}`));
+        output.append(button);
+      });
+      if (!output.childElementCount) output.textContent = 'Brak porównywalnych wyników dla wybranych profili.';
+    });
+    dialog.append(comparison);
+  }
+  dialog.querySelector('.value-dialog-close').addEventListener('click', () => dialog.close());
+  if (!dialog.open) dialog.showModal();
+}
+
 function computeAndDisplayResults() {
   const { pairResults, ideologyResults, partyResults } = computeScores(currentScoringMode);
 
@@ -1490,6 +1545,10 @@ function computeAndDisplayResults() {
 
   const valuesHeader = translations?.ui?.valuesHeader || '⚖️ Pary wartości';
   valuesResults.innerHTML = `<h3>${valuesHeader}</h3>`;
+  const toolbar = document.createElement('div');
+  toolbar.className = 'value-view-toolbar';
+  toolbar.innerHTML = '<p>Oś pokazuje położenie między dwoma biegunami.</p><div role="group" aria-label="Sposób wyświetlania osi"><button type="button" data-view="cards" aria-pressed="true">Karty</button><button type="button" data-view="list" aria-pressed="false">Lista</button></div>';
+  valuesResults.appendChild(toolbar);
   const gridContainer = document.createElement('div');
   gridContainer.className = 'values-categories-grid';
   for (const [catId, group] of sortedGroups) {
@@ -1497,38 +1556,33 @@ function computeAndDisplayResults() {
     categoryDiv.className = 'value-category-block';
     const catHeader = document.createElement('h4');
     catHeader.className = 'category-header';
-    catHeader.textContent = group.name;
+    catHeader.innerHTML = `<button type="button" class="value-category-toggle" aria-expanded="true"><span>${group.name}</span><span aria-hidden="true">⌄</span></button>`;
     categoryDiv.appendChild(catHeader);
     for (const pair of group.pairs) {
       const leftColor = valueColors[pair.leftKey || pair.left] || '#3b82f6';
       const rightColor = valueColors[pair.rightKey || pair.right] || '#ef4444';
-      const leftTextColor = getContrastColor(leftColor);
-      const rightTextColor = getContrastColor(rightColor);
       const pairDiv = document.createElement('div');
-      pairDiv.className = 'value-pair';
-      pairDiv.innerHTML = `
-        <div class="value-bar-container-new">
-          <span class="value-left-new" data-def="${pair.leftDef}">${pair.left}</span>
-          <div class="value-bar-new">
-            <div class="bar-left-new" style="width: ${pair.leftPercent}%; background-color: ${leftColor}; color: ${leftTextColor};">${Math.round(pair.leftPercent)}%</div>
-            <div class="bar-right-new" style="width: ${pair.rightPercent}%; background-color: ${rightColor}; color: ${rightTextColor};">${Math.round(pair.rightPercent)}%</div>
-          </div>
-          <span class="value-right-new" data-def="${pair.rightDef}">${pair.right}</span>
-        </div>
-      `;
-      const leftSpan = pairDiv.querySelector('.value-left-new');
-      const rightSpan = pairDiv.querySelector('.value-right-new');
-      
-      leftSpan.style.setProperty('--hover-color', leftColor);
-      rightSpan.style.setProperty('--hover-color', rightColor);
-      
-      leftSpan.addEventListener('click', () => showPopup(pair.leftDef));
-      rightSpan.addEventListener('click', () => showPopup(pair.rightDef));
+      pairDiv.className = 'value-pair value-axis-card';
+      const percent = pair.hasData ? pair.leftPercent : null;
+      const position = percent === null ? 50 : percent;
+      pairDiv.style.setProperty('--axis-left', leftColor);
+      pairDiv.style.setProperty('--axis-right', rightColor);
+      pairDiv.innerHTML = `<button type="button" class="value-axis-open" aria-label="Szczegóły osi ${pair.left} — ${pair.right}"><span class="value-axis-title">${pair.left} <span aria-hidden="true">↔</span> ${pair.right}</span><span class="value-axis-track" role="img" aria-label="${pair.hasData ? `Pozycja ${Math.round(percent)} procent w stronę ${pair.left}` : 'Brak wyniku'}"><span class="value-axis-mid"></span>${pair.hasData ? `<span class="value-axis-marker" style="left:${position}%"></span>` : ''}</span><span class="value-axis-labels"><span>${pair.left}</span><span class="value-axis-score">${pair.hasData ? `${Math.round(percent)}%` : 'Brak danych'}</span><span>${pair.right}</span></span></button>`;
+      pairDiv.querySelector('button').addEventListener('click', () => showValueAxisDetails(pair));
       categoryDiv.appendChild(pairDiv);
     }
+    catHeader.querySelector('button').addEventListener('click', event => {
+      const expanded = event.currentTarget.getAttribute('aria-expanded') === 'true';
+      event.currentTarget.setAttribute('aria-expanded', String(!expanded));
+      categoryDiv.classList.toggle('is-collapsed', expanded);
+    });
     gridContainer.appendChild(categoryDiv);
   }
   valuesResults.appendChild(gridContainer);
+  toolbar.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => {
+    toolbar.querySelectorAll('[data-view]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    gridContainer.classList.toggle('is-list', button.dataset.view === 'list');
+  }));
 
   ideologiesResults.innerHTML = '';
   partiesResults.innerHTML = '';
@@ -2070,8 +2124,11 @@ function computeScoresForAnswers(answers, mode) {
     pairResults.push({
       left: pair.left,
       right: pair.right,
+      leftKey: pair.leftKey || pair.left,
+      rightKey: pair.rightKey || pair.right,
       leftPercent: leftPercent,
       rightPercent: rightPercent,
+      hasData: totalMax > 0,
     });
   }
   return { pairResults };
