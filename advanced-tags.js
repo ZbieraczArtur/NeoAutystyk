@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   const CATALOG = window.NeoTagCatalog?.catalog || Object.freeze({
-    'Zawód / dziedzina': ['Filozof','Ekonomista','Polityk','Rewolucjonista','Wojskowy','Prawnik','Duchowny','Socjolog','Publicysta','Pisarz','Lekarz','Przedsiębiorca','Akademik','Planista','Politolog','Historyk','Działacz związkowy'],
+    'Zawód / dziedzina': ['Filozof','Ekonomista','Polityk','Rewolucjonista','Rolnik','Artysta','Wojskowy','Prawnik','Duchowny','Socjolog','Publicysta','Pisarz','Lekarz','Przedsiębiorca','Akademik','Planista','Politolog','Historyk','Działacz związkowy'],
     'Rola / urząd': ['Prezydent','Premier','Monarcha','Papież','Dyktator','Parlamentarzysta','Myśliciel społeczny','Kanclerz','Reformator','Założyciel partii/ruchu','Lider partii','Wiceprezydent / Zastępca szefa państwa','Minister','Dyplomata','Arystokrata','Dysydent','Samorządowiec'],
     'Narodowość': ['Amerykańska','Polska','Brytyjska','Niemiecka','Francuska','Rosyjska','Włoska','Austriacka','Ukraińska','Indyjska','Hiszpańska','Kanadyjska','Chińska','Holenderska','Argentyńska','Czeska','Izraelska','Australijska','Japońska','Chilijska','Inna'],
     'Status': ['Żyje','Martwy'],
