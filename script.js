@@ -795,7 +795,9 @@ function renderQuestions() {
         siblings.forEach(sib => { sib.classList.remove('selected'); sib.setAttribute('aria-pressed', 'false'); });
         ansEl.classList.add('selected');
         ansEl.setAttribute('aria-pressed', 'true');
-        const existing = userAnswers.findIndex(a => a.questionId === q.id);
+        const previousAnswer = userAnswers.find(a => Number(a.questionId) === Number(q.id) && a.answerData);
+        const isNewAnswer = !previousAnswer;
+        const existing = userAnswers.findIndex(a => Number(a.questionId) === Number(q.id));
         // Pobierz notatkę z istniejącego wpisu, jeśli jest
         const existingNote = (existing !== -1 && userAnswers[existing].note) ? userAnswers[existing].note : '';
         const answerObj = {
@@ -807,8 +809,10 @@ function renderQuestions() {
         };
         if (existing !== -1) userAnswers[existing] = answerObj;
         else userAnswers.push(answerObj);
-        window.NeoTestModes?.onAnswerSelected(q.id);
-        window.NeoTestPages?.maybeAdvance();
+        updateDOMSelections();
+        document.dispatchEvent(new CustomEvent('neoAnswerSelected', {
+          detail: { questionId: q.id, isNewAnswer }
+        }));
       });
       ansEl.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); ansEl.click(); }
@@ -822,17 +826,22 @@ function renderQuestions() {
     card.appendChild(answersDiv);
     
     // ===== NOWE POLE NOTATKI =====
-    const noteDiv = document.createElement('div');
+    const noteDiv = document.createElement('details');
     noteDiv.className = 'note-input-container';
 
+    const noteSummary = document.createElement('summary');
+    noteSummary.textContent = translations?.ui?.noteLabel || '✏️ Uzasadnienie odpowiedzi (opcjonalne)';
+    noteDiv.appendChild(noteSummary);
+
     const noteLabel = document.createElement('label');
-    noteLabel.textContent = translations?.ui?.noteLabel || '✏️ Uzasadnienie odpowiedzi (opcjonalne):';
+    noteLabel.textContent = 'Uzasadnienie odpowiedzi';
     noteLabel.className = 'note-label';
 
     const noteTextarea = document.createElement('textarea');
     noteTextarea.className = 'note-textarea';
     noteTextarea.rows = 2;
     noteTextarea.placeholder = translations?.ui?.notePlaceholder || 'Wpisz swoje uzasadnienie...';
+    noteTextarea.setAttribute('aria-label', 'Uzasadnienie odpowiedzi');
 
     // Jeśli w userAnswers istnieje już notatka dla tego pytania – wypełnij textarea
     const existingNote = userAnswers.find(a => a.questionId === q.id);
@@ -868,19 +877,33 @@ function attachQuestionEvents() {}
 function updateDOMSelections() {
   if (!config) return;
   document.querySelectorAll('.answer-option').forEach(opt => { opt.classList.remove('selected'); opt.setAttribute('aria-pressed', 'false'); });
-  for (const ans of userAnswers) {
-    const card = document.querySelector(`.question-card[data-id='${ans.questionId}']`);
-    if (!card) continue;
-    const targetOption = card.querySelector(`.answer-option[data-answer-index='${ans.answerIndex}']`);
-    if (targetOption) { targetOption.classList.add('selected'); targetOption.setAttribute('aria-pressed', 'true'); }
-
-    // ----- nowy kod: ustaw notatkę w textarea -----
-    const textarea = card.querySelector('.note-textarea');
-    if (textarea && ans.note !== undefined) {
-      textarea.value = ans.note;
+  document.querySelectorAll('.question-card').forEach(card => {
+    const questionId = Number(card.dataset.id);
+    const answer = userAnswers.find(row => Number(row.questionId) === questionId && row.answerData);
+    const answerRows = userAnswers.filter(row => Number(row.questionId) === questionId);
+    if (answer) {
+      const targetOption = card.querySelector(`.answer-option[data-answer-index='${Number(answer.answerIndex)}']`);
+      if (targetOption) { targetOption.classList.add('selected'); targetOption.setAttribute('aria-pressed', 'true'); }
     }
-    // ----------------------------------------------
-  }
+
+    // The tint follows the saved answer data/value, never the visual button position.
+    card.removeAttribute('data-response-polarity');
+    card.style.removeProperty('--response-intensity');
+    if (answer) {
+      const savedValue = Number(answer.answerData?.value ?? answer.answerValue);
+      if (Number.isFinite(savedValue) && savedValue !== 0) {
+        const q = config.questions.find(question => Number(question.id) === questionId);
+        const maxValue = Math.max(1.5, ...(q?.answers || []).map(item => Math.abs(Number(item.value) || 0)));
+        const intensity = 7 + 10 * Math.min(1, Math.abs(savedValue) / maxValue);
+        card.dataset.responsePolarity = savedValue > 0 ? 'agree' : 'disagree';
+        card.style.setProperty('--response-intensity', `${intensity}%`);
+      }
+    }
+
+    const savedNote = answerRows.find(row => typeof row.note === 'string');
+    const textarea = card.querySelector('.note-textarea');
+    if (textarea && savedNote) textarea.value = savedNote.note;
+  });
 }
 
 function getSelectedQuestionIds() {
