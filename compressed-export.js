@@ -1,17 +1,20 @@
 /*
- * Compact answer codes (NA3, with NA2 backwards compatibility)
+ * Compact answer codes (NA4, with NA2/NA3 backwards compatibility)
  * --------------------------
- * The payload stores a question id and a choice index (0–6), never answer
+ * The payload stores a question id and a bounded choice index, never answer
  * labels.  Optional notes live in a separate dictionary.  Prefixing the
- * compressed Base64 with `NA3:` makes the format self-identifying; the decoder
- * still accepts old NA2 and human-readable export codes.
+ * compressed Base64 with a versioned prefix makes the full payload
+ * self-identifying; the decoder also accepts older and human-readable codes.
  */
 (function () {
   'use strict';
 
-  const PREFIX = 'NA3:';
+  const PREFIX = 'NA4:';
   const LEGACY_PREFIX = 'NA2:';
-  const FORMAT_VERSION = 3;
+  const PREVIOUS_PREFIX = 'NA3:';
+  const FORMAT_VERSION = 4;
+  const SUPPORTED_VERSIONS = [2, 3, FORMAT_VERSION];
+  const MAX_CHOICE_INDEX = 31;
   const legacyGenerate = window.generateExportCode;
   const legacyImport = window.importAnswersFromExportCode;
   const legacyParse = window.parseExportCode;
@@ -23,7 +26,7 @@
 
   function isCompactCode(value) {
     const source = compactText(value);
-    return source.startsWith(PREFIX) || source.startsWith(LEGACY_PREFIX);
+    return source.startsWith(PREFIX) || source.startsWith(PREVIOUS_PREFIX) || source.startsWith(LEGACY_PREFIX);
   }
 
   function decodeBase64Utf8(value) {
@@ -50,7 +53,7 @@
 
   function decodePayload(rawCode) {
     const source = compactText(rawCode);
-    const prefix = source.startsWith(PREFIX) ? PREFIX : source.startsWith(LEGACY_PREFIX) ? LEGACY_PREFIX : null;
+    const prefix = [PREFIX, PREVIOUS_PREFIX, LEGACY_PREFIX].find(candidate => source.startsWith(candidate)) || null;
     if (!prefix) return null;
     const encoded = source.slice(prefix.length);
     let payload = null;
@@ -66,11 +69,48 @@
         try { payload = JSON.parse(decodeBase64Utf8(encoded)); } catch (_) { /* malformed compact export */ }
       }
     }
-    if (!payload) throw new Error('Kod NA3 jest uszkodzony lub niekompletny.');
-    if (!payload || ![2, FORMAT_VERSION].includes(payload.v) || !Array.isArray(payload.a)) {
+    if (!payload) throw new Error('Kod NA4 jest uszkodzony lub niekompletny.');
+    if (!payload || !SUPPORTED_VERSIONS.includes(Number(payload.v)) || !Array.isArray(payload.a)) {
       throw new Error('To nie jest obsługiwany kod odpowiedzi NeoAutystyk.');
     }
+    if (!payload.a.every(entry => Array.isArray(entry) && Number.isInteger(Number(entry[0])) && Number(entry[0]) >= 0 && Number.isInteger(Number(entry[1])) && Number(entry[1]) >= 0 && Number(entry[1]) <= MAX_CHOICE_INDEX)) {
+      throw new Error('Kod zawiera nieprawidłowe identyfikatory pytań lub odpowiedzi.');
+    }
+    if (payload.d !== undefined && (!payload.d || typeof payload.d !== 'object' || Array.isArray(payload.d) || Object.values(payload.d).some(note => typeof note !== 'string'))) {
+      throw new Error('Kod zawiera nieprawidłowe uzasadnienia odpowiedzi.');
+    }
+    payload.s = normalizeSessionMetadata(payload.s);
     return payload;
+  }
+
+  function normalizeSessionMetadata(meta) {
+    if (meta == null) return null;
+    if (typeof meta !== 'object' || Array.isArray(meta)) throw new Error('Kod zawiera nieprawidłowe ustawienia wznowienia testu.');
+    if (!['full', 'balanced', 'short'].includes(meta.mode) || !['cards', 'continuous'].includes(meta.view)) {
+      throw new Error('Kod zawiera nieobsługiwany tryb testu lub widoku.');
+    }
+    const idList = (value, field) => {
+      if (value === undefined) return [];
+      if (!Array.isArray(value) || value.some(id => !Number.isInteger(Number(id)) || Number(id) < 0)) {
+        throw new Error(`Kod zawiera nieprawidłową listę ${field}.`);
+      }
+      return [...new Set(value.map(Number))];
+    };
+    const currentId = meta.currentId == null ? null : Number(meta.currentId);
+    if (currentId !== null && (!Number.isInteger(currentId) || currentId < 0)) throw new Error('Kod zawiera nieprawidłowy numer bieżącego pytania.');
+    const filters = ['all', 'unanswered', 'answered', 'skipped', 'postponed'];
+    return {
+      mode: meta.mode,
+      view: meta.view,
+      selectedIds: idList(meta.selectedIds, 'pytań'),
+      queue: idList(meta.queue, 'kolejki'),
+      currentId,
+      postponed: idList(meta.postponed, 'odłożonych pytań'),
+      autoAdvance: meta.autoAdvance === true,
+      largeText: meta.largeText === true,
+      reducedMotion: meta.reducedMotion === true,
+      listFilter: filters.includes(meta.listFilter) ? meta.listFilter : 'all'
+    };
   }
 
   function questionList() {
@@ -91,7 +131,7 @@
       const questionId = Number(entry[0]);
       const choice = Number(entry[1]);
       const question = byId.get(questionId);
-      if (!question || !Number.isInteger(choice) || choice < 0 || choice > 6 || !question.answers?.[choice] || seen.has(questionId)) return;
+      if (!question || !Number.isInteger(choice) || choice < 0 || choice > MAX_CHOICE_INDEX || !question.answers?.[choice] || seen.has(questionId)) return;
       seen.add(questionId);
       rows.push({
         questionId,
@@ -117,10 +157,10 @@
       if (!answer || answer.noteOnly || !Number.isFinite(Number(answer.questionId)) || !answer.answerData) return;
       const questionId = Number(answer.questionId), question = questions.get(questionId);
       let choice = Number.isInteger(answer.answerIndex) ? answer.answerIndex : -1;
-      if (choice < 0 || choice > 6 || (question && !question.answers?.[choice])) {
+      if (choice < 0 || choice > MAX_CHOICE_INDEX || (question && !question.answers?.[choice])) {
         choice = question?.answers?.findIndex(item => item === answer.answerData || (Number(item.value) === Number(answer.answerValue) && item.label === answer.answerData?.label)) ?? -1;
       }
-      if (choice >= 0 && choice <= 6) answerById.set(questionId, [questionId, choice]);
+      if (choice >= 0 && choice <= MAX_CHOICE_INDEX) answerById.set(questionId, [questionId, choice]);
     });
     const answers = [...answerById.values()];
 
@@ -128,7 +168,7 @@
       const note = String(answer?.note || '');
       if (note.length && Number.isFinite(Number(answer.questionId))) descriptions[Number(answer.questionId)] = note;
     });
-    return { v: FORMAT_VERSION, a: answers, d: descriptions, s: window.NeoTestModes?.metadata?.() || null };
+    return { v: FORMAT_VERSION, a: answers, d: descriptions, s: normalizeSessionMetadata(window.NeoTestModes?.metadata?.() || null) };
   }
 
   function generateCompactExportCode() {
@@ -178,7 +218,7 @@
     catch (error) { console.warn('[NeoAutystyk] Nie można odczytać kodu skróconego:', error); return []; }
   }
 
-  window.NeoAnswerCode = Object.freeze({ PREFIX, LEGACY_PREFIX, createPayload, decodePayload, generateCompactExportCode, parseAnyExportCode, isCompactCode });
+  window.NeoAnswerCode = Object.freeze({ PREFIX, LEGACY_PREFIX, PREVIOUS_PREFIX, createPayload, decodePayload, generateCompactExportCode, parseAnyExportCode, isCompactCode });
   window.generateFullExportCode = (...args) => typeof legacyGenerate === 'function' ? legacyGenerate(...args) : '';
   window.parseExportCode = parseAnyExportCode;
   try { parseExportCode = parseAnyExportCode; } catch (_) { /* parser is exposed through window in module builds */ }
@@ -190,13 +230,13 @@
     if (!isCompactCode(rawCode)) return legacyImport(rawCode);
     try { return await importCompactExportCode(rawCode); }
     catch (error) {
-      if (typeof window.showPopup === 'function') window.showPopup(error.message || 'Nie udało się odczytać kodu NA2.');
+      if (typeof window.showPopup === 'function') window.showPopup(error.message || 'Nie udało się odczytać kodu odpowiedzi.');
       return false;
     }
   };
   try { importAnswersFromExportCode = window.importAnswersFromExportCode; } catch (_) { /* see note above */ }
 
-  // Reference profiles can now store either old text exports or compact NA2/NA3
+  // Reference profiles can now store either old text exports or compact NA2/NA3/NA4
   // exports in their ExportCode field.
   window.compareAnswersToReferenceProfile = function compareAnyProfile(answers, profile) {
     // The shared profile engine parses both formats. Reusing its exact scoring
