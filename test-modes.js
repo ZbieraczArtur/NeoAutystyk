@@ -14,7 +14,9 @@
         queue = [],
         currentId = null,
         postponed = new Set(),
-        autoAdvance = false;
+        autoAdvance = false,
+        listFilter = 'all',
+        navOnlyPostponed = false;
     let settingsDialog;
     async function loadModes() {
         const entries = await Promise.all(Object.entries(modeFiles).map(async ([key, file]) => {
@@ -55,6 +57,20 @@
         return !!a && Number(a.answerValue) === 0;
     }
 
+    function visibleQuestionIds() {
+        const visible = window.__visibleTestQuestionIds;
+        if (!Array.isArray(visible)) return selectedIds;
+        const visibleSet = new Set(visible.map(Number));
+        return selectedIds.filter(id => visibleSet.has(Number(id)));
+    }
+
+    function countLabel(count, singular, few, many) {
+        const n = Math.abs(Number(count)) % 100;
+        const last = n % 10;
+        const form = n === 1 ? singular : last >= 2 && last <= 4 && (n < 12 || n > 14) ? few : many;
+        return `${count} ${form}`;
+    }
+
     function saveSession() {
         try {
             localStorage.setItem(SESSION_KEY, JSON.stringify({
@@ -65,6 +81,7 @@
                 currentId,
                 postponed: [...postponed],
                 autoAdvance,
+                listFilter,
                 largeText: document.body.classList.contains('large-question-text'),
                 reducedMotion: document.body.classList.contains('reduced-motion'),
                 answers: answerRows()
@@ -93,6 +110,7 @@
             currentId,
             postponed: [...postponed],
             autoAdvance,
+            listFilter,
             largeText: document.body.classList.contains('large-question-text'),
             reducedMotion: document.body.classList.contains('reduced-motion')
         };
@@ -115,55 +133,81 @@
     function ensureNavigation() {
         navigation?.remove();
         navigation = document.createElement('section');
-        navigation.className = 'card-navigation';
-        navigation.innerHTML = `<div class="card-nav-top"><button type="button" data-action="prev">← Wstecz</button><span data-progress aria-live="polite"></span><button type="button" data-action="next">Kontynuuj →</button></div><div class="progress-track"><span></span></div><div class="card-nav-tools"><button type="button" data-action="pause">Ⅱ Pauza</button><button type="button" data-action="settings">⚙ Ustawienia</button><button type="button" data-action="toggle-panel" aria-expanded="false">☷ Nawiguj po pytaniach</button><span data-save-status aria-live="polite">Zapisywanie…</span></div><div class="question-nav-panel" hidden><div class="nav-search-row"><input type="search" placeholder="Szukaj po treści, ID lub numerze" aria-label="Szukaj pytania"><button type="button" data-action="postponed">Pokaż odłożone</button></div><div class="nav-shortcuts"><button type="button" data-jump="-5">−5</button><button type="button" data-jump="-1">−1</button><button type="button" data-action="current">Aktualne</button><button type="button" data-jump="1">+1</button><button type="button" data-jump="5">+5</button></div><div class="question-nav-results"></div><p class="status-legend">○ Bez odpowiedzi　✓ Odpowiedziano　– Pominięto　↪ Odłożono</p></div><label class="auto-setting"><input type="checkbox"> Automatycznie przechodź do następnego pytania</label><p class="auto-hint" hidden>Auto: wybór odpowiedzi zapisuje ją i przechodzi dalej.</p>`;
+        navigation.className = `card-navigation ${viewMode === 'cards' ? 'cards-navigation' : 'list-navigation'}`;
+        navigation.innerHTML = viewMode === 'cards'
+            ? `<div class="card-nav-top"><span data-progress aria-live="polite"></span><div class="progress-track" aria-label="Postęp testu"><span></span></div></div><div class="card-nav-tools" aria-label="Narzędzia testu"><button type="button" data-action="pause">Ⅱ Pauza</button><button type="button" data-action="settings">⚙ Ustawienia</button><button type="button" data-action="toggle-panel" aria-expanded="false">☷ Nawiguj po pytaniach</button><span data-save-status aria-live="polite">Zapisywanie…</span></div><div class="question-nav-panel" hidden><div class="nav-search-row"><input type="search" placeholder="Szukaj po treści, ID lub numerze" aria-label="Szukaj pytania"><button type="button" data-action="postponed" aria-pressed="false">Pokaż odłożone</button></div><div class="nav-shortcuts"><button type="button" data-jump="-5">−5</button><button type="button" data-jump="-1">−1</button><button type="button" data-action="current">Aktualne</button><button type="button" data-jump="1">+1</button><button type="button" data-jump="5">+5</button></div><div class="question-nav-results"></div><p class="status-legend">○ Bez odpowiedzi　✓ Odpowiedziano　– Pominięto　↪ Odłożono</p></div><div class="card-nav-bottom"><button type="button" data-action="prev">← Poprzednie</button><button type="button" data-action="next">Następne →</button></div>`
+            : `<div class="list-progress-summary"><span data-progress aria-live="polite"></span><div class="progress-track" aria-label="Postęp odpowiedzi"><span></span></div></div><div class="list-filter-bar" role="group" aria-label="Filtruj pytania">${[['all','Wszystkie'],['unanswered','Bez odpowiedzi'],['answered','Odpowiedziane'],['skipped','Pominięte'],['postponed','Odłożone']].map(([key,label]) => `<button type="button" data-list-filter="${key}" aria-pressed="${key === listFilter}"><span>${label}</span><b data-filter-count="${key}">0</b></button>`).join('')}</div><div class="list-nav-tools"><button type="button" data-action="pause">Ⅱ Pauza i eksport</button><span data-save-status aria-live="polite">Zapisywanie…</span></div>`;
         questionsContainer.before(navigation);
         const $ = (s) => navigation.querySelector(s);
-        $('[data-action="prev"]').onclick = () => {
-            if (viewMode === 'cards') jumpRelative(-1);
-            else jumpTo(selectedIds[Math.max(0, selectedIds.indexOf(Number(currentId)) - 1)]);
-        };
-        $('[data-action="next"]').onclick = () => {
-            if (viewMode === 'cards') {
+        $('[data-action="pause"]').onclick = pauseTest;
+        if (viewMode === 'cards') {
+            $('[data-action="prev"]').onclick = () => jumpRelative(-1);
+            $('[data-action="next"]').onclick = () => {
                 if (currentIndex() >= queue.length - 1) document.getElementById('submitBtn')?.click();
                 else jumpRelative(1);
-            } else jumpTo(selectedIds[Math.min(selectedIds.length - 1, selectedIds.indexOf(Number(currentId)) + 1)]);
-        };
-        $('[data-action="pause"]').onclick = pauseTest;
-        $('[data-action="settings"]').onclick = showSettings;
-        $('[data-action="toggle-panel"]').onclick = (e) => {
-            const panel = $('.question-nav-panel');
-            panel.hidden = !panel.hidden;
-            e.currentTarget.setAttribute('aria-expanded', String(!panel.hidden));
-            if (!panel.hidden) renderNavResults();
-        };
-        $('[data-action="current"]').onclick = () => jumpTo(currentId);
-        $('[data-action="postponed"]').onclick = () => renderNavResults(true);
-        navigation.querySelectorAll('[data-jump]').forEach(b => b.onclick = () => jumpRelative(Number(b.dataset.jump)));
-        $('[type="search"]').oninput = () => renderNavResults();
-        const auto = $('.auto-setting input');
-        auto.checked = autoAdvance;
-        auto.onchange = () => {
-            autoAdvance = auto.checked;
-            $('.auto-hint').hidden = !autoAdvance;
-            saveSession();
-        };
-        $('.auto-hint').hidden = !autoAdvance;
-        if (viewMode === 'continuous') navigation.classList.add('list-navigation');
+            };
+            $('[data-action="settings"]').onclick = showSettings;
+            $('[data-action="toggle-panel"]').onclick = (e) => {
+                const panel = $('.question-nav-panel');
+                panel.hidden = !panel.hidden;
+                e.currentTarget.setAttribute('aria-expanded', String(!panel.hidden));
+                if (!panel.hidden) renderNavResults();
+            };
+            $('[data-action="current"]').onclick = () => jumpTo(currentId);
+            $('[data-action="postponed"]').onclick = (e) => {
+                navOnlyPostponed = !navOnlyPostponed;
+                e.currentTarget.setAttribute('aria-pressed', String(navOnlyPostponed));
+                e.currentTarget.textContent = navOnlyPostponed ? 'Pokaż wszystkie' : 'Pokaż odłożone';
+                renderNavResults();
+            };
+            navigation.querySelectorAll('[data-jump]').forEach(b => b.onclick = () => jumpRelative(Number(b.dataset.jump)));
+            $('[type="search"]').oninput = () => renderNavResults();
+        } else {
+            navigation.querySelectorAll('[data-list-filter]').forEach(button => {
+                button.onclick = () => {
+                    listFilter = button.dataset.listFilter;
+                    updateNavigation();
+                    saveSession();
+                };
+            });
+        }
     }
 
     function currentIndex() {
         return Math.max(0, queue.indexOf(Number(currentId)));
     }
 
-    function updateNavigation() {
+    function updateNavigation({ preserveQuestionId = null } = {}) {
         if (!navigation) return;
-        const i = viewMode === 'cards' ? currentIndex() : Math.max(0, selectedIds.indexOf(Number(currentId))),
-            total = viewMode === 'cards' ? queue.length : selectedIds.length;
-        navigation.querySelector('[data-progress]').textContent = `Pytanie ${i+1} z ${total} · ${answerRows().filter(a=>a.answerData&&selectedIds.includes(Number(a.questionId))).length} odpowiedzi`;
-        navigation.querySelector('.progress-track span').style.width = `${total?((i+1)/total)*100:0}%`;
-        navigation.querySelector('[data-action="prev"]').disabled = i === 0;
-        navigation.querySelector('[data-action="next"]').textContent = i >= total - 1 ? (viewMode === 'cards' ? 'Zakończ test' : 'Koniec listy') : 'Kontynuuj →';
+        const listIds = viewMode === 'continuous' ? visibleQuestionIds() : selectedIds;
+        const rows = answerRows().filter(a => a.answerData && listIds.includes(Number(a.questionId)));
+        const skippedCount = rows.filter(a => Number(a.answerValue) === 0).length;
+        const answeredCount = rows.length - skippedCount;
+        const total = listIds.length;
+        const postponedCount = listIds.filter(id => postponed.has(id)).length;
+        if (viewMode === 'cards') {
+            const i = currentIndex();
+            navigation.querySelector('[data-progress]').textContent = `Pytanie ${i + 1} z ${queue.length} · ${countLabel(rows.length, 'odpowiedź', 'odpowiedzi', 'odpowiedzi')}`;
+            navigation.querySelector('.progress-track span').style.width = `${queue.length ? ((i + 1) / queue.length) * 100 : 0}%`;
+            navigation.querySelector('[data-action="prev"]').disabled = i === 0;
+            navigation.querySelector('[data-action="next"]').textContent = i >= queue.length - 1 ? 'Zakończ test' : 'Następne →';
+        } else {
+            navigation.querySelector('[data-progress]').textContent = `${countLabel(answeredCount, 'odpowiedź', 'odpowiedzi', 'odpowiedzi')} · ${countLabel(skippedCount, 'pytanie pominięte', 'pytania pominięte', 'pytań pominiętych')} · ${countLabel(postponedCount, 'pytanie odłożone', 'pytania odłożone', 'pytań odłożonych')}`;
+            navigation.querySelector('.progress-track span').style.width = `${total ? (rows.length / total) * 100 : 0}%`;
+            const counts = {
+                all: total,
+                unanswered: listIds.filter(id => !answered(id)).length,
+                answered: listIds.filter(id => answered(id) && !skipped(id)).length,
+                skipped: listIds.filter(id => skipped(id)).length,
+                postponed: listIds.filter(id => postponed.has(id)).length
+            };
+            navigation.querySelectorAll('[data-list-filter]').forEach(button => {
+                const filter = button.dataset.listFilter;
+                button.setAttribute('aria-pressed', String(filter === listFilter));
+                button.querySelector('[data-filter-count]').textContent = counts[filter];
+            });
+            applyListFilter(preserveQuestionId);
+        }
     }
     async function showQuestion(id) {
         if (!selectedIds.includes(Number(id))) return;
@@ -177,22 +221,20 @@
             const ordinal = selectedIds.indexOf(currentId) + 1;
             const label = card?.querySelector('.question-text');
             if (label) label.innerText = `${ordinal}. ${window.NeoDataParts.getQuestion(currentId)?.text||label.innerText.replace(/^\d+\.\s*/,'')}`;
-            const later = document.createElement('button');
-            later.type = 'button';
-            later.className = 'defer-question';
-            later.textContent = postponed.has(currentId) ? '↪ Odłożone · pokaż później' : '↪ Pokaż później';
-            later.onclick = deferCurrent;
-            card?.querySelector('.question-text')?.after(later);
+            addPostponeControls(card ? [card] : []);
+        } else {
+            addPostponeControls([...questionsContainer.querySelectorAll('.question-card')]);
         }
         updateNavigation();
         saveSession();
     }
     async function showList() {
-        currentId = queue[0] ?? selectedIds[0];
+        if (!selectedIds.includes(Number(currentId))) currentId = queue[0] ?? selectedIds[0];
         await window.NeoDataParts.activateQuestions(selectedIds);
         renderQuestions();
         questionsContainer.classList.add('list-view');
         questionsContainer.classList.remove('cards-view');
+        addPostponeControls([...questionsContainer.querySelectorAll('.question-card')]);
         updateNavigation();
         saveSession();
     }
@@ -216,6 +258,59 @@
         }
         showQuestion(Number(id));
     }
+    function addPostponeControls(cards) {
+        cards.forEach(card => {
+            const id = Number(card.dataset.id);
+            if (!Number.isFinite(id) || card.querySelector('.defer-question')) return;
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'defer-question';
+            button.dataset.questionId = String(id);
+            button.setAttribute('aria-pressed', String(postponed.has(id)));
+            button.textContent = postponed.has(id) ? '↪ Odłożone · przywróć' : '↪ Odłóż na później';
+            button.onclick = () => togglePostponed(id);
+            card.querySelector('.question-text')?.after(button);
+        });
+    }
+
+    function togglePostponed(id) {
+        id = Number(id);
+        const wasPostponed = postponed.has(id);
+        if (wasPostponed) postponed.delete(id);
+        else postponed.add(id);
+
+        let next;
+        if (viewMode === 'cards' && !wasPostponed && autoAdvance && id === Number(currentId) && currentIndex() < queue.length - 1) {
+            const current = currentIndex();
+            queue = queue.filter(x => x !== id);
+            queue.push(id);
+            next = queue[current];
+        } else if (viewMode === 'cards' && wasPostponed) {
+            queue.sort((a, b) => selectedIds.indexOf(a) - selectedIds.indexOf(b));
+        }
+
+        questionsContainer.querySelectorAll(`.defer-question[data-question-id="${id}"]`).forEach(button => {
+            button.setAttribute('aria-pressed', String(postponed.has(id)));
+            button.textContent = postponed.has(id) ? '↪ Odłożone · przywróć' : '↪ Odłóż na później';
+        });
+        saveSession();
+        if (next !== undefined) showQuestion(next);
+        else updateNavigation();
+    }
+
+    function applyListFilter(preserveQuestionId = null) {
+        if (viewMode !== 'continuous') return;
+        questionsContainer.querySelectorAll('.question-card').forEach(card => {
+            const id = Number(card.dataset.id);
+            const hasAnswer = answered(id) || skipped(id);
+            const matches = listFilter === 'all'
+                || (listFilter === 'unanswered' && !hasAnswer)
+                || (listFilter === 'answered' && answered(id) && !skipped(id))
+                || (listFilter === 'skipped' && skipped(id))
+                || (listFilter === 'postponed' && postponed.has(id));
+            card.hidden = !matches && (preserveQuestionId == null || id !== Number(preserveQuestionId));
+        });
+    }
     async function renderNavResults(onlyPostponed = false) {
         const box = navigation.querySelector('.question-nav-results'),
             query = navigation.querySelector('[type="search"]').value.trim().toLocaleLowerCase('pl');
@@ -224,7 +319,7 @@
             id,
             i,
             q: window.NeoDataParts.getQuestion(id)
-        })).filter(x => (!onlyPostponed || postponed.has(x.id)) && (!query || String(x.id).includes(query) || String(x.i + 1) === query || String(x.q?.text || '').toLocaleLowerCase('pl').includes(query))).slice(0, 100);
+        })).filter(x => (!navOnlyPostponed || postponed.has(x.id)) && (!query || String(x.id).includes(query) || String(x.i + 1) === query || String(x.q?.text || '').toLocaleLowerCase('pl').includes(query))).slice(0, 100);
         box.replaceChildren();
         matches.forEach(({
             id,
@@ -249,39 +344,63 @@
         if (!matches.length) box.textContent = 'Brak pasujących pytań.';
     }
 
-    function onAnswerSelected(id) {
-        if (postponed.has(Number(id))) postponed.delete(Number(id));
-        updateNavigation();
+    function onAnswerSelected(id, { isNewAnswer = false } = {}) {
+        id = Number(id);
+        updateNavigation({ preserveQuestionId: viewMode === 'continuous' ? id : null });
         saveSession();
-        if (viewMode === 'cards' && autoAdvance) setTimeout(() => {
-            if (Number(currentId) === Number(id)) jumpRelative(1);
+        if (viewMode === 'cards' && autoAdvance && isNewAnswer) setTimeout(() => {
+            if (Number(currentId) === id && currentIndex() < queue.length - 1) jumpRelative(1);
         }, 0);
     }
+    document.addEventListener('neoAnswerSelected', event => {
+        onAnswerSelected(event.detail?.questionId, event.detail || {});
+    });
+    document.addEventListener('neoQuestionDeferred', event => {
+        const id = Number(event.detail?.questionId);
+        if (Number.isFinite(id)) togglePostponed(id);
+    });
 
     function deferCurrent() {
-        const id = Number(currentId);
-        postponed.add(id);
-        queue = queue.filter(x => x !== id);
-        queue.push(id);
-        const next = queue.find(x => x !== id);
-        saveSession();
-        if (next !== undefined) showQuestion(next);
-        else updateNavigation();
+        togglePostponed(currentId);
     }
 
     function pauseTest() {
         saveSession();
         const dialog = document.createElement('dialog');
         dialog.className = 'pause-dialog';
-        const code = typeof generateExportCode === 'function' ? generateExportCode() : '';
-        dialog.innerHTML = `<form method="dialog"><p class="section-eyebrow">POSTĘP ZAPISANY</p><h2>Test wstrzymany</h2><p>${answerRows().filter(a=>a.answerData).length} odpowiedzi · pytanie ${currentIndex()+1} z ${queue.length}</p><label for="pause-code">Kod wznowienia</label><textarea id="pause-code" readonly rows="5"></textarea><div class="pause-actions"><button type="button" data-copy>Kopiuj kod</button><button value="resume" class="primary">Wróć do testu</button></div></form>`;
+        let code = '';
+        let exportError = '';
+        try {
+            code = typeof generateExportCode === 'function' ? generateExportCode() : '';
+            if (!code) throw new Error('Generator kodu odpowiedzi nie jest dostępny.');
+        } catch (error) {
+            exportError = error?.message || 'Nie udało się przygotować kodu wznowienia.';
+        }
+        const progress = viewMode === 'cards'
+            ? `pytanie ${currentIndex() + 1} z ${queue.length}`
+            : `${answerRows().filter(a => a.answerData && selectedIds.includes(Number(a.questionId))).length} odpowiedzi w trybie listy`;
+        dialog.innerHTML = `<form method="dialog"><p class="section-eyebrow">POSTĘP ZAPISANY</p><h2>Test wstrzymany</h2><p>${answerRows().filter(a=>a.answerData).length} odpowiedzi · ${progress}</p><label for="pause-code">Kod wznowienia</label><textarea id="pause-code" readonly rows="5" aria-describedby="pause-export-status"></textarea><p id="pause-export-status" class="pause-export-status" role="status" aria-live="polite"></p><div class="pause-actions"><button type="button" data-copy>Kopiuj kod</button><button value="resume" class="primary">Wróć do testu</button></div></form>`;
         dialog.querySelector('textarea').value = code;
-        dialog.querySelector('[data-copy]').onclick = async () => {
+        const status = dialog.querySelector('[data-export-status], #pause-export-status');
+        const copyButton = dialog.querySelector('[data-copy]');
+        if (exportError) {
+            status.textContent = `Błąd eksportu: ${exportError}`;
+            status.dataset.state = 'error';
+            copyButton.disabled = true;
+        } else {
+            status.textContent = 'Kod NA4 gotowy. Zawiera zapisane odpowiedzi, pominięcia, odłożone pytania i uzasadnienia.';
+            status.dataset.state = 'success';
+        }
+        copyButton.onclick = async () => {
             try {
                 await navigator.clipboard.writeText(code);
-                dialog.querySelector('[data-copy]').textContent = 'Skopiowano ✓';
+                copyButton.textContent = 'Skopiowano ✓';
+                status.textContent = 'Kod został skopiowany do schowka.';
+                status.dataset.state = 'success';
             } catch (_) {
                 dialog.querySelector('textarea').select();
+                status.textContent = 'Nie udało się skopiować automatycznie. Kod został zaznaczony — skopiuj go ręcznie.';
+                status.dataset.state = 'error';
             }
         };
         document.body.appendChild(dialog);
@@ -293,12 +412,11 @@
         if (!settingsDialog) {
             settingsDialog = document.createElement('dialog');
             settingsDialog.className = 'pause-dialog';
-            settingsDialog.innerHTML = `<form method="dialog"><p class="section-eyebrow">DOPASUJ DO SIEBIE</p><h2>Ustawienia testu</h2><label><input type="checkbox" data-auto> Automatycznie przechodź po wyborze odpowiedzi</label><label><input type="checkbox" data-large> Większy tekst pytań</label><label><input type="checkbox" data-reduced> Ogranicz animacje</label><div class="pause-actions"><button value="close" class="primary">Gotowe</button></div></form>`;
+            settingsDialog.innerHTML = `<form method="dialog"><p class="section-eyebrow">DOPASUJ DO SIEBIE</p><h2>Ustawienia testu</h2><label data-auto-row><input type="checkbox" data-auto> Automatycznie przechodź po wyborze odpowiedzi</label><label><input type="checkbox" data-large> Większy tekst pytań</label><label><input type="checkbox" data-reduced> Ogranicz animacje</label><div class="pause-actions"><button value="close" class="primary">Gotowe</button></div></form>`;
             document.body.appendChild(settingsDialog);
             settingsDialog.querySelector('[data-auto]').onchange = e => {
                 autoAdvance = e.target.checked;
-                navigation.querySelector('.auto-setting input').checked = autoAdvance;
-                navigation.querySelector('.auto-hint').hidden = !autoAdvance;
+                if (navigation.querySelector('.auto-setting input')) navigation.querySelector('.auto-setting input').checked = autoAdvance;
                 saveSession();
             };
             settingsDialog.querySelector('[data-large]').onchange = e => {
@@ -311,6 +429,7 @@
             };
         }
         settingsDialog.querySelector('[data-auto]').checked = autoAdvance;
+        settingsDialog.querySelector('[data-auto-row]').hidden = viewMode !== 'cards';
         settingsDialog.querySelector('[data-large]').checked = document.body.classList.contains('large-question-text');
         settingsDialog.querySelector('[data-reduced]').checked = document.body.classList.contains('reduced-motion');
         settingsDialog.showModal();
@@ -328,7 +447,8 @@
             if (!queue.includes(id)) queue.push(id);
         });
         postponed = new Set((meta?.postponed || []).map(Number).filter(id => selected.has(id)));
-        autoAdvance = !!meta?.autoAdvance;
+        autoAdvance = viewMode === 'cards' && !!meta?.autoAdvance;
+        listFilter = ['all', 'unanswered', 'answered', 'skipped', 'postponed'].includes(meta?.listFilter) ? meta.listFilter : 'all';
         document.body.classList.toggle('large-question-text', !!meta?.largeText);
         document.body.classList.toggle('reduced-motion', !!meta?.reducedMotion);
         window.resetQuestionReview?.();
@@ -369,7 +489,8 @@
         saveSession,
         goTo: (id) => jumpTo(id),
         pause: pauseTest,
-        resumeImported: (rows, meta) => beginTest(meta?.mode || 'full', meta?.view || 'cards', rows, meta)
+        resumeImported: (rows, meta) => beginTest(meta?.mode || 'full', meta?.view || 'cards', rows, meta),
+        isPostponed: id => postponed.has(Number(id))
     };
 
     function chooseViewAndBegin(mode) {
