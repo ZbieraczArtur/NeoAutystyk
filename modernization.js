@@ -45,6 +45,13 @@
     return answersByQuestion.get(idOf(id)) || [];
   }
   const primaryAnswer = id => answerRows(id).find(row => !row.neither) || answerRows(id)[0] || null;
+  function savedAnswer(question, row) {
+    const saved = row?.answerData;
+    if (!question || !saved) return null;
+    return question.answers.find(item => item === saved
+      || (item.id != null && saved.id != null && String(item.id) === String(saved.id))
+      || (item.label === saved.label && Number(item.value) === Number(saved.value))) || null;
+  }
   const isPositive = row => row && !row.neither && Number(row.answerValue) > 0;
   const isNegative = row => row && !row.neither && Number(row.answerValue) < 0;
 
@@ -100,6 +107,10 @@
 
   function deferQuestion(questionId) {
     const id = idOf(questionId);
+    if (['cards', 'continuous'].includes(document.body.dataset.testView)) {
+      document.dispatchEvent(new CustomEvent('neoQuestionDeferred', { detail: { questionId: id } }));
+      return;
+    }
     const position = deferredQuestionIds.indexOf(id);
     if (position >= 0) deferredQuestionIds.splice(position, 1);
     deferredQuestionIds.push(id);
@@ -257,27 +268,52 @@
   }
 
   function markSelections() {
-    document.querySelectorAll('.answer-option').forEach(element => element.classList.remove('selected'));
+    document.querySelectorAll('.answer-option').forEach(element => {
+      element.classList.remove('selected');
+      element.setAttribute('aria-pressed', 'false');
+    });
+    document.querySelectorAll('.question-card[data-id]').forEach(card => {
+      const question = questionById(card.dataset.id);
+      const answer = question && primaryAnswer(question.id);
+      card.removeAttribute('data-response-polarity');
+      card.style.removeProperty('--response-intensity');
+      const saved = savedAnswer(question, answer);
+      const value = Number(saved?.value ?? answer?.answerValue);
+      if (!Number.isFinite(value) || value === 0) return;
+      const maxValue = Math.max(1, ...question.answers.map(item => Math.abs(Number(item.value) || 0)));
+      card.dataset.responsePolarity = value > 0 ? 'agree' : 'disagree';
+      card.style.setProperty('--response-intensity', `${7 + 10 * Math.min(1, Math.abs(value) / maxValue)}%`);
+    });
     userAnswers.filter(row => !row.noteOnly).forEach(row => {
-      const selector = row.neither
-        ? `.question-card[data-id="${row.questionId}"] .answer-neither`
-        : `.question-card[data-id="${row.questionId}"] .answer-option[data-answer-index="${row.answerIndex}"]`;
-      document.querySelector(selector)?.classList.add('selected');
+      const card = document.querySelector(`.question-card[data-id="${row.questionId}"]`);
+      const question = questionById(row.questionId);
+      const answer = savedAnswer(question, row);
+      const answerIndex = answer ? question.answers.indexOf(answer) : row.answerIndex;
+      const option = row.neither
+        ? card?.querySelector('.answer-neither')
+        : card?.querySelector(`.answer-option[data-answer-index="${answerIndex}"]`);
+      option?.classList.add('selected');
+      option?.setAttribute('aria-pressed', 'true');
     });
   }
 
   function setAnswer(question, index, answer) {
+    const isNewAnswer = !primaryAnswer(question.id);
+    const note = userAnswers.find(row => idOf(row.questionId) === idOf(question.id) && typeof row.note === 'string')?.note || '';
+    const card = document.querySelector(`.question-card[data-id="${idOf(question.id)}"]`);
+    const listAnchor = document.body.dataset.testView === 'continuous' && card
+      ? { top: card.getBoundingClientRect().top, scrollY: window.scrollY, documentTop: card.getBoundingClientRect().top + window.scrollY }
+      : null;
     const rows = answerRows(question.id);
     if (window.DEV_MODE) {
       const existing = rows.find(row => row.answerIndex === index && !row.neither);
       userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id) || row.neither || row.answerIndex !== index);
       if (!existing) userAnswers.push({ questionId: question.id, answerIndex: index, answerValue: answer.value, answerData: answer });
     } else {
-      const note = primaryAnswer(question.id)?.note || '';
       userAnswers = userAnswers.filter(row => idOf(row.questionId) !== idOf(question.id));
       userAnswers.push({ questionId: question.id, answerIndex: index, answerValue: answer.value, answerData: answer, note });
     }
-    updateAfterAnswer(question.id);
+    updateAfterAnswer(question.id, isNewAnswer, listAnchor);
   }
 
   function setNeither(question) {
@@ -293,7 +329,23 @@
     updateAfterAnswer(question.id);
   }
 
-  function updateAfterAnswer(questionId) {
+  function updateAfterAnswer(questionId, isNewAnswer = false, listAnchor = null) {
+    const restoreListPosition = () => {
+      if (!listAnchor || document.body.dataset.testView !== 'continuous') return;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const card = document.querySelector(`.question-card[data-id="${idOf(questionId)}"]`);
+        const top = card?.getBoundingClientRect().top;
+        const currentScroll = window.scrollY;
+        const documentTop = Number.isFinite(top) ? top + currentScroll : null;
+        const targetScroll = documentTop !== null && Math.abs(documentTop - listAnchor.documentTop) >= 1
+          ? currentScroll + top - listAnchor.top
+          : listAnchor.scrollY;
+        if (Math.abs(currentScroll - targetScroll) > 0.5) window.scrollTo(0, targetScroll);
+      }));
+    };
+    const notifyTest = () => document.dispatchEvent(new CustomEvent('neoAnswerSelected', {
+      detail: { questionId, isNewAnswer }
+    }));
     // Większość odpowiedzi nie jest warunkiem widoczności żadnej tezy. W takim
     // przypadku wystarczy podmienić zaznaczenie i liczniki — bez kosztownego
     // klonowania konfiguracji, zapytań sieciowych i tworzenia kart od nowa.
@@ -301,7 +353,8 @@
     if (!affectsConditions) {
       markSelections();
       updateReviewControls();
-      window.NeoTestPages?.maybeAdvance?.();
+      notifyTest();
+      restoreListPosition();
       return;
     }
 
@@ -311,10 +364,13 @@
       const after = orderedActiveQuestions().map(question => idOf(question.id)).join(',');
       if (before !== after) renderQuestions();
       else { markSelections(); updateReviewControls(); }
-      window.NeoTestPages?.maybeAdvance?.();
+      notifyTest();
+      restoreListPosition();
     }).catch(error => {
       console.error(error);
       reconcileDynamicAnswers(); renderQuestions();
+      notifyTest();
+      restoreListPosition();
     });
   }
 
@@ -345,7 +401,11 @@
         if (answerRows(question.id).some(row => row.answerIndex === index && !row.neither)) option.classList.add('selected');
         option.addEventListener('click', () => setAnswer(question, index, answer)); answers.appendChild(option);
       });
-      const defer = document.createElement('button'); defer.type = 'button'; defer.className = 'answer-option answer-later'; defer.textContent = 'Pokaż później';
+      const isPostponed = window.NeoTestModes?.isPostponed?.(question.id) ?? deferredQuestionIds.includes(idOf(question.id));
+      const defer = document.createElement('button'); defer.type = 'button'; defer.className = 'defer-question answer-later';
+      defer.dataset.questionId = String(question.id);
+      defer.setAttribute('aria-pressed', String(isPostponed));
+      defer.textContent = isPostponed ? '↪ Odłożone · przywróć' : '↪ Odłóż na później';
       defer.setAttribute('aria-label', `Odłóż pytanie: ${question.text}`);
       defer.addEventListener('click', () => deferQuestion(question.id));
       tools.appendChild(defer);
@@ -367,8 +427,19 @@
         }); answers.appendChild(neither);
       }
       card.appendChild(answers);
-      const note = document.createElement('div'); note.className = 'answer-note-wrap'; note.innerHTML = `<label for="answer-note-${question.id}">Uzasadnienie odpowiedzi</label><textarea id="answer-note-${question.id}" class="answer-note" rows="3" maxlength="3000"></textarea>`;
-      const input = note.querySelector('textarea'); input.value = primaryAnswer(question.id)?.note || ''; input.addEventListener('input', () => { const row = primaryAnswer(question.id); if (row) row.note = input.value; }); card.appendChild(note);
+      const note = document.createElement('details'); note.className = 'note-input-container answer-note-wrap';
+      note.open = document.body.dataset.testView === 'continuous';
+      const noteSummary = document.createElement('summary'); noteSummary.textContent = '✏️ Uzasadnienie odpowiedzi (opcjonalne)'; note.appendChild(noteSummary);
+      const noteLabel = document.createElement('label'); noteLabel.htmlFor = `answer-note-${question.id}`; noteLabel.textContent = 'Uzasadnienie odpowiedzi'; noteLabel.className = 'note-label'; note.appendChild(noteLabel);
+      const input = document.createElement('textarea'); input.id = `answer-note-${question.id}`; input.className = 'answer-note note-textarea'; input.rows = 2; input.maxLength = 3000; input.placeholder = 'Wpisz swoje uzasadnienie...';
+      input.value = userAnswers.find(row => idOf(row.questionId) === idOf(question.id) && typeof row.note === 'string')?.note || '';
+      input.addEventListener('input', () => {
+        let row = userAnswers.find(item => idOf(item.questionId) === idOf(question.id));
+        if (!row) { row = { questionId: question.id, note: input.value, noteOnly: true }; userAnswers.push(row); }
+        else row.note = input.value;
+        window.NeoTestModes?.saveSession?.();
+      });
+      note.appendChild(input); card.appendChild(note);
       if (window.DEV_MODE) card.appendChild(developerPanel(question));
       fragment.appendChild(card);
     });
