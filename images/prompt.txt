@@ -1,257 +1,1455 @@
-Przebuduj całkowicie stronę „Wyniki”. Nie chcę kolejnej kosmetycznej poprawki obecnego layoutu. Obecny układ został wcześniej przypadkowo uszkodzony i wymaga uporządkowania architektury całej strony.
+1. Informacje podstawowe
 
-Główny cel: stworzyć nowoczesną, schludną, responsywną i logicznie uporządkowaną stronę wyników, która dobrze prezentuje dużą ilość informacji. Strona ma być długa i przewijana pionowo — nie próbuj wciskać wszystkich informacji do jednego ekranu.
+Data urodzenia: 1 kwietnia 1989 r.
 
-Nie zmieniaj logiki obliczania wyników, danych, wzorów, punktacji ani istniejących funkcji. Zmień przede wszystkim strukturę, hierarchię wizualną, rozmieszczenie, responsywność i sposób prezentacji informacji.
+Kontynent działalności: Europa
 
- 1. NOWA ARCHITEKTURA STRONY
+Państwo związane z działalnością: Polska
 
-Zaprojektuj stronę jako uporządkowany dashboard wyników składający się z następujących sekcji, w tej kolejności:
+Narodowość: polska
 
-1. Nagłówek i „Twój wynik w pigułce”
-2. Mapa poglądów / kompas polityczny
-3. Bilans wartości
-4. Najbliższe profile
-5. Porównywarka i udostępnianie wyników
-6. Odznaki
-7. Informacje dodatkowe / metodologia wyniku, jeśli obecnie istnieje
+Główna działalność: polityk, radca prawny
 
- 2. „TWÓJ WYNIK W PIGUŁCE”
-Na samej górze strony pozostaw główne podsumowanie wyników.
-Powinno zawierać dokładnie cztery najważniejsze informacje:
- Liczba uzupełnionych odpowiedzi
- Najbliższa ideologia
- Najbliższa partia
- Najbliższa figura polityczna
+Pozostałe rodzaje działalności: przedsiębiorca (prowadzenie własnej kancelarii radcowskiej), publicysta
 
-Obecne pole „Położenie” zastąp „Najbliższą figurą polityczną”.
+Najważniejsze funkcje publiczne i państwowe:
 
-Zaprojektuj te cztery informacje jako cztery nowoczesne, równorzędne karty.
-Na desktopie powinny znajdować się w jednym rzędzie, jeśli dostępna szerokość na to pozwala. Na mniejszych ekranach powinny automatycznie przechodzić do 2 kolumn, a na bardzo małych ekranach do jednej kolumny.
+Poseł na Sejm RP X kadencji (od 2023 r.)
 
-Każda karta powinna jasno pokazywać:
- nazwę kategorii,
- najważniejszą wartość,
- nazwę profilu,
- opcjonalnie mały dodatkowy kontekst.
+Wiceprzewodniczący Klubu Parlamentarnego Konfederacja
 
-Nie przeładowuj tej sekcji.
+Członek sejmowej Komisji Sprawiedliwości i Praw Człowieka
 
-3. MAPA POGLĄDÓW — NAJWAŻNIEJSZA SEKCJA
+Członek sejmowej Komisji Regulaminowej, Spraw Poselskich i Immunitetowych
 
-Kompas polityczny ma być wizualnie najważniejszym elementem strony.
+Członek sejmowej Komisji Nadzwyczajnej ds. rozpatrzenia projektów ustaw dotyczących statusu osoby najbliższej w związku
 
-Zastosuj i zachowaj założenia z obecnego projektu kompasu:
+Członek Rady Nowej Konstytucji przy Prezydencie RP (powołany w 2026 r.)
 
- rzeczywista plansza kompasu ma zostać znacznie powiększona,
- docelowo około 500–600 px na typowym dużym ekranie, jeśli dostępna przestrzeń na to pozwala,
- zachowaj proporcje 1:1,
- nie zmieniaj matematyki osi ani wyników,
- ulepsz wizualnie samą planszę kompasu,
- nie zmieniaj kolorów czterech ćwiartek,
- odpowiednio przeskaluj siatkę, osie, etykiety, punkty i oznaczenia,
- nie dopuszczaj do przycinania planszy.
+Skarbnik partii Konfederacja Wolność i Niepodległość
 
-Na desktopie utwórz układ:
+Wiceprezes ugrupowania Ruch Narodowy
 
-[ DUŻY KOMPAS ] [ KONFIGURACJA ]
+Sposób dojścia do władzy i legitymizacja: wybory parlamentarne w 2023 r. (mandat poselski z wyboru powszechnego w okręgu kieleckim nr 33, poparcie 18 300 wyborców)
 
-Kompas powinien zajmować większość szerokości sekcji, natomiast konfiguracja powinna znajdować się bezpośrednio obok niego.
+Okres aktywności publicznej: od 2013 r. (rozpoczęcie praktyki prawniczej i wstąpienie do Ruchu Narodowego)
 
-Przenieś do bocznej części wszystkie obecne ustawienia kompasu, które obecnie znajdują się pod nim, między innymi:
+Partie polityczne:
 
- tryb działania,
- wybór sposobu wyświetlania,
- ustawienia nakładek,
- widoczność elementów,
- skalowanie/zoom,
- inne istniejące opcje.
+Konfederacja Wolność i Niepodległość (partia federacyjna)
 
-Nie usuwaj żadnych istniejących funkcji.
+Ruch Narodowy
 
-Informacje takie jak aktualne współrzędne, aktywne pary i tryb działania powinny znajdować się w zwartej sekcji bezpośrednio przy kompasie.
+Formalne organizacje: Klub Poselski Konfederacja, Rada Liderów Konfederacji, Rada Nowej Konstytucji przy Prezydencie RP, Okręgowa Izba Radców Prawnych w Warszawie
 
-Na mniejszych ekranach układ ma automatycznie przechodzić w:
+Ideologie: narodowy konserwatyzm, eurosceptyzm, suwerenizm
 
-[ KOMPAS ]
-[ INFORMACJE ]
-[ KONFIGURACJA ]
+Ważne wartości: suwerenność państwowa, wolność gospodarcza, własność prywatna, ochrona życia od poczęcia, równe prawa rodzicielskie
 
-bez poziomego przewijania.
+Inspiracje intelektualne i mentorzy: tradycja polskiego ruchu narodowego (Roman Dmowski, Zygmunt Balicki, Liga Narodowa)
 
- 4. NAKŁADKI I FILTRY
+Religia i wyznanie: rzymskokatolickie (praktykujący katolik)
 
-Obecne filtrowanie nakładek znajduje się zbyt nisko i jest słabo widoczne w trybie nocnym.
-Przenieś je do logicznej części konfiguracji kompasu.
-Zaprojektuj filtry jako czytelne tagi/chipsy.
-W trybie ciemnym tekst musi mieć odpowiedni kontrast. Nie używaj ciemnego tekstu na ciemnym tle.
-Aktywne i nieaktywne filtry powinny być wizualnie łatwe do rozróżnienia.
+1. Overview
 
- 5. BILANS WARTOŚCI
-Obecnie bilans wartości znajduje się po prawej stronie jako bardzo długa pionowa kolumna. Zmień ten układ.
-Nie prezentuj wszystkich kategorii jako jednego pionowego słupka.
-Podziel wartości na logiczne grupy, które już istnieją w danych
+Michał Jan Wawer to polski polityk, radca prawny i poseł na Sejm X kadencji. Pełni funkcję wiceprezesa Ruchu Narodowego oraz skarbnika Konfederacji. W działalności publicznej skupia się na suwerenności państwowej, liberalizacji gospodarki i krytyce unijnych regulacji. Jest autorem inicjatyw podatkowych oraz ustrojowych, stanowiąc kluczowe ogniwo organizacyjne i programowe prawicy narodowej.
 
-Nie zmieniaj istniejących kategorii ani danych bez potrzeby — wykorzystaj aktualną strukturę danych.
+1. Wstęp
 
-Na desktopie prezentuj kategorie jako siatkę 2 lub 3 kolumn, zależnie od dostępnej szerokości.
+Michał Jan Wawer jest polskim politykiem, prawnikiem oraz parlamentarzystą reprezentującym obóz narodowo-wolnościowy. Jego działalność publiczna przypada na okres intensywnych przemian społeczno-gospodarczych w Polsce po 2015 roku, charakteryzujący się ostrymi sporami wokół praworządności, relacji z Unią Europejską oraz modelu rozwoju ekonomicznego. Wawer prowadzi aktywność na styku praktyki prawniczej i polityki partyjnej, występując jako kluczowy architekt rozwiązań organizacyjnych oraz programowych Ruchu Narodowego i federacyjnej partii Konfederacja Wolność i Niepodległość. W wystąpieniach sejmowych oraz debacie publicznej koncentruje się na problematyce suwerenności państwowej, obniżaniu i upraszczaniu podatków, deregulacji rynku oraz ochronie rodzimego rolnictwa i transportu przed unijną polityką klimatyczną. Ważnym elementem jego myśli politycznej jest dążenie do syntezy narodowego konserwatyzmu z libertarianizmem gospodarczym oraz propozycja tzw. resetu konstytucyjnego jako drogi wyjścia z kryzysu ustrojowego. Wawer reprezentuje nowe pokolenie działaczy prawicowych, stawiających na merytoryczność przekazu oraz profesjonalizację struktur partyjnych w opozycji do dotychczasowego duopolu politycznego.
 
-Każda kategoria powinna być osobną kartą.
+1. Życie, historia i działalność
 
-Wewnątrz karty pokazuj poszczególne wartości jako czytelne poziome paski/porównania.
-
-Zachowaj istniejące wartości procentowe i nazwy.
-
-Na tabletach przejdź do 2 kolumn, a na telefonach do 1 kolumny.
-
-Dzięki temu bilans wartości ma wykorzystywać szerokość strony zamiast tworzyć bardzo długi, wąski słup.
-
- 6. RANKINGI — NAJBLIŻSZE PROFILE
-
-Obecne rankingi użytkowników, ideologii, figur politycznych i partii są wizualnie słabe i wyglądają jak stare tabelki administracyjne.
-
-Przebuduj je jako cztery równorzędne karty:
- Najbliższe ideologie
- Najbliższe partie
- Najbliższe figury polityczne
- Najbliżsi użytkownicy
-
-Każda karta powinna zawierać np. TOP 5.
-
-Każdy wpis powinien jasno pokazywać:
- pozycję,
- nazwę,
- ikonę / avatar / flagę, jeśli obecnie istnieje,
- procent lub wynik podobieństwa.
-
-Zastosuj wizualną hierarchię dla pierwszych trzech miejsc.
-Dodaj przycisk „Zobacz więcej”, jeśli istnieje większa liczba wyników.
-Na desktopie zastosuj siatkę 2×2 lub 4 kolumny, zależnie od szerokości.
-Na tabletach 2×2.
-Na telefonie jedną kolumnę.
-Nie twórz ogromnych tabel wymagających wewnętrznego scrollowania, jeśli nie jest to konieczne.
-
- 7. PORÓWNYWARKA
-Sekcja prowadząca do porównywarki powinna być znacznie bardziej widoczna.
-Stwórz nowoczesną kartę CTA:
-„Porównaj swój profil”
-Dodaj główny przycisk:
-„Otwórz porównywarkę →”
-
-Nie zmieniaj istniejącej logiki porównywarki.
-
- 8. UDOSTĘPNIANIE I EKSPORT
-Obecna opcja generowania obrazu wyników nie działa.
-Nie pozostawiaj interfejsu sugerującego działającą funkcję, jeżeli faktycznie nie działa.
-Jeżeli obecna implementacja pozwala na naprawienie eksportu, napraw ją.
-
-Docelowo sekcja powinna umożliwiać:
-
- Pobranie wyników jako PNG,
- skopiowanie linku do wyników,
- udostępnienie wyników, jeśli przeglądarka obsługuje Web Share API.
-
-Nie generuj screenshotu całej strony.
-PNG powinien być specjalnie przygotowaną kartą wyników zawierającą najważniejsze informacje, np.:
- nazwę projektu,
- najbliższą ideologię,
- najbliższą partię,
- najbliższą figurę,
- kompas,
- najważniejsze wartości.
-
-Jeżeli pełna implementacja eksportu wymaga dodatkowych zmian, zachowaj istniejące API i strukturę danych.
-
- 9. NAWIGACJA PO DŁUGIEJ STRONIE
-
-Ponieważ strona wyników zawiera dużo informacji, dodaj lekką nawigację po głównych sekcjach.
-
-Na desktopie może to być niewielki sticky pasek:
-Podsumowanie | Kompas | Wartości | Rankingi | Odznaki
-Kliknięcie powinno przewijać użytkownika do odpowiedniej sekcji.
-Na telefonie pasek może być poziomo przewijany.
-Nie zasłaniaj nim zawartości.
-
- 11. RESPONSYWNOŚĆ — PRIORYTET
-
-Nie projektuj strony wyłącznie pod jeden screenshot.
-Strona musi poprawnie działać przynajmniej dla:
- 1920×1080,
- 1366×768,
- tabletów,
- telefonów w pionie,
- telefonów w poziomie.
-
-Desktop:
- wykorzystuj dostępną szerokość,
- unikaj ogromnych pustych obszarów,
- kompas duży i centralny,
- konfiguracja obok kompasu,
- bilans wartości w siatce,
- rankingi w siatce.
-
-Tablet:
- bardziej zwarte odstępy,
- kompas nadal duży,
- sekcje przechodzące stopniowo do mniejszej liczby kolumn.
-
-Telefon:
- jedna kolumna,
- brak poziomego scrollowania całej strony,
- kompas dopasowany do szerokości ekranu,
- konfiguracja pod kompasem,
- karty wyników jedna pod drugą,
- bilans wartości jedna karta pod drugą,
- rankingi jedna karta pod drugą.
-
-Nie stosuj sztywnych szerokości, które powodują overflow.
-Wykorzystuj responsywne CSS Grid/Flexbox, `clamp()`, `min()`, `max()`, `minmax()`, `max-width`, `max-height`, `dvh`/`svh` tam, gdzie ma to sens.
-
- 12. WYKORZYSTANIE PRZESTRZENI
-Bardzo ważne:
-Nie rozwiązuj problemu poprzez samo zwiększenie rozmiaru zewnętrznych kontenerów.
-Obecnie strona posiada duże puste przestrzenie, szczególnie po lewej stronie pod kompasem.
-Każda sekcja powinna wykorzystywać dostępną przestrzeń w sposób celowy.
-Nie rozciągaj paneli tylko po to, żeby wypełnić wysokość.
-
-Jeżeli zawartość sekcji jest krótka, panel również powinien być krótki.
-Unikaj dużych pustych prostokątów.
- 
-13. DESIGN SYSTEM
-
-Ujednolić:
- odstępy,
- promienie zaokrągleń,
- wysokości nagłówków,
- rozmiary tekstu,
- style kart,
- style przycisków,
- style badge/chipów,
- kolory tła,
- obramowania.
-
-Ogranicz efekt „pudełko w pudełku w pudełku”.
-Duże sekcje powinny być wizualnie odróżnione głównie przez hierarchię, odstępy i typografię, a nie przez dziesiątki obramowań.
-Zachowaj obecny charakter wizualny aplikacji oraz istniejącą kolorystykę kompasu.
-Nie zmieniaj kolorów czterech ćwiartek kompasu.
-
- 14. TRYB CIEMNY
-Dokładnie sprawdź kontrast wszystkich elementów w dark mode.
-Szczególnie:
- tagów,
- filtrów,
- tekstów pomocniczych,
- opisów,
- rankingów,
- tekstów na przyciskach,
- wartości procentowych.
-
-Nie może występować ciemnoszary/czarny tekst na ciemnym tle.
-
-Aktywne elementy muszą być jednoznacznie widoczne.
-
-ALBUM
-W albumie:
-1. dodaj zakładki do filtrowania tagami, obecnie są wszystkie tagi obok siebie, chaotycznie - uporządkuj je i stwórz zakładki do wyboru tagów.
-2. Na stronie profilu np. w albumie mamy opcje Symuluj w teście głównym ↗ Porównaj odpowiedzi ↗ Kopiuj link - obecnie nie działają, np. po wciśnięciu symuluj w teście głównym pojawia się wynik bez żadnych odpowiedzi, z wynikiem centrum, mimo to że w teście da się symulować dany profil.
-3. W albumie, w profilu, na końcu pod tekstem powinien być ładnie wkomponowany wynik z testu głównego, np. kompas i paski wartości. Porównywarka powinna włączać porównywarkę porównujące odpowiedzi użytkownika z wybranym profilem.
+Michał Jan Wawer urodził się 1 kwietnia 1989 roku w Warszawie. W rodzinnym mieście ukończył studia prawnicze na Wydziale Prawa i Administracji Uniwersytetu Warszawskiego, uzyskując dyplom magistra prawa w 2013 roku. Po odbyciu aplikacji uzyskał uprawnienia radcy prawnego i rozpoczął prywatną praktykę zawodową w ramach własnej kancelarii. W pracy zawodowej specjalizował się w prawie własności intelektualnej, prawie autorskim oraz ochronie znaków towarowych, świadcząc doradztwo dla podmiotów z sektora małych i średnich przedsiębiorstw oraz organizacji pozarządowych. Praktyczne doświadczenie w obsłudze biznesu ukształtowało jego wolnorynkowe i pro-przedsiębiorcze podejście do spraw gospodarczych oraz krytyczny stosunek do rozbudowanej biurokracji i zawiłości polskiego prawa podatkowego. Prywatnie jest żonaty i wychowuje dwóch synów.
+
+Zaangażowanie polityczne Wawra od początku wiązało się ze środowiskiem narodowym. Dołączył do Ruchu Narodowego, w którym objął funkcję wiceprezesa ugrupowania. W 2015 roku pełnił rolę pełnomocnika komitetu wyborczego Mariana Kowalskiego w wyborach prezydenckich. Od chwili utworzenia federacyjnej partii Konfederacja Wolność i Niepodległość wszedł w skład jej Rady Liderów oraz objął stanowisko skarbnika partii. Jako pełnomocnik prawny odpowiadał za konstruowanie wniosków legislacyjnych, obsługę prawną ugrupowania, reprezentację w sprawach rejestracyjnych oraz prowadzenie kluczowych sporów prawnych, m.in. w sprawie subwencji partyjnych przed Sądem Najwyższym czy kwestionowania decyzji koncernów cyfrowych dotyczących blokowania profili społecznościowych.
+
+Droga parlamentarna Wawra obejmowała starty w kolejnych wyborach ogólnopolskich i samorządowych. W 2018 roku kandydował do Sejmiku Województwa Mazowieckiego. W 2019 roku ubiegał się o mandat w wyborach do Parlamentu Europejskiego (z listy Konfederacja KORWiN Braun Liroy Narodowcy w okręgu nr 10, otrzymując 3798 głosów) oraz w wyborach do Sejmu RP (z listy Konfederacji w okręgu podwarszawskim nr 20, zdobywając 14 869 głosów). W wyborach parlamentarnych w 2023 roku zdobył mandat posła na Sejm X kadencji, startując z pierwszego miejsca na liście Konfederacji w okręgu kieleckim (nr 33) i uzyskując 18 300 głosów (2,78% ogółu głosów w okręgu).
+
+W Sejmie X kadencji Wawer objął funkcję wiceprzewodniczącego Klubu Parlamentarnego Konfederacja. Został członkiem sejmowej Komisji Sprawiedliwości i Praw Człowieka, Komisji Regulaminowej, Spraw Poselskich i Immunitetowych oraz Komisji Nadzwyczajnej ds. rozpatrzenia projektów ustaw dotyczących statusu osoby najbliższej w związku. Wykazuje się bardzo wysoką frekwencją w głosowaniach (ponad 97%). W pracy parlamentarnej i debacie publicznej prezentuje twarde stanowisko suwerennościowe i eurosceptyczne: sprzeciwia się unijnym regulacjom klimatycznym (Europejski Zielony Ład, dyrektywa EPBD, pakt migracyjny), porozumieniom handlowym z Mercosur oraz bezcłowemu importowi żywności z Ukrainy. Krytykuje również procedurę zaciągania unijnych pożyczek w ramach programu SAFE jako nielegalną bez ustawowej ratyfikacji większością 2/3 głosów.
+
+Wawer jest autorem i współautorem licznych inicjatyw legislacyjnych Konfederacji. Proponował wprowadzenie jednolitego podatku liniowego PIT 12% ze zrównaniem kwoty wolnej od podatku z 12-krotnością płacy minimalnej, likwidację 15 najbardziej szkodliwych podatków oraz wprowadzenie konkurencji dla NFZ ze strony ubezpieczycieli prywatnych. Zgłaszał projekty reform prawa rodzinnego, w tym wprowadzenia opieki współdzielonej oraz sankcji za alienację rodzicielską. W sprawach polityki historycznej jest autorem projektu uchwały potępiającej przewrót majowy z 1926 roku i Józefa Piłsudskiego oraz inicjatorem wniosków o powołanie sejmowych komisji śledczych ds. polityki energetycznej, afery zbożowej i obostrzeń covidowych. W 2026 roku został powołany przez Prezydenta RP w skład Rady Nowej Konstytucji.
+
+### Poglądy i idee
+
+Analiza poglądów i koncepcji programowych Michała Wawra ujawnia spójny system ideowy, oparty na syntezie narodowego konserwatyzmu, gospodarczego wolnorynkowizmu oraz twardego realizmu w polityce międzynarodowej. Wawer definiuje tożsamość narodową w kategorii prymatu interesu własnego wspólnoty politycznej, łącząc tradycyjną aksjologię katolicką i patriotyczną z nowoczesną analizą prawno-ustrojową. Jako wykształcony radca prawny, swoje stanowisko opiera nie na deklaracjach emocjonalnych, lecz na technicznej krytyce instytucji państwowych oraz chłodnej analizie skutków prawnych i ekonomicznych stanowionego prawa.
+
+W obszarze ustroju państwa i wymiaru sprawiedliwości Michał Wawer diagnozuje głęboki kryzys instytucjonalny III Rzeczypospolitej, wynikający ze sporu między dwoma głównymi obozami politycznymi (PiS i PO). Określa ten stan jako paraliż państwa prawa i dualizm prawny, powstały w wyniku instrumentalnego traktowania sądów oraz procedur nominacji sędziowskich przez kolejne ekipy rządzące. Wawer stanowczo sprzeciwia się doraźnym rozwiązaniom uchwałowym oraz pozaprawnym zmianom w mediach publicznych czy organach sądowniczych, wskazując, że takie działania potęgują chaos ustrojowy i kwestionują ważność wyroków wydawanych przez sędziów powołanych po 2017 roku. Jako jedyne trwałe wyjście z kryzysu proponuje tzw. **reset konstytucyjny** – czyli ponadpartyjne porozumienie sił parlamentarnych, mające na celu wyzerowanie składów kluczowych organów sądowniczych (Trybunału Konstytucyjnego i Krajowej Rady Sądownictwa) oraz ponowny wybór ich członków większością kwalifikowaną. Postuluje ponadto odpolitycznienie i rozdzielenie funkcji Ministra Sprawiedliwości od Prokuratora Generalnego, podniesienie odpowiedzialności majątkowej urzędników oraz usprawnienie procedur w sądach rejonowych i gospodarczych.
+
+W kwestiach gospodarczych, podatkowych i rynkowych Wawer reprezentuje pryncypialne stanowisko prokonkurencyjne i antyetatystyczne. Wskazuje, że bogactwo narodowe generowane jest wyłącznie przez pracę, prywatną przedsiębiorczość i akumulację kapitału, a nie przez państwowe programy socjalne czy drukowanie pustego pieniądza. Krytykuje rosnący deficyt oraz wydatki socjalne (takie jak 13. i 14. emerytura, 800 plus czy dopłaty do świadczeń dla cudzoziemców), postulując ich ograniczenie w celu zatrzymania spirali inflacyjnej. W zakresie podatków opowiada się za maksymalnym uproszczeniem systemu – w tym wprowadzeniem jednolitego, liniowego podatku PIT na poziomie 12%, powiązaniem kwoty wolnej od podatku z dwunastokrotnością płacy minimalnej oraz obniżeniem i ujednoliceniem stawek podatku VAT. W kwestii rynku mieszkaniowego odrzuca koncepcje państwowego budownictwa oraz programów dopłat do kredytów (takich jak „Kredyt 0%” czy „Bezpieczny Kredyt 2%”), uznając je za mechanizmy stymulujące popyt i sztucznie podnoszące ceny mieszkań na rzecz banków i deweloperów. Zamiast tego postuluje reformy podażowe polegające na zniesieniu kosztochłonnych unijnych wymogów techniczno-budowlanych. Sprzeciwia się także monopolowi NFZ w ochronie zdrowia, proponując wprowadzenie bonu zdrowotnego i modelu konkurujących ze sobą funduszy ubezpieczeniowych.
+
+W odniesieniu do Unii Europejskiej i polityki zagranicznej Wawer hołduje zasadzie twardej obrony suwerenności państwowej i pragmatyzmu narodowego. Ocenia Unię Europejską jako strukturę przechodzącą od projektu gospodarczego do bezwładnego nadpaństwa, zdominowanego przez interesy Niemiec i Francji. Krytykuje procesy federalizacyjne, dążenie do zniesienia prawa weta oraz próby sięgania przez Brukselę po bezpośrednie kompetencje podatkowe i obronne (np. unijny program pożyczkowy SAFE). Szczególnie ostro zwalcza Europejski Zielony Ład oraz politykę klimatyczną (w tym systemy handlu emisjami ETS1 i ETS2), uznając je za ideologiczny radykalizm, który narzuca sztuczne obciążenia na polską energetykę węglową i niszczy konkurencyjność gospodarki. W polityce celnej i handlowej dopuszcza stosowanie wyselekcjonowanego protekcjonizmu gospodarczego (np. sprzeciw wobec umów o wolnym handlu z krajami Mercosur czy bezcłowego importu produktów rolnych z Ukrainy), argumentując, że rodzimi producenci nie mogą być obciążani restrykcyjnymi wymogami przy jednoczesnym wpuszczaniu na rynek produktów niespełniających tych samych norm. Postuluje zasadę „Unia plus 0” (brak nadmiarowej implementacji unijnych dyrektyw) oraz przygotowanie Polski na ewentualność rozpadu UE lub konieczność przeprowadzenia wyjścia z bloku („PolExit”).
+
+W sprawach społecznych, migracyjnych i kulturowych Wawer prezentuje stanowisko konserwatywno-narodowe. Opowiada się za pełną ochroną prawa do życia od momentu poczęcia, sprzeciwiając się liberalizacji przepisów aborcyjnych. W kwestiach rodziny akcentuje prawa obojga rodziców do wychowania dzieci, występując w Sejmie przeciwko tzw. alienacji rodzicielskiej. Zdecydowanie odrzuca postulaty legalizacji związków partnerskich czy małżeństw jednopłciowych, uznając je za sprzeczne z polską Konstytucją. W kwestii migracyjnej sprzeciwia się paktowi migracyjnemu UE oraz masowej imigracji zarobkowej. Postuluje zakończenie przywilejów socjalnych dla cudzoziemców i uszczelnienie granic, uzależniając politykę państwa od priorytetu interesów obywateli polskich. W relacjach międzynarodowych ([m.in](http://m.in). z Ukrainą czy partnerami z NATO) domaga się asertywności, odrzucając uległość dyplomatyczną i domagając się pamięci o prawdzie historycznej, w tym rozliczenia rzezi wołyńskiej.
+
+---
+
+### Działalność polityczna i publiczna
+
+Michał Wawer prowadzi aktywną działalność publiczną, łącząc rolę posła na Sejm X kadencji, wiceprezesa Ruchu Narodowego oraz skarbnika federacyjnej partii Konfederacja Wolność i Niepodległość. Swoje realne kompetencje i wpływ kształtuje przede wszystkim jako kluczowy architekt decyzji organizacyjno-finansowych w obozie narodowo-wolnościowym, koordynując procedury wyborcze, sprawozdawczość budżetową oraz reprezentację prawną ugrupowania przed Państwową Komisją Wyborczą i Sądem Najwyższym. W parlamencie zasiada w Komisji Sprawiedliwości i Praw Człowieka, Komisji Regulaminowej, Spraw Poselskich i Immunitetowych oraz Komisji Nadzwyczajnej ds. umów o wspólnym pożyciu, wykazując frekwencję w głosowaniach sięgającą 97,3% oraz biorąc udział w ponad 40 debetach sejmowych. Do jego najważniejszych inicjatyw legislacyjnych należy opracowanie poselskiego projektu ustawy o przeciwdziałaniu alienacji rodzicielskiej, autorstwo projektu uchwały Sejmu w sprawie upamiętnienia ofiar zamachu majowego Józefa Piłsudskiego, składanie wniosków o powołanie sejmowych komisji śledczych (ds. afery zbożowej, afer covidowych oraz polityki energetycznej 1997–2023), a także projektów rozporządzeń dotyczących pełnego embarga na ukraińskie towary rolne. Jako radca prawny i reprezentant obozu narodowego w debatach gospodarczych konsekwentnie łączy pracę parlamentarną z prawniczą obsługą struktur partyjnych i inicjatyw społecznych.
+
+---
+
+### Najważniejsze autorskie lektury, teksty i dzieła
+
+- **Dokument programowo-analityczny „PolExit — Bezpieczne wyjście awaryjne” (współautorstwo z Anną Bryłką)** – autorskie opracowanie eksperckie poświęcone analizie prawnych i gospodarczych scenariuszy przygotowania Polski do potencjalnego opuszczenia Unii Europejskiej lub reakcji na procesy jej rozpadu.
+
+- **Projekt Uchwały Sejmu RP w sprawie upamiętnienia ofiar zamachu majowego (autorstwo Michała Wawra)** – autorski projekt aktu parlamentarnego wnoszący o oficjalne potępienie przewrotu z maja 1926 roku jako bezprecedensowego w historii Polski aktu pogardy wobec legalnej, wybranej przez naród władzy konstytucyjnej.
+
+- **Poselski Projekt Ustawy o przeciwdziałaniu alienacji rodzicielskiej** – autorska inicjatywa legislacyjna wprowadzająca przepisy karne i wykroczeniowe chroniące konstytucyjne prawo obojga rodziców do wychowywania dziecka i zapobiegająca uporczywej izolacji rodzicielskiej.
+
+- **Projekty ustaw w ramach programu „Konstytucja Wolności”** – współautorstwo projektów aktów prawnych zakładających wprowadzenie liniowego podatku PIT 12%, powiązanie kwoty wolnej od podatku z płacą minimalną oraz likwidację 15 najbardziej szkodliwych podatków i opłat.
+
+- **Artykuł felietonowy „Dlaczego nie zaszczepię się na COVID-19” (portal Nowy Ład)** – autorski tekst publicystyczny analizujący politykę pandemii, krytykujący rządowy szantaż emocjonalny oraz przedstawiający prawne i medyczne przesłanki sprzeciwu wobec przymusu szczepień.
+
+---
+
+### Dziedzictwo i wpływ
+
+Działalność i koncepcje Michała Wawra wywierają istotny wpływ na współczesny kształt polskiego obozu narodowego oraz prawicy wolnościowej, stanowiąc ważny punkt odniesienia w procesie profesjonalizacji i instytucjonalizacji Konfederacji. Poprzez połączenie tradycyjnej myśli narodowej z nowoczesną analizą prawniczą, Wawer przyczynił się do wypracowania wyrazistej linii programowej ugrupowania, opartej na doktrynie „resetu konstytucyjnego”, zasadzie „Unia plus 0” oraz technicznej krytyce unijnej polityki klimatycznej i paktu migracyjnego. Jego podejście do zagadnień gospodarczych i ustrojowych stało się wewnątrz Ruchu Narodowego oraz federacji wzorcem pragmatycznego legalizmu – kładącego nacisk na szczelność procedur finansowych, obronę suwerenności podatkowej oraz odmowę ulegania populistycznemu etatyzmowi. W strukturach parlamentarnych i środowiskach ideowych Wawer postrzegany jest jako reprezentant nowego pokolenia polityków prawicy, którzy łączą ideowy konserwatyzm z prawniczym rygorem formalnym, budując alternatywę dla dotychczasowego duopolu politycznego w Polsce.
+
+---
+
+### Kilka ważnych i chwytliwych cytatów
+
+„Podatki powinny być proste i niskie.” *(z debaty gospodarczej z Andrzejem Domańskim na kanale* [*Goniec.pl*](http://Goniec.pl)*\*\*)*
+
+„Bogactwo, majątek narodowy nie bierze się z zasiłków, podatków, pożyczek ani drukowania pustego pieniądza. Bogactwo bierze się z pracy i Polaków trzeba do pracy zachęcać.” *(z wystąpienia poświęconego rozwojowi gospodarczemu)*
+
+„Unia Europejska to jest w tej chwili dla Polski problem – rosnący. W kolejnych latach możemy się spodziewać tylko tego, że korzyści płynące z przynależności do Unii będą się zmniejszać, a koszty obecności w niej – rosnąć.” *(z debaty parlamentarno-młodzieżowej na kanale MyPolitics)*
+
+„Mieszkanie to tak jak z ochroną zdrowia – nie da się nie mieszkać, nie da się nie leczyć, jak jest taka potrzeba. \[...\] Mieszkanie jest prawem, a nie towarem – to jest po prostu kłamstwo, logiczny fałsz. Towar to wytwór pracy ludzkiej, produkt namacalny, materialny, którego jest ograniczona ilość na rynku. Za każde mieszkanie ktoś musi zapłacić.” *(z debaty mieszkaniowej z posłem Maciejem Koniecznym w Radiu SuperNowa)*
+
+„My przede wszystkim powinniśmy być gotowi na to, że Unia Europejska się rozpadnie.” *(z wywiadu w Radiu ZET dotyczącego perspektyw integracji europejskiej)*
+
+„Zgodnie z polskim prawem, a także prawem naturalnym, dziecko ma prawo do tego, by być wychowywanym przez oboje rodziców, przez ojca i przez matkę. Niestety w polskim sądownictwie rodzinnym ta zasada jest nagminnie łamana.” *(z wystąpienia na posiedzeniu Sejmu RP nr 63)*
+
+„Wojna polsko-polska prowadzona między PiS a PO powoduje, że oskarżenie o bycie rosyjskim agentem przestało cokolwiek znaczyć.” *(z wypowiedzi w Polskim Radiu 24 dotyczącej debaty publicznej i bezpieczeństwa państwa)*
+
+„Koncentrowanie się rządu na rozliczeniach jest ośmieszające dla państwa \[...\] Polacy myślę że czekają na to, żeby po prostu mieć tutaj jednoznaczne rozstrzygnięcie, a jest tylko takie gonienie króliczka.” *(z wywiadu w Telewizji wPolsce24 dotyczącego kryzysu wymiaru sprawiedliwości)*
+
+„Być narodowcem to oznacza stawiać swój naród, interes swojego narodu na pierwszym miejscu wśród spraw doczesnych – na drugim miejscu po Bogu i wierze.” *(z wywiadu w programie „Wokół partii kręcą się wariaci i agenci”)*
+
+„Europejski Zielony Ład to jest nowa rewolucyjna wizja tego, jak w ogóle Unia Europejska ma wyglądać i czemu ma służyć \[...\] To jest zmienianie Europy w skansen.” *(z sejmowej debaty nad polityką klimatyczną oraz wywiadu dla Telewizji Narew)*
+
+„Przewrót dokonany przez Józefa Piłsudskiego był bezprecedensowym w polskiej historii przykładem pogardy wobec legalnej, konstytucyjnej, praworządnej i wybranej przez Naród Polski władzy.” *(z uzasadnienia poselskiego projektu uchwały Sejmu w sprawie zamachu majowego)*
+
+„Każde dziecko, niezależnie od tego, jak zostało poczęte, zasługuje na to, żeby na świat przyjść i dostać szansę na pełne życie.” *(z wypowiedzi dotyczącej ochrony życia od poczęcia i wsparcia dla rodziców)*
+
+Oto zestawienie wszystkich pasujących tagów z przedstawionej listy wraz z krótkim uzasadnieniem źródłowym, podzielone na podane kategorie:
+
+---
+
+### Zawód / dziedzina
+
+- **Polityk** – sprawuje mandat posła na Sejm RP X kadencji oraz pełni funkcje kierownicze w partiach politycznych.
+
+- **Prawnik** – posiada wykształcenie prawnicze i wykonuje zawód radcy prawnego, reprezentując [m.in](http://m.in). ugrupowania polityczne w sprawach formalno-prawnych i finansowych.
+
+- **Publicysta** – jest autorem artykułów, felietonów i opracowań programowo-analitycznych ([m.in](http://m.in). dla portalu Nowy Ład oraz publikacji branżowych/partyjnych).
+
+---
+
+### Rola / urząd
+
+- **Lider partii** – pełni funkcję wiceprezesa Ruchu Narodowego oraz skarbnika federacyjnej partii Konfederacja Wolność i Niepodległość.
+
+- **Parlamentarzysta** – zasiada w Sejmie RP X kadencji, biorąc udział w pracach komisji i debatach legislacyjnych.
+
+- **Założyciel partii/ruchu** – współtworzył i od podstaw budował struktury Ruchu Narodowego oraz Konfederacji.
+
+- **Myśliciel społeczny** – opracowuje autorskie koncepcje ustrojowe i programowe (np. doktrynę „resetu konstytucyjnego” czy analizy dotyczące relacji z UE).
+
+---
+
+### Narodowość
+
+- **Polska** – obywatel Rzeczypospolitej Polskiej, prowadzący działalność na terenie Polski i reprezentujący polskie partie polityczne.
+
+---
+
+### Status
+
+- **Żyje** – osoba aktywna zawodowo i politycznie.
+
+---
+
+### Płeć
+
+- **Mężczyzna** – Michał Wawer.
+
+---
+
+### Okres życia
+
+- **XXI wiek** – okres pełnej aktywności zawodowej, publicznej i parlamentarnej.
+
+- **XX wiek** – czas narodzin (1989 r.) oraz wczesnej edukacji.
+
+---
+
+### Ideologia
+
+- **Konserwatyzm** – opowiada się za ochroną tradycyjnego modelu rodziny, prawa do życia od poczęcia oraz tradycyjnego ładu społecznego.
+
+- **Nacjonalizm** – jako wiceprezes Ruchu Narodowego stawia interes narodu polskiego na pierwszym miejscu w polityce wewnętrznej i zagranicznej.
+
+- **Liberalizm gospodarczy** – postuluje obniżenie i uproszczenie podatków (np. linia PIT 12%), deregulację rynku, wolną konkurencję oraz ograniczenie wydatków socjalnych.
+
+- **Tradycjonalizm** – przywiązanie do tradycyjnych wartości obyczajowych i sprzeciw wobec zmian kulturowo-społecznych.
+
+- **Demokracja** – działa w ramach konstytucyjnego systemu przedstawicielskiego i legitymizuje swoją rolę przez udział w demokratycznych wyborach.
+
+- **Republikanizm** – kładzie nacisk na praworządność, powagę instytucji państwowych, odpowiedzialność urzędników oraz dobro wspólne Rzeczypospolitej.
+
+---
+
+### Kontynent działalności
+
+- **Europa** – prowadzi działalność polityczną i społeczną w Polsce oraz w obszarze polityki europejskiej.
+
+---
+
+### Sposób dojścia do władzy / legitymizacja
+
+- **Wybory demokratyczne** – uzyskał mandat poselski w powszechnych i bezpośrednich wyborach parlamentarnych.
+
+---
+
+### Religia
+
+- **Chrześcijaństwo** / **Katolicyzm** – deklaruje przywiązanie do wartości chrześcijańskich i katolickiej nauki społecznej jako fundamentu aksjologicznego.
+
+---
+
+### 1. Informacje podstawowe
+
+- **Data urodzenia:** 3 stycznia 1883 roku
+
+- **Data śmierci:** 8 października 1967 roku
+
+- **Kontynent działalności:** Europa
+
+- **Państwo / państwa związane z działalnością:** Wielka Brytania
+
+- **Narodowość:** brytyjska
+
+- **Główna działalność:** polityk, mąż stanu
+
+- **Pozostałe rodzaje działalności:** adwokat (barrister), wykładowca akademicki, pracownik społeczny, żołnierz/oficer wojskowy
+
+- **Najważniejsze funkcje publiczne/państwowe:**
+
+  - Premier Wielkiej Brytanii (1945–1951)
+
+  - Wicepremier Wielkiej Brytanii (1942–1945)
+
+  - Lord Przewodniczący Rady (1943–1945)
+
+  - Sekretarz stanu ds. dominium (1942–1943)
+
+  - Lord Tajnej Pieczęci (1940–1942)
+
+  - Lider Opozycji w Izbie Gmin (1935–1940, 1945, 1951–1955)
+
+  - Postmaster General (1931)
+
+  - Kanclerz Księstwa Lancaster (1930–1931)
+
+  - Podsekretarz stanu w Ministerstwie Wojny (1924)
+
+  - Burmistrz Stepney (1919–1920)
+
+  - Poseł do Izby Gmin (1922–1955: okręgi Limehouse i Walthamstow West)
+
+  - Członek Izby Lordów jako 1. hrabia Attlee (1955–1967)
+
+- **Sposób dojścia do władzy / legitymizacja:** Wybory parlamentarne – mandat demokratyczny uzyskany dzięki bezprecedensowemu zwycięstwu Partii Pracy w wyborach powszechnych w lipcu 1945 roku i sformowanie rządu większościowego na zaproszenie monarchy
+
+- **Okres aktywności:** 1906–1955 (działalność społeczno-polityczna i parlamentarna; członek Izby Lordów do śmierci w 1967 roku)
+
+- **Partie polityczne (od najnowszej do najstarszej):**
+
+  - Partia Pracy (Labour Party, 1908–1967; lider w latach 1935–1955)
+
+  - Niezależna Partia Pracy (Independent Labour Party – ILP, wstąpienie w 1908 roku)
+
+- **Formalne organizacje:** Fabian Society, National Union of Clerks, Armia Brytyjska (South Lancashire Regiment, Tank Corps – stopień majora), Inner Temple, Royal Society (FRS), Komisja Simona (Statutory Commission on India)
+
+- **Ideologie:** socjalizm demokratyczny, socjalizm etyczny, reformizm socjalny, patriotyzm obywatelski
+
+- **Ważne wartości:** sprawiedliwość społeczna, służba publiczna, obowiązek obywatelski, demokracja parlamentarna, równość szans, wolność, lojalność, pragmatyzm etyczny
+
+- **Inspiracje intelektualne/mentorzy:** John Ruskin, William Morris, Thomas Carlyle, Edward Bellamy, Beatrice i Sidney Webb
+
+- **Religia/Wyznanie/Odłam:** wychowany w rodzinie anglikańskiej; niepraktykujący / kierujący się chrześcijańską etyką bez akceptacji dogmatów religijnych
+
+---
+
+### 2. Overview
+
+**Clement Attlee (1883–1967) był brytyjskim politykiem, liderem Partii Pracy i premierem Wielkiej Brytanii**. Przeprowadził przebudowę państwa w duchu socjalizmu etycznego. Stworzył państwo dobrobytu i NHS, zrealizował nacjonalizację kluczowych gałęzi przemysłu oraz rozpoczął dekolonizację Imperium. Filar powojennego konsensusu politycznego.
+
+---
+
+### 3. Wstęp
+
+**Clement Richard Attlee** był kluczową postacią brytyjskiej polityki XX wieku, pełniącą funkcję wicepremiera w wojennym gabinecie koalicyjnym Winstona Churchilla oraz premierem Wielkiej Brytanii w latach 1945–1951. Działał w okresie głębokich kryzysów gospodarczych dwudziestolecia międzywojennego, wyzwań II wojny światowej oraz powojennej odbudowy kraju. Głównym przedmiotem jego działalności politycznej i społecznej była walka z ubóstwem, nierównościami społecznymi oraz bezrobociem, które poznał bezpośrednio podczas pracy wolontariackiej w ubogiej dzielnicy East End w Londynie. Jego praktyka polityczna opierała się na koncepcji **socjalizmu etycznego**, łączeniu doktrynalnych celów z pragmatycznym reformizmem oraz silnym poczuciu **patriotyzmu obywatelskiego**. Attlee traktował państwo jako narzędzie realizacji sprawiedliwości społecznej i zapewnienia obywatelom podstawowych praw oraz bezpieczeństwa socjalnego. Przewodnicząc pierwszemu większościowemu rządowi Partii Pracy, zrealizował program obejmujący utworzenie powszechnej służby zdrowia (NHS), zbudowanie systemu ubezpieczeń społecznych oraz nacjonalizację strategicznych sektorów gospodarki. W polityce zagranicznej utrwalił sojusz ze Stanami Zjednoczonymi, współtworzył strukturę NATO oraz zapoczątkował demontaż Imperium Brytyjskiego.
+
+---
+
+### 4. Życie, historia i działalność
+
+**Clement Richard Attlee** urodził się 3 stycznia 1883 roku w Putney w Londynie w zamożnej rodzinie klasy średniej o tradycjach anglikańskich. Wykształcenie zdobył w Haileybury College oraz University College w Oxfordzie, gdzie ukończył studia historyczne, a następnie uzyskał uprawnienia adwokackie w Inner Temple. Początkowo reprezentował poglądy konserwatywne. Przełomem w jego życiu stało się podjęcie w 1905 roku wolontariatu w klubie chłopięcym Haileybury House w dzielnicy Stepney w londyńskim East Endzie. Zetknięcie z nędzą slumsów doprowadziło go do przekonania, że prywatna dobroczynność jest niewystarczająca i konieczna jest państwowa redystrybucja dochodu oraz reforma systemu ekonomicznego. W 1908 roku wstąpił do Niezależnej Partii Pracy (ILP) i Fabian Society, rezygnując z kariery prawniczej. Pracował jako sekretarz w Toynbee Hall oraz wykładowca nauk społecznych w London School of Economics (1912–1923).
+
+Po wybuchu I wojny światowej wstąpił na ochotnika do wojska, służąc w South Lancashire Regiment oraz Tank Corps. Brał udział w walkach pod Gallipoli, w Mezopotamii oraz we Francji, uzyskując stopień majora. Doświadczenia wojenne utwierdziły w nim poczucie obywatelskiego obowiązku oraz wartości patriotycznych.
+
+Po demobilizacji powrócił do Stepney, gdzie w 1919 roku został wyznaczony na burmistrza. Prowadził intensywne działania na rzecz poprawy warunków mieszkaniowych, walki z wyzyskiem ze strony właścicieli nieruchomości oraz aktywizacji bezrobotnych weterynarzy wojennych. W 1922 roku po raz pierwszy zdobył mandat poselski z okręgu Limehouse. W pierwszym rządzie Partii Pracy w 1924 roku pełnił funkcję podsekretarza stanu w Ministerstwie Wojny. W latach 1927–1930 zasiadał w Komisji Simona ds. Indii, co ukształtowało jego głębokie zainteresowanie problematyką azjatycką i sympatię dla dążeń niepodległościowych. W drugim rządzie Ramsaya MacDonalda sprawował urzędy Kanclerza Księstwa Lancaster oraz Postmaster General.
+
+Podczas kryzysu w 1931 roku odmówił wejścia do Rządu Narodowego MacDonalda, zachowując lojalność wobec Partii Pracy. Po pomyślnym utrzymaniu mandatu poselskiego został zastępcą lidera ugrupowania, George'a Lansbury'ego. W 1935 roku objął stanowisko lidera Partii Pracy, które piastował do 1955 roku. W drugiej połowie lat 30. przestawił pacyfistyczne nastawienie ugrupowania na rzecz poparcia dla rearmamencie w obliczu zagrożenia ze strony Niemiec nazistowskich oraz zdecydowanie sprzeciwił się polityce appeasementu.
+
+W maju 1940 roku wprowadził Labourzystów do wojennego rządu koalicyjnego Winstona Churchilla. Sprawował funkcje Lorda Tajnej Pieczęci, Sekretarza stanu ds. dominium, Lorda Przewodniczącego Rady oraz od 1942 roku oficjalnego Wicepremiera. Zarządzał pracami Lord President's Committee, sprawnie kierując polityką wewnętrzną i gospodarką wojenną kraju.
+
+Po zwycięstwie Partii Pracy w wyborach w lipcu 1945 roku objął urząd premiera Wielkiej Brytanii. Jego rząd zrealizował szeroki program reform: utworzył National Health Service (NHS), rozbudował powszechny system ubezpieczeń społecznych oraz przeprowadził nacjonalizację strategicznych gałęzi przemysłu (górnictwo, koleje, energetyka, Bank Anglii). W polityce zagranicznej przeprowadził dekolonizację Indii, Pakistanu, Birmy i Cejlonu, poparł Plan Marshalla, współtworzył pakt NATO oraz podjął decyzję o budowie niezależnej brytyjskiej broni atomowej.
+
+Po porażce wyborczej w 1951 roku kierował opozycją do 1955 roku, po czym wycofał się z aktywnej polityki, otrzymując tytuł hrabiego (Earl Attlee) i zasiadając w Izbie Lordów. Zmarł 8 października 1967 roku w Londynie.
+
+### Poglądy i idee
+
+**Państwo, gospodarka i własność**
+
+Clement Attlee reprezentował nurt socjalizmu etycznego, odrzucający ortodoksyjny marksizm i koncepcję bezwzględnej walki klas na rzecz budowy państwa opartego na sprawiedliwości społecznej oraz wspólnocie obywatelskiej. Jego myślenie gospodarcze ukształtowało się pod wpływem krytyki kapitalizmu zawartej w pismach Johna Ruskina i Williama Morrisa, jednak w kwestiach organizacji państwa opowiedział się za wizją Edwarda Bellamy’ego, zakładającą państwową własność środków produkcji, wydajność przemysłową oraz centralne planowanie. Attlee uważał, że nacjonalizacja strategicznych sektorów gospodarki (takich jak górnictwo, energetyka, koleje, lotnictwo, hutnictwo oraz Bank Anglii) nie stanowi celu samego w sobie, lecz jest niezbędnym narzędziem naprawy gospodarczej, likwidacji bezrobocia i stworzenia stabilnej gospodarki mieszanej \[2, 7, 55, 776–778\]. Odrzucał doktrynę *laissez-faire* oraz dziewiętnastowieczny model państwa minimalnego i systemu *Poor Law*, twierdząc, że bezpośrednia interwencja państwowa i redystrybucja dochodów stanowią jedyny skuteczny sposób zwalczania ubóstwa, podczas gdy prywatna dobroczynność jest nieadekwatna i upokarzająca dla odbiorców. Uważał przy tym, że państwo dobrobytu musi opierać się na solidnych fundamentach ekonomicznych i stałym wzroście wydajności pracy, a finanse i usługi publiczne stanowią wspólny majątek obywateli.
+
+**Demokracja, legislacja i reformizm**
+
+Attlee był głęboko przywiązany do demokracji parlamentarnej, praworządności oraz ewolucyjnego reformizmu. Traktował brytyjski system konstytucyjny jako elastyczne narzędzie rozszerzania wolności obywatelskich oraz sukcesywnego włączania klasy robotniczej do struktury władzy państwowej. Kategorycznie odrzucał wszelkie formy totalitarianizmu i dyktatury – zarówno faszyzm, jak i komunizm – uznając je za reakcyjne i sprzeczne z wolnościową tradycją. Choć na początku lat 30. XX wieku krótko rozważał konieczność uchwalenia ustaw o nadzwyczajnych pełnomocnictwach dla rządu socjalistycznego w celu pokonania oporu klas posiadających, szybko wycofał się z tych koncepcji po przeanalizowaniu praktyki ustrojowej Hitlera, Mussoliniego, Stalina oraz Mosleya \[91, 556–557, 561, 1090, 1094\]. Istotą jego podejścia do rządzenia była koncepcja „rządu poprzez dyskusję”, polegająca na poszukiwaniu kompromisu i konsensusu przy jednoczesnym sprawnym rozstrzyganiu sporów i egzekwowaniu decyzji.
+
+**Społeczeństwo, klasa i etos obywatelski**
+
+Sercem myśli społecznej Attlee była doktryna powszechnej obywatelskości (*citizen ideal*), stanowiąca syntezę praw socjalnych i obowiązków wobec wspólnoty. Odrzucał pogląd, że klasa robotnicza odpowiada za swoje ubóstwo z przyczyn moralnych, akcentując solidarność i godność środowisk robotniczych. Celem socjalizmu nie było dla niego zastąpienie dominacji jednej klasy przez drugą, lecz całkowite zniesienie podziałów klasowych i stworzenie społeczeństwa równych szans. Model ten opierał się na wprowadzeniu powszechnych, uniwersalnych świadczeń – takich jak National Health Service (NHS) oraz system ubezpieczeń społecznych od kołyski do grobu – dostępnych bez upokarzających testów zamożności (*means test*) dla wszystkich obywateli z tytułu przynależności państwowej. Jednocześnie Attlee akcentował konieczność wywiązywania się obywateli z obowiązków wobec państwa i współtowarzyszy, krytykując uchylanie się od pracy i niewłaściwe wykorzystywanie świadczeń socjalnych jako działanie szkodliwe dla wspólnoty.
+
+**Patriotyzm, dekolonizacja i polityka zagraniczna**
+
+Attlee hołdował koncepcji patriotyzmu obywatelskiego (*social patriotism*), łącząc przywiązanie do brytyjskiej tradycji i instytucji z dążeniem do głębokich reform społecznych. W kwestiach imperialnych przeszedł ewolucję od młodzieńczego wsparcia dla brytyjskiego imperium do przekonania o konieczności jego uporządkowanej dekolonizacji. Uważał, że tradycyjne rządy kolonialne w Azji uległy wyczerpaniu i postulował przyznanie niepodległości Indiom, Pakistanowi, Birmie oraz Cejlonowi, dążąc do przekształcenia autorytarnego imperium w dobrowolną, wielorasową Wspólnotę Narodów (Commonwealth). W polityce zagranicznej opowiadał się za multilateralizmem i bezpieczeństwem zbiorowym w ramach Organizacji Narodów Zjednoczonych, jednak w obliczu zimnej wojny stał się twardym realistą \[8, 84, 88, 147–155, 167\]. Opierał bezpieczeństwo Wielkiej Brytanii na ścisłym sojuszu ze Stanami Zjednoczonymi oraz aktywnym współtworzeniu paktu NATO, inicjując zarazem budowę niezależnego brytyjskiego arsenału jądrowego \[8, 88, 100, 140, 373–374\].
+
+**Stosunek do przemocy i obronności**
+
+Attlee odrzucał pacyfizm doktrynalny, reprezentując postawę wojskowego weterana i realistycznego państwowca. Jako uczestnik walk pod Gallipoli i w Mezopotamii uważał, że obrona ojczyzny i siłowa redefinicja ładu międzynarodowego w obliczu agresji stanowią obowiązek obywatelski. W drugiej połowie lat 30. XX wieku zdecydowanie sprzeciwił się polityce uległości (*appeasement*) rządu Chamberlaina i poparł zbrojenia Wielkiej Brytanii w obliczu zagrożenia ze strony Niemiec nazistowskich. Choć dostrzegał niszczycielski potencjał broni atomowej i postulował międzynarodową kontrolę energii jądrowej pod auspicjami ONZ, w sytuacji odmowy dzielenia się technologią przez USA podjął tajną decyzję o stworzeniu brytyjskiej bomby atomowej jako niezbędnego środka odstraszania strategicznego \[8, 12, 100, 206–209, 373–374, 598–599\].
+
+**Aksjologia, kultura i religia**
+
+Wychowany w zamożnej rodzinie anglikańskiej, Attlee w życiu dorosłym nie praktykował religii i odrzucał chrześcijańskie dogmaty, jednak jego światopogląd był głęboko ukształtowany przez etykę chrześcijańską – zwłaszcza wartości służby, obowiązku, pokory i współczucia. W warstwie kulturowej czerpał z dziewiętnastowiecznej romantycznej i poetyckiej krytyki rewolucji przemysłowej (John Ruskin, William Morris, Thomas Carlyle, William Blake), przedkładając wizję wspólnoty ludzkiej nad komercyjny indywidualizm i chciwość. Podkreślał, że brytyjski socjalizm wywodzi się z rodzimej tradycji humanistycznej i obywatelskiej, a nie z kontynentalnego marksizmu.
+
+---
+
+### Działalność polityczna i publiczna
+
+**Clement Attlee rozpoczął aktywność społeczną od pracy wolontariackiej w Stepney Boys' Club (1907–1909) oraz Toynbee Hall w londyńskim East Endzie, a od 1912 do 1923 roku wykładał w London School of Economics.** W czasie I wojny światowej służył jako ochotnik i oficer (w stopniu majora) w South Lancashire Regiment oraz Tank Corps, biorąc udział w walkach pod Gallipoli, w Mezopotamii i we Francji. Po powrocie do cywila został burmistrzem Stepney (1919–1920), gdzie prowadził walkę z wyzyskiem ze strony właścicieli nieruchomości i rozbudowywał miejską infrastrukturę zdrowotną. W 1922 roku zdobył mandat poselski do Izby Gmin z okręgu Limehouse (od 1950 reprezentował Walthamstow West), zasiadając w parlamentarnych ławach do 1955 roku. W pierwszym rządzie Partii Pracy sprawował funkcja podsekretarza stanu w Ministerstwie Wojny (1924), w latach 1927–1930 zasiadał w Komisji Simona ds. Indii, a w drugim rządzie Ramsaya MacDonalda pełnił urzędy Kanclerza Księstwa Lancaster (1930–1931) oraz Postmaster General (1931). W 1931 roku odmówił wejścia do Rządu Narodowego MacDonalda i został zastępcą lidera Partii Pracy, a w latach 1935–1955 piastował stanowisko lidera ugrupowania i lidera opozycji \[52, 87, 89, 133–134\]. W maju 1940 roku wprowadził Labourzystów do wojennego rządu koalicyjnego Winstona Churchilla, w którym pełnił funkcje Lorda Tajnej Pieczęci (1940–1942), Sekretarza stanu ds. dominium (1942–1943), Lorda Przewodniczącego Rady (1943–1945) oraz oficjalnego Wicepremiera (1942–1945), sprawując faktyczną kontrolę nad sprawami wewnętrznymi i komitetami gabinetu \[54, 93, 134, 436–437\]. Po zwycięstwie wyborczym w lipcu 1945 roku objął urząd premiera Wielkiej Brytanii (1945–1951), przewodnicząc pierwszemu większościowemu rządowi Partii Pracy. Jego rząd uchwalił kluczowe akty prawne tworzące powszechną służbę zdrowia (National Health Service Act 1946) i zreformowany system ubezpieczeń (National Insurance Act 1946), przeprowadził nacjonalizację strategicznych sektorów gospodarki (Bank Anglii, górnictwo, koleje, energetyka, gazownictwo, hutnictwo), a także uchwalił New Towns Act (1946) i Town and Country Planning Act (1947). W polityce zagranicznej przeprowadził dekolonizację Indii i Pakistanu (1947), Birmy oraz Cejlonu (1948), wycofał wojska z Mandatu Palestyny (1948), podjął tajną decyzję o stworzeniu brytyjskiego arsenału jądrowego (1947), wprowadził Wielką Brytanię do struktury NATO (1949), poparł Plan Marshalla oraz skierował brytyjskie siły do udziału w wojnie w Korei (1950) \[3, 4, 8, 12, 15, 60, 61, 88, 100, 373–374\]. Po porażce wyborczej w 1951 roku kierował opozycją do 1955 roku, po czym wycofał się z aktywnej polityki i zasiadł w Izbie Lordów jako 1. hrabia Attlee.
+
+---
+
+### Najważniejsze autorskie lektury i dzieła
+
+1. ***The Social Worker*** **(1920)** – Pierwsza główna praca Attlee, oparta na doświadczeniach z pracy w East Endzie i wykładach w LSE, stanowiąca uzasadnienie dla państwowej polityki społecznej; krytykowała dziewiętnastowieczną dobroczynność i zarysowywała ideę obywatelskości opartej na sprawiedliwości społecznej.
+
+2. ***Labour Shows the Way: The Will and the Way to Socialism*** **(1935)** – Książka przedstawiająca brytyjski program socjalistyczny przy użyciu metafory ogrodu, akcentująca stopniowy, ewolucyjny i nieszablonowy rozwój w ramach ładu prawnego.
+
+3. ***The Labour Party in Perspective*** **(1937)** – Kluczowe dzieło doktrynalne Attlee napisane jako lidera opozycji, przedstawiające historyczną i parlamentarną drogę Partii Pracy; uzasadniało potrzebę własności publicznej i planowania gospodarczego, kategorycznie odrzucając metody komunistyczne oraz totalitarianizm.
+
+4. ***Labour's Peace Aims*** **(1940)** – Manifest programowy określający cele wojenne Partii Pracy i wizję powojennego ładu międzynarodowego opartego na samostanowieniu narodów, zniesieniu imperializmu oraz bezwzględnym poszanowaniu praw człowieka i sprawiedliwości społecznej.
+
+5. ***Purpose and Policy: Selected Speeches*** **(1946)** – Zbiór najważniejszych przemówień z początkowego okresu sprawowania urzędu premiera, stanowiący wywód na rzecz budowy państwa dobrobytu, gospodarki mieszanej i sojuszu państw demokratycznych.
+
+6. ***As It Happened*** **(1954)** – Autobiografia napisana pod koniec kariery politycznej, odzwierciedlająca powściągliwy, pragmatyczny i pozbawiony pozury styl przywództwa Attlee oraz podsumowująca dokonania rządu z lat 1945–1951.
+
+7. ***Empire into Commonwealth*** **(1961)** – Zbiór wykładów akademickich (Chichele Lectures w Oksfordzie), stanowiący podsumowanie jego wizji politycznej i historycznego procesu przekształcenia Imperium Brytyjskiego w wielorasową Wspólnotę Narodów.
+
+---
+
+### Dziedzictwo
+
+**Działalność i reformy rządu Clementa Attlee stworzyły tak zwany powojenny konsensus polityczny (*post-war consensus* lub *Attlee settlement*), oparty na gospodarce mieszanej, kluczowej roli państwa w utrzymywaniu pełnego zatrudnienia, polityce popytowej Keynesa oraz uniwersalnym państwie dobrobytu, który dominował w brytyjskiej polityce przez trzy dekady pod rządami obu głównych partii.** Utworzenie National Health Service (NHS) oraz powszechnego systemu ubezpieczeń stało się trwałym filarem brytyjskiego życia społecznego, niepodważanym bezpośrednio nawet przez późniejsze rządy konserwatywne. Z lewej strony sceny politycznej ocena dorobku Attlee była podzielona: krytycy tacy jak Ralph Miliband czy Raymond Williams zarzucali mu niepełną rewolucję, uległość wobec kapitału, rezygnację z głębokiego przewrotu społecznego na rzecz umiarkowanego reformizmu oraz uległość wobec polityki zagranicznej USA. Z kolei prawica polityczna oraz krytycy neoliberalni (w tym Margaret Thatcher i nowa prawica) atakowali spuściznę rządu Attlee za etatyzację gospodarki, wysokie opodatkowanie, osłabienie etosu przedsiębiorczości oraz generowanie narastających kosztów publicznych – choć sama Thatcher publicznie wyrażała głęboki szacunek dla bezinteresowności, pryncypialności i determinacji Attlee. W badaniach politologicznych i historycznych Attlee jest regularnie klasyfikowany w ścisłej czołówce najwybitniejszych premierów Wielkiej Brytanii XX wieku, często na pierwszym miejscu przed Winstonem Churchillem, a jego model „przywódcy-przewodniczącego” (*chairman leader*) jest analizowany jako wzorzec skutecznego zarządzania gabinetem złożonym z silnych osobowości. Wewnątrz Partii Pracy Attlee pozostaje punktem odniesienia dla kolejnych pokoleń polityków – od Jamesa Callaghana i Harolda Wilsona, przez Eda Milibanda, po autorów nurtu Blue Labour (Jon Cruddas) – przedstawiających go jako uosobienie etycznego, patriotycznego i autentycznego socjalizmu demokratycznego \[44, 180, 485–487, 668, 1020–1022\].
+
+---
+
+### Cytaty
+
+ 1. **„Socjalizm nie jest wynalazkiem jednostki. Jest zasadniczo wynikiem warunków ekonomicznych i społecznych. (...) Przyczyną jest prywatna własność środków do życia; środkiem zaradczym jest własność publiczna.”** (*The Labour Party in Perspective*, 1937)
+
+ 2. **„Socjaliści nie proponują zastąpienia dominacji jednej uprzywilejowanej klasy przez drugą. Dążą do całkowitego zniesienia podziałów klasowych.”** (*The Labour Party in Perspective*, 1937)
+
+ 3. **„Demokracja oznacza rząd oparty na dyskusji, ale jest skuteczna tylko wtedy, gdy można powstrzymać ludzi przed mówieniem.”** (Wypowiedź dotycząca zarządzania posiedzeniami gabinetu)
+
+ 4. **„Naszym zadaniem jest stworzenie systemu nowego i stanowiącego wyzwanie, który łączy wolność jednostki z gospodarką planową, demokrację ze sprawiedliwością społeczną.”** (Przemówienie radiowe, 3 stycznia 1948)
+
+ 5. **„Nie przyjmiemy doktryny komunistycznej. Doktryna ta wywodzi się ze Wschodu. Orientacyjna w swej koncepcji, nie należy do głównego nurtu demokratycznej myśli.”** (Przemówienie w Skegness, 27 czerwca 1948)
+
+ 6. **„Prawdziwym bogactwem kraju i jego największym aktywem są jego obywatele.”** (Przemówienie w Izbie Gmin, 23 listopada 1922)
+
+ 7. **„Ta strajkowa akcja nie jest strajkiem przeciwko kapitalistom czy pracodawcom. Jest to strajk przeciwko waszym kolegom; strajk przeciwko gospodyni domowej; strajk przeciwko zwykłym, szarym ludziom...”** (Przemówienie radiowe w sprawie strajku dokerów, 28 czerwca 1948)
+
+ 8. **„W moim własnym ugrupowaniu wpływ Williama Morrisa daleko przewyższa wpływ Karola Marksa.”** (Przemówienie podczas corocznego obiadu Royal Academy, 27 kwietnia 1950)
+
+ 9. **„Państwo dobrobytu może przetrwać tylko wtedy, gdy zostanie zbudowane na solidnym fundamencie ekonomicznym.”** (Przemówienie radiowe, 24 października 1949)
+
+10. **„Gdyby odpowiedź brzmiała 'nie', oznaczałoby to, że zasoby kraju nie są wystarczające do zapewnienia wszystkim naszym ludziom choćby bardzo skromnego poziomu życia.”** (Wypowiedź w Izbie Gmin w 1946 roku w odpowiedzi na pytania o koszty programu społecznego)
+
+11. **„Pójdźmy naprzód do tej walki w duchu Williama Blake’a: 'Nie ustanę w walce ducha, ani miecz nie spocznie w mej dłoni, aż zbudujemy Jeruzalem w zielonej i pięknej ziemi Anglii'.”** (Przemówienie podsumowujące cele rządu)
+
+12. **„Zapytany w swoje 80. urodziny o największe osiągnięcie w życiu publicznym, Attlee powiedział: 'Jedni mówią Indie, inni fakt, że zdołałem wejść do rządu koalicyjnego w 1940 roku i wyjść z niego w 1945 roku bez strat'.”** (Wypowiedź z okazji 80. urodzin)
+
+### Pasujące tagi z podanych kategorii
+
+#### Zawód / dziedzina
+
+- **Akademia / Akademik** – Wykładowca i tutor nauk społecznych oraz administracji publicznej w London School of Economics w latach 1912–1923.
+
+- **Działacz związkowy** – Członek National Union of Clerks oraz aktywny organizator i mówca współpracujący ze związkami zawodowymi ([m.in](http://m.in). London Carmen's Trade Union).
+
+- **Historyk** – Ukończył studia historyczne (Modern History) z wyróżnieniem na Uniwersytecie Oksfordzkim oraz pisał prace historyczno-polityczne.
+
+- **Pisarz** – Autor książek, monografii doktrynalnych oraz autobiografii ([m.in](http://m.in). *The Social Worker*, *The Labour Party in Perspective*, *As It Happened*, *Empire into Commonwealth*).
+
+- **Politolog** – Wykładowca teorii i praktyki administracji publicznej oraz autor prac analizujących brytyjski ustrój parlamentarny i rozwój ruchu socjalistycznego.
+
+- **Polityk** – Wieloletni poseł do Izby Gmin, lider Partii Pracy przez 20 lat (1935–1955), wicepremier oraz premier Wielkiej Brytanii.
+
+- **Prawnik** – Wykształcony adwokat (barrister), przyjęty do palestry w Inner Temple w 1906 roku, praktykujący w kancelariach prawnych w Londynie.
+
+- **Publicysta** – Autor licznych artykułów politycznych, broszur propagandowych ([m.in](http://m.in). dla Fabian Society) oraz opublikowanych przemówień.
+
+- **Wojskowy** – Ochotnik i oficer w stopniu majora w South Lancashire Regiment oraz Tank Corps podczas I wojny światowej, uczestnik walk pod Gallipoli, w Mezopotamii i we Francji.
+
+#### Rola / urząd
+
+- **Arystokrata** – Po zakończeniu kariery w Izbie Gmin otrzymał dziedziczny tytuł 1. hrabiego Attlee (1st Earl Attlee) oraz wicehrabiego Prestwood, zasiadając w Izbie Lordów.
+
+- **Kanclerz** – Sprawował urząd Kanclerza Księstwa Lancaster (Chancellor of the Duchy of Lancaster) w latach 1930–1931.
+
+- **Lider partii** – Przewodniczący Partii Pracy w latach 1935–1955.
+
+- **Minister** – Sprawował liczne funkcje ministerialne, [m.in](http://m.in). Lorda Tajnej Pieczęci, Sekretarza stanu ds. dominium, Lorda Przewodniczącego Rady, Ministra Obrony oraz Postmaster General.
+
+- **Myśliciel społeczny** – Twórca koncepcji socjalizmu etycznego i patriotyzmu obywatelskiego oraz teoretycznych założeń brytyjskiego państwa dobrobytu.
+
+- **Parlamentarzysta** – Członek Izby Gmin z okręgów Limehouse i Walthamstow West (1922–1955) oraz członek Izby Lordów (1955–1967).
+
+- **Premier** – Premier Wielkiej Brytanii w latach 1945–1951.
+
+- **Reformator** – Główny architekt powojennej przebudowy państwa, w tym stworzenia powszechnej służby zdrowia (NHS), systemu ubezpieczeń społecznych oraz nacjonalizacji przemysłu.
+
+- **Samorządowiec** – Burmistrz (Mayor) oraz alderman londyńskiej dzielnicy Stepney.
+
+- **Wiceprezydent / Zastępca szefa państwa** – Oficjalny Wicepremier Wielkiej Brytanii (Deputy Prime Minister) w wojennym gabinecie koalicyjnym Winstona Churchilla w latach 1942–1945 (oraz de facto od 1940 roku).
+
+#### Narodowość
+
+- **Brytyjska** – Urodzony w Putney w Londynie, obywatel i mąż stanu Wielkiej Brytanii.
+
+#### Status
+
+- **Martwy** – Zmarł 8 października 1967 roku w Londynie.
+
+#### Płeć
+
+- **Mężczyzna** – Postać męska.
+
+#### Okres życia
+
+- **XIX wiek** – Urodził się 3 stycznia 1883 roku i spędził w tym wieku dzieciństwo oraz młodość.
+
+- **XX wiek** – Główny okres jego życia, służby wojskowej i całej kariery politycznej przypadł na XX wiek (zmarł w 1967 roku).
+
+#### Ideologia
+
+- **Demokracja** – Zdecydowany obrońca demokracji parlamentarnej, praworządności i konstytucyjnych metod rządzenia.
+
+- **Monarchizm** – Zwolennik monarchii konstytucyjnej oraz instytucji Korony brytyjskiej.
+
+- **Socjalizm** – Wyznawca socjalizmu od 1908 roku, dążący do przebudowy gospodarki w oparciu o własność publiczną.
+
+- **Socjalizm demokratyczny** – Przedstawiciel socjalizmu demokratycznego i ewolucyjnego, kategorycznie odrzucający marksizm, komunizm i totalitarianizm.
+
+- **Socjaldemokracja** – Praktyk reformistycznej socjaldemokracji budujący powojenną gospodarkę mieszaną oraz powszechne państwo dobrobytu.
+
+- **Socjalliberalizm** – Wczesne inspiracje doktryną reform społecznych T. H. Greena oraz tzw. Nowego Liberalizmu (New Liberalism).
+
+#### Kontynent działalności
+
+- **Europa** – Główny obszar działalności państwowej, politycznej i społecznej (Wielka Brytania, Europa Zachodnia).
+
+- **Azja** – Służba wojskowa w trakcie I wojny światowej (Gallipoli, Mezopotamia), praca w Komisji Simona ds. Indii oraz kierowanie procesem dekolonizacji Indii, Pakistanu i Birmy.
+
+- **Ameryka Północna** – Wizyty dyplomatyczne, udział w Konferencji Waszyngtońskiej w 1945 roku, rokowania z prezydentami USA i Kanady oraz wystąpienia w ONZ i ILO.
+
+#### Sposób dojścia do władzy / legitymizacja
+
+- **Nominacja / Kooptacja** – Obejmował stanowiska ministerialne oraz urząd wicepremiera na mocy nominacji politycznych i ustaleń koalicyjnych w rządach Ramsaya MacDonalda i Winstona Churchilla.
+
+- **Wybory demokratyczne** – Objął urząd premiera Wielkiej Brytanii w lipcu 1945 roku w wyniku bezprecedensowego zwycięstwa Partii Pracy w demokratycznych wyborach parlamentarnych.
+
+#### Religia
+
+- **Agnostycyzm** – Najpóźniejsza i trwała postawa dorosłego życia; sam określał się jako nieposiadający odczuć religijnych agnostyk, akceptujący jedynie etykę chrześcijańską. *(Wychowany w wyznaniu:* ***Anglikanizm*** *– pochodził z pobożnej rodziny anglikańskiej).*
+
+---
+
+### Inne dodatkowe tagi, których brakuje na liście
+
+- **Weteran wojenny / Weteran I wojny światowej** – Uczestnik walk na frontach I wojny światowej, trzykrotnie ewakuowany/ranny.
+
+- **Pracownik społeczny (Social worker)** – Wieloletni wolontariusz, kierownik klubów chłopięcych w East Endzie (Stepney Boys' Club, Toynbee Hall) oraz autor podręcznika pracy społecznej.
+
+- **Wicepremier (Deputy Prime Minister)** – Pierwsza osoba w historii Wielkiej Brytanii formalnie nosząca ten tytuł.
+
+- **Dekolonizator / Architekt dekolonizacji** – Premier odpowiedzialny za przekształcenie Imperium Brytyjskiego poprzez przyznanie niepodległości Indiom, Pakistanowi, Birmie i Cejlonowi.
+
+- **Twórca Państwa Dobrobytu (Welfare State builder)** – Premier, za którego rządów powstał uniwersalny system ubezpieczeń społecznych oraz National Health Service.
+
+- **Współtwórca NATO** – Szef rządu, który wprowadził Wielką Brytanię do sojuszu północnoatlantyckiego jako członek-założyciel.
+
+- **Kawaler Orderu Podwiązki (KG) / Kawaler Orderu Zasługi (OM)** – Posiadacz najwyższych brytyjskich odznaczeń państwowych.
+
+---
+
+### 1. Informacje podstawowe
+
+- **Data urodzenia:** 7 kwietnia 1836 r.
+
+- **Data śmierci:** 26 marca 1882 r.
+
+- **Kontynent działalności:** Europa
+
+- **Państwo związane z działalnością:** Wielka Brytania (Anglia)
+
+- **Narodowość:** brytyjska / angielska
+
+- **Główna działalność:** **filozofia** (filozofia moralna, filozofia polityczna, metafizyka)
+
+- **Pozostałe rodzaje działalności:** działalność akademicka i dydaktyczna, reformatorstwo społeczne, działalność samorządowa i polityczna, reformatorstwo oświatowe, ruch prohibicyjny i abstynencki
+
+- **Najważniejsze funkcje publiczne/państwowe:** **Whyte’s Professor of Moral Philosophy** na Uniwersytecie Oksfordzkim (1878–1882), **radny Rady Miejskiej Oksfordu** (1876–1882), **zastępca komisarza** w Schools Inquiry Commission / Taunton Commission (1865–1866)
+
+- **Sposób dojścia do władzy / legitymizacja:** wybory samorządowe (radny miejski), mianowanie akademickie (profesor / fellow)
+
+- **Okres aktywności:** 1858–1882
+
+- **Partie polityczne:** **Partia Liberalna** (Liberal Party)
+
+- **Formalne organizacje:** Uniwersytet Oksfordzki (Balliol College), Rada Miejska Oksfordu (Oxford City Council), National Education League, United Kingdom Alliance, Church of England Temperance Society, Oxford Band of Hope Temperance Union, Old Mortality Club, North Ward Liberal Association
+
+- **Ideologie:** **brytyjski idealizm**, **socjalliberalizm** / Nowy Liberalizm, **radykalizm liberalny**
+
+- **Ważne wartości:** **wolność pozytywna**, **dobro wspólne**, **samorealizacja**, obywatelskość i służba społeczna, równość szans edukacyjnych
+
+- **Inspiracje intelektualne/mentorzy:** **Benjamin Jowett** (mentor), Immanuel Kant, G.W.F. Hegel, Arystoteles, Platon, William Wordsworth, Thomas Carlyle, Frederick Denison Maurice, Johann Gottlieb Fichte, John Bright, Richard Cobden
+
+- **Religia/Wyznanie/Odłam:** chrześcijaństwo / Kościół Anglii (anglikanizm – nurt liberalny / Broad Church / heterodoksyjny protestantyzm)
+
+---
+
+### 2. Overview
+
+**Thomas Hill Green** był angielskim filozofem, działaczem społecznym i czołowym przedstawicielem idealizmu brytyjskiego. Intelektualnie redefiniował pojęcie wolności w duchu koncepcji pozytywnej oraz promował ideę dobra wspólnego. Postulował aktywną rolę państwa w usuwaniu przeszkód społecznych i edukacyjnych. Jego myśl stała się fundamentem pod rozwój nowoczesnego socjalliberalizmu.
+
+---
+
+### 3. Wstęp
+
+**Thomas Hill Green** (1836–1882) był brytyjskim filozofem, wykładowcą uniwersyteckim w Oksfordzie oraz radykalnym reformatorem społecznym i politycznym, którego twórczość przypadła na dojrzałą epokę wiktoriańską. Działał w kontekście głębokich przemian przemysłowych, urbanizacyjnych i społecznych XIX-wiecznej Wielkiej Brytanii, a także w okresie kryzysu światopoglądowego wywołanego rozwojem nauk przyrodniczych i krytyki biblijnej. Głównym przedmiotem jego działalności była potrzeba przełamania dominacji empiryzmu, utylitaryzmu oraz leseferyzmu, które w jego ocenie uniemożliwiały właściwe zrozumienie społecznej natury człowieka i osłabiały więzi wspólnotowe. Green stworzył spójny system oparty na metafizyce „wiecznej świadomości”, etyce samorealizacji oraz filozofii politycznej skoncentrowanej na urzeczywistnianiu dobra wspólnego. Przekonywał, że prawdziwa wolność ma charakter pozytywny i polega na możliwości rozwijania potencjału moralnego jednostki we współpracy z innymi obywatelami. W praktyce politycznej sformułował nowatorską teorię państwa, którego podstawową rolą było usuwanie przeszkód stojących na drodze do samorealizacji jednostek, co uzasadniało państwową reformę edukacji, regulację rynku pracy, reformę agrarną i walkę z alkoholizmem. Jego koncepcje dały początek nurtowi określanemu jako brytyjski idealizm i położyły fundamenty pod doktrynę Nowego Liberalizmu.
+
+---
+
+### 4. Życie, historia i działalność
+
+**Thomas Hill Green** urodził się 7 kwietnia 1836 roku w miejscowości Birkin w hrabstwie Yorkshire w Anglii. Pochodził z rodziny duchownego Kościoła Anglii; jego ojciec, Valentine Green, był lokalnym rektorem. Od strony ojca ród Greenów wywodził rodowód z linii połączonej z rodziną Olivera Cromwella, natomiast rodzina matki, Anny Barbary Vaughan, posiadała bogate tradycje naukowe i lekarskie. Po wczesnej śmierci matki wychowywał się wraz z rodzeństwem pod opieką ojca i do czternastego roku życia pobierał edukację w domu. W 1850 roku wstąpił do **Rugby School**, gdzie zetknął się z poezją Williama Wordswortha oraz pismami Thomasa Carlyle’a i działaczy chrześcijańskiego socjalizmu, co wywarło trwały wpływ na jego wrażliwość społeczną i zainteresowania religijno-filozoficzne.
+
+W 1855 roku rozpoczął studia w **Balliol College na Uniwersytecie Oksfordzkim**. Kluczową postacią dla jego rozwoju intelektualnego stał się jego tutor i mentor **Benjamin Jowett**, który wprowadził go w filozofię niemiecką. Podczas studiów Green dołączył do radykalnego stowarzyszenia studenckiego **Old Mortality Club**, gdzie zaprzyjaźnił się z osobami o podobnych poglądach, takimi jak A. V. Dicey, John Nichol czy Edward Caird. Choć początkowo uzyskane przez niego wyniki akademickie były umiarkowane, wkrótce ujawnił wybitne zdolności analityczne. W debatach na forum Oxford Union reprezentował zdecydowany radykalizm polityczny: sprzeciwiał się ograniczeniom praw uchodźców, popierał demokratyczny program reformatorski Johna Brighta oraz potępiał niewolnictwo w trakcie amerykańskiej wojny secesyjnej, wyrażając pełne poparcie dla Unii.
+
+W listopadzie 1860 roku został wybrany na członka (Fellow) Balliol College, a od 1866 roku pełnił funkcję tutora filozofii, stając się w kolejnej dekadzie jedną z najbardziej wpływowych postaci w życiu akademickim Oksfordu. Wywarł ogromny wpływ na formowanie osobowości i poglądów całego pokolenia studentów, wśród których znaleźli się F. H. Bradley, Bernard Bosanquet, Arnold Toynbee oraz przyszły premier Herbert Henry Asquith. W latach 1865–1866 pracował jako zastępca komisarza w rządowej komisji badania szkół średnich (**Taunton Commission**), przygotowując raporty na temat organizacji szkolnictwa w hrabstwach Warwickshire i Staffordshire. Doświadczenie to ugruntowało jego przekonanie o konieczności zbudowania państwowego, powszechnego i bezwyznaniowego systemu edukacji. Działał w National Education League, zabiegał o dostęp do edukacji wyższej dla kobiet (wraz z żoną przyczynił się do powstania Somerville Hall) oraz finansowo i organizacyjnie wsparł założenie City of Oxford High School for Boys.
+
+W 1871 roku poślubił **Charlotte Byron Symonds**, działaczkę na rzecz edukacji kobiet. Green był bardzo aktywny w lokalnym życiu obywatelskim Oksfordu. W 1876 roku został wybrany do **Rady Miejskiej Oksfordu** z ramienia Partii Liberalnej jako reprezentant dzielnicy North Ward, co było wówczas wyjątkiem wśród oksfordzkich profesorów. Angażował się w ruch prohibicyjny i abstynencki, pełniąc [m.in](http://m.in). funkcję skarbnika w Oxford Diocesan Church of England Temperance Society oraz prezesa Oxford Band of Hope Temperance Union. W 1875 roku założył w mieście nietrzeźwościową kawiarnię (coffee tavern). Popierał także ruch związkowy wśród robotników rolnych, występując na wiecach organizowanych przez Josepha Archa. Wraz z Thomasem Grose'em przygotował również krytyczne wydanie dzieł Davida Hume’a w 1874 roku, które stało się przełomem w brytyjskiej debacie filozoficznej.
+
+W 1878 roku Green objął prestiżową katedrę **Whyte's Professor of Moral Philosophy** w Oksfordzie. Wykłady, które wówczas prowadził, stały się podstawą jego najważniejszych konstrukcji myślowych. Zmarł nagle na zakażenie krwi 26 marca 1882 roku w wieku zaledwie 45 lat. W jego funeralnym pochodzie na cmentarz St Sepulchre uczestniczyło około dwóch tysięcy mieszkańców Oksfordu i członków uniwersytetu. Główne dzieła Greena, w tym ***Prolegomena to Ethics*** oraz ***Lectures on the Principles of Political Obligation***, zostały opublikowane pośmiertnie przez jego uczniów, R. L. Nettleshipa i A. C. Bradleya, stając się fundamentem brytyjskiego idealizmu i Nowego Liberalizmu.
+
+### Poglądy i idee
+
+Poglądy Thomasa Hilla Greena stanowiły kompleksowy system filozoficzny łączący epistemologię, metafizykę, etykę oraz filozofię polityczną. Powstały w opozycji do panującej w XIX-wiecznej Wielkiej Brytanii tradycji empiryzmu i utylitaryzmu (reprezentowanej przez Johna Locke'a, Davida Hume'a, Johna Stuarta Milla oraz Herberta Spencera). Green zarzucał empirystom i naturalistom traktowanie człowieka jako biernego przedmiotu podporządkowanego wyłącznie mechanicznym siłom natury oraz zmysłowym impulsom przyjemności i bólu. Wskazywał, że ludzkie poznanie i doświadczenie świata nie składają się z luźnych wrażeń zmysłowych, lecz wymagają obecności samowiedzącej świadomości, która ujmuje te wrażenia w trwały, nieczasowy system relacji. Na tej podstawie sformułował koncepcję **„wiecznej świadomości”** (*Eternal Consciousness*) – duchowej zasady i absolutu, który nieustannie reprodukuje się w skończonych umysłach ludzkich, stanowiąc warunek możliwości poznania, rozwoju moralnego i ewolucji instytucji społecznych. Odrzucając hedonizm, Green przekonywał, że celem człowieka nie jest maksymalizacja przelotnych przyjemności, lecz osiągnięcie trwałego zadowolenia samorealizującej się osobowości moralnej (*self-realization*).
+
+W centrum aksjologii i teorii politycznej Greena znajduje się nowatorskie ujęcie **wolności i praw jednostki**. Filozof dokonał rozróżnienia między wolnością formalną (jurydyczną), rozumianą jako brak zewnętrznego przymusu czy ingerencji, a **wolnością pozytywną** („wolnością prawdziwą” / *true freedom*). Wolność w sensie pozytywnym zdefiniował jako faktyczną moc lub zdolność jednostki do czynienia i cieszenia się czymś wartym czynienia lub cieszenia się we współpracy z innymi członkami społeczności. Wolność moralna polega na kierowaniu się rozumem i wyższymi zdolnościami w dążeniu do obiektywnego dobra. Równocześnie Green odrzucił klasyczną doktrynę praw naturalnych istniejących rzekomo przed powstaniem społeczeństwa w „stanie natury”. Twierdził, że uprawnienia nie są ani przyrodzonymi roszczeniami w izolacji, ani arbitralnymi darami władzy państwowej. Prawa stanowią prawnie i społecznie zabezpieczone możliwości działania, niezbędne do realizacji moralnego powołania człowieka. Warunkiem koniecznym istnienia jakiegokolwiek prawa jest jego **społeczne uznanie** (*social recognition*) oraz osadzenie w świadomości wspólnego interesu.
+
+Filozofia społeczna Greena charakteryzuje się zdecydowanym sprzeciwem wobec atomistycznego indywidualizmu. Uznawał on, że jednostka i społeczeństwo stanowią pojęcia wzajemnie się warunkujące – człowiek rozwija swoją ludzką osobowość wyłącznie we wspólnocie i poprzez relacje z innymi ludźmi. Kluczowym pojęciem systemu Greena jest **dobro wspólne** (*common good*), definiowane jako dobro o charakterze niekonkurencyjnym i uniwersalnym, w którym osiągnięcie Korzyści przez jedną osobę nie pomniejsza udziału innych, lecz sprzyja samorealizacji wszystkich członków społeczeństwa. Analizując strukturę społeczną wiktoriańskiej Anglii, Green poddał krytyce głębokie nierówności, ubożenie miejskiego proletariatu, analfabetyzm i masowy alkoholizm. Traktował te zjawiska jako degradujące przeszkody, które uniemożliwiają uboższym warstwom społecznym korzystanie z praw obywatelskich i uniemożliwiają im urzeczywistnianie ich potencjału moralnego.
+
+Analizując **państwo, władzę i legislację**, Green odrzucił absolutyzację państwa jako celu samego w sobie, uznając je za instytucjonalne narzędzie służące promowaniu dobra wspólnego i zabezpieczaniu systemu praw. Legitymizacja państwa nie opiera się na czystej sile ani na historycznej umowie społecznej. Sformułował fundamentalną zasadę, że **„wola, nie siła, jest podstawą państwa”** (*Will, not force, is the basis of the state*), co oznacza, że trwałość i autorytet władzy wynikają z akceptacji społecznej i przesiąknięcia obywateli świadomością wspólnych celów. Funkcja legislacyjna państwa ma charakter wspomagający (*enabling state*) i polega na **„usuwaniu przeszkód”** (*hindering hindrances*) stojących na drodze do wolności i samodoskonalenia jednostek. Państwo nie może bezpośrednio nakazać moralności ani zmusić obywatela do cnoty, ponieważ czyn wykonany pod przymusem traci wartość moralną. Zamiast tego ma obowiązek kształtować warunki zewnętrzne – poprzez powszechną edukację, ochronę zdrowia, regulację warunków pracy i ograniczanie dostępności alkoholu. W kwestii **nieposłuszeństwa obywatelskiego** Green uznawał, że obywatel ma prawo i moralny obowiązek stawić opór prawu państwowemu wyłącznie wtedy, gdy istniejące ustawodawstwo drastycznie godzi w cel państwa i jest sprzeczne z powszechnie uznanym dobrem społecznym, a opór służy naprawie państwa i nie zagraża całkowitym rozpadem ładu prawnego.
+
+W zakresie **gospodarki i własności prywatnej** Green uważał własność za niezbędny zewnętrzny wyraz wolnej woli oraz materialny warunek ciągłości i odpowiedzialności moralnej jednostki. Odrzucał jednak dogmat skrajnego leseferyzmu oraz bezwzględnej swobody umów (*freedom of contract*). Wskazywał, że przy wielkich asymetriach sił ekonomicznych (np. między głodującym robotnikiem a fabrykantem lub między wielkim właścicielem ziemskim a najemcą) formalnie wolna umowa staje się w rzeczywistości „narzędziem ukrytego ucisku”. Z tego powodu uzasadniał państwową regulację stosunków pracy i reformę prawa własności ziemskiej. W sprawach **religii i polityki zagranicznej** Green reprezentował stanowisko liberalnego protestantyzmu. Odrzucał tradycyjny dogmatyzm, cuda i historyczny literalizm na rzecz widzenia w Bogu racjonalnej zasady działającej w ludzkim sumieniu i historii. W polityce międzynarodowej zdecydowanie odrzucał heglowskie usprawiedliwianie wojny, uznając ją za zło moralne wynikające z niedoskonałości organizacji konkretnych państw. Głosił ideal uniwersalnego braterstwa ludzkiego (*universal brotherhood of men*), pierwszeństwo praw człowieka nad egoizmem narodowym oraz potrzebę tworzenia międzynarodowego ładu opartego na prawie i sądownictwie polubownym.
+
+---
+
+### Działalność polityczna i publiczna
+
+Thomas Hill Green łączył pracę akademicką na Uniwersytecie Oksfordzkim (gdzie był wykładowcą w Balliol College, a od 1878 r. profesorem filozofii moralnej Katedry Whyte’a) z intensywną aktywnością społeczną i polityczną w nurcie radykalnego skrzydła Partii Liberalnej. W latach 1865–1866 pełnił funkcję zastępcy komisarza rządowej komisji badania szkół średnich (*Taunton Commission*), przygotowując raporty o stanie szkolnictwa w hrabstwach Warwickshire i Staffordshire, co przełożyło się na jego późniejsze zaangażowanie na rzecz bezwyznaniowej i powszechnej edukacji w ramach National Education League. Podczas amerykańskiej wojny secesyjnej występował w debatach akademickich i publicznych, zdecydowanie popierając Unię przeciwko niewolniczym Stanom Skonfederowanym, a w latach 60. XIX w. uczestniczył w kampanii na rzecz przyznania praw wyborczych wszystkim dorosłym mężczyznom zamieszkującym w okręgach miejskich bez względu na majątek. Od 1876 do śmierci w 1882 r. sprawował mandat radnego Rady Miejskiej Oksfordu (zwyciężając w wyborach w robotniczej dzielnicy North Ward), uczestnicząc w pracach komisji miejskich i inicjatywach oświatowo-sanitarnych. Był czołowym działaczem ruchu abstynenckiego i prohibicyjnego: pełnił funkcję skarbnika Oxford Diocesan Church of England Temperance Society, prezesa Oxford Band of Hope Temperance Union, wygłaszał odczyty dla United Kingdom Alliance oraz założył w Oksfordzie nietrzeźwościową kawiarnię (*coffee tavern*). Wspierał ruch związkowy robotników rolnych Josepha Archa (*National Agricultural Labourers' Union*), występując na ich wiecach. Wspólnie z żoną Charlotte wywarł realny wpływ na dopuszczenie kobiet do edukacji uniwersyteckiej, współzakładając w 1879 r. Somerville Hall (późniejszy Somerville College w Oksfordzie) oraz finansując i organizując założenie państwowej szkoły średniej City of Oxford High School for Boys w 1881 r.. W 1880 r. należał do wnioskodawców petycji, która doprowadziła do unieważnienia mandatu parlamentarnego konserwatywnego browarnika A. W. Halla z powodu korupcji wyborczej w Oksfordzie.
+
+---
+
+### Najważniejsze autorskie lektury i dzieła
+
+- ***Introductions to Hume's 'Treatise of Human Nature'*** (1874) – Dwuczęściowy wstęp krytyczny przygotowany wspólnie z T. H. Grose’em do wydania dzieł Davida Hume’a; stanowił bezwzględny atak na brytyjski empiryzm i sceptycyzm, otwierając drogę dla rozwoju idealizmu na brytyjskich uniwersytetach.
+
+- ***On the Different Senses of 'Freedom' as Applied to Will and to the Moral Progress of Man*** (wykład z 1879 r., wydany pośmiertnie w 1885 r.) – Traktat filozoficzny, w którym Green dokonał precyzyjnej analizy pojęcia wolności woli, wolności formalnej (jurydycznej) oraz wolności pozytywnej („prawdziwej”), powiązanej z realizacją dobra moralnego.
+
+- ***Lecture on Liberal Legislation and Freedom of Contract*** (1881) – Słynny odczyt polityczno-społeczny wygłoszony w Leicester; Green uzasadnił w nim prawo państwa do ingerencji w swobodę umów i stosunki gospodarcze w celu ochrony słabszych stron stosunku pracy i stworzenia warunków dla realnej wolności obywateli.
+
+- ***Lectures on the Principles of Political Obligation*** (wykłady z lat 1879–1880, wydane pośmiertnie w 1882/1885 r. pod red. R. L. Nettleshipa) – Fundamentalny wykład filozofii politycznej Greena; zawiera analizę natury państwa, legitymizacji władzy („wola, nie siła”), praw jednostki, własności, granic przymusu państwowego, prawa do oporu oraz stosunków międzynarodowych.
+
+- ***Prolegomena to Ethics*** (ukończone w rękopisie w 1882 r., wydane pośmiertnie w 1883 r. pod red. A. C. Bradleya) – Najważniejsze dzieło etyczne i metafizyczne Greena, przedstawiające pełną teorię „wiecznej świadomości”, etykę samorealizacji oraz koncepcję dobra wspólnego jako podstawę ocen moralnych.
+
+- ***Four Lectures on the English Revolution*** (wykłady wydane pośmiertnie w III tomie *Works* w 1888 r.) – Studium historyczno-filozoficzne poświęcone rewolucji XVII wieku w Anglii, analizujące działalność Olivera Cromwella i Sir Harry'ego Vane'a pod kątem rozwoju duchowych i obywatelskich idei w historii Wielkiej Brytanii.
+
+- ***The Witness of God*** oraz ***Faith*** (wygłoszone w 1870 i 1877 r., wydane prywatnie, pośmiertnie opublikowane w 1883/1884 r.) – Dwie rozprawy świeckie (*lay sermons*), stanowiące wykładni teologii liberalnej Greena, łączącej osobistą wiarygodność religijną z rozumem i służbą obywatelską.
+
+---
+
+### Dziedzictwo
+
+Po wczesnej śmierci Thomasa Hilla Greena jego idee wywarły przełomowy wpływ na brytyjską filozofię, teorię społeczną oraz praktykę polityczną przełomu XIX i XX wieku. Stał się założycielem i główną inspiracją szkoły **brytyjskiego idealizmu** (*British Idealism*), która zdominowała środowiska akademickie w Wielkiej Brytanii do lat 20. XX wieku. Jego bezpośredni uczniowie i kontynuatorzy – [m.in](http://m.in). Francis Herbert Bradley, Bernard Bosanquet, David George Ritchie, Richard Lewis Nettleship, Edward Caird, Arnold Toynbee oraz John Dewey w Stanach Zjednoczonych – rozwijali jego koncepcje samorealizacji, państwa i dobra wspólnego. Myśl Greena stała się teoretycznym fundamentem doktryny **Nowego Liberalizmu** (*New Liberalism*) oraz **etycznego socjalizmu** (*Ethical Socialism*), przekształcając klasyczny liberalizm w doktrynę wspierającą państwo opiekuńcze i sprawiedliwość społeczną. Wywarł bezpośredni wpływ na pokolenie brytyjskich mężów stanu wykształconych w Balliol College, w tym na premierów Herberta Henry'ego Asquitha i Clementa Attlee oraz liberalnych reformatorów społecznych, takich jak Herbert Samuel czy John Morley. Ponadto inspiracje Greenowskie legły u podstaw rozwoju ruchu osiedli uniwersyteckich (*University Settlements*, np. Toynbee Hall), powszechnej edukacji kobiet, kościelnego ruchu społecznego (*Christian Social Union* pod przywództwem biskupa Charlesa Gore'a i Henry'ego Scotta Hollanda) oraz prac teoretyków społecznych, takich jak L. T. Hobhouse czy R. H. Tawney.
+
+---
+
+### Cytaty
+
+ 1. **„Wola, nie siła, jest podstawą państwa.”**
+
+ 2. **„Gdy mówimy o wolności jako o czymś tak wielce cenionym, mamy na myśli pozytywną moc lub zdolność czynienia lub radowania się czymś wartym czynienia lub radowania się, i to czymś, co czynimy lub czym się radujemy wspólnie z innymi.”**
+
+ 3. **„Doskonałość ludzkiego charakteru — doskonałość jednostek, która jest zarazem doskonałością społeczeństwa, oraz społeczeństwa, która jest zarazem doskonałością jednostek — stanowi dla człowieka jedyny przedmiot o wartości bezwzględnej lub wewnętrznej... ta doskonałość polega na urzeczywistnieniu możliwości człowieka zgodnie z boską ideą lub planem wobec nich.”**
+
+ 4. **„Naszym ostatecznym kryterium wartości jest ideał wartości osobowej. Wszystkie inne wartości są względne wobec wartości dla osoby, od osoby lub w osobie. Mówienie o postępie, poprawie czy rozwoju narodu, społeczeństwa lub ludzkości, inaczej niż w odniesieniu do większej wartości osób, oznacza używanie słów bez znaczenia.”**
+
+ 5. **„Nie może istnieć żadne prawo bez świadomości wspólnego interesu ze strony członków społeczeństwa.”**
+
+ 6. **„Rzeczywistą funkcją rządu jest utrzymywanie warunków życia, w których moralność jest możliwa, a skoro moralność polega na bezinteresownym wypełnianiu samonałożonych obowiązków, 'rząd paternalistyczny' robi wszystko, co w jego mocy, aby to uniemożliwić, zwężając przestrzeń dla samonałożenia obowiązków...”**
+
+ 7. **„Utrzymanie świętości umów jest bez wątpienia głównym zadaniem rządu, ale nie mniej jego zadaniem jest zapobieganie zawieraniu umów, które z powodu bezradności stron, zamiast być gwarancją wolności, stają się narzędziem ukrytego ucisku.”**
+
+ 8. **„Niech flaga Anglii zostanie przeciągnięta przez błoto, niżby sześć pensów miało zostać dodane do podatków obciążających ubogich.”**
+
+ 9. **„Wszystkie cnoty są w rzeczywistości społeczne; lub, ściślej mówiąc, rozróżnienie między cnotami społecznymi a cnotami dotyczącymi samego siebie jest fałszywe.”**
+
+10. **„Ludzka świadomość postuluje wolność; wolność angażuje prawa; prawa wymagają państwa.”**
+
+11. **„Żadna jednostka nie może sama dla siebie stworzyć sumienia.”**
+
+12. **„Skuteczne działanie państwa... wydaje się z konieczności ograniczone do usuwania przeszkód.”**
+
+13. **„To nie republika jest odpowiedzialna za tę wojnę, ale oligarchyczna struktura posiadająca, hodująca i paląca niewolników, na której spoczywa przekleństwo Boga i ludzkości.”**
+
+### 1. Tagowanie postaci z uzasadnieniem
+
+#### **Zawód / dziedzina**
+
+- **Akademia / Akademik** – pracował jako wykładowca (Fellow i Tutor) w Balliol College oraz piastował prestiżową katedrę profesora filozofii moralnej (Whyte’s Professor of Moral Philosophy) na Uniwersytecie Oksfordzkim.
+
+- **Filozof** – jego główną dziedziną pracy twórczej była filozofia, w szczególności metafizyka, etyka oraz filozofia polityczna i społeczna; stał się twórcą brytyjskiego idealizmu.
+
+- **Historyk** – w latach 60. XIX wieku wykładał historię starożytną i nowożytną na Uniwersytecie Oksfordzkim oraz poświęcił cykl wykładów historyczno-filozoficznych rewolucji angielskiej XVII wieku (*Four Lectures on the English Revolution*).
+
+- **Pisarz** – autor licznych traktatów, książek, rozpraw filozoficznych i wykładów akademickich wydanych za życia i pośmiertnie.
+
+- **Politolog** – w pracy akademickiej i dziełach takich jak *Lectures on the Principles of Political Obligation* prowadził szczegółowe analizy teorii państwa, legitymizacji władzy, suwerenności i zobowiązań obywatelskich.
+
+- **Polityk** – był aktywnym działaczem radykalnego skrzydła Partii Liberalnej, brał udział w kampaniach wyborczych, wiecach publicznych oraz piastował mandat radnego miejskiego.
+
+- **Publicysta** – publikował eseje, artykuły prasowe, recenzje i opiniiotwórcze odczyty na łamach czasopism takich jak *North British Review*, *Contemporary Review* czy *Academy*.
+
+---
+
+#### **Rola / urząd**
+
+- **Myśliciel społeczny** – stworzył nowatorskie koncepcje dobra wspólnego, pozytywnej wolności oraz państwa sprzyjającego samorealizacji jednostek (*enabling state*), które wywarły przemożny wpływ na myślenie o polityce społecznej.
+
+- **Reformator** – angażował się w praktyczne reformy społeczne, w tym powszechną i bezwyznaniową edukację, udostępnienie szkolnictwa wyższego kobietom, reformę prawa wyborczego oraz ruch prohibicyjny i trzeźwościowy.
+
+- **Samorządowiec** – sprawował mandat radnego Rady Miejskiej Oksfordu (*Oxford City Council*) wybrany z ramienia Partii Liberalnej w dzielnicy robotniczej North Ward w latach 1876–1882.
+
+- **Założyciel partii/ruchu** – był duchowym ojcem i założycielem nurtu brytyjskiego idealizmu (*British Idealism*) oraz intelektualnym patronem ruchu Nowego Liberalizmu (*New Liberalism*).
+
+---
+
+#### **Narodowość**
+
+- **Brytyjska** – urodził się w Yorkshire i prowadził całą swoją działalność akademicką i publiczną w Wielkiej Brytanii (Anglii).
+
+---
+
+#### **Status**
+
+- **Martwy** – zmarł nagle 26 marca 1882 roku w Oksfordzie.
+
+---
+
+#### **Płeć**
+
+- **Mężczyzna**.
+
+---
+
+#### **Okres życia**
+
+- **XIX wiek** – żył i działał w epoce wiktoriańskiej (1836–1882).
+
+---
+
+#### **Ideologia**
+
+- **Agraryzm** – jako „radykalny agrarysta” (*agrarian radical*) krytykował monopol i prawa własności wielkich właścicieli ziemskich (feudalizm ziemski) oraz postulował uwłaszczenie uboższych warstw i stworzenie klasy małych posiadaczy rolnych.
+
+- **Demokracja** – zdecydowanie popierał demokratyzację ustroju, powszechne prawo wyborcze dla mężczyzn bez majątkowego cenzusu oraz aktywny udział obywateli w życiu publicznym.
+
+- **Liberalizm** – czołowy teoretyk zaawansowanego/radykalnego liberalizmu w ramach Partii Liberalnej.
+
+- **Republikanizm** – reprezentował nurt obywatelskiego i radykalnego republikanizmu (*civic/radical republicanism*), kładąc nacisk na cnotę obywatelską, służbę społeczną, opór wobec samowoli władzy i dobro wspólne.
+
+- **Socjalizm** – uznawany za teoretycznego pioniera etycznego socjalizmu (*Ethical Socialism*) i „socjalizmu z liberalną twarzą” ze względu na sprzeciw wobec leseferyzmu oraz obronę interesów robotników.
+
+- **Socjalliberalizm** – uznawany za twórcę socjalliberalizmu (Nowego Liberalizmu), łączącego zasady liberalne z państwową interwencją społeczną i ochroną słabszych stron rynku.
+
+---
+
+#### **Kontynent działalności**
+
+- **Europa** – cała jego aktywność życiowa i naukowa przebiegała w Wielkiej Brytanii.
+
+---
+
+#### **Sposób dojścia do władzy / legitymizacja**
+
+- **Nominacja / Kooptacja** – wybór na członka (Fellow) Balliol College oraz nominacja na stanowisko profesora uniwersyteckiego.
+
+- **Wybory demokratyczne** – zdobycie mandatu radnego miejskiego Oksfordu w demokratycznych wyborach samorządowych w 1876 i 1879 roku.
+
+---
+
+#### **Religia**
+
+- **Chrześcijaństwo** – jego cała filozofia i etyka opierały się na teistycznym przekonaniu o istnieniu Boskiego Ducha / Wiecznej Świadomości.
+
+- **Anglikanizm** – wychowany w rodzinie duchownego Kościoła Anglii, formalnie do śmierci pozostał członkiem anglikańskiego nurtu liberalnego (*Broad Church*).
+
+- **Protestantizm** – reprezentował heterodoksyjną, wyczyszczoną z dogmatów i cudów teologię liberalnego protestantyzmu.
+
+---
+
+### 2. Inne, dodatkowe tagi, których brakuje w powyższym zestawieniu
+
+- **Idealizm brytyjski (*British Idealism*)** – kluczowy tag określający szkołę filozoficzną, której był założycielem.
+
+- **Nowy Liberalizm (*New Liberalism*)** – tag określający nurt doktrynalny, dla którego sformułował fundamenty myślowe.
+
+- **Działacz trzeźwościowy / Prohibicjonista (*Temperance Reformer*)** – czołowy lider lokalnego i narodowego ruchu abstynenckiego.
+
+- **Etyk / Metafizyk** – precyzyjne poddziedziny filozofii, w których stworzył swoje główne systemy myślowe.
+
+- **Promotor edukacji kobiet** – współzałożyciel Somerville College w Oksfordzie oraz działacz na rzecz otwarcia uniwersytetów dla kobiet.
+
+- **Działacz oświatowy / Reformator edukacji** – współtwórca szkół średnich, zarządcza komisji szkolnych oraz inicjator uniwersytetów ludowych (*University Extension Movement*).
+
+---
+
+### 1. Informacje podstawowe
+
+- **Data urodzenia:** 1 kwietnia 1815 r..
+
+- **Data śmierci:** 30 lipca 1898 r..
+
+- **Kontynent działalności:** Europa.
+
+- **Państwa związane z działalnością:** Prusy, Związek Północnoniemiecki, Cesarstwo Niemieckie.
+
+- **Narodowość:** Niemiecka (pruska).
+
+- **Główna działalność:** Polityk, mąż stanu, dyplomata.
+
+- **Pozostałe rodzaje działalności:** Ziemianin, rolnik, zarządca dóbr ziemskich, urzędnik sądowy i administracyjny.
+
+- **Najważniejsze funkcje publiczne/państwowe:** Premier Prus (1862–1890), Minister Spraw Zagranicznych Prus (1862–1890), Kanclerz Związku Północnoniemieckiego (1867–1871), Pierwszy Kanclerz Cesarstwa Niemieckiego (1871–1890), poseł Prus przy Sejmie Związkowym we Frankfurcie nad Menem (1851–1859), poseł Prus w Petersburgu (1859–1862) oraz w Paryżu (1862).
+
+- **Sposób dojścia do władzy / legitymizacja:** Nominacja monarsza przez króla Prus Wilhelma I na stanowisko premiera w okresie pruskiego kryzysu konstytucyjnego w 1862 r..
+
+- **Okres aktywności:** 1847–1890.
+
+- **Partie polityczne (od najnowszej do najstarszej):** Frakcja Wolnych Konserwatystów (*Reichspartei* – polityczna współpraca bez formalnego członkostwa), Frakcja ultra-konserwatywna / Partia Krzyżowa (*Kreuzzeitung*).
+
+- **Formalne organizacje:** Pruski Sejm Zjednoczony, Pruska Izba Posłów (*Abgeordnetenhaus*), Sejm Związkowy we Frankfurcie (*Bundestag*), Reichstag, Bundesrat, Urząd Kanclerski (*Bundeskanzleramt*).
+
+- **Ideologie:** Pruski konserwatyzm, monarchizm, monarchiczny autorytaryzm, Realpolitik.
+
+- **Ważne wartości:** Racja stanu (*salus publica* / *staatlicher Egoismus*), wierność monarchii i koronie (*Treue*), obowiązek służby (*Pflicht*), odpowiedzialność przed Bogiem, potęga państwa pruskiego.
+
+- **Inspiracje intelektualne/mentorzy:** Leopold von Gerlach, Ernst Ludwig von Gerlach, Friedrich Julius Stahl, Karl Ludwig von Haller, Carl von Clausewitz.
+
+- **Religia/Wyznanie/Odłam:** Chrześcijaństwo, luteranizm (pietyzm luterański).
+
+---
+
+### 2. Overview
+
+**Otto von Bismarck był pruskim i niemieckim mężem stanu oraz dyplomatą**. Kierował polityką Prus i Niemiec, realizując zasadę Realpolitik i stawiając egoizm państwowy ponad doktryny partyjne. Doprowadził do zjednoczenia Niemiec pod przewodnictwem Prus w wyniku trzech wojen oraz stworzył Cesarstwo Niemieckie z 1871 roku jako jego pierwszy kanclerz. Trwale ukształtował układ sił w Europie.
+
+---
+
+### 3. Wstęp
+
+**Otto von Bismarck był czołowym pruskim dyplomatą i politykiem, który w latach 1862–1890 sprawował funkcię premiera Prus, a od 1871 roku pierwszego kanclerza Cesarstwa Niemieckiego**. Działał w XIX-wiecznym kontekście europejskim, zdominowanym przez procesy narodowotwórcze, rywalizację mocarstw oraz spory konstytucyjne i społeczne. Głównym przedmiotem jego działalności politycznej była kwestia niemiecka – rozstrzygnięcie rywalizacji prusko-austriackiej o dominację w Europie Środkowej – a także konsolidacja nowo utworzonego państwa. W polityce wewnętrznej mierzył się z pruskim kryzysem budżetowym, wzrostem znaczenia ruchu liberalnego, socjalistycznego oraz politycznego katolicyzmu reprezentowanego przez partię Centrum. Praktyka polityczna Bismarcka opierała się na zasadach Realpolitik, prymacie racji stanu (*salus publica*), odrzuceniu sztywnych dogmatów ideologicznych oraz podporządkowaniu decyzji wyliczalnemu bilansowi potęgi i interesów państwa pruskiego. Chociaż posługiwał się tradycyjnym autorytetem monarchii i konserwatywnymi instytucjami, potrafił elastycznie wykorzystać hasła narodowe oraz powszechne prawo wyborcze dla umocnienia hegemonii Prus i ochrony ładu społecznego.
+
+---
+
+### 4. Życie, historia i działalność
+
+**Otto Eduard Leopold von Bismarck urodził się 1 kwietnia 1815 roku w majątku Schönhausen w Starej Marchii**. Pochodził z dawnej szlachty brandenburskiej (Junkrów) ze strony ojca, Ferdinanda von Bismarcka, oraz z wykształconej rodziny urzędniczo-mieszczańskiej ze strony matki, Wilhelminy Mencken. Wychowywał się w Berlinie, uczęszczając do Instytutu Plamanna oraz gimnazjów, a następnie studiował prawo na uniwersytetach w Getyndze i Berlinie. Po krótkim okresie pracy w pruskim sądownictwie i administracji cywilnej porzucił służbę państwową i przez dekadę zarządzał rodzinnymi majątkami na Pomorzu i w Altmarku, zyskując w lokalnym środowisku opinię „dzikiego Junkra”. Istotnym przełomem duchowym i osobistym w jego życiu było zetknięcie się z pomorskim środowiskiem luterańskiego pietyzmu skupionego wokół Adolfa von Thaddena oraz bliska relacja z Marie von Thadden. Po jej nagłej śmierci w 1846 roku Bismarck przeżył religijne nawrócenie, a w 1847 roku poślubił Johannę von Puttkamer, co ugruntowało jego tradycjonalistyczne i monarchiczne przekonania.
+
+**Karierę polityczną rozpoczął w 1847 roku jako poseł w pruskim Zjednoczonym Sejmie (*Vereinigter Landtag*), gdzie dał się poznać jako skrajnie konserwatywny obrońca praw monarchii i przywilejów stanowych**. Podczas rewolucji 1848 roku stanowczo sprzeciwiał się ruchom liberalnym i demokratycznym, angażując się w tworzenie konserwatywnej gazety *Neue Preußische Zeitung* (*Kreuzzeitung*) oraz organizowanie tzw. Sejmu Junkrów. W grudniu 1850 roku wygłosił w pruskiej Izbie Posłów słynną mowę broniącą ugody w Ołomuńcu z Austrią, argumentując, że państwu nie wolno prowadzić wojny w imię romantycznych zasad, lecz wyłącznie w oparciu o własny interes. W uznaniu dla jego lojalności król Fryderyk Wilhelm IV mianował go w 1851 roku posłem Prus przy Sejmie Związkowym we Frankfurcie nad Menem. Siedmioletni pobyt we Frankfurcie ukształtował jego poglądy dyplomatyczne – Bismarck przekonał się wówczas, że Austria dąży do podporządkowania sobie Prus, i doszedł do wniosku, że rywalizacja prusko-austriacka w Niemczech nie może zostać rozwiązana pokojowo bez wywalczenia pełnej równorzędności dla Prus.
+
+**W latach 1859–1862 Bismarck sprawował funkcię ambasadora Prus w Petersburgu, gdzie nawiązał bliskie relacje z dworem carskim, a następnie w 1862 roku krótko pełnił misję dyplomatyczną w Paryżu**. Przełomowym momentem w jego karierze był wrzesień 1862 roku, gdy król Wilhelm I, uwikłany w ostry spór z liberalną większością w pruskim parlamencie w kwestii reformy armii i budżetu, powołał Bismarcka na stanowisko premiera i ministra spraw zagranicznych Prus. Bismarck przełamał kryzys konstytucyjny, rządząc bez zatwierdzonego budżetu w oparciu o tzw. teorię luki w konstytucji i deklarując w słynnym wystąpieniu, że wielkie rozstrzygnięcia epoki dokonują się nie przez mowy i uchwały większości, lecz „krwią i żelazem”.
+
+**Realizując program wzmocnienia pozycji Prus, Bismarck doprowadził do trzech zwycięskich wojen: z Danią w 1864 roku, z Austrią w 1866 roku oraz z Francją w latach 1870–1871**. Po pokonaniu Austrii utworzył Związek Północnoniemiecki (1867), a po zwycięstwie nad Francją doprowadził do proklamowania 18 stycznia 1871 roku w Wersalu Cesarstwa Niemieckiego, obejmującego również państwa południowoniemieckie. Jako kanclerz Rzeszy i premier Prus kierował polityką państwa przez kolejne dwa dziesięciolecia, tworząc skomplikowany system sojuszy międzynarodowych mający na celu utrzymanie pokoju w Europie i izolację Francji. W polityce wewnętrznej inicjował akcje przeciw wyimaginowanym i realnym „wrogom Rzeszy” (*Reichsfeinde*), prowadząc w latach 70. XIX wieku walkę z Kościołem katolickim (Kulturkampf) oraz uchwalając w 1878 roku ustawy wymierzone w socjalistów. Jednocześnie, dążąc do odciągnięcia robotników od socjalizmu, wprowadził pionierski system państwowych ubezpieczeń społecznych.
+
+**Narastający konflikt dotyczący kierunku polityki wewnętrznej i zagranicznej z nowym, młodym cesarzem Wilhelmem II doprowadził w marcu 1890 roku do dymisji Bismarcka z zajmowanych urzędów**. Ostatnie lata życia spędził w swoich dobrach w Friedrichsruh, spisując pamiętniki (*Gedanken und Erinnerungen*) oraz otwarcie krytykując posunięcia swoich następców. Zmarł 30 lipca 1898 roku.
+
+### 1. Poglądy i idee
+
+**Ustrój państwowy, monarchia i krytyka parlamentaryzmu**
+
+W centrum myśli politycznej Bismarcka znajdowała się koncepcja silnej, supranacjonalnej i ponadpartyjnej monarchii pruskiej, traktowanej jako „trwale identyczna osobowość” (*permanent identische Persönlichkeit*) reprezentująca całość państwa. W jego ocenie korona stanowiła jedyną instancję zdolną do kierowania się bezstronną racją stanu (*salus publica*), wolną od demagogii, zabiegów o względy wyborców i egoizmu stronnictw parlamentarnych. Bismarck kategorycznie odrzucał model rządów parlamentarno-gabinetowych, uznając absolutyzm większości parlamentarnej za równie niszczycielski dla odpowiedzialności politycznej jak samowładztwo monarchy. Opowiadał się za systemem konstytucyjno-monarchicznym, w którym reprezentacja parlamentarna posiada prawo kontroli prawnej, lecz nie ma kompetencji do narzucania swojej woli monarsze w kluczowych obszarach kompetencji władzy wykonawczej: budżecie, organizacji sił zbrojnych oraz prowadzeniu polityki zagranicznej. Wszelkie próby stawiania doktryn partyjnych lub osobistych ambicji ponad obiektywne potrzeby państwa określał mianem samowoli (*Willkür*), stanowiącej najcięższy błąd w polityce.
+
+**Realpolitik, racja stanu i stosunek do siły oraz przemocy**
+
+Praktyka i filozofia polityczna Bismarcka opierały się na zasadzie *Realpolitik* oraz doktrynie państwa potęgi (*Machtstaat*). Odrzucał on abstrakcyjne teorie prawne i ustrojowe – zarówno idealizm państwa stanowego (*Standesstaat*), jak i doktryny państwa prawa (*Rechtsstaat*) – na rzecz chłodnej analizy realnego układu sił. Przemoc i siła militarna nie stanowiły dla niego celu samego w sobie, lecz były traktowane jako ostateczne, wyliczalne narzędzie dyplomacji. Wyznawał zasadę, że wielkie rozstrzygnięcia historyczne dokonują się „krwią i żelazem” (*durch Blut und Eisen*), a nie poprzez mowy i uchwały większości parlamentarnej. Jednocześnie Bismarck stanowczo sprzeciwiał się wojnom ideologicznym, prestiżowym czy opartym na politycznym romantyzmie, uznając, że jedynym usprawiedliwieniem dla użycia siły zbrojnej przez mocarstwo jest bezpośrednia obrona jego materialnych interesów państwowych i egoizmu państwowego (*staatlicher Egoismus*). Jego podejście cechowała elastyczność taktyczna: dla umocnienia władzy korony i hegemonii Prus potrafił wdrożyć powszechne prawo wyborcze w Związku Północnoniemieckim, współpracować z europejską rewolucją przeciwko Austrii czy wprowadzić państwowy socjalizm.
+
+**Kwestie narodowe, państwowościowe i sprawa polska**
+
+Bismarck reprezentował tradycyjne, państwowo-dynastyczne pojęcie narodu pruskiego, stawiając priorytet monarchii Hohenzollernów ponad nowoczesny, etniczny nacjonalizm. Uważał, że istnienie niepodległego państwa polskiego w jakiejkolwiek formie stanowi bezpośrednie, egzystencjalne zagrożenie dla integralności terytorialnej i pozycji mocarstwowej Prus, z uwagi na nieuchronne dążenie Polaków do rewindykacji ziem zaboru pruskiego, dostępu do morza oraz Gdańska. Z tego powodu uznawał sprawę polską za *noli me tangere* pruskiej polityki. W walce z polskim ruchem narodowym stosował tradycyjną zasadę *divide et impera*, precyzyjnie rozdzielając społeczeństwo polskie na dwa odrębne odłamy: buntowniczą szlachtę oraz kler katolicki (uznawane za wrogie państwu), a z drugiej strony – lojalny, spokojny lud wiejski. Celem Bismarcka było odciągnięcie chłopa od wpływów dworu i plebanii poprzez uwłaszczenie, opiekę socjalną i lojalność wobec korony. Obce mu były doktrynerskie koncepcje czysto rasowego szowinizmu i biologicznej eksterminacji głoszone przez późniejszych hakatystów; zwalczał polskość wyłącznie z pozycji państwowych i politycznych.
+
+**Religia, społeczeństwo i państwowy socjalizm**
+
+Życie i myśl Bismarcka ugruntowane były w luterańskim pietyzmie i chrześcijańskim przekonaniu o odpowiedzialności monarchy przed Bogiem. Religia stanowiła dla niego fundament moralny państwa, jednak Kościoły instytucjonalne podporządkowywał nadrzędnej suwerenności państwowej. W latach 70. XIX wieku podjął walkę z Kościołem katolickim i partią Centrum (*Kulturkampf*), postrzegając polityczny katolicyzm oraz ultramontanizm jako wewnętrzną i międzynarodową konspirację zagrażającą jedności nowo utworzonego Cesarstwa Niemieckiego. Na ziemiach wschodnich walka ta zyskała ostry wymiar narodowościowy ze względu na organiczne spojenie katolicyzmu z polskością. W odniesieniu do kwestii robotniczej Bismarck wykazał się dalekowzrocznym pragmatyzmem: uważał, że brak poczucia bezpieczeństwa socjalnego jest główną przyczyną podatności klasy robotniczej na agitację rewolucyjną. Jego odpowiedź stanowiła podwójna strategia: twarde tłumienie ruchu socjalistycznego za pomocą ustaw wyjątkowych (*Sozialistengesetz*) połączone z pionierskim, państwowym systemem ubezpieczeń społecznych (od chorób, wypadków i starości), mającym na celu związanie robotników z państwem poprzez paternalistyczną opiekę monarchii.
+
+---
+
+### 2. Działalność polityczna i publiczna
+
+Otto von Bismarck rozpoczął aktywność publiczną w 1847 r. jako poseł Pruskiego Sejmu Zjednoczonego, zdobywając pozycję czołowego rzecznika konserwatyzmu i monarchii. W latach 1851–1859 pełnił funkcję posła Prus przy Sejmie Związkowym we Frankfurcie, a następnie posłował w Petersburgu (1859–1862) i Paryżu (1862). Przełomem w jego karierze było powołanie go przez króla Wilhelma I we wrześniu 1862 r. na stanowisko premiera i ministra spraw zagranicznych Prus w okresie ostrego kryzysu konstytucyjnego; przełamał opór parlamentu, rządząc bez zatwierdzonego budżetu na podstawie tzw. teorii luki w konstytucji. W 1863 r. wynegocjował z Rosją konwencję Alvenslebena, zabezpieczając pruską granicę wschodnią i tłumiąc międzynarodowe konsekwencje powstania styczniowego. Kierując polityką zagraniczną Prus, doprowadził do trzech zwycięskich wojen: z Danią (1864), z Austrią (1866) oraz z Francją (1870–1871), wykluczając Habsburgów z Rzeszy i doprowadzając do utworzenia Związku Północnoniemieckiego (1867), a następnie proklamowania 18 stycznia 1871 r. w Wersalu Cesarstwa Niemieckiego. Sprawując przez blisko dwa dziesięciolecia urzędy pierwszego Kanclerza Rzeszy oraz Premiera Prus (1871–1890), dysponował niemal niemagraniczonym wpływem na politykę państwa, tworząc skomplikowany system sojuszy międzynarodowych (Sojusz Trzech Cesarzy, Dwuprzymierze, Traktat Reasekuracyjny) i pełniąc rolę uczciwego brokera na Kongresie Berlińskim (1878). W polityce wewnętrznej inicjował akcje przeciw wyimaginowanym i realnym wrogom Rzeszy (*Reichsfeinde*): przeprowadził antystrukturalną kampanię Kulturkampfu w latach 70., doprowadził do uchwalenia ustaw wyjątkowych przeciw socjalistom (1878), a zarazem stworzył pierwszy na świecie państwowy system ubezpieczeń społecznych dla robotników. W obszarze polityki narodowościowej zainicjował w 1885 r. rugi pruskie oraz utworzył w 1886 r. Komisję Osadniczą przeznaczoną na wykup dóbr z rąk polskich. Narastający konflikt polityczny z młodym cesarzem Wilhelmem II doprowadził w marcu 1890 r. do jego dymisji ze wszystkich urzędów państwowych.
+
+---
+
+### 3. Najważniejsze autorskie lektury i dzieła
+
+- **Przemówienie w Pruskim Sejmie Zjednoczonym (15 czerwca 1847 r.)** – wczesny manifest polityczny Bismarcka, zawierający wykładnię chrześcijańskiego państwa monarchicznego, odrzucenie założeń liberalizmu oraz obronę tradycyjnego ładu stanowego.
+
+- **Mowa w pruskiej Izbie Posłów w obronie ugody w Ołomuńcu (3 grudnia 1850 r.)** – kluczowe wystąpienie parlamentarne, w którym sformułował doktrynę egoizmu państwowego (*staatlicher Egoismus*) i odrzucił prowadzenie wojen w imię abstrakcyjnych zasad ideologicznych.
+
+- **Mowa o „krwi i żelazie” (*Blut und Eisen*, 30 września 1862 r.)** – przemówienie wygłoszone przed komisją budżetową pruskiego parlamentu, stanowiące pragmatyczną deklarację stosowania siły militarnej i racji stanu w procesie zjednoczenia Niemiec.
+
+- **Konwencja Alvenslebena oraz instrukcje dyplomatyczne (luty 1863 r.)** – porozumienie wojskowo-polityczne z Rosją, będące klasycznym przykładem *Realpolitik*, zabezpieczające interesy Prus wobec polskiego ruchu niepodległościowego.
+
+- **Mowa w Sejmie Związku Północnoniemieckiego o kwestii polskiej (18 marca 1867 r.)** – historiozoficzny wykład uzasadniający pruski stan posiadania na wschodzie, krytykujący dawny ustrój Rzeczypospolitej i akcentujący lojalność polskiego chłopstwa wobec korony.
+
+- **Mowa w sejmie pruskim ws. ustawy osadniczej (28 stycznia 1886 r.)** – obszerny wywód programowy przedstawiający państwowe i gospodarcze uzasadnienie stworzenia Komisji Osadniczej na kresach wschodnich.
+
+- **Gedanken und Erinnerungen („Myśli i wspomnienia”, wyd. 1898 r.)** – pośmiertnie wydana, podyktowana po dymisji dwutomowa autobiografia i pamiętnik polityczny, stanowiący osobistą syntezę jego kariery, wykładnię sztuki dyplomatycznej oraz testament polityczny.
+
+---
+
+### 4. Dziedzictwo
+
+Dziedzictwo Bismarcka wywarło przemożny i długotrwały wpływ na ustrój, strukturę społeczną oraz politykę zagraniczną Niemiec i Europy Środkowej. Stworzona przezeń konstytucja z 1871 roku utrwaliła dominację pruskiej monarchii autorytarnej i sił zbrojnych nad parlamentem, co w opinii historyków ukształtowało specyficzną strukturę władzy Rzeszy aż do katastrofy 1918 roku. Wprowadzony przez niego pionierski system państwowego prawodawstwa socjalnego stał się uniwersalnym wzorcem dla nowoczesnego państwa opiekuńczego (*welfare state*). W polityce zagranicznej stwożony przez Bismarcka skomplikowany system sojuszy zapewnił Europie dwie dekady pokoju, lecz po jego odejściu został porzucony przez następców (Capriviego i Holsteina), co doprowadziło do zerwania „drutu do Petersburga”, powstania sojuszu francusko-rosyjskiego i podziału Europy na dwa wrogie obozy. W kwestii narodowościowej na kresach wschodnich spuścizna Bismarcka została przejęta i zintensyfikowana w duchu czysto nacjonalistycznym przez Hakatę (*Deutscher Ostmarkenverein*) oraz kanclerza Bernharda von Bülowa, którzy powoływali się na jego patronat, forsując wywłaszczenia i totalną germanizację. Jednocześnie wybitni krytycy i historycy, tacy jak Hans Delbrück, wskazywali na wypaczenie myśli Bismarcka przez hakatystów, przypominając, że Bismarck kierował się tradycyjnym monarchizmem, względami polityki międzynarodowej (sojuszem z Rosją) oraz zasadą *divide et impera*, a w przypadku wojny z caratem dopuszczał nawet pragmatyczne utworzenie polskiego państwa buforowego. Po I wojnie światowej postać i zasady Bismarcka służyły niemieckim środowiskom narodowym i konserwatywnym jako symbol potęgi państwowej oraz oręż w walce z ładem wersalskim i granicą z Polską.
+
+---
+
+### 5. Ważne cytaty
+
+1. **O metodach politycznych (1862):**
+
+„Wielkie pytania epoki rozstrzygają się nie przez mowy i uchwały większości \[...\], lecz krwią i żelazem.”
+
+2. **O egoizmie państwowym i polityce (1850):**
+
+„Jedyną zdrową podstawą wielkiego państwa \[...\] jest egoizm państwowy, nie zaś romantyzm. Jest rzeczą niegodną wielkiego państwa walczyć o sprawę, która nie wchodzi w zakres jego interesów.”
+
+3. **O religijnej podstawie państwa (1847):**
+
+„Uważam za państwo chrześcijańskie takie, które seeks to realise \[dąży do urzeczywistnienia\] nauki chrześcijaństwa \[...\]. Państwo, jeśli ma mieć zapewnioną trwałość, musi opierać się na fundamencie religijnym.”
+
+4. **O bezkompromisowości w walce z polskim ruchem (1861):**
+
+„Bijcie w Polaków, by ich ochota od życia odeszła; osobiście współczuję ich położeniu, ale pragnąc istnieć, nie pozostaje nam nic innego, jak ich wytępić.”
+
+5. **O geostrategicznej konfrontacji z Polską (1861):**
+
+„Jasnym jest jak na dłoni, że Polska, ograniczona nawet do czysto polskiego żywiołu, będzie zawsze gotowym i żądnym zdobyczy sprzymierzeńcem każdego wroga Rosji i Prus \[...\]. Chodzi tu w najściślejszym słowa znaczeniu o to, aby być młotem lub kowadłem.”
+
+6. **O socjalnych przyczynach zagrożenia państwa (1849):**
+
+„Brak poczucia bezpieczeństwa socjalnego robotnika jest prawdziwą przyczyną tego, że staje się on zagrożeniem dla państwa.”
+
+7. **O polskiej beztrosce i charakterze (1847):**
+
+„Beztroska polskiego charakteru w odniesieniu do spraw tego świata uczyniła z Polski eldorado dla żydów.”
+
+8. **O pruskiej racji stanu wobec powstań (1863):**
+
+„Sympatie, zgodnie z ludzkimi uczuciami, mogą być, gdzie chcą; pruskie interesy, moi panowie, zgodnie z koniecznościami politycznymi i rozwojem dziejowym Prus, nie mogą się znaleźć w obozie polskich powstańców.”
+
+9. **O instrumentalnym wykorzystaniu sprawy polskiej w wojnie (1883/1884):**
+
+„Polska jest dla nas bronią, której użyjemy wbrew naszej woli, dlatego tylko, że nie będziemy mieli niczego innego pod ręką. Jest to rozpalone żelazo, które chwycimy, by się nim bronić.”
+
+10. **O służbie państwowej i Fryderyku Wielkim (rozmowy):**
+
+„Jak małe były Prusy za Fryderyka, który powiedział, że monarcha jest pierwszym sługą państwa. Nauki tej nie zapomnieli Hohenzollernowie. W tym duchu ich wychowano i to przeszło w ich krew.”
+
+11. **O strategicznym znaczeniu Gdańska (1894):**
+
+„Dla państwa polskiego z Warszawą stanowi Gdańsk jeszcze bardziej naglącą potrzebę, aniżeli Poznań.”
+
+12. **O uprzedzeniach i wychowaniu (1847):**
+
+„Przyznaję, że jestem pełen uprzedzeń; wyssałem je z mlekiem matki i nie potrafię ich od siebie odepchnąć.”
+
+### Zawód / dziedzina
+
+- **Farmer** – Zarządzał majątkami rodzinnymi w Kniephof oraz Schönhausen, zajmując się praktyką rolniczą i gospodarką ziemską.
+
+- **Pisarz** – Autor dwutomowej autobiografii i pamiętników politycznych *Gedanken und Erinnerungen* (*Myśli i wspomnienia*) oraz licznych opublikowanych zbiorów pism i listów.
+
+- **Polityk** – Główny obszar jego aktywności życiowej stanowiło sprawowanie najwyższych urzędów państwowych oraz kierowanie polityką wewnętrzną i zagraniczną Prus oraz Rzeszy.
+
+- **Prawnik** – Ukończył studia prawnicze na uniwersytetach w Getyndze i Berlinie, zdał egzaminy państwowe i pracował w sądownictwie oraz administracji cywilnej.
+
+- **Publicysta** – Współtworzył i pisał artykuły polityczne [m.in](http://m.in). dla prasowych organów konserwatywnych, takich jak *Neue Preußische Zeitung* (*Kreuzzeitung*) czy *Magdeburgische Zeitung*.
+
+- **Wojskowy** – Służył w Landwehrze (uzyskując stopień oficerski w kawalerii), nosił wyższe stopnie wojskowe i występował w mundurze generalskim w trakcie pełnienia funkcji publicznych.
+
+---
+
+### Rola / urząd
+
+- **Arystokrata** – Pochodził z dawnej szlachty junkierskiej (*Junker*), uzyskując w toku kariery tytuły hrabiego oraz księcia (*Fürst*).
+
+- **Dyplomata** – Sprawował funkcje posła Prus przy Sejmie Związkowym we Frankfurcie nad Menem oraz ambasadora w Petersburgu i Paryżu.
+
+- **Kanclerz** – Pełnił urząd kanclerza Związku Północnoniemieckiego (1867–1871) oraz pierwszego Kanclerza Cesarstwa Niemieckiego (1871–1890).
+
+- **Lider partii** – Przewodził frakcji skrajnie konserwatywnej w pruskim Sejmie Zjednoczonym u progu kariery parlamentarnej oraz kierował zapleczem politycznym rządu.
+
+- **Minister** – Piastował stanowisko Ministra Spraw Zagranicznych Prus.
+
+- **Myśliciel społeczny** – Twórca i inicjator koncepcji tzw. państwowego socjalizmu oraz pionierskiego systemu powszechnych ubezpieczeń społecznych dla robotników.
+
+- **Parlamentarzysta** – Zasiadał w Pruskim Sejmie Zjednoczonym, pruskiej Izbie Posłów, Sejmie Związku Północnoniemieckiego oraz niemieckim Reichstagu.
+
+- **Premier** – Sprawował urząd premiera Prus (*Ministerpräsident*) w latach 1862–1890 (z krótką przerwą w 1873 r.).
+
+- **Reformator** – Autor głębokich reform ustrojowych (utworzenie Cesarstwa Niemieckiego w 1871 r.) oraz socjalnych (wprowadzenie państwowych ubezpieczeń chorobowych, wypadkowych i emerytalnych).
+
+- **Samorządowiec** – Pełnił lokalną funkcję państwową i samorządową kapitana wałowego (*Deichhauptmann* / *Dyke-captain*) nad Łabą.
+
+- **Założyciel partii/ruchu** – Współzałożyciel i organizator środowiska skrajnej prawicy ultra-konserwatywnej wokół pisma *Kreuzzeitung* oraz tzw. Sejmu Junkrów w 1848 r..
+
+---
+
+### Narodowość
+
+- **Niemiecka** – Pochodził z Prus i prowadził działalność na rzecz państwowości pruskiej oraz zjednoczonego państwa niemieckiego.
+
+---
+
+### Status
+
+- **Martwy** – Zmarł 30 lipca 1898 roku.
+
+---
+
+### Płeć
+
+- **Mężczyzna**.
+
+---
+
+### Okres życia
+
+- **XIX wiek** – Żył w latach 1815–1898, a całość jego aktywności publicznej przypadała na XIX wiek.
+
+---
+
+### Ideologia
+
+- **Autorytaryzm** – Zwolennik monarchicznego autorytaryzmu, odrzucający rządy parlamentarno-gabinetowe i absolutyzm większości na rzecz silnej władzy wykonawczej korony i rządu.
+
+- **Konserwatyzm** – Czołowy przedstawiciel pruskiego konserwatyzmu, obrońca ładu społecznego oraz przywilejów szlacheckich i stanowych.
+
+- **Monarchizm** – Konsekwentny zwolennik bezwzględnej suwerenności korony Hohenzollernów i monarchistycznej formy rządów.
+
+- **Nacjonalizm** – Prowadził politykę zjednoczeniową oraz państwową germanizację mniejszości narodowych, podporządkowując cele narodowe pruskiej racji stanu.
+
+- **Reakcjonizm** – U progu kariery politycznej (zwłaszcza podczas rewolucji 1848 r.) reprezentował skrajny odłam ultra-reakcyjny, zwalczający ruchy rewolucyjne i liberalne.
+
+- **Tradycjonalizm** – Głęboko przywiązany do tradycyjnego pruskiego porządku stanowo-monarchicznego i religijnego.
+
+---
+
+### Kontynent działalności
+
+- **Europa** – Prowadził działalność polityczną, militarną i dyplomatyczną na obszarze Europy.
+
+---
+
+### Sposób dojścia do władzy / legitymizacja
+
+- **Nominacja / Kooptacja** – Objął władzę w Prusach we wrześniu 1862 roku w wyniku monarszej nominacji na stanowisko premiera przez króla Wilhelma I.
+
+---
+
+### Religia
+
+- **Chrześcijaństwo** – Wychowany w wierze chrześcijańskiej, przeżył głębokie religijne nawrócenie w środowisku luterańskiego pietyzmu w latach 40. XIX wieku.
+
+- **Protestantizm** – Wyznawał protestantizm (luteranizm).
+
+---
+
+### Dodatkowe tagi, których brakuje w podanym zestawie
+
+1. **Realpolitik / Realizm polityczny** – Główna doktryna kierująca całą praktyką polityczną Bismarcka, stawiająca chłodną analizę siły i interesów państwa ponad sztywne dogmaty ideologiczne.
+
+2. **Racja stanu / Państwo potęgi (*Machtstaat*) / Państwizm** – Traktowanie bezwzględnego interesu i egoizmu państwowego (*staatlicher Egoismus*) jako najwyższej normy w polityce wewnętrznej i zagranicznej.
+
+3. **Państwo opiekuńcze (*Welfare state*) / Państwowy socjalizm (*Staatssozialismus*)** – Twórca pierwszego na świecie powszechnego państwowego systemu zabezpieczeń i ubezpieczeń społecznych.
+
+4. **Germanizacja / Antypolskość / Kulturkampf** – Inicjator państwowych akcji asymilacyjnych, osadniczych i wyznaniowo-represyjnych wymierzonych w Kościół katolicki oraz mniejszość polską.
+
+5. **Borussizm (Prusactwo)** – Przedkładanie pruskiej tożsamości państwowej, monarchii Hohenzollernów i tradycji pruskich ponad ogólnoniemiecki etniczny nacjonalizm.
+
+6. **Mąż stanu / Dyplomata mocarstwowy** – Architekt europejskiej równowagi sił i skomplikowanego systemu sojuszy w drugiej połowie XIX wieku.
+
+---
+
+### 1. Informacje podstawowe
+
+- **Pełne imię i nazwisko**: Piotr Igor Ikonowicz
+
+- **Data i miejsce urodzenia**: 14 maja 1956, Pruszków
+
+- **Kontynent działalności**: Europa
+
+- **Państwo związane z działalnością**: Polska
+
+- **Narodowość**: polska
+
+- **Główna działalność**: działacz społeczny, obrońca praw lokatorskich i pracowniczych, polityk lewicowy
+
+- **Pozostałe rodzaje działalności**: publicysta, dziennikarz, tłumacz
+
+- **Najważniejsze funkcje publiczne**: poseł na Sejm RP II i III kadencji (1993–2001), członek Komisji Konstytucyjnej Zgromadzenia Narodowego, kandydat na Rzecznika Praw Obywatelskich (2021)
+
+- **Sposób dojścia do władzy / legitymizacja**: wybory parlamentarne (mandat poselski z list koalicyjnych SLD w 1993 i 1997 r.)
+
+- **Okres aktywności**: od lat 80. XX w. (opozycja w PRL) do czasów współczesnych
+
+- **Partie polityczne (od najnowszej do najstarszej)**:
+
+  - Nowa Lewica (start z listy w 2023 r.)
+
+  - Ruch Sprawiedliwości Społecznej (założyciel i przewodniczący: 2014–2023, ponowna rejestracja od 2025 r.)
+
+  - Ruch Społeczny Rzeczypospolitej Polskiej (start z listy w 2015 r.)
+
+  - Samoobrona RP (start z listy w 2007 r.)
+
+  - Nowa Lewica (sekretarz ds. organizacyjnych w 2003 r.)
+
+  - Polska Partia Socjalistyczna (przewodniczący Rady Naczelnej w latach 1992–1996 oraz 1997–2001, działacz od 1987 r.)
+
+  - Sojusz Lewicy Demokratycznej (start z listy koalicyjnej w latach 1993 i 1997)
+
+- **Formalne organizacje**: Kancelaria Sprawiedliwości Społecznej (współzałożyciel/lider), NSZZ „Solidarność” (1980–1988), Grupa Polityczna „Robotnik”, Ruch Wolność i Pokój, Stowarzyszenie Tłumaczy Polskich, Stowarzyszenie Dziennikarzy Polskich, Towarzystwo Przyjaciół Dąbrowszczaków
+
+- **Ideologie**: socjalizm, marksizm, socjaldemokracja
+
+- **Ważne wartości**: sprawiedliwość społeczna, ochrona praw lokatorów i pracowników, godność ludzka, pomoc wykluczonym, demokracja pracownicza
+
+- **Inspiracje intelektualne / mentorzy**: tradycja PPS ([m.in](http://m.in). Kazimierz Pużak, Jan Józef Lipski), Karl Marx, Ernest Mandel, Thomas Piketty, Jan Strzelecki
+
+---
+
+### 1. Overview
+
+**Piotr Ikonowicz to polski polityk lewicowy, działacz społeczny i publicysta, poseł na Sejm II i III kadencji. Działał w opozycji antykomunistycznej w PRL, a w III RP stał się liderem PPS i Ruchu Sprawiedliwości Społecznej oraz założycielem Kancelarii Sprawiedliwości Społecznej. Głosi postulaty ochrony praw lokatorów, przeciwdziałania eksmisjom i wyzyskowi pracowniczemu oraz urzeczywistnienia konstytucyjnej sprawiedliwości społecznej.**
+
+---
+
+### 2. Wstęp
+
+Piotr Ikonowicz jest jedną z najbardziej wyrazistych postaci polskiej lewicy społecznej i ruchu obrony praw człowieka. Jego działalność publiczna przypada na okres transformacji ustrojowo-gospodarczej oraz budowania III Rzeczypospolitej, w której sprzeciwił się neoliberalnemu modelowi reform gospodarczych Planu Balcerowicza oraz skutkom masowej prywatyzacji i reprywatyzacji. Istotę jego praktyki politycznej stanowi konsekwentna obrona osób najuboższych, wykluczonych społecznie, zagrożonych bezdomnością oraz pozbawionych reprezentacji pracowników najemnych. Ikonowicz reprezentuje nurt socjalizmu oparty na koncepcji demokracji pracowniczej, egzekwowaniu artykułu 2. Konstytucji RP o sprawiedliwości społecznej oraz walce z nierównościami majątkowymi. Narzędziem jego pracy stała się pomoc prawna i działania bezpośrednie, w tym blokady nielegalnych eksmisji lokatorskich oraz organizowanie struktur związkowych i społecznych w środowiskach robotniczych. Jako parlamentarzysta II i III kadencji oraz lider ugrupowań socjalistycznych łączył krytykę systemową z próbami wprowadzania regulacji prawnych osłaniających słabsze grupy społeczne. W debacie publicznej funkcjonuje jako niezależny głos upominający się o godność ludzi pracy oraz odpowiedzialność państwa za podstawowe usługi publiczne.
+
+---
+
+### 3. Życie, historia i działalność
+
+Piotr Igor Ikonowicz urodził się 14 maja 1956 roku w Pruszkowie. Pochodzi z rodziny o tradycjach dziennikarsko-gastronomicznych – jego ojciec Mirosław Ikonowicz był długoletnim korespondentem Polskiej Agencji Prasowej, a matka Olga zajmowała się gastronomią; jego siostrą jest restauratorka Magda Gessler. Część dzieciństwa spędził wraz z rodziną na Kubie. Ukończył XV Liceum Ogólnokształcące im. Narcyzy Żmichowskiej w Warszawie, a w 1980 roku uzyskał tytuł magistra administracji na Wydziale Prawa i Administracji Uniwersytetu Warszawskiego. Ukończył także Podyplomowe Studium Instytutu Geografii i Krajów Rozwijających się (1984). Zna osiem języków obcych i pracował [m.in](http://m.in). jako tłumacz oraz publicysta.
+
+W latach 80. zaangażował się w działalność opozycyjną w PRL. Od 1980 do 1988 roku należał do NSZZ „Solidarność”, pracując [m.in](http://m.in). w serwisie informacyjnym Regionu Mazowsze. W stanie wojennym został zatrzymany w grudniu 1981 roku za kolportaż niezależnych wydawnictw, za co skazano go na karę pozbawienia wolności w zawieszeniu. W maju 1982 roku został ponownie zatrzymany za organizowanie niezależnych obchodów pierwszomajowych i internowany w więzieniu w Białołęce do listopada 1982 roku. Współtworzył prasę podziemną, w tym czasopismo „Robotnik” Grupy Politycznej „Robotnik” oraz pismo „Miś”. Należał również do Ruchu Wolność i Pokój. W 1987 roku współtworzył odrodzoną Polską Partię Socjalistyczną (PPS), a w ramach struktury PPS-Rewolucja Demokratyczna organizował protesty i strajki. Sprzeciwiał się ustaleniom Okrągłego Stołu oraz wyborom czerwcowym w 1989 roku, organizując demonstracje pod hasłem „Wolne wybory, nie pozory!”.
+
+Po 1989 roku stał się czołową postacią Polskiej Partii Socjalistycznej, pełniąc funkcję przewodniczącego jej Rady Naczelnej w latach 1992–1996 oraz 1997–2001. W latach 1993–2001 sprawował mandat posła na Sejm II i III kadencji, wybranego z list koalicyjnych Sojuszu Lewicy Demokratycznej, z którego klubu parlamentarnego kilkukrotnie występował, tworząc samodzielne Koło Parlamentarne PPS. W Sejmie był członkiem Komisji Konstytucyjnej Zgromadzenia Narodowego, współtworząc zapisy dotyczące zasady sprawiedliwości społecznej w artykule 2. Konstytucji RP. Zgłaszał projekty ustaw o wygaśnięciu roszczeń reprywatyzacyjnych oraz sprzeciwiał się ustawodawstwu zezwalającemu na eksmisje lokatorów na bruk. W 1999 roku protestował przeciwko interwencji wojsk NATO w Jugosławii. W 2000 roku kandydował w wyborach na Urząd Prezydenta RP. Po niepowodzeniu w wyborach parlamentarnych w 2001 roku zrezygnował z kierowania PPS, a w kolejnych latach współtworzył Nową Lewicę (2003) oraz kandydował z list Samoobrony RP (2007) i Ruchu Palikota (jako doradca w 2011 r.).
+
+Równolegle do działalności politycznej Ikonowicz skoncentrował swoje wysiłki na bezpośrednim aktywizmie społecznym. Od końca lat 90. organizował i prowadził blokady eksmisji lokatorskich, wykorzystując początkowo immunitet poselski do ochrony eksmitowanych rodzin. Utworzył Stowarzyszenie Kancelaria Sprawiedliwości Społecznej, udzielające bezpłatnej pomocy prawnej i socjalnej osobom ubogim, bezdomnym oraz zagrożonym utratą dachu nad głową. Za bezkompromisowe akcje blokowania eksmisji wielokrotnie ponosił konsekwencje prawne – w 2008 roku został skazany za naruszenie nietykalności właściciela lokalu podczas blokady eksmisji starszych ludzi, a w 2013 roku odbył część kary 90 dni zastępczego aresztu, podejmując w nim głodówkę. W 2014 roku założył partię Ruch Sprawiedliwości Społecznej, stawiającą sobie za cel polityczną reprezentację pracowników najemnych i klasy ludowej. W 2021 roku zgłoszony został przez Lewicę jako kandydat na Rzecznika Praw Obywatelskich, otrzymując wsparcie licznych organizacji społecznych. W tym samym roku wraz z żoną Agatą Nosal-Ikonowicz został odznaczony przez RPO Adama Bodnara Odznaką Honorową „Za Zasługi dla Ochrony Praw Człowieka”. Prowadzi aktywną działalność publicystyczną, [m.in](http://m.in). na portalu Krytyka Polityczna oraz w mediach społecznościowych.
+
+---
+
+### Poglądy i idee
+
+Poglądy Piotra Ikonowicza stanowią spójną koncepcję socjalizmu opartego na fundamencie humanizmu, w którym najwyższą wartością jest godność ludzka, a nie kapitał czy zysk ekonomiczny. U podłoża jego filozofii politycznej leży przekonanie, że współczesny kapitalizm wzniósł chciwość do rangi głównej zasady ustrojowej, co prowadzi do drastycznych nierówności majątkowych, wyzysku pracowników oraz degradacji więzi społecznych. Ikonowicz odrzuca zarówno model państwa komunistycznego w wydaniu PRL – które uważa za dyktaturę partyjnej nomenklatury pozbawioną autentycznej wolności i demokracji, zwalczającą samorządność robotniczą – jak i neoliberalny model gospodarczy wdrożony w Polsce po 1989 roku w ramach Planu Balcerowicza. W jego ujęciu prawdziwy socjalizm jest nieodłączny od demokracji i wolności obywatelskich, a jego celem jest urzeczywistnienie sprawiedliwego podziału dochodu narodowego oraz zapewnienie każdemu obywatelowi zaspokojenia podstawowych potrzeb bytowych.
+
+W obszarze analizy struktury społecznej Ikonowicz posługuje się kategorią klasy ludowej i świata pracy, sprzeciwiając się zastąpieniu pojęcia klasy w debacie publicznej przez ideologiczny mit „konsumującej klasy średniej”. Wskazuje, że polski system społeczno-gospodarczy cechuje się drastycznym rozwarstwieniem – przywołując dane podatkowe i opracowania badaczy ([m.in](http://m.in). Thomasa Piketty’ego czy autorów pracy *Nierówności po polsku*), podkreśla, że 10% najbogatszych Polaków posiada od 40% do 60% majątku narodowego, podczas gdy połowa społeczeństwa zarabia zaledwie ułamek dochodu i nie ma żadnych oszczędności. Ikonowicz krytykuje koncepcję „bycia kowalem własnego losu”, wykazując, że w praktyce uprzywilejowaną pozycję mają ci, którzy „odziedziczyli kuźnię po rodzicach”, a uderzające w klasę pracującą bariery uniemożliwiają awans społeczny. Występuje stanowczo przeciwko przemocy ekonomicznej, traktując umowy cywilnoprawne (tzw. śmieciowe), niskie stawki godzinowe oraz uberyzację pracy jako nowoczesne formy niewolnictwa i wyzysku.
+
+Kwestia mieszkaniowa zajmuje centralne miejsce w jego doktrynie społecznej. Ikonowicz stoi na stanowisku, że mieszkanie jest podstawowym prawem człowieka i dobrem osobistym, a nie komercyjnym towarem służącym do spekulacji kapitałowej. Ostrze jego krytyki skierowane jest w stronę polityki państwowej i samorządowej, która zamiast budować masowe mieszkania komunalne i czynszowe pod tani wynajem, wspiera deweloperów oraz banki poprzez programy dopłat do kredytów hipotecznych. Wskazuje na absurd sytuacji, w której dziesiątki tysięcy mieszkań stoi pustych jako lokata kapitału dla zamożnych inwestorów, podczas gdy młodzi ludzie i zubożałe rodziny borykają się z dyktatem rynku wynajmu lub zagrożeniem bezdomnością. Przeprowadza przy tym rozróżnienie między łamaniem prawa w celu ochrony ludzkiej egzystencji (czemu służyły obywatelskie blokady eksmisji na bruk) a systemowym łamaniem praw słabszych przez kamieniczników, czyścicieli kamienic i nielegalne firmy eksmisyjne działające z chciwości.
+
+W odniesieniu do państwa, ustroju i prawodawstwa Ikonowicz ocenia, że III Rzeczpospolita stała się państwem oligarchicznym i „komitetem wykonawczym interesów kapitału”, w którym Sejm i instytucje publiczne są zdominowane przez przedstawicieli klas zamożnych, a pozbawione reprezentacji robotników, sprzątaczek czy kierowców. Jego program legislacyjny opiera się na egzekwowaniu konstytucyjnych zasad zawartych w artykule 2. (sprawiedliwość społeczna) oraz artykule 30. (przyrodzona i niezbywalna godność człowieka) Konstytucji RP. Wskazuje, że czysto formalna równość bogatego i ubogiego przed sądem jest fikcją ze względu na przewagę finansową i procesową silniejszych podmiotów. Postuluje reformę podatkową opartą na głębokiej progresji majątkowej i dochodowej, cywilizację rynku pracy poprzez wzmocnienie Państwowej Inspekcji Pracy oraz wprowadzenie reguły „prawa jedynej koszuli”, zapobiegającej licytacji komorniczej jedynego dachu nad głową.
+
+Zwolennik pluralizmu światopoglądowego i humanizmu, Ikonowicz łączy sekularną tożsamość lewicową z szacunkiem dla społecznego nauczania Kościoła w obszarach krytyki chciwości i nieograniczonego rynku, odwołując się [m.in](http://m.in). do pism kardynała Stefana Wyszyńskiego czy encyklik społecznych. Jednocześnie konsekwentnie broni praw kobiet, wolności obyczajowych oraz zrównania prawnego konkubinatów. W kwestii dostępu do broni palnej prezentuje stanowisko zdecydowanie pacyfistyczne i krytyczne – odrzuca liberalizację przepisów w stylu amerykańskim, twierdząc, że broń służy do uśmiercania i jej powszechność potęguje przestępczość oraz lęk społeczny, a dopuszcza jedynie posiadanie broni do celów sportowych lub kolekcjonerskich pod rygorystyczną kontrolą psychologiczną.
+
+W sprawach międzynarodowych i polityce zagranicznej Ikonowicz kieruje się wartościami uniwersalnego humanitaryzmu oraz sprzeciwem wobec polityki imperialnej wielkich mocarstw. Stanowczo potępia ksenofobię, rasizm i hejt kierowany wobec migrantów i uchodźców, wskazując, że migracje są naturalnym skutkiem wojen, biedy i nierówności globalnych, a uchodźcy zasługują na bezwarunkową pomoc ludzką. Odnośnie do konfliktu rosyjsko-ukraińskiego, jednoznacznie potępia agresję Rosji, podkreślając heroizm narodu ukraińskiego broniącego swojej suwerenności, choć zarazem krytykuje gloryfikację historycznych struktur nacjonalistycznych (taz. UP) oraz wskazuje na konieczność rozliczenia zbrodni ludobójstwa na Wołyniu. O ile w przeszłości sceptycznie odnosił się do obecności Polski w struktury wojskowych NATO, o tyle po pełnoskalowej inwazji Rosji na Ukrainę w 2022 roku zrewidował swoje stanowisko, uznając przynależność do Sojuszu za niezbędny element immunizujący państwo przed napaścią. Na forum geopolitycznym ostro krytykuje również politykę Stanów Zjednoczonych oraz działania wojenne Izraela w Strefie Gazy i Libanie, określając je mianem zbrodni przeciwko ludzkości i złamania prawa międzynarodowego.
+
+---
+
+### Działalność polityczna i publiczna
+
+Działalność publiczna Piotra Ikonowicza obejmuje ponad cztery dekady aktywności opozycyjnej, parlamentarnej i pozaparlamentarnej. W latach 80. związany był z NSZZ „Solidarność”, podziemnym pismem „Robotnik”, Ruchu Wolność i Pokój oraz współtworzył odrodzoną Polską Partię Socjalistyczną (PPS-RD), za co był wielokrotnie więziony i internowany w Białołęce. Po 1989 roku stanął na czele PPS, pełniąc funkcję przewodniczącego jej Rady Naczelnej i reprezentując nurt zdecydowanie sprzeciwiający się prywatyzacji i Planowi Balcerowicza. W latach 1993–2001 sprawował mandat posła na Sejm II i III kadencji (wybrany z list koalicyjnych SLD, z którego klubu odchodził, tworząc samodzielne Koło Parlamentarne PPS). Jako parlamentarzysta i członek Komisji Konstytucyjnej Zgromadzenia Narodowego brał udział w redagowaniu aktu prawnego z 1997 roku, wprowadzając zapisy o sprawiedliwości społecznej (art. 2). W 1995 roku wniósł do Sejmu projekt ustawy o wygaśnięciu roszczeń reprywatyzacyjnych, mający zapobiec dzikiej reprywatyzacji. Po 2001 roku skoncentrował swoje wysiłki na pozaparlamentarnym aktywizmie lokatorskim i pracowniczym. Utworzył Kancelarię Sprawiedliwości Społecznej oraz partię Ruch Sprawiedliwości Społecznej (założoną w 2014 r. i ponowne zarejestrowaną w 2025 r.). Zasłynął organizowaniem setek obywatelskich blokad eksmisji lokatorskich na terenie całego kraju, za co w 2008 roku został skazany, a w 2013 roku odbył 90 dni zastępczego aresztu, prowadząc w nim protest głodówkowy. W 2021 roku był oficjalnym kandydatem Lewicy na urząd Rzecznika Praw Obywatelskich, zdobywając szerokie poparcie organizacji pozarządowych i środowisk społecznych, a w tym samym roku otrzymał od RPO Adama Bodnara Odznakę Honorową „Za Zasługi dla Ochrony Praw Człowieka”. Jego realny wpływ polityczny manifestował się nie tyle poprzez tworzenie większości rządowych, ile przez wywieranie presji społecznej, negocjacje z władzami samorządowymi i państwowymi oraz zmuszanie ustawodawcy do zmian w prawie chroniącym lokatorów i dłużników.
+
+---
+
+### Najważniejsze autorskie lektury i dzieła
+
+#### Publikacje zwarte (autorskie i współautorskie)
+
+- ***Wizja parlamentu w nowej konstytucji Rzeczypospolitej Polskiej*** (Wydawnictwo Sejmowe, 1995) – opracowanie analityczne przedstawiające socjalistyczną koncepcję izb parlamentarnych i reprezentacji społecznej w pracach nad Konstytucją RP.
+
+- ***Pracy i chleba*** (Książka i Prasa, 2000) – wywiad-rzeka przeprowadzony przez Stefana Zgliczyńskiego, stanowiący wywyód programowy doktryny PPS i krytykę polskiej transformacji ustrojowej.
+
+- ***Jak żyć Panie Premierze? Diagnoza kryzysu społecznego w Polsce*** (z Agatą Nosal-Ikonowicz, Indygo Zahir Media, 2012) – monografia poświęcona analizie wykluczenia mieszkaniowego, patologii rynku pracy oraz niewydolności państwowego systemu pomocy społecznej.
+
+#### Tłumaczenia dzieł teoretycznych
+
+- Ernest Mandel, ***O biurokracji*** (OPP „Sigma”, 1981) oraz ***O biurokracji i planowaniu gospodarczym*** (ZW ZSMP, 1989) – przekłady prac wybitnego trockistowskiego ekonomisty i teoretyka, które kształtowały krytyczny stosunek Ikonowicza do biurokracji państwowej i modelu radzieckiego.
+
+#### Działalność publicystyczna i prasowa
+
+- **Pismo członków MRKS „Robotnik”** – podziemne wydawnictwo opozycyjne z lat 80., w którym Ikonowicz formułował postulaty niezależnego ruchu robotniczego.
+
+- **Publicystyka prasowa i internetowa** – setki artykułów i felietonów opublikowanych [m.in](http://m.in). na portalu *Krytyka Polityczna*, w tygodnikach *Uważam Rze* i *Przekrój* oraz w serwisie *wPunkt*, poświęconych analizie nierówności ekonomicznych, kryzysowi mieszkaniowemu i polityce międzynarodowej.
+
+#### Kluczowe autorskie lektury i inspiracje intelektualne
+
+- **Karl Marx** (*Kapitał*) – fundament teorii wartości z pracy, krytyki kapitału oraz analizy państwa jako narzędzia klasowego.
+
+- **Thomas Piketty** (*Kapitał w XXI wieku*) oraz opracowania **World Inequality Lab** (w tym *Nierówności po polsku*) – podstawowe źródła empiryczne wykorzystywane przez Ikonowicza do wykazywania skali rozwarstwienia majątkowego w Polsce i Europie.
+
+- **Jan Strzelecki** – koncepcja „humanizmu socjalistycznego”, stanowiąca dla Ikonowicza wyznacznik etyki lewicowej opartej na empatii i wyborach moralnych.
+
+- **Elias Canetti** (*Masa i władza*) – jedna z najważniejszych lektur z zakresu socjologii polityki i analizy zachowań zbiorowych.
+
+- **Aleksy Tołstoj** (*Droga przez mękę*) oraz **John Reed** (*10 dni, które wstrząsnęły światem*) – klasyczne dzieła literacko-historyczne kształtujące jego spojrzenie na dynamikę rewolucyjną i procesy przemian społecznych.
+
+---
+
+### Dziedzictwo
+
+Idee oraz praktyka społeczno-polityczna Piotra Ikonowicza wywarły istotny wpływ na kształt polskiej lewicy społecznej oraz ewolucję debaty publicznej w III Rzeczypospolitej. Jego bezkompromisowa działalność w zakresie obrony praw lokatorów i prowadzenie obywatelskich blokad eksmisji doprowadziły do przełomu prawnego – w 2001 roku Trybunał Konstytucyjny orzekł sprzeczność eksmisji na bruk z Konstytucją RP, co oznaczało prawne uznanie zasadności wcześniejszych akcji nieposłuszeństwa obywatelskiego i przeformułowanie statusu aktywistów z „chuliganów” na obrońców ładu konstytucyjnego. Wprowadzone przez niego do przestrzeni publicznej hasło „Mieszkanie prawem, nie towarem” stało się kluczowym kanonem programowym polskiego ruchu lokatorskiego oraz zostało z czasem przejęte przez czołowe ugrupowania parlamentarne. Praktyka Kancelarii Sprawiedliwości Społecznej stworzyła wzorzec bezpłatnej, oddolnej pomocy prawnej i socjalnej dla grup wykluczonych, wywierając wpływ na młodsze pokolenie działaczy społecznych, aktywistów miejskich i związkowców ([m.in](http://m.in). Janka Śpiewaka, środowiska Partii Razem czy Inicjatywy Pracowniczej). Ponadto konsekwentne podnoszenie przez Ikonowicza problematyki wyzysku pracowniczego, umów śmieciowych i dramatu biedy zmusiło elity polityczne do uwzględnienia wymiaru socjalnego w polityce państwowej, stanowiąc jeden z impulsów dla późniejszych zmian w prawie pracy i programach redystrybucyjnych.
+
+---
+
+### Cytaty
+
+ 1. **O naturze socjalizmu i humanizmie:**
+
+ 2. **O sprawiedliwości społecznej i Konstytucji RP:**
+
+ 3. **O mieszkalnictwie i rynku:**
+
+ 4. **O nierównościach i rozwarstwieniu:**
+
+ 5. **O pracownikach i wyzysku:**
+
+ 6. **O pojęciu biedy i podejście elit:**
+
+ 7. **O przyczynach nieobecności spraw pracowniczych w polityce:**
+
+ 8. **O wojnie i interesach kapitału:**
+
+ 9. **O wolności wyboru w warunkach kapitalizmu:**
+
+10. **O bezdomności i relacjach społecznych:**
+
+11. **O roli i etosie partii idei:**
+
+12. **O motywacji do pracy społecznej:**
+
+13. Oto zestawienie wszystkich tagów z przedstawionej listy, które pasują do profilu Piotra Ikonowicza, wraz z zwięzłym uzasadnieniem faktograficznym, a także propozycja dodatkowych tagów na końcu.
+
+- **Działacz związkowy** – od 1980 do 1988 roku należał do NSZZ „Solidarność” (redagował serwis informacyjny Regionu Mazowsze), a w III RP stale współpracuje ze związkami zawodowymi ([m.in](http://m.in). Inicjatywą Pracowniczą, OPZZ) i organizuje reprezentację pracowniczą.
+
+- **Dziennikarz** – pracował w prasie opozycyjnej („Robotnik”, „Miś”), polskiej sekcji radia PAP, publikuje w prasie i mediach ([m.in](http://m.in). *Krytyka Polityczna*, *Uważam Rze*, *Przekrój*, *wPunkt*) oraz należy do Stowarzyszenia Dziennikarzy Polskich.
+
+- **Polityk** – poseł na Sejm II i III kadencji, lider i przewodniczący ugrupowań politycznych (PPS, Ruch Sprawiedliwości Społecznej), kandydat na Prezydenta RP (2000) i RPO (2021).
+
+- **Prawnik** – ukończył studia na Wydziale Prawa i Administracji Uniwersytetu Warszawskiego (magister administracji); od ponad dwóch dekad występuje przed sądami jako pełnomocnik pro bono reprezentujący osoby ubogie i wykluczone.
+
+- **Publicysta** – autor setek artykułów, felietonów i wywiadów poświęconych analizie gospodarczej, nierównościom społecznym, prawom pracowniczym i polityce międzynarodowej.
+
+- **Rewolucjonista** – działacz opozycji antykomunistycznej i współzałożyciel skrzydła PPS-Rewolucja Demokratyczna w latach 80. XX w., sprzeciwiający się kompromisom Okrągłego Stołu i opowiadający się za głęboką zmianą ustrojową.
+
+- **Dysydent** – działacz podziemia antykomunistycznego w PRL, wielokrotnie aresztowany, skazywany i internowany ([m.in](http://m.in). w stanie wojennym w więzieniu w Białołęce za organizowanie protestów i kolportaż).
+
+- **Lider partii** – przewodniczący Rady Naczelnej Polskiej Partii Socjalistycznej (1992–1996, 1997–2001) oraz założyciel i przewodniczący Ruchu Sprawiedliwości Społecznej (od 2014 r.).
+
+- **Myśliciel społeczny** – autor koncepcji teoretycznych i programowych w zakresie socjalizmu demokratycznego, humanizmu społecznego, praw lokatorskich oraz walki z nierównościami majątkowymi w Polsce.
+
+- **Parlamentarzysta** – poseł na Sejm Rzeczypospolitej Polskiej II i III kadencji (1993–2001), reprezentujący koło parlamentarne PPS i SLD.
+
+- **Reformator** – członek Komisji Konstytucyjnej Zgromadzenia Narodowego (współautor zapisów o sprawiedliwości społecznej w art. 2 Konstytucji RP) oraz inicjator projektów ustaw chroniących lokatorów i znoszących roszczenia reprywatyzacyjne.
+
+- **Założyciel partii/ruchu** – współzałożyciel odrodzonej PPS, Nowej Lewicy (2003), Ruchu Sprawiedliwości Społecznej (2014/2025) oraz Stowarzyszenia Kancelaria Sprawiedliwości Społecznej.
+
+- **Polska** – urodzony w Pruszkowie, obywatel Polski prowadzący całość swojej działalności w kraju.
+
+- **Żyje** – urodzony 14 maja 1956 roku, nadal aktywny publicznie i zawodowo.
+
+- **Mężczyzna**
+
+- **XX wiek** – urodzony w 1956 r., aktywność opozycyjna w latach 80. oraz działalność parlamentarna i partyjna w latach 90.
+
+- **XXI wiek** – ciągła aktywność społeczna, aktywizm lokatorski, publicystyka i udział w wyborach w XXI w.
+
+- **Demokracja** – zwolennik demokracji pracowniczej, obywatelskiej i bezpośredniej; odrzuca zarówno dyktaturę partyjną PRL, jak i oligarchiczne zdominowanie polityki przez kapitał.
+
+- **Marksizm** – posługuje się marksistowską analizą klasową, teorią wyzysku pracy oraz krytyką kapitału, deklarując tożsamość lewicową opartą na metodologii marksistowskiej.
+
+- **Socjalizm** – kluczowa ideologia życiowa Piotra Ikonowicza, stawiająca człowieka i jego godność ponad zyskiem i kapitałem.
+
+- **Socjalizm demokratyczny** – ujęcie socjalizmu nieodłączne od wolności obywatelskich, pluralizmu i prawa do samorządności pracowniczej.
+
+- **Socjaldemokracja** – poparcie dla silnego państwa dobrobytu, progresywnych podatków, bezpłatnych usług publicznych (ochrona zdrowia, edukacja) i ochrony socjalnej najsłabszych.
+
+- **Europa** – działalność prowadzona w Polsce oraz na forum europejskim (np. starty w wyborach do PE).
+
+- **Wybory demokratyczne** – zdobycie mandatu posła na Sejm RP w powszechnych, wolnych wyborach parlamentarnych w 1993 i 1997 roku.
+
+- **Ateizm / Agnostycyzm / Inne (Świecki humanizm)** – definiuje się jako człowiek świecki i socjalistyczny humanista; choć odwołuje się z szacunkiem do społecznego nauczania Kościoła (np. kard. Wyszyńskiego czy papieskich encyklik społecznych), nie deklaruje wyznawania dogmatów religijnych.
+
+1. **Obrońca praw lokatorskich / Aktywista miejski** – kluczowy obszar działalności Piotra Ikonowicza (blokady eksmisji na bruk, walka z czyścicielami kamienic i dziką reprywatyzacją).
+
+2. **Obrońca praw człowieka** – oficjalny kandydat na RPO (2021), odznaczony Odznaką Honorową RPO „Za Zasługi dla Ochrony Praw Człowieka”.
+
+3. **Więzień polityczny / Internowany** – osadzony w Areszcie Śledczym i internowany w Białołęce w stanie wojennym za działalność opozycyjną, a w III RP więziony w wyniku obywatelskiego nieposłuszeństwa przy blokadzie eksmisji.
+
+4. **Tłumacz / Poliglota** – absolwent studiów językowych/prawniczych, zawodowy tłumacz władający 8 językami obcymi.
+
+5. **Kandydat na Prezydenta RP / Kandydat na RPO** – ubiegał się o najwyższe urzędy państwowe (wybory prezydenckie 2000, kandydatura na RPO 2021).
+
+6. **Współtwórca Konstytucji RP** – członek Komisji Konstytucyjnej Zgromadzenia Narodowego (1994–1997).
+
+### 1. Informacje podstawowe
+
+- **Data urodzenia**: 8 grudnia 1752 roku.
+- **Data śmierci**: 6 września 1821 roku.
+- **Kontynent działalności**: Europa.
+- **Państwo / państwa związane z działalnością**: Wielka Brytania, Stany Zjednoczone (wydania publikacji i przyznanie stopnia honorowego).
+- **Narodowość**: angielska / brytyjska.
+- **Główna działalność**: eseista, pedagog (dyrektor szkoły), duchowny anglikański.
+- **Pozostałe rodzaje działalności**: kaznodzieja, kompilator i edytor literatury, tłumacz, publicysta polityczny.
+- **Najważniejsze funkcje publiczne/państwowe**: dyrektor Tonbridge School (1778–1812), duchowny Kościoła Anglii (rektor parafii Ramsden Crays i Runwell, minister kaplicy w Shipborne).
+- **Okres aktywności**: 1775–1821.
+- **Partie polityczne - od najnowszej do najstarszej**: Whigowie (Whigs).
+- **Formalne organizacje**: Kościół Anglii (Church of England), St. John's College w Oksfordzie (Fellow).
+- **Ideologie**: pacyfizm (chrześcijański antywojenny liberalizm), radykalny whigizm / antydespotyzm.
+- **Ważne wartości**: pokój, wolność obywatelska, edukacja klasyczna, filantropia, godność ludzka.
+- **Inspiracje intelektualne/mentorzy**: Erazm z Rotterdamu, Samuel Johnson, autorzy klasycznej starożytności ([m.in](http://m.in). Cycero, Kwintylian).
+- **Religia/Wyznanie/Odłam**: chrześcijaństwo / anglikanizm (Church of England).
+
+---
+
+### 2. Overview
+
+**Vicesimus Knox** (1752–1821) był angielskim eseistą, pedagogiem i duchownym anglikańskim. W swojej działalności łączył edukację klasyczną z krytyką despotyzmu politycznego i pacyfizmem. Jako dyrektor Tonbridge School i autor antologii „Elegant Extracts” wywarł istotny wpływ na rozwój edukacji oraz XVIII-wiecznej eseistyki społeczno-moralnej.
+
+---
+
+### 3. Wstęp
+
+**Vicesimus Knox** działał na przełomie XVIII i XIX wieku, w kontekście wojen koalicyjnych z rewolucyjną Francją oraz narastających w Wielkiej Brytanii sporów politycznych i społecznych. Jako duchowny Kościoła Anglii oraz eseista skoncentrował swoją twórczość na obronie swobód obywatelskich, sprzeciwie wobec wojen napastniczych oraz krytyce korupcji politycznej. Kluczowym elementem jego myśli była **analiza tzw. „ducha despotyzmu”**, który według niego rozszerzał się w warunkach wojennej histerii i służył umacnianiu władzy oligarchii kosztem praw ludności. Knox łączył zasady chrześcijańskiej etyki pokoju z wolnościowymi ideami stronnictwa Whigów oraz tradycją klasycznego humanizmu. Choć był duchownym Kościoła państwowego, ostro potępiał wykorzystywanie stanowisk kościelnych i beneficjów do kupowania wpływów politycznych oraz popierał równouprawnienie katolików. W dziedzinie edukacji opowiadał się za powszechnym dostępem do dyscypliny klasycznej i moralnej jako podstawowego filaru chroniącego społeczeństwo przed tyranią.
+
+---
+
+### 4. Życie, historia i działalność
+
+**Vicesimus Knox** urodził się 8 grudnia 1752 roku w Newington Green w hrabstwie Middlesex. Był jedynym synem wielebnego Vicesimusa Knoxa, duchownego i nauczyciela, oraz Ann Wall, córki Devereux Walla. Początkowo kształcił się pod kierunkiem ojca, a w 1764 roku wstąpił do Merchant Taylors' School w Londynie. W lipcu 1771 roku rozpoczął studia w St. John's College na Uniwersytecie Oksfordzkim, gdzie uzyskał tytuł licencjata (B.A.) w 1775 roku oraz magistra (M.A.) w 1779 roku. Podczas pobytu w Oksfordzie został członkiem (Fellow) swojego kolegium, poświęcając się studiom nad literaturą angielską i sztuką pisarską. Święcenia kapłańskie przyjął z rąk biskupa Roberta Lowtha, zostając diakonem w 1775 roku i prezbiterem w 1776 lub 1777 roku.
+
+W 1778 roku objął **stanowisko dyrektora (headmastera) Tonbridge School** w Kent, sukcesyjnie po swoim ojcu. Funkcję tę sprawował do 1812 roku, doprowadzając do wzrostu liczby uczniów z około 20 do 80. W ramach posługi duchownej Knox uzyskał kaplicę w Shipborne z zapisu lorda Vane'a, a w 1807 roku objął patronowane przez siebie rektoraty w Ramsden Crays i Runwell w Essex. Uniwersytet w Filadelfii przyznał mu stopień doktora teologii (D.D.). W 1778 roku poślubił Mary Miller (zmarłą w 1809 roku), z którą miał trzech synów i córkę Sarah. Po rezygnacji z kierowania szkołą w 1812 roku osiadł w Londynie przy Adelphi Terrace.
+
+Działalność pisarską rozpoczął od anonimowej publikacji tomu *Essays Moral and Literary* w 1778 roku u wydawcy Charlesa Dilly'ego, który wydał książkę po uzyskaniu entuzjastycznej opinii Samuela Johnsona. Praca ta osiągnęła wysokie nakłady, a Knox wydał wkrótce kolejne publikacje: *Liberal Education* (1781), *Elegant Extracts* w prozie (1783) i poezji (1789), *Winter Evenings* (1788) oraz *Personal Nobility* (1793), dedykowane politykowi Charlesowi Jamesowi Foxowi. Jego podręczniki i antologie z serii *Elegant Extracts* zyskały powszechne uznanie i były wielokrotnie wznawiane w Wielkiej Brytanii i Ameryce.
+
+Narastające w latach 90. XVIII wieku napięcia międzynarodowe skłoniły Knoxa do aktywnego zaangażowania publicystycznego w obronie pokoju. W artykułach na łamach *Morning Chronicle* krytykował brytyjską politykę zagraniczną wobec Francji i Polski. 18 sierpnia 1793 roku wygłosił w kościele w Brighton kazanie potępiające wojny napastnicze, co doprowadziło do incydentu w miejscowym teatrze, gdzie oficerowie milicji usunęli go wraz z rodziną z loży. W 1794 roku opublikował *Antipolemus* – tłumaczenie pacyfistycznych pism Erazma z Rotterdamu z własnym wstępem skierowanym przeciwko wojnie z Francją. W 1795 roku wydał dzieło ***The Spirit of Despotism***, w którym analizował, jak wojenna mobilizacja i strach sprzyjają ograniczaniu wolności obywatelskich, wzrostowi podatków oraz arbitralnej władzy koronnej. Ze względu na cenzurę nakład książki został w Wielkiej Brytanii wstrzymany, a jej pierwsze szersze wydania ukazały się w Filadelfii.
+
+Ujawnienie jego radykalnych poglądów pacyfistycznych spowodowało czasowy spadek liczby uczniów w Tonbridge School, jednak Knox kontynuował pracę oświatową i pisarską. W ostatnich latach życia opublikował [m.in](http://m.in). *Remarks on the tendency of certain Clauses in a Bill now pending in Parliament to degrade Grammar Schools* (1821), broniąc tradycyjnego modelu szkół gramatycznych. Zmarł podczas wizyty w Tunbridge 6 września 1821 roku w wieku 68 lat i został pochowany w prezbiterium tamtejszego kościoła.
+
+### 5. Poglądy i idee
+
+#### Państwo, władza i despotyzm
+
+W myśli politycznej Vicesimusa Knoxa centralne miejsce zajmuje krytyka despotyzmu oraz systemowych mechanizmów władzy państwowej, które zmierzają do ograniczenia wolności obywatelskich. Knox definiuje **„ducha despotyzmu”** jako destrukcyjną siłę sprzyjającą koncentracji władzy w rękach nielicznej oligarchii oraz rozszerzaniu kor автокраtycznej prerogatywy koronnej. Zauważa on, że absolutna władza rzadko zdobywana jest od razu; częściej rozwija się pod osłoną sytuacji nadzwyczajnych, zwłaszcza wojen międzynarodowych. W warunkach mobilizacji wojennej politycy i dworscy sycofanci celowo podsycają histerię oraz strach przed inwazją lub wewnętrznym buntem, aby wymagać od społeczeństwa ślepego posłuszeństwa i bezdyskusyjnego płacenia podatków. Knox dowodzi, że w czasie wojny egzekutywa przejmuje pełną kontrolę nad państwem, paraliżując działanie praw, utrudniając kontrolę parlamentarną i marginalizując krytyczne głosy bezbronnych publicystów czy filozofów. Ponadto Knox zwraca uwagę na zjawisko **„despotyzmu wpływu”** (*despotism of influence*), który w przeciwieństwie do jawnej prerogatywy działa w sposób subtelny i skryty poprzez korupcję, rozdawnictwo posad, tytułów, kontraktów oraz beneficjów kościelnych. Mechanizm ten pozwala egzekutywie na podporządkowanie sobie parlamentu i stworzenie faktycznej oligarchii ministerialnej przy jednoczesnym zachowaniu zewnętrznych pozorów wolnej konstytucji.
+
+#### System polityczny, parlamentaryzm i suwerenność ludu
+
+W zakresie ustroju politycznego Knox przedstawia stanowisko radykalno-whigowskie, opowiadając się za głęboką reformą parlamentarną i stanowczo odrzucając koncepcje sprzyjające absolutystycznym ciągotom toryzmu. Ostrzega przed poglądem, jakoby głos i wola narodu ograniczały się wyłącznie do reprezentacji w parlamencie, a obywatele poza nim stanowili niewiele znaczącą masę. Przeciwnie, uważa on, że **lud posiada naturalne i niezbywalne prawo do myślenia**, oceniania działań rządu oraz sprawowania ciągłej kontroli nad ludźmi sprawującymi władzę. Zauważa przy tym, że klasy średnie i niższe stanowią najmniej zepsutą część społeczeństwa, ponieważ w przeciwieństwie do arystokracji nie są obciążone interesem partykularnym i nie ulegają tak łatwo pokusie ministerialnych łapówek. Knox postuluje likwidację tzw. zgniłych miasteczek (*rotten boroughs*), skrócenie kadencji parlamentu oraz ukrócenie procederu kupowania mandatów i korumpowania wyborców przez landlordów i finansjerę. Podkreśla jednak z mocą, że wszelka reforma polityczna musi być przeprowadzana drogą pokojowych, stopniowych zmian prawnych i dyskusji, bez uciekania się do przemocy czy rewolucyjnego chaosu, który nieuchronnie prowadzi do dyktatury \[154, 440–442, 541, 682, 684\].
+
+#### Wojna, pacyfizm i stosunki międzynarodowe
+
+Kwestia wojny i pokoju stanowi jeden z najważniejszych filarów aksjologii Knoxa. Będąc zwolennikiem chrześcijańskiego pacyfizmu, Knox bezkompromisowo potępia wszelkie wojny napastnicze i ekspansywne, nazywając je zalegalizowanym morderstwem i największym nieszczęściem ludzkości. Wskazuje, że wojny są zazwyczaj wywoływane przez monarchów i polityków z powodów pychy, chciwości, fałszywej ambicji lub chęci umocnienia władzy arbitralnej w kraju. Odrzuca koncepcję „konieczności politycznej wojny” jako wykręt rządzących służący wzbogacaniu się dostawców wojskowych, dworaków i generałów kosztem najuboższych. Knox zauważa brutalną dysproporcję wojen: podczas gdy ruszający na wojnę arystokraci i władcy szukają sławy i łupów, zwykli żołnierze i cywile giną masowo w nędzy, nie mając żadnego osobistego sporu z przeciwnikiem. Wyjątek Knox robi jedynie dla czysto obronnej wojny (*pro aris et focis*), zorganizowanej w ostateczności do ochrony własnego terytorium i swobód. W polityce zagranicznej nawołuje do rozstrzygania wszelkich sporów międzynarodowych na drodze negocjacji, dyplomacji i stałego arbitrażu w ramach międzynarodowej **„ligi filantropii”**.
+
+#### Religia, etyka i Kościół
+
+Poglądy religijne Knoxa osadzone są w kontekście Kościoła Anglii, jednak charakteryzują się głębokim duchem ewangelicznym i tolerancją. Przeciwstawiał się on zarówno sekularyzmowi i deizmowi (krytykując [m.in](http://m.in). pisma Thomasa Paine’a), jak i sformalizowanej teologii akademickiej pozbawionej żywej wiary. Dla Knoxa prawdziwe chrześcijaństwo jest wewnętrzną siłą moralną i duchowym doświadczeniem, którego najwyższym sprawdzianem są owoce w postaci miłości bliźniego, pokoju i filantropii. Krytykował zjawisko zwane *odium theologicum* oraz jałowe spory dogmatyczne, twierdząc, że **prawdziwy Kościół Chrystusa mieści się w sercach ludzi miłosiernych**, a nie w samych murach i wieżach kościelnych. Knox ostro piętnował symonię i traktowanie stanowisk kościelnych jako łapówek politycznych oraz beneficjów dla bezbożnych krewnych arystokracji. Opowiadał się za pełnym równouprawnieniem katolików (*Catholic emancipation*) i tolerancją religijną, a także akcentował pierwotną ewangeliczną równość wszystkich ludzi przed Bogiem bez względu na majątek czy status społeczny.
+
+#### Społeczeństwo, nierówności i edukacja
+
+W kwestiach społecznych Knox zdecydowanie odrzucał sztuczne hierarchie i pychę rodową, uznając, że jedyną prawdziwą szlachetnością jest cnota osobista oraz użyteczność społeczna (odwołując się do zasady *virtus sola nobilitas*). Wskazywał na destrukcyjny wpływ bezmiernego bogactwa i luksusu, które rodzą zepsucie moralne i spadek duchowy narodu. Prawdziwy fundament państwa widział w klasie średniej i pracującej ludności, podkreślając konieczność zapewnienia im godności, praw obywatelskich oraz ochrony przed wyzyskiem ze strony bogaczy \[126, 401, 402, 573, 590–593\]. Jako wieloletni pedagog Tonbridge School Knox uważał **edukację klasyczną** (opartą na studiowaniu autorów greckich i rzymskich, takich jak Cycero czy Ksenofont) za kluczowy instrument formowania samodzielnego, wolnego obywatela. Twierdził, że humanistyczne wykształcenie rozwija krytyczne myślenie i buduje odporność społeczeństwa na manipulacje oraz despotyzm. Jednocześnie przestrzegał przed powierzchowną edukacją nakierowaną jedynie na zysk finansowy oraz przed demoralizującym wpływem popularnych powieści pikareskowych na młodzież.
+
+---
+
+### 6. Działalność polityczna i publiczna
+
+Działalność publiczna i polityczna Vicesimusa Knoxa miała charakter przede wszystkim publicystyczny, kaznodziejski oraz oświatowy, stanowiąc bezkompromisowe urzeczywistnienie jego przekonań pacyfistycznych i whigowskich. Przez trzydzieści cztery lata (1778–1812) pełnił funkcję dyrektora Tonbridge School, przekształcając tę placówkę w prężny ośrodek edukacji klasycznej. Na forum publicznym zasłynął z artykułów publikowanych w prasie ([m.in](http://m.in). w *Morning Chronicle*), gdzie otwarcie krytykował politykę zagraniczną Wielkiej Brytanii, sprzeciwiając się wojnie z rewolucyjną Francją oraz potępiając rozbiory Polski. Najbardziej spektakularnym wystąpieniem Knoxa było kazanie o niesprawiedliwości wojen napastniczych wygłoszone 18 sierpnia 1793 roku w Brighton przed stacjonującymi tam żołnierzami; incydent ten wywołał skandal i doprowadził do siłowego usunięcia Knoxa z rodziną z loży w lokalnym teatrze przez oburzonych oficerów milicji. W odpowiedzi na ten akt zastraszenia Knox opublikował relację z wydarzeń oraz przetłumaczył pacyfistyczne pisma Erazma z Rotterdamu (*Antipolemus*, 1794), a w 1795 roku wydał anonimowo dzieło *The Spirit of Despotism*, w którym dokonał pryncypialnej sekcji zwłok brytyjskiej polityki wojennej i korupcji systemowej. Pomimo spadku liczby uczniów w szkole spowodowanego oskarżeniami o brak patriotyzmu, nie zaprzestał aktywności; wydawał antologie literackie (*Elegant Extracts*), zabierał głos w sprawach emancypacji katolików oraz angażował się w obronę państwowych szkół gramatycznych przed parlamentarnymi ingerencjami aż do swej śmierci w 1821 roku.
+
+---
+
+### 7. Najważniejsze autorskie lektury i dzieła
+
+ 1. ***Essays Moral and Literary*** (1778) – Debiutancki zbiór esejów społeczno-moralnych i literackich wydany anonimowo za entuzjastyczną rekomendacją Samuela Johnsona. Dzieło przyniosło autorowi ogromną popularność i ugruntowało jego pozycję jako czołowego brytyjskiego moralisty.
+ 2. ***Liberal Education, or a Practical Treatise on the Methods of acquiring Useful and Polite Learning*** (1781) – Traktat pedagogiczny uzasadniający przewagę edukacji klasycznej i humanistycznej w szkołach publicznych nad prywatnym nauczaniem domowym, ukierunkowany na kształtowanie postaw obywatelskich.
+ 3. ***Elegant Extracts*** (proza 1783, poezja 1789) – Monumentalne antologie wybitnych dzieł prozy i poezji angielskiej oraz klasycznej, stanowiące podstawowy podręcznik edukacyjny i wypisy literackie w szkołach Wielkiej Brytanii i USA przez całe pokolenia.
+ 4. ***Winter Evenings, or Lucubrations on Life and Letters*** (1788) – Trzypromowy zbiór esejów poświęconych refleksjom nad życiem społecznym, moralnością, krytyką literacką i religią, pisany w stylu popularyzatorskim.
+ 5. ***Personal Nobility, or Letters to a young Nobleman*** (1793) – Dzieło dedykowane politykowi Whigów Charlesowi Jamesowi Foxowi, zawierające apel do młodego szlachcica o budowanie swojej pozycji na cnocie, wiedzy i służbie publicznej zamiast na przywilejach rodowych \[142, 204, 208, 511–514\].
+ 6. ***Antipolemus, or the Plea of Reason, Religion, and Humanity against War*** (1794) – Tłumaczenie antywojennych pism Erazma z Rotterdamu z obszernym wstępem Knoxa, stanowiące bezpośredni protest przeciwko udziałowi Wielkiej Brytanii w wojnie I koalicji przeciwko Francji.
+ 7. ***The Spirit of Despotism*** (1795) – Najważniejsze polityczne dzieło Knoxa, stanowiące dogłębną analizę tego, jak wojenna histeria i mobilizacja są wykorzystywane przez rządzących do ograniczania swobód obywatelskich, podnoszenia podatków i umacniania despotyzmu.
+ 8. ***Christian Philosophy, or an Attempt to Display the Evidence and Excellence of Revealed Religion*** (1795) – Traktat teologiczno-moralny broniący chrześcijaństwa opartego na wewnętrznym doświadczeniu i chrześcijańskiej etyce przed deizmem i radykałami w rodzaju Thomasa Paine'a.
+ 9. ***Considerations on the Nature and Efficacy of the Lord's Supper*** (1799) – Praca teologiczna polemizująca z socyniańskimi próbami zredukowania sakramentu Eucharystii do czysto świeckiego aktu pamiątkowego.
+10. ***Remarks on the tendency of certain Clauses in a Bill now pending in Parliament to degrade Grammar Schools*** (1821) – Ostatnia publikacja Knoxa broniąca tradycyjnego modelu szkół gramatycznych i fundacji edukacyjnych przed projektami ustaw parlamentarnych.
+
+---
+
+### 8. Dziedzictwo
+
+Wpływ Vicesimusa Knoxa po jego śmierci przebiegał dwutorowo: w sferze edukacji i w dziedzinie myśli polityczno-społecznej. Antologie z serii *Elegant Extracts* przez pierwsze dekady XIX wieku pozostały jednymi z najpopularniejszych podręczników szkolnych w całym świecie anglojęzycznym, kształtując wrażliwość literacką i moralną kilku pokoleń uczniów w Wielkiej Brytanii i Stanach Zjednoczonych. Z kolei jego pisma polityczne, a w szczególności *The Spirit of Despotism*, zyskały drugie życie w okresie narastania ruchów czartystowskich i radykalnych w latach 20. i 30. XIX wieku; radykalny wydawca William Hone wznowił to dzieło w latach 1821–1822, czyniąc z niego jeden z kluczy dyskursu antydespotycznego i pacyfistycznego w Wielkiej Brytanii. W XIX i XX wieku dzieła Knoxa cytowane były przez autorów chrześcijańsko-pacyfistycznych i wolnościowych, którzy widzieli w nim pioniera krytyki stałych armii (*standing armies*), etatyzmu oraz obrońcę klas średnich przed oligarchią ministerialną. Choć w połowie XIX wieku Thomas De Quincey pisał o nim jako o autorze „całkowicie zapomnianym”, we współczesnej historiografii myśli politycznej Knox jest uznawany za wybitnego przedstawiciela antywojennego chrześcijańskiego liberalizmu i kontynuatora humanistycznej tradycji Erazma z Rotterdamu.
+
+---
+
+### 9. Cytaty
+
+ 1. **„Gdyby religia chrześcijańska w całej swej czystości i w pełnej sile zapanowała powszechnie, miecz wojny napastniczej musiałby zostać na zawsze schowany do pochwy, a zgiełk broni ostatecznie uciszony w wiecznym pokoju.”**
+ 2. **„Wojna, ten potworny demon, kroczy po cesarstwach w szatach ociekających krwią ludzi, zabijanych przez ludzi osobiście niezastraszonymi i niezastraszającymi...”**
+ 3. **„Nie ma nic tak heterodoksyjnego jak wojna i namiętności, które do niej prowadzą, takie jak pycha, chciwość i ambicja. Największą herazją, jaką znam, jest przelewanie krwi niewinnego człowieka, rabunek z upoważnienia chrześcijańskiego rządu, pustoszenie na mocy prawa, niszczenie na mocy przywileju.”**
+ 4. **„Przypisuję wojnę i większość sztucznych nieszczęść życia Duchowi Despotyzmu – bujnemu, trującemu zielsku, które rośnie i kwitnie nawet na glebie wolności, gdy ta zarasta korupcją.”**
+ 5. **„Śmierć jest wielkim nauczycielem i cenzorem ludzkiej próżności; lecz nawet śmierć nie potrafi powściągnąć pychy arystokracji, bezczelności bogaczy, usiłujących sprawić, by bogactwo i przepych triumfowały nad prawem natury nawet z trumny i grobu.”**
+ 6. **„Pogląd, że większość narodu nie ma nic wspólnego z dociekaniami politycznymi, jest zarówno obelżywy, jak i szkodliwy.”**
+ 7. **„Co do prawa ludu do myślenia – niech ten, kto go odmawia, odmówi im jednocześnie prawa do oddychania. Nie potrafią bardziej powstrzymać się od myślenia niż od oddychania.”**
+ 8. **„Chrystus przyszedł, aby położyć kres niesprawiedliwej nierówności na tym świecie, objawiając jednocześnie perspektywę innego, gdzie bezbożni przestają niepokoić, a zmęczeni odpoczywają.”**
+ 9. **„Wpływ jest groźniejszy niż prerogatywa. Jest subtelną trucizną, która działa niewidocznie. Prerogatywę można odeprzeć jak rozbójnika; ale wpływ jest skrytobójcą.”**
+10. **„Niech cenzurowanie samowoli i swawoli służy utrzymaniu wolności prasy.”**
+11. **„Jedynym racjonalnym celem wszelkiej polityki i wszelkiej religii jest czynienie życia przyjemnym i szczęśliwym dla wszystkich ludzi; reszta to grymas i hipokryzja, statecraft lub priestcraft, zmierzające do despotyzmu lub fanatyzmu.”**
+12. **„Brak wykształcenia i niewiedza jest podła i nie potrafi zdobyć się na te szlachetne ofiary, których wymaga obowiązek wobec ojczyzny, gdy jej wolność jest zagrożona.”**
+
+Poniżej znajduje się zestawienie tagów pasujących do profilu Vicesimusa Knoxa (1752–1821), opracowane na podstawie informacji zawartych w źródłach.
+
+---
+
+### Zawód / dziedzina
+
+- **Akademia / Akademik** – Był członkiem (*Fellow*) St. John's College na Uniwersytecie Oksfordzkim, gdzie po uzyskaniu tytułu magistra prowadził działalność akademicką i pisarską.
+- **Duchowny** – Święcony duchowny Kościoła Anglii (anglikański), rektor parafii Ramsden Crays i Runwell oraz minister kaplicy w Shipborne.
+- **Filozof** – Autor dzieł z zakresu teologii i filozofii moralno-chrześcijańskiej ([m.in](http://m.in). *Christian Philosophy*).
+- **Pisarz** – Poczytny, bardzo płodny eseista oraz autor licznych publikacji książkowych i antologii.
+- **Publicysta** – Autor politycznych esejów, pamfletów i artykułów prasowych ([m.in](http://m.in). na łamach „Morning Chronicle” oraz w dziele *The Spirit of Despotism*).
+
+---
+
+### Rola / urząd
+
+- **Myśliciel społeczny** – Twórca rozbudowanych analiz społeczno-politycznych, krytyki despotyzmu władzy, teorii pacyfistycznych i refleksji nad oświatą.
+- **Reformator** – Zwolennik głębokiej reformy parlamentarnej (zniesienia tzw. zgniłych miasteczek), powszechnego dostępu do edukacji oraz prawnego równouprawnienia katolików.
+
+---
+
+### Narodowość
+
+- **Brytyjska** – Anglik / Brytyjczyk urodzony w Newington Green w hrabstwie Middlesex.
+
+---
+
+### Status
+
+- **Martwy** – Zmarł 6 września 1821 roku w wieku 68 lat.
+
+---
+
+### Płeć
+
+- **Mężczyzna**.
+
+---
+
+### Okres życia
+
+- **XVIII wiek** – Urodził się w 1752 roku, a jego pierwsza główna aktywność pisarska i posługa przypadają na lata 70. i 80. XVIII wieku.
+- **XIX wiek** – Działał, publikował i pełnił funkcje edukacyjno-duszpasterskie w pierwszych dekadach XIX wieku, aż do śmierci w 1821 roku.
+
+---
+
+### Ideologia
+
+- **Demokracja** – Opowiadał się za niezbywalnym prawem ludu do oceny rządu, zwierzchnictwem woli społecznej oraz poszerzeniem reprezentacji politycznej.
+- **Liberalizm** – Przedstawiciel chrześcijańskiego i antywojennego liberalizmu; bronił swobód obywatelskich, wolności słowa i wolności prasy przed nadużyciami władzy państwowej.
+- **Liberalizm klasyczny** – Opowiadał się za ograniczeniem arbitralnej prerogatywy monarchicznej, sprzeciwiał się etatyzmowi wojennej mobilizacji, korupcji oligarchicznej oraz stałym armiom.
+
+---
+
+### Kontynent działalności
+
+- **Europa** – Całość jego życia, pracy pedagogicznej (Tonbridge School) oraz posługi duchownej miała miejsce w Wielkiej Brytanii.
+
+---
+
+### Sposób dojścia do władzy / legitymizacja
+
+- *Brak (Nie dotyczy)* – Vicesimus Knox nie sprawował państwowej władzy politycznej ani urzędu w egzekutywie.
+
+---
+
+### Religia
+
+- **Anglikanizm** – Duchowny państwowego Kościoła Anglii (*Church of England*).
+- **Chrześcijaństwo** – Nadrzędny system wyznaniowo-etyczny, na którym opierał swoją teologię pokoju i filozofię moralną.
+- **Protestantyzm** – Anglikanizm jest wyznaniem wpisującym się w nurt protestancki.
+
+---
+
+---
+
+### Dodatkowe tagi, jakich brakuje na powyższej liście:
+
+1. **Pedagog / Nauczyciel / Dyrektor szkoły (*Headmaster*)** – Przez 34 lata (1778–1812) kierował Tonbridge School, będąc autorytetem w dziedzinie edukacji klasycznej.
+2. **Pacyfista / Działacz antywojenny** – Jeden z najbardziej bezkompromisowych brytyjskich krytyków wojen napastniczych i wojennej histerii swoich czasów.
+3. **Eseista** – Główny gatunek jego twórczości literackiej (autor [m.in](http://m.in). *Essays Moral and Literary* oraz *Winter Evenings*).
+4. **Antolog / Edytor literacki** – Twórca cenionych i wielokrotnie wznawianych antologii szkolnych z serii *Elegant Extracts*.
+5. **Radykalny Whig (*Radical Whig*)** – Wyznawca wolnościowego skrzydła stronnictwa Whigów.
+6. **Kaznodzieja** – Słynął z głoszonych kazań o tematyce społeczno-moralnej i pacyfistycznej ([m.in](http://m.in). głośne kazanie w Brighton z 1793 r.).
+7. **Tłumacz** – Przetłumaczył pacyfistyczne pisma Erazma z Rotterdamu (*Antipolemus*).
