@@ -1,3 +1,5 @@
+-----
+
 Data: 14.11.2026
 
 ZAKRES ZMIAN
@@ -23,3 +25,5 @@ ZAKRES ZMIAN
 
 PLIKI ZMIENIONE
    tag-catalog.js, advanced-tags.js, album-advanced-filters.js, album.js, album.html, profile-life.js, compass-page.js, compass.html, political_profiles/ideologies.json, political_profiles/parties.json oraz raport.txt.
+
+-----
