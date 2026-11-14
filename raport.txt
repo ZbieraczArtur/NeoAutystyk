@@ -1,0 +1,25 @@
+Data: 14.11.2026
+
+ZAKRES ZMIAN
+
+1. Naprawa political_profiles/ideologies.json
+   Przyczyną awarii były nieescapowane cudzysłowy w opisie obiektywizmu. Zostały poprawione, a plik zapisano jako poprawny JSON. Zachowano dotychczasowe profile i ich treść; dodano im także pole tagGroups z kategoriami tagów ideologicznych.
+
+2. Centralny katalog i filtrowanie tagów
+   Plik tag-catalog.js zawiera teraz katalog tagów dla postaci, partii i ideologii, wspólne parsowanie tagów oraz reguły filtrowania. Rozszerzenie katalogu w przyszłości wymaga dopisania wartości w tym pliku. Moduły albumu, filtrów wyników i kompasu korzystają ze wspólnej obsługi zamiast utrzymywać własne kopie logiki.
+   Dane profili przechowują przypisania w polach tags i tagGroups. Katalog określa dostępne wartości, a rekordy danych wskazują, które z nich dotyczą konkretnego profilu.
+
+3. Dodatkowe systemy tagów
+   political_profiles/ideologies.json otrzymał kategorie: rodzina ideologiczna, koordynacja gospodarki, model gospodarczy i rynek, własność i produkcja, rola państwa, podmiotowość społeczna oraz metoda przemian.
+   political_profiles/parties.json otrzymał kategorie: status organizacyjny, reprezentacja, udział w wyborach, organizacja i zasięg, pozycja w systemie partyjnym oraz ideologia. Tagi z latami pozostają zapisane wraz z okresem, aby filtrowanie czasowe mogło je poprawnie ocenić.
+   Przypisania tagów ideologii przygotowano na podstawie nazw profili i ich opisów. Warto je przejrzeć merytorycznie, ponieważ tekst może wspominać również o nurtach polemicznych lub historycznych.
+
+4. Filtr roku w albumie
+   W panelu filtrów można wpisać rok, np. 2020, albo zakres. Dla postaci filtr sprawdza okres życia. Dla partii sprawdza, czy co najmniej jeden tag zawierający lata obowiązywał w podanym okresie. Obsługiwane są pojedyncze lata, listy lat oddzielone przecinkami, zakresy z łącznikiem lub półpauzą oraz zapis „obecnie”. Filtr łączy się z wyszukiwaniem, tagami, ulubionymi i sortowaniem.
+   Rozpoznawanie dat urodzenia i śmierci uwzględnia też polskie nazwy pól oraz znaki diakrytyczne w infoboksie.
+
+5. Przełączane układy kompasu
+   Na stronie compass.html dodano selektor układu osi. Układ domyślny zachowuje dotychczasowe osie i opisy. Układ egalitarny wyznacza X parą „Egalitaryzm ↔ Hierarchiczność”, zmienia opisy osi i ćwiartek, a Y korzysta z dotychczasowego zestawu wartości. Definicja układów została zebrana w mapie konfiguracyjnej, dzięki czemu można dopisać kolejne warianty.
+
+PLIKI ZMIENIONE
+   tag-catalog.js, advanced-tags.js, album-advanced-filters.js, album.js, album.html, profile-life.js, compass-page.js, compass.html, political_profiles/ideologies.json, political_profiles/parties.json oraz raport.txt.
