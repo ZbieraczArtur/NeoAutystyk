@@ -46,6 +46,12 @@
         <p class="filter-note">Daty są odczytywane z danych profilu, np. z dat urodzenia postaci.</p>
       </div>
 
+      <div class="filter-group">
+        <label for="album-year">Filtruj po roku</label>
+        <input id="album-year" type="text" inputmode="numeric" pattern="[0-9]{1,4}([–-][0-9]{1,4})?" placeholder="np. 2020 lub 1910–1920" autocomplete="off">
+        <p id="album-year-status" class="filter-note" aria-live="polite">Wszystkie lata</p>
+      </div>
+
       <div class="filter-group filter-checks">
         <label class="checkbox"><input id="album-with-image" type="checkbox"> <span>Tylko ze zdjęciem</span></label>
         <label class="checkbox"><input id="album-favorites-only" type="checkbox"> <span>Tylko zapisane profile</span></label>
@@ -91,6 +97,7 @@
   </dialog>
 
   <script src="profiles-loader.js"></script>
+  <script src="profile-life.js"></script>
   <script src="tag-catalog.js"></script>
   <script src="album.js"></script>
 </body>
