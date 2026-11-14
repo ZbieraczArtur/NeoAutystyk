@@ -31,10 +31,7 @@
   const profileId = profile => String(profile.id || profile.key || profile.name);
   const humanize = value => String(value || '').replace(/([a-z])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ').trim();
   const fieldLabel = value => FIELD_LABEL[humanize(value).toLowerCase().replace(/\s/g, '')] || humanize(value).replace(/^./, character => character.toLocaleUpperCase('pl'));
-  const profileTags = profile => {
-    const info = Object.values(profile.infobox || {}).flatMap(value => Array.isArray(value) ? value : [value]);
-    return [...(profile.tags || []), ...info, profile.country, profile.ideology, profile.religion].filter(Boolean).map(String);
-  };
+  const profileTags = profile => [...(window.NeoTagCatalog?.profileTags(profile) || profile.tags || [])];
   const make = (tag, className, content) => {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -72,11 +69,11 @@
   }
 
   function tagGroups() {
-    const catalog = window.NeoTagCatalog?.catalog || {};
+    const catalog = window.NeoTagCatalog?.groupsFor(active) || window.NeoTagCatalog?.catalog || {};
     // Karty filtrów pokazują wyłącznie właściwe tagi, nie długie pola opisowe z infoboksu.
-    const present = new Set(profiles().flatMap(profile => profile.tags || []));
+    const present = new Set(profiles().flatMap(profile => [...(window.NeoTagCatalog?.profileTags(profile, { includeInfobox: false }) || [])]));
     const groups = Object.entries(catalog)
-      .map(([name, tags]) => [name, tags.filter(tag => present.has(tag))])
+      .map(([name, tags]) => [name, active === 'party' || active === 'ideology' ? tags : tags.filter(tag => present.has(tag))])
       .filter(([, tags]) => tags.length);
     const catalogTags = new Set(Object.values(catalog).flat());
     const others = [...present].filter(tag => !catalogTags.has(tag)).sort(collator.compare);
@@ -86,21 +83,26 @@
 
   function selectedTagCount() { return [...selectedTags.values()].reduce((sum, tags) => sum + tags.size, 0); }
   function matchesSelectedTags(profile) {
-    const chosen = [...selectedTags.values()].flatMap(tags => [...tags]);
-    if (!chosen.length) return true;
-    const ownTags = new Set(profileTags(profile));
-    const count = chosen.filter(tag => ownTags.has(tag)).length;
-    if (tagLogic === 'or') return count > 0;
-    if (tagLogic === 'and') return count === chosen.length;
-    if (tagLogic === 'not') return count === 0;
-    if (tagLogic === 'threshold') return count >= Math.min(minimumTags, chosen.length);
-    return [...selectedTags.entries()].every(([group, tags]) => {
-      const operation = groupLogic.get(group) || 'or';
-      const matches = [...tags].filter(tag => ownTags.has(tag)).length;
-      if (operation === 'and') return matches === tags.size;
-      if (operation === 'not') return matches === 0;
-      return matches > 0;
-    });
+    return window.NeoTagCatalog?.matches(profile, selectedTags, {
+      logic: tagLogic,
+      minimumTags,
+      groupLogic,
+      year: $('#album-year').value.trim()
+    }) ?? true;
+  }
+
+  function updateYearStatus() {
+    const value = $('#album-year').value.trim();
+    const valid = window.NeoTagCatalog?.parseYearQuery(value) || !value;
+    $('#album-year-status').textContent = !valid
+      ? 'Wpisz rok lub zakres, np. 2020 albo 1910–1920.'
+      : value && active === 'party'
+        ? 'Partie z tagiem obowiązującym w tym okresie.'
+        : value && active === 'figure'
+          ? 'Postacie żyjące w tym okresie.'
+          : value
+            ? 'Filtr roczny działa dla partii i postaci.'
+            : 'Wszystkie lata';
   }
 
   function updateLogicControls() {
@@ -122,6 +124,7 @@
     host.replaceChildren();
     const entries = [];
     if ($('#album-search').value.trim()) entries.push(['search', `Szukaj: ${$('#album-search').value.trim()}`]);
+    if ($('#album-year').value.trim()) entries.push(['year', `Rok: ${$('#album-year').value.trim()}`]);
     if ($('#album-with-image').checked) entries.push(['image', 'Tylko ze zdjęciem']);
     if ($('#album-favorites-only').checked) entries.push(['favorites', 'Tylko zapisane']);
     selectedTags.forEach((tags, group) => tags.forEach(tag => entries.push([`tag:${group}:${tag}`, tag])));
@@ -136,6 +139,7 @@
       chip.type = 'button'; chip.setAttribute('aria-label', `Usuń filtr: ${label}`);
       chip.onclick = () => {
         if (key === 'search') $('#album-search').value = '';
+        else if (key === 'year') { $('#album-year').value = ''; updateYearStatus(); }
         else if (key === 'image') $('#album-with-image').checked = false;
         else if (key === 'favorites') $('#album-favorites-only').checked = false;
         else if (key === 'logic') { tagLogic = 'or'; updateLogicControls(); }
@@ -210,12 +214,14 @@
 
   function filtered() {
     const query = $('#album-search').value.trim().toLocaleLowerCase('pl');
+    const year = $('#album-year').value.trim();
+    const validYear = !year || Boolean(window.NeoTagCatalog?.parseYearQuery(year));
     const imageOnly = $('#album-with-image').checked;
     const favoritesOnly = $('#album-favorites-only').checked;
     const sort = $('#album-sort').value;
     const result = profiles().filter(profile => {
       const haystack = [profile.name, profile.description, ...profileTags(profile)].join(' ').toLocaleLowerCase('pl');
-      return (!query || haystack.includes(query)) && (!imageOnly || profile.logo) && (!favoritesOnly || favorites.has(profileId(profile))) && matchesSelectedTags(profile);
+      return validYear && (!query || haystack.includes(query)) && (!imageOnly || profile.logo) && (!favoritesOnly || favorites.has(profileId(profile))) && (!year || window.NeoTagCatalog.matchesYear(profile, year)) && matchesSelectedTags(profile);
     });
     result.sort((a, b) => {
       if (sort === 'name') return collator.compare(a.name, b.name);
@@ -315,7 +321,7 @@
       const chosen = button.dataset.type === type;
       button.classList.toggle('active', chosen); button.setAttribute('aria-selected', String(chosen));
     });
-    renderTags(); renderGrid();
+    updateYearStatus(); renderTags(); renderGrid();
   }
 
   document.querySelectorAll('[data-type]').forEach(button => { button.onclick = () => setType(button.dataset.type); });
@@ -324,9 +330,9 @@
   $('#album-favorites-only').addEventListener('change', renderGrid);
   $('#clear-tags').onclick = () => { selectedTags.clear(); groupLogic.clear(); tagLogic = 'or'; minimumTags = 1; renderTags(); renderGrid(); };
   $('#album-reset').onclick = () => {
-    $('#album-search').value = ''; $('#album-sort').value = 'name';
+    $('#album-search').value = ''; $('#album-year').value = ''; $('#album-sort').value = 'name';
     $('#album-with-image').checked = false; $('#album-favorites-only').checked = false;
-    selectedTags.clear(); groupLogic.clear(); tagLogic = 'or'; minimumTags = 1; renderTags(); renderGrid(); $('#album-search').focus();
+    selectedTags.clear(); groupLogic.clear(); tagLogic = 'or'; minimumTags = 1; updateYearStatus(); renderTags(); renderGrid(); $('#album-search').focus();
   };
   $('#album-random').onclick = () => { const list = filtered(); if (list.length) openProfile(profileId(list[Math.floor(Math.random() * list.length)])); };
   $('#filters-toggle').onclick = () => {
@@ -339,6 +345,7 @@
   document.querySelectorAll('[name="tag-logic"]').forEach(input => input.addEventListener('change', () => { tagLogic = input.value; renderTags(); renderGrid(); }));
   $('#tag-threshold').addEventListener('input', event => { minimumTags = Number(event.target.value); updateLogicControls(); renderGrid(); });
   $('#album-search').addEventListener('input', renderGrid);
+  $('#album-year').addEventListener('input', () => { updateYearStatus(); renderGrid(); });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && dialog.open) dialog.close();
     else if (event.key === 'Escape' && !$('#album-sidebar').hidden) $('#filters-close').click();
