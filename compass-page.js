@@ -10,29 +10,13 @@
         profiles: null,
         data: null,
         friends: [],
-        mode: 'weighted'
+        mode: 'weighted',
+        axisMode: 'default'
     };
     const stage = document.getElementById('compass-stage'),
         grid = document.getElementById('compass-grid'),
         markers = document.getElementById('compass-markers'),
         details = document.getElementById('marker-details');
-    const catalog = {
-        figures: {
-            'Zawód / dziedzina': ['Filozof', 'Ekonomista', 'Polityk'],
-            'Rola / urząd': ['Autokrata', 'Prezydent', 'Premier'],
-            'Narodowość': ['Amerykanin', 'Brytyjczyk'],
-            Status: ['Żyje', 'Martwy'],
-            Płeć: ['Kobieta', 'Mężczyzna'],
-            'Okres życia': ['XVII wiek', 'XVIII wiek', 'XIX wiek', 'XX wiek', 'XXI wiek'],
-            Ideologia: ['Liberalizm', 'Libertarianizm', 'Konserwatyzm', 'Socjalizm', 'Komunizm', 'Faszyzm', 'Nacjonalizm', 'Monarchizm', 'Anarchizm', 'Republikanizm']
-        },
-        parties: {
-            Status: ['Parlamentarne', 'Pozaparlamentarne']
-        },
-        ideologies: {
-            Kierunek: ['Lewicowe', 'Prawicowe', 'Centrowe', 'Liberalne', 'Konserwatywne', 'Socjalistyczne', 'Libertariańskie', 'Anarchistyczne', 'Monarchistyczne']
-        }
-    };
     const answerNorm = v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
 
     function applyTheme() {
@@ -125,6 +109,9 @@
                 ['Własność kolektywna', 'Własność prywatna', 1.5],
                 ['Planowanie', 'Rynek', 1]
             ],
+            egalitarianXpairs = [
+                ['Egalitaryzm', 'Hierarchiczność', 1]
+            ],
             ypairs = [
                 ['Samoregulacja', 'Regulacja instytucjonalna', 1],
                 ['Samoorganizacja', 'Etatyzm', 1.75],
@@ -150,7 +137,7 @@
             return d ? Math.max(-10, Math.min(10, n / d * 10)) : 0
         };
         return {
-            x: coord(xpairs),
+            x: coord(state.axisMode === 'egalitarian' ? egalitarianXpairs : xpairs),
             y: coord(ypairs)
         }
     }
@@ -178,7 +165,7 @@
     }
 
     function valid(profile) {
-        return [...(state.tags[profile.kind] || [])].every(tag => (profile.tags || []).includes(tag))
+        return window.NeoTagCatalog?.matches(profile, new Map([['Kompas', state.tags[profile.kind] || new Set()]]), { logic: 'and' }) ?? true
     }
 
     function lifeRange(profile) {
@@ -214,6 +201,28 @@
             y: r.height / 2 - y * u,
             unit: u
         }
+    }
+
+    const axisViews = {
+        default: {
+            left: 'Wspólnota', right: 'Rynek',
+            quadrants: ['Wspólnota<br>i regulacja', 'Rynek<br>i regulacja', 'Wspólnota<br>i autonomia', 'Rynek<br>i autonomia']
+        },
+        egalitarian: {
+            left: 'Egalitaryzm', right: 'Hierarchizm',
+            quadrants: ['Egalitaryzm<br>i regulacja', 'Hierarchia<br>i regulacja', 'Egalitaryzm<br>i autonomia', 'Hierarchia<br>i autonomia']
+        }
+    };
+
+    function syncAxisView() {
+        const view = axisViews[state.axisMode] || axisViews.default;
+        const xLabel = document.querySelector('.axis-x');
+        if (xLabel) xLabel.innerHTML = `${view.left} <span>← →</span> ${view.right}`;
+        ['.q-nw', '.q-ne', '.q-sw', '.q-se'].forEach((selector, index) => {
+            const quadrant = document.querySelector(selector);
+            if (quadrant) quadrant.innerHTML = view.quadrants[index];
+        });
+        stage.dataset.axisMode = state.axisMode;
     }
 
     function render() {
@@ -277,12 +286,13 @@
 
     function filters() {
         const root = document.getElementById('tag-filters');
-        for (const [kind, groups] of Object.entries(catalog))
+        for (const type of ['figure', 'party', 'ideology', 'user']) {
+            const groups = window.NeoTagCatalog?.groupsFor(type) || {};
+            const kind = type;
             for (const [title, tags] of Object.entries(groups)) {
-                const type = kind === 'figures' ? 'figure' : kind === 'parties' ? 'party' : kind === 'ideologies' ? 'ideology' : kind;
                 const box = document.createElement('div');
                 box.className = 'tag-group';
-                box.innerHTML = `<strong>${type==='figure'?'Figury':type==='party'?'Partie':'Ideologie'} · ${title}</strong><div class="tag-options"></div>`;
+                box.innerHTML = `<strong>${type==='figure'?'Figury':type==='party'?'Partie':type==='ideology'?'Ideologie':'Użytkownicy'} · ${title}</strong><div class="tag-options"></div>`;
                 const list = box.lastElementChild;
                 for (const tag of tags) {
                     const label = document.createElement('label'),
@@ -297,6 +307,7 @@
                 }
                 root.append(box)
             }
+        }
     }
 
     stage.onclick = () => details.hidden = true;
@@ -331,6 +342,7 @@
         render()
     };
     const calcMode = document.getElementById('compass-calc-mode'),
+        axisMode = document.getElementById('compass-axis-mode'),
         calcDescription = document.getElementById('calc-mode-description'),
         markerSize = document.getElementById('marker-size'),
         markerOutput = document.getElementById('marker-size-output');
@@ -344,6 +356,12 @@
         calcDescription.textContent = modeDescriptions[state.mode];
         render()
     };
+    axisMode.onchange = () => {
+        state.axisMode = axisMode.value;
+        syncAxisView();
+        render()
+    };
+    syncAxisView();
     markerSize.oninput = () => {
         document.documentElement.style.setProperty('--marker-size', `${markerSize.value}px`);
         markerOutput.value = `${markerSize.value} px`;
