@@ -3022,7 +3022,7 @@
     "type": "ideology",
     "id": "ideology:lewicowy-libertarianizm",
     "key": "Lewicowy libertarianizm",
-    "name": "Lewicowy libertarianizm",
+    "name": "Libertarianizm lewicowy",
     "description": "Lewicowy rothbardianizm to doktryna anarchizmu rynkowego łącząca wolny rynek z postulatami wywodzącymi się z tradycji lewicowej, takimi jak ograniczenie wyzysku ekonomicznego i dominacji wąskich grup. Nurt ten ukształtował się w latach 60. XX wieku wokół działalności Murraya Rothbarda oraz Karla Hessa na styku Starej Prawicy i Nowej Lewicy. Zakłada on, że kształt historycznego kapitalizmu jest w dużej mierze efektem przywilejów nadawanych przez państwo, natomiast wolny rynek pozbawiony państwowych interwencji doprowadzi do szerszego rozproszenia majątku i władzy.",
     "logo": "images/Ideologie/Lewicowy_Rothbardianizm.png",
     "exportCode": "Placeholder",
