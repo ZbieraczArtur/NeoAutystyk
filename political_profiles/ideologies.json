@@ -1009,7 +1009,7 @@
     "key": "Chavism",
     "name": "Chavism",
     "description": "",
-    "logo": "images/Ideologie/Chavismo.webp",
+    "logo": "images/Ideologie/Chavismo.png",
     "exportCode": "",
     "metadata": {
       "source": "data.json",
@@ -2542,7 +2542,7 @@
     "type": "ideology",
     "id": "ideology:hoppeanizm",
     "key": "Hoppeanizm",
-    "name": "Hoppeanizm",
+    "name": "Libertarianizm hoppeński",
     "description": "Hoppeaniści wierzą, że fundamentem sprawiedliwego społeczeństwa jest nienaruszalne prawo do własności prywatnej, wywodzące się z zasady samoposiadania oraz pierwotnego zawłaszczenia nieużytkowanych wcześniej zasobów. Uważają państwo za przymusowego monopolistę w sferze sądownictwa i opodatkowania, co z natury prowadzi do systematycznego naruszania praw własności i procesu decywilizacji. Ich wizja opiera się na koncepcji ładu naturalnego, czyli bezpaństwowego społeczeństwa prawa prywatnego, w którym wszelkie rzadkie zasoby są kontrolowane przez ich prawowitych właścicieli\n\nOpowiadają się za czystym kapitalizmem, w którym nawet usługi ochronne, policyjne i sądownicze są dostarczane przez swobodnie konkurujące ze sobą prywatne agencje, takie jak firmy ubezpieczeniowe. Dla hoppeanistów kluczowa jest decentralizacja władzy oraz prawo do secesji, aż do poziomu najmniejszych jednostek terytorialnych i prywatnych posiadłości, co pozwala na uniknięcie politycznego wyzysku i powrót do racjonalnej kalkulacji ekonomicznej. Uważają, że wolny rynek dóbr kapitałowych i poszanowanie fizycznej integralności własności stanowią jedyny mechanizm zapewniający optymalny rozwój gospodarczy\n\nNa polu kwestii społecznych hoppeanizm łączy radykalny libertarianizm z kulturalnym konserwatyzmem, uznając rodzinę i naturalne autorytety za filary stabilnego porządku. Promują rolę elit naturalnych (nobilitas naturalis), które zyskują uznanie społeczne dzięki wybitnym osiągnięciom, mądrości i dalekowzroczności. W ich wizji kluczowe znaczenie ma prawo do wykluczenia, które pozwala właścicielom na tworzenie homogenicznych wspólnot i egzekwowanie własnych standardów moralnych, co ma służyć ochronie cywilizacji przed skutkami egalitaryzmu i przymusowej integracji.\n\nPrzedstawiciele: Hans-Hermann Hoppe",
     "logo": "images/Ideologie/Hoppeanizm.png",
     "exportCode": "",
@@ -4564,31 +4564,6 @@
     "name": "Liberalizm demokratyczny",
     "description": "XXXXXXX",
     "logo": "images/Ideologie/Demoliberalizm.png",
-    "exportCode": "",
-    "metadata": {
-      "source": "data.json",
-      "generatedFromLegacy": true,
-      "migratedAt": "2026-06-24"
-    },
-    "tagGroups": {
-      "Rodzina ideologiczna": [
-        "Liberalizm"
-      ],
-      "Sposób koordynacji gospodarki": [],
-      "Model gospodarczy i organizacja rynku": [],
-      "Organizacja własności i produkcji": [],
-      "Rola państwa": [],
-      "Podmiotowość społeczna": [],
-      "Metoda przemian politycznych": []
-    }
-  },
-  {
-    "type": "ideology",
-    "id": "ideology:liberalna_autokracja",
-    "key": "liberalna_autokracja",
-    "name": "Liberalna autokracja",
-    "description": "XXXXXXX",
-    "logo": "images/Ideologie/Liberalna_autokracja.png",
     "exportCode": "",
     "metadata": {
       "source": "data.json",
