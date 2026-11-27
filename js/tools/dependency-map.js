@@ -67,8 +67,9 @@
     }
     async function load() {
         try {
-            const manifest = await fetch('data-parts/manifest.json').then(r => r.json());
-            const parts = await Promise.all(manifest.parts.map(p => fetch(p.file).then(r => r.json())));
+            const manifestUrl = new URL('quiz/data/manifest.json', location.href);
+            const manifest = await fetch(manifestUrl).then(r => r.json());
+            const parts = await Promise.all(manifest.parts.map(p => fetch(new URL(p.file, manifestUrl)).then(r => r.json())));
             const qs = parts.flatMap(p => p.questions || []),
                 ids = new Set(qs.map(q => +q.id)),
                 conditional = new Map((manifest.conditionalQuestions || []).map(x => [+x.id, x]));
