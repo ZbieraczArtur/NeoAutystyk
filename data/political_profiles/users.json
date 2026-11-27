@@ -1,0 +1,13 @@
+{
+  "type": "user",
+  "id": "user:custerknuckle",
+  "key": "CusterKnuckle",
+  "name": "CusterKnuckle",
+  "description": "Lorem ipsum placeholder lalala https://x.com/CusterKnuckle",
+  "logo": "images/IUsers/CusterKnuckle.jpg",
+  "metadata": {
+    "source": "data.json"
+  },
+  "tags": [],
+  "asOfDate": "27.11.2026"
+}
