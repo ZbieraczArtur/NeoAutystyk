@@ -478,8 +478,7 @@ textarea:focus-visible {
 
 /* Active test views keep the prompt and answers in reach without the setup panels. */
 body[data-test-view] .container > header > .disclaimer,
-body[data-test-view] .container > header > .import-panel,
-body[data-test-view] .container > header > .simulation-panel {
+body[data-test-view] .container > header > .import-panel {
   display: none !important;
 }
 body[data-test-view="cards"] .container {
