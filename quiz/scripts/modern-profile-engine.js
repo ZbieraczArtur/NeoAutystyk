@@ -416,7 +416,7 @@
   function syncProfilesIntoConfig() {
     if (!config || !politicalProfiles) return;
     if (Array.isArray(politicalProfiles.users)) config.users = politicalProfiles.users;
-    // Dane prezentacyjne i profile należą do political_profiles/; data.json zawiera tylko test.
+    // Dane profili znajdują się w data/political_profiles/; pytania w quiz/data/.
     if (Array.isArray(politicalProfiles.parties)) config.parties = politicalProfiles.parties;
     if (Array.isArray(politicalProfiles.ideologies)) config.ideologies = politicalProfiles.ideologies;
 
