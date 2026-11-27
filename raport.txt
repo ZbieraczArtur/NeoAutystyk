@@ -27,3 +27,63 @@ PLIKI ZMIENIONE
    tag-catalog.js, advanced-tags.js, album-advanced-filters.js, album.js, album.html, profile-life.js, compass-page.js, compass.html, political_profiles/ideologies.json, political_profiles/parties.json oraz raport.txt.
 
 -----
+
+Data: 27.11.2026
+
+ZAKRES ZMIAN
+
+1. Naprawa awarii Albumu i danych Ricardo Melli
+   W data/political_profiles/figures-R.json wpis figure:ricardomella miał niezamkniętą wartość pola views. Tekst kończył się surowym znakiem nowej linii przed polem publicActivity, przez co przeglądarka odrzucała cały plik jako błędny JSON. Uzupełniono końcówkę zdania do „wszechstronnego rozwoju człowieka.” i zamknięto łańcuch. Wszystkie pliki profili przeszły ponowne parsowanie JSON.
+   Album renderuje teraz treści profili jako akapity. Obsługuje tekst, listę tekstów oraz obiekt z polem text lub content; zwykła treść pozostaje tekstem, więc nie interpretuje dowolnego HTML. Wyszukiwanie uwzględnia tekst wszystkich sekcji.
+
+2. Porządek katalogów i ścieżek
+   Strona główna pozostała w index.html. Album przeniesiono do album/index.html wraz ze swoim stylem i skryptami. Dane pytań znajdują się w quiz/data/, a wybór wariantów testu w quiz/tests/. Skrypty quizu znajdują się w quiz/scripts/. Profile znajdują się w data/political_profiles/, a tłumaczenie angielskie w data/translations/.
+   Moduły wspólne przeniesiono do js/shared/, skrypty kompasu do js/compass/, porównywarkę do js/comparison/ i mapę zależności do js/tools/. Style współdzielone są w styles/app/, kompasu w styles/compass/, porównywarki w styles/comparison/ i mapy zależności w styles/tools/.
+   Zaktualizowano odnośniki HTML, ładowane skrypty, arkusze stylów, linki między stronami, ścieżki do danych oraz adresy pobierane z manifestów. Ścieżki pytań w quiz/data/manifest.json są względne wobec manifestu. Wspólne moduły wyznaczają katalog projektu na podstawie adresu skryptu, dlatego działają także ze strony album/index.html.
+
+3. Kody odpowiedzi w osobnym pliku
+   Z 430 profili usunięto pole exportCode. Jego wartości przeniesiono do data/political_profiles/export-codes.json pod unikalnym kluczem profilu (key, a w razie braku id lub name). Zachowano również puste kody i wartości PLACEHOLDER. Pięć profili, które nie miały wcześniej pola exportCode, nadal otrzymuje pustą wartość podczas ładowania.
+   js/shared/profiles-loader.js pobiera mapę kodów i dołącza exportCode do rekordów w pamięci aplikacji. Wywołanie Albumu przekazuje includeExportCodes: false, więc nie pobiera pliku kodów. Quiz, symulacja, kompas i porównywarka korzystają z domyślnego ładowania kodów. Dotychczasowy eksport i import odpowiedzi nadal korzystają z tych samych funkcji generatora i parsera.
+
+4. Linki w treści profili
+   album/album.js rozpoznaje znaczniki [[profile:klucz|etykieta]] oraz [[article:klucz|etykieta]]. Linki otwierają pasujący profil w już otwartym oknie Albumu. Nie zmieniają wyszukiwania, zakładki ani filtrów; adres aktualnego profilu jest aktualizowany bez dodawania osobnego kroku historii przeglądarki.
+   W data/political_profiles/figures-M.json opis i poglądy Murraya Rothbarda pokazują przykłady linków: do profilu ideologii libertarianizmu deontologicznego oraz do profilu Hansa-Hermanna Hoppego. Klasy CSS rozróżniają ideologie, partie, postacie, użytkowników i odnośniki artykułowe.
+
+5. Data aktualności profilu
+   Każdy z 435 profili ma indywidualne pole asOfDate, ustawione początkowo na 27.11.2026. W przyszłości datę można zmieniać oddzielnie w rekordzie profilu. Album pokazuje małą plakietkę w karcie i w szczegółach; kliknięcie wyświetla komunikat „Stan na: [data z profilu]”.
+
+6. Symulacja odpowiedzi
+   Panel „Symuluj odpowiedzi” jest obecny przy rozpoczęciu quizu w index.html i pozostaje powiązany z selectorem profili. Loader dołącza exportCode z nowej mapy przed zbudowaniem listy symulacji. Przycisk „Przywróć moje odpowiedzi” zachowuje dotychczasowe działanie i odtwarza zapisany stan odpowiedzi. Albumowe łącze „Symuluj w teście” prowadzi teraz do ../index.html.
+
+PLIKI ZMIENIONE I UTWORZONE
+   index.html — nowe ścieżki do arkuszy i skryptów; odnośniki do Albumu prowadzą do album/index.html; panel symulacji zachowany.
+   comparison.html, compass.html, dependency-map.html — nowe ścieżki arkuszy i skryptów; linki Albumu prowadzą do album/index.html.
+   album/index.html — przeniesiony album.html; odnośniki do katalogu głównego, logo, współdzielonych skryptów i komunikatu daty.
+   album/album.js — nowe linki wewnętrzne, daty, renderowanie akapitów, adresy stron i obrazów oraz ładowanie bez kodów eksportu.
+   album/album.css — nowy wygląd plakietek, komunikatu daty i linków według rodzaju celu.
+   album/album-advanced-filters.js — przeniesiony skrypt filtrów Albumu.
+   js/shared/profiles-loader.js — pobiera manifest z data/political_profiles/, buforuje rekordy i kody; pozwala pominąć kody w Albumie.
+   js/shared/badges.js, js/shared/profile-life.js, js/shared/tag-catalog.js — przeniesione moduły współdzielone.
+   js/compass/compass-core.js, compass-ui.js, compass-enhancements.js, compass-integration.js, compass-page.js — przeniesione skrypty kompasu; odczyt manifestu pytań z nowej lokalizacji.
+   js/comparison/comparison-page.js — przeniesiony moduł; manifest i części pytań są rozwiązywane względem quiz/data/manifest.json.
+   js/tools/dependency-map.js — przeniesiony moduł; pobiera pytania z nowego manifestu.
+   quiz/scripts/advanced-tags.js, app-features.js, architecture-refresh.js, compressed-export.js, data-loader.js, modern-profile-engine.js, modernization.js, product-ux.js, results-dashboard.js, script.js, share-card.js, test-modes.js, ux-refresh.js — przeniesione moduły quizu. Zaktualizowano pobieranie manifestu, części pytań, tłumaczeń i wariantów testu; zmieniono odnośnik z okna profilu do Albumu.
+   styles/app/style.css, ux-refresh.css, product-ui.css, results-redesign.css, advanced-tags.css, test-experience.css, results-polish.css — przeniesione style aplikacji; w test-experience.css usunięto ukrywanie panelu symulacji w widoku testowym.
+   styles/compass/compass.css, compass-page.css — przeniesione style kompasu.
+   styles/comparison/comparison-page.css — przeniesiony arkusz porównywarki.
+   styles/tools/dependency-map.css — przeniesiony arkusz mapy zależności.
+   quiz/data/manifest.json — nazwy części zmieniono na ścieżki względne wobec manifestu.
+   data/translations/translations_en.json — przeniesione tłumaczenie angielskie.
+   data/political_profiles/export-codes.json — nowa mapa 430 kodów.
+   data/political_profiles/figures-A.json, figures-B.json, figures-C.json, figures-D.json, figures-E.json, figures-F.json, figures-G.json, figures-H.json, figures-I.json, figures-J.json, figures-K.json, figures-L.json, figures-M.json, figures-N.json, figures-O.json, figures-P.json, figures-R.json, figures-S.json, figures-T.json, figures-U.json, figures-V.json, figures-W.json, figures-X.json, figures-Y.json i figures-Z.json — przeniesione i uzupełnione o asOfDate; z każdego usunięto exportCode; figures-M.json zawiera znaczniki dwóch linków Rothbarda, a figures-R.json naprawiony wpis Ricardo Melli.
+   data/political_profiles/ideologies.json, parties.json, users.json — przeniesione; usunięto exportCode i dodano indywidualne asOfDate.
+   data/political_profiles/manifest.json — przeniesiony bez zmiany struktury; loader czyta go z nowej lokalizacji.
+   quiz/data/manifest.json, part-1.json–part-6.json i tekstolo.txt — przeniesione z data-parts/; plik manifestu opisuje ścieżki względem swojego katalogu.
+   quiz/tests/skrocony.json, quiz/tests/zbalansowany.json — przeniesione warianty testu.
+   README.md — opis nowego układu katalogów i sposobu otwierania aplikacji przez lokalny serwer HTTP.
+   raport.txt — dopisano niniejszy wpis z datą i kryptonimem.
+
+SPRAWDZENIE
+   Kontrola końcowa: wszystkie 40 plików JSON parsują się poprawnie; 435 profili ma datę asOfDate, 430 kodów znajduje się w osobnej mapie, a żaden rekord profilu nie zawiera już exportCode. Wszystkie 26 skryptów JavaScript przeszły sprawdzenie składni. Ścieżki lokalne w 5 stronach HTML, manifesty profili i 6 części quizu wskazują istniejące pliki. Próba w przeglądarce potwierdziła otwarcie pełnego profilu Ricardo Melli, działanie plakietki daty oraz przejście z Rothbarda do artykułu o libertarianizmie deontologicznym w tym samym oknie. Po przejściu linkiem wyszukiwanie „Murray Rothbard” i zakładka Postacie pozostały aktywne. Sprawdzono też quiz w przeglądarce: panel symulacji jest widoczny po rozpoczęciu testu, lista zawiera 435 opcji (w tym profile z oddzielnej mapy kodów), a symulacja PiS wczytała 53 odpowiedzi.
+
+-----
