@@ -486,7 +486,7 @@ async function loadTranslations(lang) {
     return;
   }
   try {
-    const response = await fetch(`translations_${lang}.json`);
+    const response = await fetch(`data/translations/translations_${lang}.json`);
     if (!response.ok) throw new Error(`Nie udało się wczytać tłumaczeń dla ${lang}`);
     translations = await response.json();
   } catch (err) {
@@ -663,7 +663,7 @@ async function loadConfig() {
     if (!politicalProfiles) politicalProfiles = buildMigratedProfilesFromConfig();
 
     // data.json zawiera pytania i pary wartości, natomiast katalog profili został
-    // przeniesiony do political_profiles/. Starsza część silnika punktacji
+    // przeniesiony do data/political_profiles/. Starsza część silnika punktacji
     // nadal korzysta z config.parties / config.ideologies, dlatego składamy jeden
     // spójny model danych przed uruchomieniem interfejsu oraz symulacji.
     configBase = {
