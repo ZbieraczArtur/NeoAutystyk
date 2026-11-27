@@ -522,6 +522,7 @@ body {
 }
 .profile-card-main:focus-visible,
 .profile-favorite:focus-visible,
+.profile-as-of-badge:focus-visible,
 .filters-toggle:focus-visible,
 .album-tabs button:focus-visible,
 .active-filter-chip:focus-visible {
@@ -612,6 +613,59 @@ body {
   border-color: #c73760;
   color: #c73760;
 }
+.profile-as-of-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.55rem;
+  padding: 0.2rem 0.42rem;
+  border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 91%, transparent);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.64rem;
+  font-weight: 750;
+  line-height: 1;
+  cursor: pointer;
+}
+.profile-as-of-badge:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.profile-as-of-badge--card {
+  position: absolute;
+  top: 0.78rem;
+  left: 0.65rem;
+  z-index: 1;
+  min-height: 1.4rem;
+  font-size: 0.6rem;
+}
+.profile-as-of-badge--detail {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+}
+.profile-date-notice {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+.album-status {
+  position: fixed;
+  z-index: 30;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  max-width: min(24rem, calc(100vw - 2rem));
+  padding: 0.72rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  font-weight: 750;
+}
+.album-status[hidden] { display: none; }
 .album-empty {
   grid-column: 1/-1;
   margin: 0;
@@ -730,6 +784,13 @@ body {
   white-space: pre-line;
   overflow-wrap: anywhere;
 }
+.profile-description-paragraph {
+  margin: 0 0 0.5rem;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.profile-description-paragraph:last-child { margin-bottom: 0; }
 .profile-actions {
   display: flex;
   flex-wrap: wrap;
@@ -787,10 +848,29 @@ body {
   line-height: 1.25;
 }
 .profile-block p {
-  margin: 0;
+  margin: 0 0 0.68rem;
   white-space: pre-line;
   font-size: 0.92rem;
   overflow-wrap: anywhere;
+}
+.profile-block p:last-child { margin-bottom: 0; }
+.album-content-link {
+  font-weight: 750;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.16em;
+  transition: color 0.15s ease, text-decoration-style 0.15s ease;
+}
+.album-content-link:hover { text-decoration-style: solid; }
+.album-content-link--party { color: #b84a00; }
+.album-content-link--ideology { color: #7250c8; }
+.album-content-link--figure { color: #137b5a; }
+.album-content-link--user { color: #c23f72; }
+.album-content-link--article { color: #245db5; }
+.album-content-link:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 .profile-infobox {
   min-width: 0;
