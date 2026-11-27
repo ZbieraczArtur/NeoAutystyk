@@ -1,8 +1,8 @@
 /* Wybór wariantu testu, tryb listy i tryb pojedynczych kart. */
 (() => {
     const modeFiles = {
-        short: 'tests/skrocony.json',
-        balanced: 'tests/zbalansowany.json'
+        short: 'quiz/tests/skrocony.json',
+        balanced: 'quiz/tests/zbalansowany.json'
     };
     const SESSION_KEY = 'neoAutystyk.session.v1';
     let modes = null,
