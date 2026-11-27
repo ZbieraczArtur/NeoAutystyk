@@ -632,7 +632,7 @@
     if (rows.length) { const list = document.createElement('dl'); rows.forEach(row => { const dt = document.createElement('dt'); dt.textContent = row.label; const dd = document.createElement('dd'); dd.textContent = row.value; list.append(dt, dd); }); aside.appendChild(list); }
     const tags = visibleProfileTags(profile);
     if (tags.length) { const tagBox = document.createElement('div'); tagBox.className = 'popup-profile-tags'; const label = document.createElement('strong'); label.textContent = 'Tagi'; tagBox.appendChild(label); tags.forEach(tag => { const chip = document.createElement('span'); chip.className = 'profile-tag'; chip.textContent = tag; tagBox.appendChild(chip); }); aside.appendChild(tagBox); }
-    const albumLink = document.createElement('a'); albumLink.className = 'profile-popup-album-link'; albumLink.href = `album.html#${encodeURIComponent(profile.id || profile.key || profile.name)}`; albumLink.target = '_blank'; albumLink.rel = 'noopener noreferrer'; albumLink.textContent = 'Przejdź do pełnego profilu ↗'; main.appendChild(albumLink);
+    const albumLink = document.createElement('a'); albumLink.className = 'profile-popup-album-link'; albumLink.href = `album/index.html#${encodeURIComponent(profile.id || profile.key || profile.name)}`; albumLink.target = '_blank'; albumLink.rel = 'noopener noreferrer'; albumLink.textContent = 'Przejdź do pełnego profilu ↗'; main.appendChild(albumLink);
     layout.append(main, aside); content.insertBefore(layout, popupText); content.scrollTop = 0; popup.scrollTop = 0; popup.classList.remove('hidden');
   }
   window.showModernProfilePopup = showModernProfilePopup;
