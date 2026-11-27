@@ -243,8 +243,9 @@
     }
     async function load() {
         try {
-            const [manifest, data] = await Promise.all([fetch('data-parts/manifest.json').then(r => r.json()), window.loadPoliticalProfiles()]);
-            const parts = await Promise.all(manifest.parts.map(x => fetch(x.file).then(r => r.json())));
+            const manifestUrl = new URL('quiz/data/manifest.json', location.href);
+            const [manifest, data] = await Promise.all([fetch(manifestUrl).then(r => r.json()), window.loadPoliticalProfiles()]);
+            const parts = await Promise.all(manifest.parts.map(x => fetch(new URL(x.file, manifestUrl)).then(r => r.json())));
             state.questions = parts.flatMap(x => x.questions || []).sort((a, b) => Number(a.id) - Number(b.id));
             state.profiles = [
                 ['ideology', data.ideologies],
