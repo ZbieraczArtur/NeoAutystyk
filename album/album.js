@@ -11,6 +11,7 @@
   };
   const FIELD_LABEL = { birth: 'Data urodzenia', birthdate: 'Data urodzenia', born: 'Data urodzenia', death: 'Data śmierci', deathdate: 'Data śmierci', died: 'Data śmierci', country: 'Kraj', founded: 'Data założenia', headquarters: 'Siedziba', leader: 'Lider', ideology: 'Ideologia', status: 'Status', type: 'Typ', party: 'Partia', name: 'Nazwa', website: 'Strona internetowa' };
   const $ = selector => document.querySelector(selector);
+  const projectRootUrl = new URL('../', location.href);
   const root = $('#album-grid');
   const dialog = $('#profile-dialog');
   const view = $('#profile-view');
@@ -39,12 +40,90 @@
     return element;
   };
 
+  function profileText(value) {
+    if (typeof value === 'string' || typeof value === 'number') return String(value);
+    if (Array.isArray(value)) return value.map(profileText).filter(Boolean).join('\n\n');
+    if (value && typeof value === 'object') return profileText(value.text ?? value.content ?? '');
+    return '';
+  }
+
+  function findProfile(reference) {
+    const normalized = String(reference || '').trim().toLocaleLowerCase('pl');
+    return allProfiles().find(profile => [profileId(profile), profile.id, profile.key, profile.name]
+      .some(value => String(value || '').trim().toLocaleLowerCase('pl') === normalized));
+  }
+
+  function appendLinkedText(host, text) {
+    const expression = /\[\[(profile|article):([^|\]]+)(?:\|([^\]]+))?\]\]/g;
+    let cursor = 0;
+    for (const match of String(text).matchAll(expression)) {
+      const [token, kind, reference, label] = match;
+      const index = match.index ?? 0;
+      if (index > cursor) host.append(document.createTextNode(text.slice(cursor, index)));
+      const profile = findProfile(reference);
+      if (!profile) {
+        host.append(document.createTextNode(label || reference));
+      } else {
+        const type = ['party', 'ideology', 'figure', 'user'].includes(profile.type) ? profile.type : 'other';
+        const link = make('a', `album-content-link album-content-link--${type} album-content-link--${kind}`, label || profile.name);
+        link.href = `#${encodeURIComponent(profileId(profile))}`;
+        link.title = `Otwórz ${TYPE_SINGULAR[profile.type] || 'profil'}: ${profile.name}`;
+        link.onclick = event => {
+          event.preventDefault();
+          openProfile(profileId(profile));
+        };
+        host.append(link);
+      }
+      cursor = index + token.length;
+    }
+    if (cursor < text.length) host.append(document.createTextNode(text.slice(cursor)));
+  }
+
+  function appendProfileContent(host, value, paragraphClass = '') {
+    const content = profileText(value).trim();
+    if (!content) return false;
+    const paragraphs = content.split(/\n\s*\n+/).map(part => part.trim()).filter(Boolean);
+    paragraphs.forEach(part => {
+      const paragraph = make('p', paragraphClass);
+      appendLinkedText(paragraph, part);
+      host.append(paragraph);
+    });
+    return true;
+  }
+
+  function dateBadge(profile, placement = '') {
+    const date = String(profile.asOfDate || '').trim();
+    if (!date) return null;
+    const badge = make('button', `profile-as-of-badge ${placement}`, date);
+    badge.type = 'button';
+    badge.title = `Stan na: ${date}`;
+    badge.setAttribute('aria-label', `Pokaż datę aktualności profilu ${profile.name}: ${date}`);
+    badge.onclick = event => {
+      event.stopPropagation();
+      if (dialog.open) {
+        let inlineNotice = view.querySelector('.profile-date-notice');
+        if (!inlineNotice) {
+          inlineNotice = make('p', 'profile-date-notice');
+          badge.after(inlineNotice);
+        }
+        inlineNotice.textContent = `Stan na: ${date}`;
+        return;
+      }
+      const status = $('#album-status');
+      status.textContent = `Stan na: ${date}`;
+      status.hidden = false;
+      clearTimeout(status.hideTimer);
+      status.hideTimer = setTimeout(() => { status.hidden = true; }, 3500);
+    };
+    return badge;
+  }
+
   function image(profile, className) {
     const initial = (profile.name || '?').trim().slice(0, 1).toLocaleUpperCase('pl');
     if (!profile.logo) return make('div', `profile-placeholder ${className || ''}`, initial);
     const img = document.createElement('img');
     img.className = className || '';
-    img.src = profile.logo;
+    img.src = new URL(profile.logo, projectRootUrl).href;
     img.alt = '';
     img.loading = 'lazy';
     img.addEventListener('error', () => img.replaceWith(make('div', `profile-placeholder ${className || ''}`, initial)), { once: true });
@@ -220,7 +299,9 @@
     const favoritesOnly = $('#album-favorites-only').checked;
     const sort = $('#album-sort').value;
     const result = profiles().filter(profile => {
-      const haystack = [profile.name, profile.description, ...profileTags(profile)].join(' ').toLocaleLowerCase('pl');
+      const fields = Object.keys(LABELS[profile.type] || {});
+      const haystack = [profile.name, profile.description, ...fields.map(field => profileText(profile[field])), ...profileTags(profile)]
+        .join(' ').toLocaleLowerCase('pl');
       return validYear && (!query || haystack.includes(query)) && (!imageOnly || profile.logo) && (!favoritesOnly || favorites.has(profileId(profile))) && (!year || window.NeoTagCatalog.matchesYear(profile, year)) && matchesSelectedTags(profile);
     });
     result.sort((a, b) => {
@@ -263,7 +344,7 @@
       const media = make('div', 'profile-card-media'); media.append(image(profile, 'profile-card-image'));
       const body = make('div', 'profile-card-body');
       body.append(make('span', 'profile-card-type', TYPE_SINGULAR[profile.type] || TYPE_SINGULAR[active]), make('strong', 'profile-card-name', profile.name));
-      const meta = dateDescription(profile) || (profile.tags || []).slice(0, 2).join(' · ') || TYPE_LABEL[active];
+      const meta = dateDescription(profile) || profileTags(profile).slice(0, 2).join(' · ') || TYPE_LABEL[active];
       body.append(make('small', 'profile-card-meta', meta));
       open.append(media, body); open.onclick = () => openProfile(profileId(profile));
       const favorite = make('button', 'profile-favorite', favorites.has(profileId(profile)) ? '♥' : '♡');
@@ -271,7 +352,10 @@
       favorite.setAttribute('aria-pressed', String(favorites.has(profileId(profile))));
       favorite.setAttribute('aria-label', favorites.has(profileId(profile)) ? 'Usuń z zapisanych' : 'Zapisz profil');
       favorite.onclick = () => toggleFavorite(profile, favorite);
-      card.append(open, favorite); root.append(card);
+      card.append(open);
+      const cardDate = dateBadge(profile, 'profile-as-of-badge--card');
+      if (cardDate) card.append(cardDate);
+      card.append(favorite); root.append(card);
     });
   }
 
@@ -284,20 +368,29 @@
     const heroCopy = make('div', 'profile-hero-copy');
     heroCopy.append(make('p', 'profile-type', TYPE_SINGULAR[profile.type] || 'Profil'), make('h1', '', profile.name));
     heroCopy.querySelector('h1').id = 'profile-title';
-    if (profile.description) heroCopy.append(make('p', 'profile-description', profile.description));
+    if (profile.description) {
+      const description = make('div', 'profile-description');
+      appendProfileContent(description, profile.description, 'profile-description-paragraph');
+      heroCopy.append(description);
+    }
+    const heroDate = dateBadge(profile, 'profile-as-of-badge--detail');
+    if (heroDate) heroCopy.append(heroDate);
     const actions = make('nav', 'profile-actions'); actions.setAttribute('aria-label', 'Akcje profilu');
     const key = encodeURIComponent(profile.key || profile.id || profile.name);
-    const simulation = document.createElement('a'); simulation.href = `index.html?simulate=${key}`; simulation.target = '_blank'; simulation.rel = 'noopener'; simulation.textContent = 'Symuluj w teście ↗';
-    const compare = document.createElement('a'); compare.href = `comparison.html?profile=${key}`; compare.target = '_blank'; compare.rel = 'noopener'; compare.textContent = 'Porównaj ↗';
+    const simulation = document.createElement('a'); simulation.href = `../index.html?simulate=${key}`; simulation.target = '_blank'; simulation.rel = 'noopener'; simulation.textContent = 'Symuluj w teście ↗';
+    const compare = document.createElement('a'); compare.href = `../comparison.html?profile=${key}`; compare.target = '_blank'; compare.rel = 'noopener'; compare.textContent = 'Porównaj ↗';
     const copy = make('button', 'profile-copy-link', 'Kopiuj link'); copy.type = 'button';
-    copy.onclick = async () => { const url = new URL(`album.html#${encodeURIComponent(profileId(profile))}`, location.href).href; try { await navigator.clipboard.writeText(url); copy.textContent = 'Skopiowano'; setTimeout(() => { copy.textContent = 'Kopiuj link'; }, 1600); } catch (_) { location.hash = encodeURIComponent(profileId(profile)); copy.textContent = 'Link w pasku adresu'; } };
+    copy.onclick = async () => { const url = new URL(`index.html#${encodeURIComponent(profileId(profile))}`, location.href).href; try { await navigator.clipboard.writeText(url); copy.textContent = 'Skopiowano'; setTimeout(() => { copy.textContent = 'Kopiuj link'; }, 1600); } catch (_) { location.hash = encodeURIComponent(profileId(profile)); copy.textContent = 'Link w pasku adresu'; } };
     actions.append(simulation, compare, copy); heroCopy.append(actions); hero.append(heroMedia, heroCopy);
     const main = make('main', 'profile-main');
     const sections = LABELS[profile.type] || {};
     let sectionCount = 0;
     Object.entries(sections).forEach(([field, label]) => {
-      if (typeof profile[field] !== 'string' || !profile[field].trim()) return;
-      const block = make('section', 'profile-block'); block.append(make('h2', '', label), make('p', '', profile[field])); main.append(block); sectionCount += 1;
+      if (!profileText(profile[field]).trim()) return;
+      const block = make('section', 'profile-block');
+      block.append(make('h2', '', label));
+      appendProfileContent(block, profile[field], 'profile-copy-paragraph');
+      main.append(block); sectionCount += 1;
     });
     if (!sectionCount) main.append(make('p', 'album-empty', 'Ten profil nie ma jeszcze rozwiniętych sekcji.'));
     const aside = make('aside', 'profile-infobox');
@@ -305,14 +398,15 @@
     if (info.length) {
       aside.append(make('h2', 'infobox-title', 'Najważniejsze informacje'));
       const dl = document.createElement('dl');
-      info.forEach(([field, value]) => dl.append(make('dt', '', fieldLabel(field)), make('dd', '', String(value))));
+      info.forEach(([field, value]) => dl.append(make('dt', '', fieldLabel(field)), make('dd', '', profileText(value))));
       aside.append(dl);
     } else aside.append(make('p', 'album-hint', 'Brak dodatkowych informacji.'));
     const layout = make('div', 'profile-layout'); layout.append(main, aside);
     view.append(hero, layout);
     savedScrollY = window.scrollY;
-    location.hash = encodeURIComponent(profileId(profile));
-    dialog.scrollTop = 0; dialog.showModal();
+    history.replaceState(null, '', `${location.pathname}${location.search}#${encodeURIComponent(profileId(profile))}`);
+    dialog.scrollTop = 0;
+    if (!dialog.open) dialog.showModal();
   }
 
   function setType(type) {
@@ -360,10 +454,10 @@
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('close', () => { history.replaceState(null, '', location.pathname + location.search); window.scrollTo(0, savedScrollY); });
 
-  window.loadPoliticalProfiles().then(data => {
+  window.loadPoliticalProfiles({ includeExportCodes: false }).then(data => {
     db = data;
     const hash = decodeURIComponent(location.hash.slice(1));
     const profile = allProfiles().find(item => [profileId(item), item.id, item.key, item.name].includes(hash));
     if (profile) { active = profile.type; setType(active); openProfile(profileId(profile)); } else setType(active);
-  }).catch(error => { console.error('Błąd ładowania bazy profili:', error); root.textContent = 'Nie udało się wczytać bazy profili. Sprawdź, czy wszystkie pliki z political_profiles są dostępne.'; });
+  }).catch(error => { console.error('Błąd ładowania bazy profili:', error); root.textContent = 'Nie udało się wczytać bazy profili. Sprawdź, czy pliki w data/political_profiles są dostępne.'; });
 })();
