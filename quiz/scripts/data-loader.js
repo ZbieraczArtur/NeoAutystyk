@@ -1,4 +1,7 @@
 // Stan aplikacji oraz leniwe ładowanie danych pytań.
+const neoQuizScriptUrl = document.currentScript?.src || new URL('quiz/scripts/data-loader.js', document.baseURI).href;
+const neoQuizRootUrl = new URL('../../', neoQuizScriptUrl);
+const neoQuestionManifestUrl = new URL('quiz/data/manifest.json', neoQuizRootUrl);
 let config = null;
 let configBase = null;      // oryginalne dane z data.json (wartości, mapowania)
 let politicalProfiles = null;
@@ -24,7 +27,7 @@ function registerDataPart(part) {
 }
 async function initializeDataParts() {
   if (dataManifest) return dataManifest;
-  const response = await fetch('data-parts/manifest.json');
+  const response = await fetch(neoQuestionManifestUrl);
   if (!response.ok) throw new Error('Nie udało się wczytać manifestu części testu');
   dataManifest = await response.json();
   return dataManifest;
@@ -36,7 +39,7 @@ async function loadDataPart(partId) {
     const manifest = await initializeDataParts();
     const entry = manifest.parts.find(part => Number(part.id) === Number(partId));
     if (!entry) throw new Error(`Nie znaleziono części testu ${partId}`);
-    const response = await fetch(entry.file);
+    const response = await fetch(new URL(entry.file, neoQuestionManifestUrl));
     if (!response.ok) throw new Error(`Nie udało się wczytać ${entry.file}`);
     const part = registerDataPart(await response.json());
     dataPartCache.set(partId, part);
