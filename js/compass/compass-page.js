@@ -368,8 +368,9 @@
         render()
     };
     try {
-        const [manifest, p] = await Promise.all([fetch('data-parts/manifest.json').then(r => r.json()), window.loadPoliticalProfiles()]);
-        const parts = await Promise.all(manifest.parts.map(part => fetch(part.file).then(r => r.json())));
+        const manifestUrl = new URL('quiz/data/manifest.json', location.href);
+        const [manifest, p] = await Promise.all([fetch(manifestUrl).then(r => r.json()), window.loadPoliticalProfiles()]);
+        const parts = await Promise.all(manifest.parts.map(part => fetch(new URL(part.file, manifestUrl)).then(r => r.json())));
         const d = {
             ...parts[0],
             questions: parts.flatMap(part => part.questions || [])
